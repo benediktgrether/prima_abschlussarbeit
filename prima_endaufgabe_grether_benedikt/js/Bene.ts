@@ -85,23 +85,12 @@ namespace prima_endaufgabe_grether_benedikt {
       let distance: ƒ.Vector3 = ƒ.Vector3.SCALE(this.speed, timeFrame);
       this.cmpTransform.local.translate(distance);
 
-      this.checkCollision();
+      this.checkCollision(level);
+      this.checkCollision(platform);
     }
 
-    private checkCollision(): void {
-      for (let floor of level.getChildren()) {
-        let rect: ƒ.Rectangle = (<Floor>floor).getRectWorld();
-        let hit: boolean = rect.isInside(this.cmpTransform.local.translation.toVector2());
-        if (hit) {
-          let translation: ƒ.Vector3 = this.cmpTransform.local.translation;
-          translation.y = rect.y;
-          this.cmpTransform.local.translation = translation;
-          this.speed.y = 0;
-        }
-      }
-      for (let floor of platform.getChildren()) {
-        console.log("Bist du hier drin");
-        console.log(floor);
+    private checkCollision(_checkCollision: ƒ.Node): void {
+      for (let floor of _checkCollision.getChildren()) {
         let rect: ƒ.Rectangle = (<Floor>floor).getRectWorld();
         let hit: boolean = rect.isInside(this.cmpTransform.local.translation.toVector2());
         if (hit) {

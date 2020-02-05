@@ -25,7 +25,8 @@ var prima_endaufgabe_grether_benedikt;
                 this.speed.y += Bene.gravity.y * timeFrame;
                 let distance = ƒ.Vector3.SCALE(this.speed, timeFrame);
                 this.cmpTransform.local.translate(distance);
-                this.checkCollision();
+                this.checkCollision(prima_endaufgabe_grether_benedikt.level);
+                this.checkCollision(prima_endaufgabe_grether_benedikt.platform);
             };
             this.addComponent(new ƒ.ComponentTransform());
             for (let sprite of Bene.sprites) {
@@ -72,20 +73,8 @@ var prima_endaufgabe_grether_benedikt;
             }
             this.show(_action);
         }
-        checkCollision() {
-            for (let floor of prima_endaufgabe_grether_benedikt.level.getChildren()) {
-                let rect = floor.getRectWorld();
-                let hit = rect.isInside(this.cmpTransform.local.translation.toVector2());
-                if (hit) {
-                    let translation = this.cmpTransform.local.translation;
-                    translation.y = rect.y;
-                    this.cmpTransform.local.translation = translation;
-                    this.speed.y = 0;
-                }
-            }
-            for (let floor of prima_endaufgabe_grether_benedikt.platform.getChildren()) {
-                console.log("Bist du hier drin");
-                console.log(floor);
+        checkCollision(_checkCollision) {
+            for (let floor of _checkCollision.getChildren()) {
                 let rect = floor.getRectWorld();
                 let hit = rect.isInside(this.cmpTransform.local.translation.toVector2());
                 if (hit) {
