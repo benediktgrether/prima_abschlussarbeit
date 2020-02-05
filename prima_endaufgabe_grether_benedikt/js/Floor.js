@@ -5,15 +5,33 @@ var prima_endaufgabe_grether_benedikt;
     class Floor extends ƒ.Node {
         constructor() {
             super("Floor");
+            let nodeSprite = new prima_endaufgabe_grether_benedikt.NodeSprite("FloorSprite", Floor.sprites[0]);
+            nodeSprite.activate(false);
+            this.appendChild(nodeSprite);
             this.addComponent(new ƒ.ComponentTransform());
-            this.addComponent(new ƒ.ComponentMaterial(Floor.material));
+            // this.addComponent(new ƒ.ComponentMaterial(Floor.material));
             let cmpMesh = new ƒ.ComponentMesh(Floor.mesh);
+            // cmpMesh.pivot.translateY(-0.5);
+            cmpMesh.pivot = Floor.pivot;
             this.addComponent(cmpMesh);
+            this.show();
+        }
+        static generateSprites(_txtImage) {
+            Floor.sprites = [];
+            let sprite = new prima_endaufgabe_grether_benedikt.Sprite("FloorSprite");
+            // sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(1, 20, 20, 150), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.BOTTOMCENTER);
+            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(6, 131, 19, 19), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.TOPCENTER);
+            Floor.sprites.push(sprite);
+        }
+        show() {
+            for (let child of this.getChildren())
+                child.activate(child.name == "FloorSprite");
         }
         getRectWorld() {
             let rect = ƒ.Rectangle.GET(0, 0, 100, 100);
             let topleft = new ƒ.Vector3(-0.5, 0.5, 0);
             let bottomright = new ƒ.Vector3(0.5, -0.5, 0);
+            //let pivot: ƒ.Matrix4x4 = this.getComponent(ƒ.ComponentMesh).pivot;
             let mtxResult = ƒ.Matrix4x4.MULTIPLICATION(this.mtxWorld, Floor.pivot);
             topleft.transform(mtxResult, true);
             bottomright.transform(mtxResult, true);
@@ -24,8 +42,8 @@ var prima_endaufgabe_grether_benedikt;
         }
     }
     Floor.mesh = new ƒ.MeshSprite();
-    Floor.material = new ƒ.Material("Floor", ƒ.ShaderUniColor, new ƒ.CoatColored(ƒ.Color.CSS("red", 0.5)));
-    Floor.pivot = ƒ.Matrix4x4.TRANSLATION(ƒ.Vector3.Y(0));
+    // private static material: ƒ.Material = new ƒ.Material("Floor", ƒ.ShaderUniColor, new ƒ.CoatColored(ƒ.Color.CSS("red", 1)));
+    Floor.pivot = ƒ.Matrix4x4.TRANSLATION(ƒ.Vector3.Y(-0.5));
     prima_endaufgabe_grether_benedikt.Floor = Floor;
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));
 //# sourceMappingURL=Floor.js.map

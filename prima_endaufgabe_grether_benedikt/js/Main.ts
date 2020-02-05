@@ -21,6 +21,7 @@ namespace prima_endaufgabe_grether_benedikt {
     let txtbene: ƒ.TextureImage = new ƒ.TextureImage();
     txtbene.image = img;
     Bene.generateSprites(txtbene);
+    Floor.generateSprites(txtbene);
 
     ƒ.RenderManager.initialize(true, false);
     game = new ƒ.Node("Game");
@@ -79,11 +80,14 @@ namespace prima_endaufgabe_grether_benedikt {
     let level: ƒ.Node = new ƒ.Node("Level");
     let floor: Floor = new Floor();
     floor.cmpTransform.local.scaleY(0.5);
+    floor.cmpTransform.local.scaleX(0.5);
     level.appendChild(floor);
+    ƒ.Debug.log("test");
+    ƒ.Debug.log(floor);
 
     floor = new Floor();
-    floor.cmpTransform.local.scaleY(0.2);
-    floor.cmpTransform.local.scaleX(2.2);
+    // floor.cmpTransform.local.scaleY(1);
+    // floor.cmpTransform.local.scaleX(2.2);
     floor.cmpTransform.local.translateY(0.2);
     floor.cmpTransform.local.translateX(1.5);
     level.appendChild(floor);
