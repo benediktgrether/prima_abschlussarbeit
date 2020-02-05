@@ -1,10 +1,11 @@
-// / <reference path="../L20_ScrollerFoundation/SpriteGenerator.js"/>
-namespace L22_ScrollerFloor {
+/// <reference path="./SpriteGenerator.ts"/>
+namespace prima_endaufgabe_grether_benedikt {
   import ƒ = FudgeCore;
 
   export enum ACTION {
     IDLE = "Idle",
-    WALK = "Walk"
+    WALK = "Walk",
+    JUMP = "Jump"
   }
   export enum DIRECTION {
     LEFT, RIGHT
@@ -12,10 +13,9 @@ namespace L22_ScrollerFloor {
 
   export class Bene extends ƒ.Node {
     private static sprites: Sprite[];
-    private static speedMax: number = 1.5; // units per second
-    // private action: ACTION;
-    // private time: ƒ.Time = new ƒ.Time();
-    public speed: number = 0;
+    private static speedMax: ƒ.Vector2 = new ƒ.Vector2(1.5, 5); // units per second
+    private static gravity: ƒ.Vector2 = ƒ.Vector2.Y(-3);
+    public speed: ƒ.Vector3 = ƒ.Vector3.ZERO();
 
     constructor(_name: string = "Bene") {
       super(_name);
@@ -50,6 +50,8 @@ namespace L22_ScrollerFloor {
     }
 
     public show(_action: ACTION): void {
+      if (_action == ACTION.JUMP)
+        return;
       for (let child of this.getChildren())
         child.activate(child.name == _action);
       // this.action = _action;
@@ -58,22 +60,45 @@ namespace L22_ScrollerFloor {
     public act(_action: ACTION, _direction?: DIRECTION): void {
       switch (_action) {
         case ACTION.IDLE:
-          this.speed = 0;
+          this.speed.x = 0;
           break;
         case ACTION.WALK:
           let direction: number = (_direction == DIRECTION.RIGHT ? 1 : -1);
-          this.speed = Bene.speedMax * direction;
+          this.speed.x = Bene.speedMax.x;
           this.cmpTransform.local.rotation = ƒ.Vector3.Y(90 - 90 * direction);
           // console.log(direction);
+          break;
+        case ACTION.JUMP:
+          if (this.speed.y != 0)
+           break;
+          this.speed.y = 2;
           break;
       }
       this.show(_action);
     }
 
     private update = (_event: ƒ.Eventƒ): void => {
-      let timeFrame: number = ƒ.Loop.timeFrameGame / 1000;
-      this.cmpTransform.local.translateX(this.speed * timeFrame);
       this.broadcastEvent(new CustomEvent("showNext"));
+
+      let timeFrame: number = ƒ.Loop.timeFrameGame / 1000;
+      this.speed.y += Bene.gravity.y * timeFrame;
+      let distance: ƒ.Vector3 = ƒ.Vector3.SCALE(this.speed, timeFrame);
+      this.cmpTransform.local.translate(distance);
+
+      this.checkCollision();
+    }
+
+    private checkCollision(): void {
+      for (let floor of level.getChildren()) {
+        let rect: ƒ.Rectangle = (<Floor>floor).getRectWorld();
+        let hit: boolean = rect.isInside(this.cmpTransform.local.translation.toVector2());
+        if (hit) {
+          let translation: ƒ.Vector3 = this.cmpTransform.local.translation;
+          translation.y = rect.y;
+          this.cmpTransform.local.translation = translation;
+          this.speed.y = 0;
+        }
+      }
     }
   }
 }

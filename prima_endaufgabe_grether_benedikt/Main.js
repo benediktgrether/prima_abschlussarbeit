@@ -1,37 +1,36 @@
 "use strict";
-/// <reference path="../L20_ScrollerFoundation/SpriteGenerator.ts"/>
-var L22_ScrollerFloor;
-/// <reference path="../L20_ScrollerFoundation/SpriteGenerator.ts"/>
-(function (L22_ScrollerFloor) {
-    L22_ScrollerFloor.ƒ = FudgeCore;
-    L22_ScrollerFloor.Sprite = L20_ScrollerFoundation.Sprite;
-    L22_ScrollerFloor.NodeSprite = L20_ScrollerFoundation.NodeSprite;
+/// <reference path="./SpriteGenerator.ts"/>
+var prima_endaufgabe_grether_benedikt;
+/// <reference path="./SpriteGenerator.ts"/>
+(function (prima_endaufgabe_grether_benedikt) {
+    prima_endaufgabe_grether_benedikt.ƒ = FudgeCore;
     window.addEventListener("load", test);
     let keysPressed = {};
-    let game;
     let bene;
     function test() {
         let canvas = document.querySelector("canvas");
         let crc2 = canvas.getContext("2d");
         let img = document.querySelector("img");
-        let txtbene = new L22_ScrollerFloor.ƒ.TextureImage();
+        let txtbene = new prima_endaufgabe_grether_benedikt.ƒ.TextureImage();
         txtbene.image = img;
-        L22_ScrollerFloor.Bene.generateSprites(txtbene);
-        L22_ScrollerFloor.ƒ.RenderManager.initialize(true, false);
-        game = new L22_ScrollerFloor.ƒ.Node("Game");
-        bene = new L22_ScrollerFloor.Bene("Bene");
-        game.appendChild(bene);
-        let cmpCamera = new L22_ScrollerFloor.ƒ.ComponentCamera();
+        prima_endaufgabe_grether_benedikt.Bene.generateSprites(txtbene);
+        prima_endaufgabe_grether_benedikt.ƒ.RenderManager.initialize(true, false);
+        prima_endaufgabe_grether_benedikt.game = new prima_endaufgabe_grether_benedikt.ƒ.Node("Game");
+        bene = new prima_endaufgabe_grether_benedikt.Bene("Bene");
+        prima_endaufgabe_grether_benedikt.level = createLevel();
+        prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.level);
+        prima_endaufgabe_grether_benedikt.game.appendChild(bene);
+        let cmpCamera = new prima_endaufgabe_grether_benedikt.ƒ.ComponentCamera();
         cmpCamera.pivot.translateZ(5);
-        cmpCamera.pivot.lookAt(L22_ScrollerFloor.ƒ.Vector3.ZERO());
-        cmpCamera.backgroundColor = L22_ScrollerFloor.ƒ.Color.CSS("aliceblue");
-        let viewport = new L22_ScrollerFloor.ƒ.Viewport();
-        viewport.initialize("Viewport", game, cmpCamera, canvas);
+        cmpCamera.pivot.lookAt(prima_endaufgabe_grether_benedikt.ƒ.Vector3.ZERO());
+        cmpCamera.backgroundColor = prima_endaufgabe_grether_benedikt.ƒ.Color.CSS("aliceblue");
+        let viewport = new prima_endaufgabe_grether_benedikt.ƒ.Viewport();
+        viewport.initialize("Viewport", prima_endaufgabe_grether_benedikt.game, cmpCamera, canvas);
         viewport.draw();
         document.addEventListener("keydown", handleKeyboard);
         document.addEventListener("keyup", handleKeyboard);
-        L22_ScrollerFloor.ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, update);
-        L22_ScrollerFloor.ƒ.Loop.start(L22_ScrollerFloor.ƒ.LOOP_MODE.TIME_GAME, 10);
+        prima_endaufgabe_grether_benedikt.ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, update);
+        prima_endaufgabe_grether_benedikt.ƒ.Loop.start(prima_endaufgabe_grether_benedikt.ƒ.LOOP_MODE.TIME_GAME, 10);
         function update(_event) {
             processInput();
             viewport.draw();
@@ -41,17 +40,32 @@ var L22_ScrollerFloor;
     }
     function handleKeyboard(_event) {
         keysPressed[_event.code] = (_event.type == "keydown");
+        if (_event.code == prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.W && _event.type == "keydown")
+            bene.act(prima_endaufgabe_grether_benedikt.ACTION.JUMP);
     }
     function processInput() {
-        if (keysPressed[L22_ScrollerFloor.ƒ.KEYBOARD_CODE.A]) {
-            bene.act(L22_ScrollerFloor.ACTION.WALK, L22_ScrollerFloor.DIRECTION.LEFT);
+        if (keysPressed[prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.A]) {
+            bene.act(prima_endaufgabe_grether_benedikt.ACTION.WALK, prima_endaufgabe_grether_benedikt.DIRECTION.LEFT);
             return;
         }
-        if (keysPressed[L22_ScrollerFloor.ƒ.KEYBOARD_CODE.D]) {
-            bene.act(L22_ScrollerFloor.ACTION.WALK, L22_ScrollerFloor.DIRECTION.RIGHT);
+        if (keysPressed[prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.D]) {
+            bene.act(prima_endaufgabe_grether_benedikt.ACTION.WALK, prima_endaufgabe_grether_benedikt.DIRECTION.RIGHT);
             return;
         }
-        bene.act(L22_ScrollerFloor.ACTION.IDLE);
+        bene.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
     }
-})(L22_ScrollerFloor || (L22_ScrollerFloor = {}));
+    function createLevel() {
+        let level = new prima_endaufgabe_grether_benedikt.ƒ.Node("Level");
+        let floor = new prima_endaufgabe_grether_benedikt.Floor();
+        floor.cmpTransform.local.scaleY(0.2);
+        level.appendChild(floor);
+        floor = new prima_endaufgabe_grether_benedikt.Floor();
+        floor.cmpTransform.local.scaleY(0.2);
+        floor.cmpTransform.local.scaleX(0.2);
+        floor.cmpTransform.local.translateY(0.2);
+        floor.cmpTransform.local.translateX(1.5);
+        level.appendChild(floor);
+        return level;
+    }
+})(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));
 //# sourceMappingURL=Main.js.map

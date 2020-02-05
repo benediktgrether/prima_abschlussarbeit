@@ -1,9 +1,7 @@
-/// <reference path="../L20_ScrollerFoundation/SpriteGenerator.ts"/>
-namespace L22_ScrollerFloor {
+/// <reference path="./SpriteGenerator.ts"/>
+namespace prima_endaufgabe_grether_benedikt {
   export import ƒ = FudgeCore;
-  export import Sprite = L20_ScrollerFoundation.Sprite;
-  export import NodeSprite = L20_ScrollerFoundation.NodeSprite;
-
+  
   window.addEventListener("load", test);
 
   interface KeyPressed {
@@ -11,7 +9,8 @@ namespace L22_ScrollerFloor {
   }
   let keysPressed: KeyPressed = {};
 
-  let game: ƒ.Node;
+  export let game: ƒ.Node;
+  export let level: ƒ.Node;
   let bene: Bene;
 
 
@@ -26,6 +25,8 @@ namespace L22_ScrollerFloor {
     ƒ.RenderManager.initialize(true, false);
     game = new ƒ.Node("Game");
     bene = new Bene("Bene");
+    level = createLevel();
+    game.appendChild(level);
     game.appendChild(bene);
 
     let cmpCamera: ƒ.ComponentCamera = new ƒ.ComponentCamera();
@@ -55,6 +56,8 @@ namespace L22_ScrollerFloor {
 
   function handleKeyboard(_event: KeyboardEvent): void {
     keysPressed[_event.code] = (_event.type == "keydown");
+    if (_event.code == ƒ.KEYBOARD_CODE.W && _event.type == "keydown")
+      bene.act(ACTION.JUMP);
   }
 
   function processInput(): void {
@@ -69,4 +72,21 @@ namespace L22_ScrollerFloor {
 
     bene.act(ACTION.IDLE);
   }
+
+  function createLevel(): ƒ.Node {
+    let level: ƒ.Node = new ƒ.Node("Level");
+    let floor: Floor = new Floor();
+    floor.cmpTransform.local.scaleY(0.2);
+    level.appendChild(floor);
+
+    floor = new Floor();
+    floor.cmpTransform.local.scaleY(0.2);
+    floor.cmpTransform.local.scaleX(0.2);
+    floor.cmpTransform.local.translateY(0.2);
+    floor.cmpTransform.local.translateX(1.5);
+    level.appendChild(floor);
+
+    return level;
+  }
+
 }

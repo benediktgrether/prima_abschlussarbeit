@@ -1,33 +1,35 @@
 "use strict";
-// / <reference path="../L20_ScrollerFoundation/SpriteGenerator.js"/>
-var L22_ScrollerFloor;
-// / <reference path="../L20_ScrollerFoundation/SpriteGenerator.js"/>
-(function (L22_ScrollerFloor) {
+/// <reference path="./SpriteGenerator.ts"/>
+var prima_endaufgabe_grether_benedikt;
+/// <reference path="./SpriteGenerator.ts"/>
+(function (prima_endaufgabe_grether_benedikt) {
     var ƒ = FudgeCore;
     let ACTION;
     (function (ACTION) {
         ACTION["IDLE"] = "Idle";
         ACTION["WALK"] = "Walk";
-    })(ACTION = L22_ScrollerFloor.ACTION || (L22_ScrollerFloor.ACTION = {}));
+        ACTION["JUMP"] = "Jump";
+    })(ACTION = prima_endaufgabe_grether_benedikt.ACTION || (prima_endaufgabe_grether_benedikt.ACTION = {}));
     let DIRECTION;
     (function (DIRECTION) {
         DIRECTION[DIRECTION["LEFT"] = 0] = "LEFT";
         DIRECTION[DIRECTION["RIGHT"] = 1] = "RIGHT";
-    })(DIRECTION = L22_ScrollerFloor.DIRECTION || (L22_ScrollerFloor.DIRECTION = {}));
+    })(DIRECTION = prima_endaufgabe_grether_benedikt.DIRECTION || (prima_endaufgabe_grether_benedikt.DIRECTION = {}));
     class Bene extends ƒ.Node {
         constructor(_name = "Bene") {
             super(_name);
-            // private action: ACTION;
-            // private time: ƒ.Time = new ƒ.Time();
-            this.speed = 0;
+            this.speed = ƒ.Vector3.ZERO();
             this.update = (_event) => {
-                let timeFrame = ƒ.Loop.timeFrameGame / 1000;
-                this.cmpTransform.local.translateX(this.speed * timeFrame);
                 this.broadcastEvent(new CustomEvent("showNext"));
+                let timeFrame = ƒ.Loop.timeFrameGame / 1000;
+                this.speed.y += Bene.gravity.y * timeFrame;
+                let distance = ƒ.Vector3.SCALE(this.speed, timeFrame);
+                this.cmpTransform.local.translate(distance);
+                this.checkCollision();
             };
             this.addComponent(new ƒ.ComponentTransform());
             for (let sprite of Bene.sprites) {
-                let nodeSprite = new L22_ScrollerFloor.NodeSprite(sprite.name, sprite);
+                let nodeSprite = new prima_endaufgabe_grether_benedikt.NodeSprite(sprite.name, sprite);
                 nodeSprite.activate(false);
                 nodeSprite.addEventListener("showNext", (_event) => { _event.currentTarget.showFrameNext(); }, true);
                 this.appendChild(nodeSprite);
@@ -37,14 +39,16 @@ var L22_ScrollerFloor;
         }
         static generateSprites(_txtImage) {
             Bene.sprites = [];
-            let sprite = new L22_ScrollerFloor.Sprite(ACTION.WALK);
+            let sprite = new prima_endaufgabe_grether_benedikt.Sprite(ACTION.WALK);
             sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(30, 279, 30.8, 51), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
             Bene.sprites.push(sprite);
-            sprite = new L22_ScrollerFloor.Sprite(ACTION.IDLE);
+            sprite = new prima_endaufgabe_grether_benedikt.Sprite(ACTION.IDLE);
             sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(1, 279, 30.8, 51), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
             Bene.sprites.push(sprite);
         }
         show(_action) {
+            if (_action == ACTION.JUMP)
+                return;
             for (let child of this.getChildren())
                 child.activate(child.name == _action);
             // this.action = _action;
@@ -52,19 +56,37 @@ var L22_ScrollerFloor;
         act(_action, _direction) {
             switch (_action) {
                 case ACTION.IDLE:
-                    this.speed = 0;
+                    this.speed.x = 0;
                     break;
                 case ACTION.WALK:
                     let direction = (_direction == DIRECTION.RIGHT ? 1 : -1);
-                    this.speed = Bene.speedMax * direction;
+                    this.speed.x = Bene.speedMax.x;
                     this.cmpTransform.local.rotation = ƒ.Vector3.Y(90 - 90 * direction);
                     // console.log(direction);
+                    break;
+                case ACTION.JUMP:
+                    if (this.speed.y != 0)
+                        break;
+                    this.speed.y = 2;
                     break;
             }
             this.show(_action);
         }
+        checkCollision() {
+            for (let floor of prima_endaufgabe_grether_benedikt.level.getChildren()) {
+                let rect = floor.getRectWorld();
+                let hit = rect.isInside(this.cmpTransform.local.translation.toVector2());
+                if (hit) {
+                    let translation = this.cmpTransform.local.translation;
+                    translation.y = rect.y;
+                    this.cmpTransform.local.translation = translation;
+                    this.speed.y = 0;
+                }
+            }
+        }
     }
-    Bene.speedMax = 1.5; // units per second
-    L22_ScrollerFloor.Bene = Bene;
-})(L22_ScrollerFloor || (L22_ScrollerFloor = {}));
+    Bene.speedMax = new ƒ.Vector2(1.5, 5); // units per second
+    Bene.gravity = ƒ.Vector2.Y(-3);
+    prima_endaufgabe_grether_benedikt.Bene = Bene;
+})(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));
 //# sourceMappingURL=Bene.js.map
