@@ -48,6 +48,8 @@ namespace prima_endaufgabe_grether_benedikt {
       processInput();
 
       viewport.draw();
+      // cmpCamera.pivot.lookAt(bene.cmpTransform.local.translation);
+      cmpCamera.pivot.translation = new ƒ.Vector3(bene.cmpTransform.local.translation.x, cmpCamera.pivot.translation.y, cmpCamera.pivot.translation.z);
 
       crc2.strokeRect(-1, -1, canvas.width / 2, canvas.height + 2);
       crc2.strokeRect(-1, canvas.height / 2, canvas.width + 2, canvas.height);
@@ -76,12 +78,12 @@ namespace prima_endaufgabe_grether_benedikt {
   function createLevel(): ƒ.Node {
     let level: ƒ.Node = new ƒ.Node("Level");
     let floor: Floor = new Floor();
-    floor.cmpTransform.local.scaleY(0.2);
+    floor.cmpTransform.local.scaleY(0.5);
     level.appendChild(floor);
 
     floor = new Floor();
     floor.cmpTransform.local.scaleY(0.2);
-    floor.cmpTransform.local.scaleX(0.2);
+    floor.cmpTransform.local.scaleX(2.2);
     floor.cmpTransform.local.translateY(0.2);
     floor.cmpTransform.local.translateX(1.5);
     level.appendChild(floor);

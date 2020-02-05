@@ -25,7 +25,7 @@ var prima_endaufgabe_grether_benedikt;
     }
     Floor.mesh = new ƒ.MeshSprite();
     Floor.material = new ƒ.Material("Floor", ƒ.ShaderUniColor, new ƒ.CoatColored(ƒ.Color.CSS("red", 0.5)));
-    Floor.pivot = ƒ.Matrix4x4.TRANSLATION(ƒ.Vector3.Y(-0.5));
+    Floor.pivot = ƒ.Matrix4x4.TRANSLATION(ƒ.Vector3.Y(0));
     prima_endaufgabe_grether_benedikt.Floor = Floor;
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));
 //# sourceMappingURL=Floor.js.map

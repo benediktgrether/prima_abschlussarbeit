@@ -34,6 +34,8 @@ var prima_endaufgabe_grether_benedikt;
         function update(_event) {
             processInput();
             viewport.draw();
+            // cmpCamera.pivot.lookAt(bene.cmpTransform.local.translation);
+            cmpCamera.pivot.translation = new prima_endaufgabe_grether_benedikt.ƒ.Vector3(bene.cmpTransform.local.translation.x, cmpCamera.pivot.translation.y, cmpCamera.pivot.translation.z);
             crc2.strokeRect(-1, -1, canvas.width / 2, canvas.height + 2);
             crc2.strokeRect(-1, canvas.height / 2, canvas.width + 2, canvas.height);
         }
@@ -57,11 +59,11 @@ var prima_endaufgabe_grether_benedikt;
     function createLevel() {
         let level = new prima_endaufgabe_grether_benedikt.ƒ.Node("Level");
         let floor = new prima_endaufgabe_grether_benedikt.Floor();
-        floor.cmpTransform.local.scaleY(0.2);
+        floor.cmpTransform.local.scaleY(0.5);
         level.appendChild(floor);
         floor = new prima_endaufgabe_grether_benedikt.Floor();
         floor.cmpTransform.local.scaleY(0.2);
-        floor.cmpTransform.local.scaleX(0.2);
+        floor.cmpTransform.local.scaleX(2.2);
         floor.cmpTransform.local.translateY(0.2);
         floor.cmpTransform.local.translateX(1.5);
         level.appendChild(floor);
