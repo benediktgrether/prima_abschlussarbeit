@@ -4,10 +4,10 @@ var prima_endaufgabe_grether_benedikt;
 /// <reference path="./SpriteGenerator.ts"/>
 (function (prima_endaufgabe_grether_benedikt) {
     prima_endaufgabe_grether_benedikt.ƒ = FudgeCore;
-    window.addEventListener("load", test);
+    window.addEventListener("load", initGame);
     let keysPressed = {};
     let bene;
-    function test() {
+    function initGame() {
         let canvas = document.querySelector("canvas");
         let crc2 = canvas.getContext("2d");
         let img = document.querySelector("img");
@@ -17,14 +17,18 @@ var prima_endaufgabe_grether_benedikt;
         prima_endaufgabe_grether_benedikt.Floor.generateSprites(txtbene);
         prima_endaufgabe_grether_benedikt.ƒ.RenderManager.initialize(true, false);
         prima_endaufgabe_grether_benedikt.game = new prima_endaufgabe_grether_benedikt.ƒ.Node("Game");
+        prima_endaufgabe_grether_benedikt.game.addComponent(new prima_endaufgabe_grether_benedikt.ƒ.ComponentTransform());
+        prima_endaufgabe_grether_benedikt.game.cmpTransform.local.translateY(-1.17);
         bene = new prima_endaufgabe_grether_benedikt.Bene("Bene");
-        prima_endaufgabe_grether_benedikt.level = createLevel();
-        prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.level);
+        prima_endaufgabe_grether_benedikt.level = prima_endaufgabe_grether_benedikt.Level.createLevel();
+        prima_endaufgabe_grether_benedikt.platform = prima_endaufgabe_grether_benedikt.Level.createPlatform();
         prima_endaufgabe_grether_benedikt.game.appendChild(bene);
+        prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.level);
+        prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.platform);
         let cmpCamera = new prima_endaufgabe_grether_benedikt.ƒ.ComponentCamera();
         cmpCamera.pivot.translateZ(5);
         cmpCamera.pivot.lookAt(prima_endaufgabe_grether_benedikt.ƒ.Vector3.ZERO());
-        cmpCamera.backgroundColor = prima_endaufgabe_grether_benedikt.ƒ.Color.CSS("aliceblue");
+        cmpCamera.backgroundColor = prima_endaufgabe_grether_benedikt.ƒ.Color.CSS("#c2f0ff");
         let viewport = new prima_endaufgabe_grether_benedikt.ƒ.Viewport();
         viewport.initialize("Viewport", prima_endaufgabe_grether_benedikt.game, cmpCamera, canvas);
         viewport.draw();
@@ -56,22 +60,6 @@ var prima_endaufgabe_grether_benedikt;
             return;
         }
         bene.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
-    }
-    function createLevel() {
-        let level = new prima_endaufgabe_grether_benedikt.ƒ.Node("Level");
-        let floor = new prima_endaufgabe_grether_benedikt.Floor();
-        floor.cmpTransform.local.scaleY(0.5);
-        floor.cmpTransform.local.scaleX(0.5);
-        level.appendChild(floor);
-        prima_endaufgabe_grether_benedikt.ƒ.Debug.log("test");
-        prima_endaufgabe_grether_benedikt.ƒ.Debug.log(floor);
-        floor = new prima_endaufgabe_grether_benedikt.Floor();
-        // floor.cmpTransform.local.scaleY(1);
-        // floor.cmpTransform.local.scaleX(2.2);
-        floor.cmpTransform.local.translateY(0.2);
-        floor.cmpTransform.local.translateX(1.5);
-        level.appendChild(floor);
-        return level;
     }
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));
 //# sourceMappingURL=Main.js.map

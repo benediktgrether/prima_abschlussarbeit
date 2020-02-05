@@ -67,13 +67,25 @@ var prima_endaufgabe_grether_benedikt;
                 case ACTION.JUMP:
                     if (this.speed.y != 0)
                         break;
-                    this.speed.y = 2;
+                    this.speed.y = 2.5;
                     break;
             }
             this.show(_action);
         }
         checkCollision() {
             for (let floor of prima_endaufgabe_grether_benedikt.level.getChildren()) {
+                let rect = floor.getRectWorld();
+                let hit = rect.isInside(this.cmpTransform.local.translation.toVector2());
+                if (hit) {
+                    let translation = this.cmpTransform.local.translation;
+                    translation.y = rect.y;
+                    this.cmpTransform.local.translation = translation;
+                    this.speed.y = 0;
+                }
+            }
+            for (let floor of prima_endaufgabe_grether_benedikt.platform.getChildren()) {
+                console.log("Bist du hier drin");
+                console.log(floor);
                 let rect = floor.getRectWorld();
                 let hit = rect.isInside(this.cmpTransform.local.translation.toVector2());
                 if (hit) {

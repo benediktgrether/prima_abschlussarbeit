@@ -71,7 +71,7 @@ namespace prima_endaufgabe_grether_benedikt {
         case ACTION.JUMP:
           if (this.speed.y != 0)
            break;
-          this.speed.y = 2;
+          this.speed.y = 2.5;
           break;
       }
       this.show(_action);
@@ -90,6 +90,18 @@ namespace prima_endaufgabe_grether_benedikt {
 
     private checkCollision(): void {
       for (let floor of level.getChildren()) {
+        let rect: ƒ.Rectangle = (<Floor>floor).getRectWorld();
+        let hit: boolean = rect.isInside(this.cmpTransform.local.translation.toVector2());
+        if (hit) {
+          let translation: ƒ.Vector3 = this.cmpTransform.local.translation;
+          translation.y = rect.y;
+          this.cmpTransform.local.translation = translation;
+          this.speed.y = 0;
+        }
+      }
+      for (let floor of platform.getChildren()) {
+        console.log("Bist du hier drin");
+        console.log(floor);
         let rect: ƒ.Rectangle = (<Floor>floor).getRectWorld();
         let hit: boolean = rect.isInside(this.cmpTransform.local.translation.toVector2());
         if (hit) {

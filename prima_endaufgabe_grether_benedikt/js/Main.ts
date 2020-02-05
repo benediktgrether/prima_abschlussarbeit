@@ -2,7 +2,7 @@
 namespace prima_endaufgabe_grether_benedikt {
   export import ƒ = FudgeCore;
   
-  window.addEventListener("load", test);
+  window.addEventListener("load", initGame);
 
   interface KeyPressed {
     [code: string]: boolean;
@@ -11,10 +11,11 @@ namespace prima_endaufgabe_grether_benedikt {
 
   export let game: ƒ.Node;
   export let level: ƒ.Node;
+  export let platform: ƒ.Node;
   let bene: Bene;
 
 
-  function test(): void {
+  function initGame(): void {
     let canvas: HTMLCanvasElement = document.querySelector("canvas");
     let crc2: CanvasRenderingContext2D = canvas.getContext("2d");
     let img: HTMLImageElement = document.querySelector("img");
@@ -25,15 +26,22 @@ namespace prima_endaufgabe_grether_benedikt {
 
     ƒ.RenderManager.initialize(true, false);
     game = new ƒ.Node("Game");
+    game.addComponent(new ƒ.ComponentTransform());
+
+    game.cmpTransform.local.translateY(-1.17);
+
     bene = new Bene("Bene");
-    level = createLevel();
-    game.appendChild(level);
+    level = Level.createLevel();
+    platform = Level.createPlatform();
+    
     game.appendChild(bene);
+    game.appendChild(level);
+    game.appendChild(platform);
 
     let cmpCamera: ƒ.ComponentCamera = new ƒ.ComponentCamera();
     cmpCamera.pivot.translateZ(5);
     cmpCamera.pivot.lookAt(ƒ.Vector3.ZERO());
-    cmpCamera.backgroundColor = ƒ.Color.CSS("aliceblue");
+    cmpCamera.backgroundColor = ƒ.Color.CSS("#c2f0ff");
 
     let viewport: ƒ.Viewport = new ƒ.Viewport();
     viewport.initialize("Viewport", game, cmpCamera, canvas);
@@ -75,24 +83,4 @@ namespace prima_endaufgabe_grether_benedikt {
 
     bene.act(ACTION.IDLE);
   }
-
-  function createLevel(): ƒ.Node {
-    let level: ƒ.Node = new ƒ.Node("Level");
-    let floor: Floor = new Floor();
-    floor.cmpTransform.local.scaleY(0.5);
-    floor.cmpTransform.local.scaleX(0.5);
-    level.appendChild(floor);
-    ƒ.Debug.log("test");
-    ƒ.Debug.log(floor);
-
-    floor = new Floor();
-    // floor.cmpTransform.local.scaleY(1);
-    // floor.cmpTransform.local.scaleX(2.2);
-    floor.cmpTransform.local.translateY(0.2);
-    floor.cmpTransform.local.translateX(1.5);
-    level.appendChild(floor);
-
-    return level;
-  }
-
 }
