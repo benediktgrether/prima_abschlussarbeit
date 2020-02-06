@@ -63,7 +63,7 @@ namespace prima_endaufgabe_grether_benedikt {
           break;
       }
 
-      rects.forEach((_rect: ƒ.Rectangle) => ƒ.Debug.log(_rect.toString()));
+      // rects.forEach((_rect: ƒ.Rectangle) => ƒ.Debug.log(_rect.toString()));
       this.generate(_texture, rects, _resolutionQuad, _origin);
     }
 

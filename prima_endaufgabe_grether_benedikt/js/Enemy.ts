@@ -2,8 +2,8 @@ namespace prima_endaufgabe_grether_benedikt {
 
   import ƒ = FudgeCore;
 
-  export enum ACTION {
-    IDLEZOMBIE= "Idle",
+  export enum ACTION_ZOMBIE {
+    IDLEZOMBIE = "Idle",
     WALKZOMBIE = "Walk"
   }
 
@@ -13,7 +13,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
   export class Enemy extends ƒ.Node {
     private static sprites: Sprite[];
-    private static speedMax: ƒ.Vector2 = new ƒ.Vector2(2, 0);
+    private static speedMax: ƒ.Vector2 = new ƒ.Vector2(1.5, 0);
     private static gravity: ƒ.Vector2 = ƒ.Vector2.Y(-3);
     public speed: ƒ.Vector3 = ƒ.Vector3.ZERO();
     public hitbox: Hitbox;
@@ -41,18 +41,18 @@ namespace prima_endaufgabe_grether_benedikt {
 
       this.hitbox = this.createHitbox();
       this.appendChild(this.hitbox);
-      this.show(ACTION.IDLEZOMBIE);
+      this.show(ACTION_ZOMBIE.IDLEZOMBIE);
 
       ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, this.update);
     }
 
     public static generateSprites(_txtImage: ƒ.TextureImage): void {
       Enemy.sprites = [];
-      let sprite: Sprite = new Sprite(ACTION.WALKZOMBIE);
+      let sprite: Sprite = new Sprite(ACTION_ZOMBIE.WALKZOMBIE);
       sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(30, 279, 30.8, 51), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
       Enemy.sprites.push(sprite);
 
-      sprite = new Sprite(ACTION.IDLEZOMBIE );
+      sprite = new Sprite(ACTION_ZOMBIE.IDLEZOMBIE);
       sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(1, 279, 30.8, 51), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
       Enemy.sprites.push(sprite);
     }
@@ -67,9 +67,24 @@ namespace prima_endaufgabe_grether_benedikt {
       return hitbox;
     }
 
-    public show(_action: ACTION): void {
+    public show(_action: ACTION_ZOMBIE): void {
       for (let child of this.getChildren())
         child.activate(child.name == _action);
+    }
+
+
+    public act(_action: ACTION_ZOMBIE, _direction?: DIRECTIONZOMBIE): void {
+      switch (_action) {
+        case ACTION_ZOMBIE.IDLEZOMBIE:
+          this.speed.x = 0;
+          break;
+        case ACTION_ZOMBIE.WALKZOMBIE:
+          let direction: number = (_direction == DIRECTIONZOMBIE.RIGHTZOMBIE ? 1 : -1);
+          this.speed.x = Enemy.speedMax.x;
+          this.cmpTransform.local.rotation = ƒ.Vector3.Y(90 - 90 * direction);
+          // console.log(direction);
+          break;
+      }
     }
 
     private update = (_event: ƒ.Eventƒ): void => {
@@ -84,7 +99,27 @@ namespace prima_endaufgabe_grether_benedikt {
       this.checkCollision(level);
       this.checkCollision(platform);
       this.hitbox.checkCollision();
+
+
+      if (this.cmpTransform.local.translation.x >= bene.cmpTransform.local.translation.x){
+        console.log(this.cmpTransform.local.translation.x);
+        this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.LEFTZOMBIE);
+      } else {
+        this.act(ACTION_ZOMBIE.IDLEZOMBIE, DIRECTIONZOMBIE.LEFTZOMBIE);
+      }
     }
+
+    // private enemyMove(): void {
+    //   // console.log(bene.mtxWorld.translation.x);
+    //   // let direction: number = (_direction == DIRECTION.RIGHT ? 1 : -1);
+    //   if(this.mtxWorld.translation.x > bene.mtxWorld.translation.x) {
+    //     this.speed.x = -Enemy.speedMax.x;
+    //   } else if (this.mtxWorld.translation.x < bene.mtxWorld.translation.x){
+    //     this.speed.x = Enemy.speedMax.x;
+    //   } else {
+    //     this.speed.x = 0;
+    //   }
+    // }
 
     private checkCollision(_checkCollision: ƒ.Node): void {
       for (let floor of _checkCollision.getChildren()) {
