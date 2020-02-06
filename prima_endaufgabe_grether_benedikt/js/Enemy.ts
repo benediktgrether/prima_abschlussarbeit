@@ -101,11 +101,15 @@ namespace prima_endaufgabe_grether_benedikt {
       this.hitbox.checkCollision();
 
 
-      if (this.cmpTransform.local.translation.x >= bene.cmpTransform.local.translation.x){
+      if (this.cmpTransform.local.translation.x > bene.cmpTransform.local.translation.x + .1){
         console.log(this.cmpTransform.local.translation.x);
         this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.LEFTZOMBIE);
-      } else {
-        this.act(ACTION_ZOMBIE.IDLEZOMBIE, DIRECTIONZOMBIE.LEFTZOMBIE);
+      } else if (this.cmpTransform.local.translation.x < bene.cmpTransform.local.translation.x - .1){
+        this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.RIGHTZOMBIE);
+      }
+      
+      else {
+        this.act(ACTION_ZOMBIE.IDLEZOMBIE);
       }
     }
 

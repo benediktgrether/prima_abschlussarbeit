@@ -20,6 +20,7 @@ var prima_endaufgabe_grether_benedikt;
             super(_name);
             this.speed = ƒ.Vector3.ZERO();
             this.item = prima_endaufgabe_grether_benedikt.ITEM.NONE;
+            this.isMoving = false;
             this.update = (_event) => {
                 this.broadcastEvent(new CustomEvent("showNext"));
                 let timeFrame = ƒ.Loop.timeFrameGame / 1000;

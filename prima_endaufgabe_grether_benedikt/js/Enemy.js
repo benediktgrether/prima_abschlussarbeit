@@ -27,12 +27,15 @@ var prima_endaufgabe_grether_benedikt;
                 this.checkCollision(prima_endaufgabe_grether_benedikt.level);
                 this.checkCollision(prima_endaufgabe_grether_benedikt.platform);
                 this.hitbox.checkCollision();
-                if (this.cmpTransform.local.translation.x >= prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation.x) {
+                if (this.cmpTransform.local.translation.x > prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation.x + .1) {
                     console.log(this.cmpTransform.local.translation.x);
                     this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.LEFTZOMBIE);
                 }
+                else if (this.cmpTransform.local.translation.x < prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation.x - .1) {
+                    this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.RIGHTZOMBIE);
+                }
                 else {
-                    this.act(ACTION_ZOMBIE.IDLEZOMBIE, DIRECTIONZOMBIE.LEFTZOMBIE);
+                    this.act(ACTION_ZOMBIE.IDLEZOMBIE);
                 }
             };
             this.addComponent(new ƒ.ComponentTransform());
