@@ -13,7 +13,7 @@ namespace prima_endaufgabe_grether_benedikt {
   export let game: ƒ.Node;
   export let level: ƒ.Node;
   export let platform: ƒ.Node;
-  let bene: Bene;
+  let bene: Character;
 
 
   // async function loadFilesWithResponse(): Promise<void> {
@@ -32,7 +32,7 @@ namespace prima_endaufgabe_grether_benedikt {
     let img: HTMLImageElement = document.querySelector("img");
     let txtbene: ƒ.TextureImage = new ƒ.TextureImage();
     txtbene.image = img;
-    Bene.generateSprites(txtbene);
+    Character.generateSprites(txtbene);
     Floor.generateSprites(txtbene);
     Items.generateSprites(txtbene);
 
@@ -42,7 +42,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
     game.cmpTransform.local.translateY(-1.17);
 
-    bene = new Bene("Bene");
+    bene = new Character("Bene");
     level = new Level();
     platform = new Platform();
     // items = Level.createItem();
