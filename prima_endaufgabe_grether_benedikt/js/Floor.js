@@ -3,7 +3,7 @@ var prima_endaufgabe_grether_benedikt;
 (function (prima_endaufgabe_grether_benedikt) {
     var ƒ = FudgeCore;
     class Floor extends ƒ.Node {
-        constructor(_distance, _translateY, _item) {
+        constructor(_distance, _translateY, _distancePlatform, _item) {
             super("Floor");
             let nodeSprite = new prima_endaufgabe_grether_benedikt.NodeSprite("FloorSprite", Floor.sprites[0]);
             nodeSprite.activate(false);
@@ -20,6 +20,9 @@ var prima_endaufgabe_grether_benedikt;
             this.cmpTransform.local.translateX(_distance);
             if (_translateY) {
                 this.cmpTransform.local.translateY(_translateY);
+            }
+            if (_distancePlatform) {
+                this.cmpTransform.local.translateX(_distancePlatform);
             }
             if (_item) {
                 let item = new prima_endaufgabe_grether_benedikt.Items(_item);

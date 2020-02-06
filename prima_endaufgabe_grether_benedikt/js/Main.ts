@@ -13,7 +13,7 @@ namespace prima_endaufgabe_grether_benedikt {
   export let game: ƒ.Node;
   export let level: ƒ.Node;
   export let platform: ƒ.Node;
-  let bene: Character;
+  export let bene: Character;
 
 
   // async function loadFilesWithResponse(): Promise<void> {

@@ -4,6 +4,7 @@ var prima_endaufgabe_grether_benedikt;
     var ƒ = FudgeCore;
     let ITEM;
     (function (ITEM) {
+        ITEM["NONE"] = "None";
         ITEM["SWORD"] = "Sword";
     })(ITEM = prima_endaufgabe_grether_benedikt.ITEM || (prima_endaufgabe_grether_benedikt.ITEM = {}));
     class Items extends ƒ.Node {

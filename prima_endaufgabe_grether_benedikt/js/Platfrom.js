@@ -7,17 +7,18 @@ var prima_endaufgabe_grether_benedikt;
             super("Level");
             let platform;
             this.generatePlatform(platform);
+            this.generatePlatform(platform, 3);
             // platform = new Floor(0, 1, ITEM.SWORD);
             // this.appendChild(platform);
         }
-        generatePlatform(_platform, _item) {
+        generatePlatform(_platform, _distance, _item) {
             let floorDistance = -0.5;
             for (let index = 0; index < 3; index++) {
                 if (index == 1) {
-                    _platform = new prima_endaufgabe_grether_benedikt.Floor(floorDistance, 1, prima_endaufgabe_grether_benedikt.ITEM.SWORD);
+                    _platform = new prima_endaufgabe_grether_benedikt.Floor(floorDistance, 1, _distance, prima_endaufgabe_grether_benedikt.ITEM.SWORD);
                 }
                 else {
-                    _platform = new prima_endaufgabe_grether_benedikt.Floor(floorDistance, 1);
+                    _platform = new prima_endaufgabe_grether_benedikt.Floor(floorDistance, 1, _distance);
                 }
                 floorDistance = floorDistance + 0.25;
                 this.appendChild(_platform);

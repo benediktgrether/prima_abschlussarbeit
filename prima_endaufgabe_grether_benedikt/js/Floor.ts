@@ -7,7 +7,7 @@ namespace prima_endaufgabe_grether_benedikt {
     private static sprites: Sprite[];
     public item: Items;
 
-    public constructor(_distance: number, _translateY?: number, _item?: ITEM) {
+    public constructor(_distance: number, _translateY?: number, _distancePlatform?: number, _item?: ITEM) {
       super("Floor");
       let nodeSprite: NodeSprite = new NodeSprite("FloorSprite", Floor.sprites[0]);
       nodeSprite.activate(false);
@@ -26,6 +26,9 @@ namespace prima_endaufgabe_grether_benedikt {
       this.cmpTransform.local.translateX(_distance);
       if (_translateY) {
         this.cmpTransform.local.translateY(_translateY);
+      }
+      if(_distancePlatform) {
+        this.cmpTransform.local.translateX(_distancePlatform);
       }
 
       if (_item) {

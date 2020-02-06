@@ -6,7 +6,6 @@ var prima_endaufgabe_grether_benedikt;
     prima_endaufgabe_grether_benedikt.ƒ = FudgeCore;
     window.addEventListener("load", initGame);
     let keysPressed = {};
-    let bene;
     // async function loadFilesWithResponse(): Promise<void> {
     // let response: Response = await fetch("./data/data.json");
     // let offer: string = await response.text();
@@ -27,11 +26,11 @@ var prima_endaufgabe_grether_benedikt;
         prima_endaufgabe_grether_benedikt.game = new prima_endaufgabe_grether_benedikt.ƒ.Node("Game");
         prima_endaufgabe_grether_benedikt.game.addComponent(new prima_endaufgabe_grether_benedikt.ƒ.ComponentTransform());
         prima_endaufgabe_grether_benedikt.game.cmpTransform.local.translateY(-1.17);
-        bene = new prima_endaufgabe_grether_benedikt.Character("Bene");
+        prima_endaufgabe_grether_benedikt.bene = new prima_endaufgabe_grether_benedikt.Character("Bene");
         prima_endaufgabe_grether_benedikt.level = new prima_endaufgabe_grether_benedikt.Level();
         prima_endaufgabe_grether_benedikt.platform = new prima_endaufgabe_grether_benedikt.Platform();
         // items = Level.createItem();
-        prima_endaufgabe_grether_benedikt.game.appendChild(bene);
+        prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.bene);
         prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.level);
         prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.platform);
         // bene.appendChild(bene.createHitbox());
@@ -53,7 +52,7 @@ var prima_endaufgabe_grether_benedikt;
             processInput();
             viewport.draw();
             // cmpCamera.pivot.lookAt(bene.cmpTransform.local.translation);
-            cmpCamera.pivot.translation = new prima_endaufgabe_grether_benedikt.ƒ.Vector3(bene.cmpTransform.local.translation.x, cmpCamera.pivot.translation.y, cmpCamera.pivot.translation.z);
+            cmpCamera.pivot.translation = new prima_endaufgabe_grether_benedikt.ƒ.Vector3(prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation.x, cmpCamera.pivot.translation.y, cmpCamera.pivot.translation.z);
             // crc2.strokeRect(-1, -1, canvas.width / 2, canvas.height + 2);
             // crc2.strokeRect(-1, canvas.height / 2, canvas.width + 2, canvas.height);
         }
@@ -61,18 +60,18 @@ var prima_endaufgabe_grether_benedikt;
     function handleKeyboard(_event) {
         keysPressed[_event.code] = (_event.type == "keydown");
         if (_event.code == prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.W && _event.type == "keydown")
-            bene.act(prima_endaufgabe_grether_benedikt.ACTION.JUMP);
+            prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.JUMP);
     }
     function processInput() {
         if (keysPressed[prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.A]) {
-            bene.act(prima_endaufgabe_grether_benedikt.ACTION.WALK, prima_endaufgabe_grether_benedikt.DIRECTION.LEFT);
+            prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.WALK, prima_endaufgabe_grether_benedikt.DIRECTION.LEFT);
             return;
         }
         if (keysPressed[prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.D]) {
-            bene.act(prima_endaufgabe_grether_benedikt.ACTION.WALK, prima_endaufgabe_grether_benedikt.DIRECTION.RIGHT);
+            prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.WALK, prima_endaufgabe_grether_benedikt.DIRECTION.RIGHT);
             return;
         }
-        bene.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
+        prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
     }
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));
 //# sourceMappingURL=Main.js.map

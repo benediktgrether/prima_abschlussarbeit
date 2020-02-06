@@ -19,6 +19,7 @@ var prima_endaufgabe_grether_benedikt;
         constructor(_name = "Bene") {
             super(_name);
             this.speed = ƒ.Vector3.ZERO();
+            this.item = prima_endaufgabe_grether_benedikt.ITEM.NONE;
             this.update = (_event) => {
                 this.broadcastEvent(new CustomEvent("showNext"));
                 let timeFrame = ƒ.Loop.timeFrameGame / 1000;
@@ -39,16 +40,19 @@ var prima_endaufgabe_grether_benedikt;
             }
             this.hitbox = this.createHitbox();
             this.appendChild(this.hitbox);
-            this.show(ACTION.IDLE);
+            this.show(ACTION.IDLE, this.item);
             ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, this.update);
         }
         static generateSprites(_txtImage) {
             Character.sprites = [];
-            let sprite = new prima_endaufgabe_grether_benedikt.Sprite(ACTION.WALK);
+            let sprite = new prima_endaufgabe_grether_benedikt.Sprite(ACTION.WALK + "." + prima_endaufgabe_grether_benedikt.ITEM.NONE);
             sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(30, 279, 30.8, 51), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
             Character.sprites.push(sprite);
-            sprite = new prima_endaufgabe_grether_benedikt.Sprite(ACTION.IDLE);
+            sprite = new prima_endaufgabe_grether_benedikt.Sprite(ACTION.IDLE + "." + prima_endaufgabe_grether_benedikt.ITEM.NONE);
             sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(1, 279, 30.8, 51), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
+            Character.sprites.push(sprite);
+            sprite = new prima_endaufgabe_grether_benedikt.Sprite(ACTION.IDLE + "." + prima_endaufgabe_grether_benedikt.ITEM.SWORD);
+            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(170, 279, 18, 51), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
             Character.sprites.push(sprite);
         }
         createHitbox() {
@@ -59,12 +63,9 @@ var prima_endaufgabe_grether_benedikt;
             this.hitbox = hitbox;
             return hitbox;
         }
-        show(_action) {
-            if (_action == ACTION.JUMP)
-                return;
+        show(_action, _item) {
             for (let child of this.getChildren())
-                child.activate(child.name == _action);
-            // this.action = _action;
+                child.activate(child.name == _action + "." + _item);
         }
         act(_action, _direction) {
             switch (_action) {
@@ -78,12 +79,12 @@ var prima_endaufgabe_grether_benedikt;
                     // console.log(direction);
                     break;
                 case ACTION.JUMP:
-                    if (this.speed.y != 0)
+                    if (this.speed.y != 0 || this.cmpTransform.local.translation.y > 0)
                         break;
                     this.speed.y = 2.5;
                     break;
             }
-            this.show(_action);
+            this.show(_action, this.item);
         }
         checkCollision(_checkCollision) {
             for (let floor of _checkCollision.getChildren()) {

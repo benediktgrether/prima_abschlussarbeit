@@ -3,6 +3,7 @@ namespace prima_endaufgabe_grether_benedikt {
   import ƒ = FudgeCore;
 
   export enum ITEM {
+    NONE = "None",
     SWORD = "Sword"
   }
 
@@ -10,7 +11,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
     private static sprites: Sprite[];
     public hitbox: Hitbox;
-    private type: ITEM;
+    public type: ITEM;
 
 
     constructor(type: ITEM) {

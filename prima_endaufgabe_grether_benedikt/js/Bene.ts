@@ -5,7 +5,7 @@ namespace prima_endaufgabe_grether_benedikt {
   export enum ACTION {
     IDLE = "Idle",
     WALK = "Walk",
-    JUMP = "Jump"
+    JUMP = "Jump",
   }
   export enum DIRECTION {
     LEFT, RIGHT
@@ -16,6 +16,7 @@ namespace prima_endaufgabe_grether_benedikt {
     private static speedMax: ƒ.Vector2 = new ƒ.Vector2(1.5, 5); // units per second
     private static gravity: ƒ.Vector2 = ƒ.Vector2.Y(-3);
     public speed: ƒ.Vector3 = ƒ.Vector3.ZERO();
+    public item: ITEM = ITEM.NONE;
     public hitbox: Hitbox;
 
     constructor(_name: string = "Bene") {
@@ -35,7 +36,7 @@ namespace prima_endaufgabe_grether_benedikt {
       }
       this.hitbox = this.createHitbox();
       this.appendChild(this.hitbox);
-      this.show(ACTION.IDLE);
+      this.show(ACTION.IDLE, this.item);
             
 
       ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, this.update);
@@ -44,12 +45,16 @@ namespace prima_endaufgabe_grether_benedikt {
 
     public static generateSprites(_txtImage: ƒ.TextureImage): void {
       Character.sprites = [];
-      let sprite: Sprite = new Sprite(ACTION.WALK);
+      let sprite: Sprite = new Sprite(ACTION.WALK + "." + ITEM.NONE);
       sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(30, 279, 30.8, 51), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
       Character.sprites.push(sprite);
 
-      sprite = new Sprite(ACTION.IDLE);
+      sprite = new Sprite(ACTION.IDLE + "." + ITEM.NONE);
       sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(1, 279, 30.8, 51), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
+      Character.sprites.push(sprite);
+
+      sprite = new Sprite(ACTION.IDLE + "." + ITEM.SWORD);
+      sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(170, 279, 18, 51), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
       Character.sprites.push(sprite);
     }
 
@@ -64,12 +69,9 @@ namespace prima_endaufgabe_grether_benedikt {
       return hitbox;
     }
 
-    public show(_action: ACTION): void {
-      if (_action == ACTION.JUMP)
-        return;
+    public show(_action: ACTION, _item: ITEM): void {
       for (let child of this.getChildren())
-        child.activate(child.name == _action);
-      // this.action = _action;
+        child.activate(child.name == _action + "." + _item);
     }
 
     public act(_action: ACTION, _direction?: DIRECTION): void {
@@ -84,13 +86,13 @@ namespace prima_endaufgabe_grether_benedikt {
           // console.log(direction);
           break;
         case ACTION.JUMP:
-          if (this.speed.y != 0)
+          if (this.speed.y != 0 || this.cmpTransform.local.translation.y > 0)
            break;
           this.speed.y = 2.5;
           break;
       }
                   
-      this.show(_action);
+      this.show(_action, this.item);
     }
 
     private update = (_event: ƒ.Eventƒ): void => {

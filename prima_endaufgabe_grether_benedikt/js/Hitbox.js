@@ -11,7 +11,7 @@ var prima_endaufgabe_grether_benedikt;
                 super("Hitbox");
             }
             this.addComponent(new fudge.ComponentTransform());
-            this.addComponent(new fudge.ComponentMaterial(Hitbox.material));
+            // this.addComponent(new fudge.ComponentMaterial(Hitbox.material));
             let cmpMesh = new fudge.ComponentMesh(Hitbox.mesh);
             cmpMesh.pivot = Hitbox.pivot;
             this.addComponent(cmpMesh);
@@ -56,7 +56,15 @@ var prima_endaufgabe_grether_benedikt;
                             hit = true;
                         }
                         if (hit) {
-                            fudge.Debug.log(hitbox.name);
+                            console.log(prima_endaufgabe_grether_benedikt.bene.item);
+                            if (child.name == "Item") {
+                                child.cmpTransform.local.translateY(5);
+                                if (prima_endaufgabe_grether_benedikt.bene.item == prima_endaufgabe_grether_benedikt.ITEM.NONE) {
+                                    prima_endaufgabe_grether_benedikt.bene.item = child.type;
+                                    console.log(prima_endaufgabe_grether_benedikt.bene.item);
+                                }
+                            }
+                            fudge.Debug.log(child);
                         }
                     }
                     else {
@@ -67,7 +75,6 @@ var prima_endaufgabe_grether_benedikt;
         }
     }
     Hitbox.mesh = new fudge.MeshSprite();
-    Hitbox.material = new fudge.Material("Hitbox", fudge.ShaderUniColor, new fudge.CoatColored(fudge.Color.CSS("black", 0.5)));
     Hitbox.pivot = fudge.Matrix4x4.TRANSLATION(fudge.Vector3.Y(-0.5));
     prima_endaufgabe_grether_benedikt.Hitbox = Hitbox;
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));
