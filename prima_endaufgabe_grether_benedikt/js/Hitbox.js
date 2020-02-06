@@ -56,7 +56,7 @@ var prima_endaufgabe_grether_benedikt;
                             hit = true;
                         }
                         if (hit) {
-                            fudge.Debug.log("HIT");
+                            fudge.Debug.log(hitbox.name);
                         }
                     }
                     else {

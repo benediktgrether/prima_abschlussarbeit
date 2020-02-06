@@ -64,7 +64,7 @@ namespace prima_endaufgabe_grether_benedikt {
             }
 
             if (hit) {
-              fudge.Debug.log("HIT");
+              fudge.Debug.log(hitbox.name);
             }
           } else {
             continue;

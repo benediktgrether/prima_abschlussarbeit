@@ -13,7 +13,7 @@ namespace prima_endaufgabe_grether_benedikt {
     private type: ITEM;
 
 
-    public constructor(type: ITEM) {
+    constructor(type: ITEM) {
       super("Item");
       this.type = type;
       this.addComponent(new ƒ.ComponentTransform());

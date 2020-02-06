@@ -25,7 +25,7 @@ var prima_endaufgabe_grether_benedikt;
                 this.speed.y += Bene.gravity.y * timeFrame;
                 let distance = ƒ.Vector3.SCALE(this.speed, timeFrame);
                 this.cmpTransform.local.translate(distance);
-                this.hitbox.cmpTransform.local.translation = new ƒ.Vector3(this.mtxWorld.translation.x, this.mtxWorld.translation.y + 1.7, 0);
+                // this.hitbox.cmpTransform.local.translation = new ƒ.Vector3(this.mtxWorld.translation.x, this.mtxWorld.translation.y + 1.7, 0);
                 this.checkCollision(prima_endaufgabe_grether_benedikt.level);
                 this.checkCollision(prima_endaufgabe_grether_benedikt.platform);
                 this.hitbox.checkCollision();
@@ -37,9 +37,9 @@ var prima_endaufgabe_grether_benedikt;
                 nodeSprite.addEventListener("showNext", (_event) => { _event.currentTarget.showFrameNext(); }, true);
                 this.appendChild(nodeSprite);
             }
+            this.hitbox = this.createHitbox();
+            this.appendChild(this.hitbox);
             this.show(ACTION.IDLE);
-            // this.hitbox = this.createHitbox();
-            // this.appendChild(this.hitbox);
             ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, this.update);
         }
         static generateSprites(_txtImage) {
@@ -50,6 +50,14 @@ var prima_endaufgabe_grether_benedikt;
             sprite = new prima_endaufgabe_grether_benedikt.Sprite(ACTION.IDLE);
             sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(1, 279, 30.8, 51), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
             Bene.sprites.push(sprite);
+        }
+        createHitbox() {
+            let hitbox = new prima_endaufgabe_grether_benedikt.Hitbox("PlayerHitbox");
+            hitbox.cmpTransform.local.translateY(0.6);
+            hitbox.cmpTransform.local.scaleX(0.2);
+            hitbox.cmpTransform.local.scaleY(0.5);
+            this.hitbox = hitbox;
+            return hitbox;
         }
         show(_action) {
             if (_action == ACTION.JUMP)
@@ -76,14 +84,6 @@ var prima_endaufgabe_grether_benedikt;
                     break;
             }
             this.show(_action);
-        }
-        createHitbox() {
-            let hitbox = new prima_endaufgabe_grether_benedikt.Hitbox("PlayerHitbox");
-            hitbox.cmpTransform.local.translateY(0.6);
-            hitbox.cmpTransform.local.scaleX(0.2);
-            hitbox.cmpTransform.local.scaleY(0.5);
-            this.hitbox = hitbox;
-            return hitbox;
         }
         checkCollision(_checkCollision) {
             for (let floor of _checkCollision.getChildren()) {

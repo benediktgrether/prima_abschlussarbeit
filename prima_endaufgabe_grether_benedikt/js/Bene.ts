@@ -33,10 +33,10 @@ namespace prima_endaufgabe_grether_benedikt {
         );
         this.appendChild(nodeSprite);
       }
+      this.hitbox = this.createHitbox();
+      this.appendChild(this.hitbox);
       this.show(ACTION.IDLE);
             
-      // this.hitbox = this.createHitbox();
-      // this.appendChild(this.hitbox);
 
       ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, this.update);
 
@@ -51,6 +51,17 @@ namespace prima_endaufgabe_grether_benedikt {
       sprite = new Sprite(ACTION.IDLE);
       sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(1, 279, 30.8, 51), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
       Bene.sprites.push(sprite);
+    }
+
+
+    public createHitbox(): Hitbox {
+
+      let hitbox: Hitbox = new Hitbox("PlayerHitbox");
+      hitbox.cmpTransform.local.translateY(0.6);
+      hitbox.cmpTransform.local.scaleX(0.2);
+      hitbox.cmpTransform.local.scaleY(0.5);
+      this.hitbox = hitbox;
+      return hitbox;
     }
 
     public show(_action: ACTION): void {
@@ -82,16 +93,6 @@ namespace prima_endaufgabe_grether_benedikt {
       this.show(_action);
     }
 
-    public createHitbox(): Hitbox {
-
-      let hitbox: Hitbox = new Hitbox("PlayerHitbox");
-      hitbox.cmpTransform.local.translateY(0.6);
-      hitbox.cmpTransform.local.scaleX(0.2);
-      hitbox.cmpTransform.local.scaleY(0.5);
-      this.hitbox = hitbox;
-      return hitbox;
-    }
-
     private update = (_event: ƒ.Eventƒ): void => {
       this.broadcastEvent(new CustomEvent("showNext"));
 
@@ -99,7 +100,7 @@ namespace prima_endaufgabe_grether_benedikt {
       this.speed.y += Bene.gravity.y * timeFrame;
       let distance: ƒ.Vector3 = ƒ.Vector3.SCALE(this.speed, timeFrame);
       this.cmpTransform.local.translate(distance);
-      this.hitbox.cmpTransform.local.translation = new ƒ.Vector3(this.mtxWorld.translation.x, this.mtxWorld.translation.y + 1.7, 0);
+      // this.hitbox.cmpTransform.local.translation = new ƒ.Vector3(this.mtxWorld.translation.x, this.mtxWorld.translation.y + 1.7, 0);
 
       this.checkCollision(level);
       this.checkCollision(platform);
