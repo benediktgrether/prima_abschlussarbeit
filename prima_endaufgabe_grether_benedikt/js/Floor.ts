@@ -3,11 +3,10 @@ namespace prima_endaufgabe_grether_benedikt {
 
   export class Floor extends ƒ.Node {
     private static mesh: ƒ.MeshSprite = new ƒ.MeshSprite();
-    // private static material: ƒ.Material = new ƒ.Material("Floor", ƒ.ShaderUniColor, new ƒ.CoatColored(ƒ.Color.CSS("red", 1)));
     private static readonly pivot: ƒ.Matrix4x4 = ƒ.Matrix4x4.TRANSLATION(ƒ.Vector3.Y(1.8));
     private static sprites: Sprite[];
 
-    public constructor() {
+    public constructor(_distance: number, _translateY?: number, _item?: ITEM) {
       super("Floor");
       let nodeSprite: NodeSprite = new NodeSprite("FloorSprite", Floor.sprites[0]);
       nodeSprite.activate(false);
@@ -20,6 +19,18 @@ namespace prima_endaufgabe_grether_benedikt {
       cmpMesh.pivot = Floor.pivot;
       this.addComponent(cmpMesh);
       this.show();
+      
+      this.cmpTransform.local.scaleX(0.5);
+      this.cmpTransform.local.scaleY(0.5);
+      this.cmpTransform.local.translateX(_distance);
+      if(_translateY){
+        this.cmpTransform.local.translateY(_translateY);
+      }
+
+      if (_item) {
+        let item: Items = new Items(_item);
+        this.appendChild(item);
+      }
     }
 
     public static generateSprites(_txtImage: ƒ.TextureImage): void {

@@ -4,41 +4,61 @@ namespace prima_endaufgabe_grether_benedikt {
 
   export class Level extends ƒ.Node {
 
-    public static createLevel(): ƒ.Node {
-      let floorDistance: number = -3.25;
+    constructor() {
+      super("Level");
 
-      let level: ƒ.Node = new ƒ.Node("Level");
+      let level: Floor;
+
+      // level = new Floor(0);
+      // this.appendChild(level);
+      // console.log(level.name);
+      this.createLevel(level);
+    }
+
+    private createLevel(_level: Floor): ƒ.Node {
+      let floorDistance: number = -3.25;
       
       for (let index: number = 0; index < 30; index++) {
-        let floor: Floor = new Floor();
-        floor.cmpTransform.local.scaleY(0.5);
-        floor.cmpTransform.local.scaleX(0.5);
-        floor.cmpTransform.local.translateX(floorDistance);
-
+        _level = new Floor(floorDistance);
         floorDistance = floorDistance + 0.25;
        
-        level.appendChild(floor);        
+        this.appendChild(_level);        
       }
 
       return level;
     }
-
-    public static createPlatform(): ƒ.Node {
-      let floorDistance: number = -0.5;
-      let platform: ƒ.Node = new ƒ.Node("Platform");
-      for (let index: number = 0; index < 5; index++) {
-      let floor: Floor = new Floor();
-
-      floor.cmpTransform.local.scaleY(0.5);
-      floor.cmpTransform.local.scaleX(0.5);
-      floor.cmpTransform.local.translateY(1);
-      floor.cmpTransform.local.translateX(floorDistance);
-      floorDistance = floorDistance + 0.25;
-      
-      platform.appendChild(floor);
-      }
-
-      return platform;
-    }
   }
+
+  //   public static createPlatform(): ƒ.Node {
+  //     let floorDistance: number = -0.5;
+  //     let platform: ƒ.Node = new ƒ.Node("Platform");
+  //     for (let index: number = 0; index < 5; index++) {
+  //     let floor: Floor = new Floor();
+
+  //     floor.cmpTransform.local.scaleY(0.5);
+  //     floor.cmpTransform.local.scaleX(0.5);
+  //     floor.cmpTransform.local.translateY(1);
+  //     floor.cmpTransform.local.translateX(floorDistance);
+  //     floorDistance = floorDistance + 0.25;
+      
+  //     platform.appendChild(floor);
+  //     }
+
+  //     return platform;
+  //   }
+
+
+  //   public static createItem(): ƒ.Node {
+  //     let setItems: ƒ.Node = new ƒ.Node("Items");
+  //     let item: Items = new Items();
+
+  //     item.cmpTransform.local.scaleY(0.5);
+  //     item.cmpTransform.local.scaleX(0.5);
+  //     item.cmpTransform.local.translateY(1.25);
+      
+  //     setItems.appendChild(item);
+
+  //     return setItems;
+  //   }
+  // }
 }

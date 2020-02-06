@@ -3,7 +3,7 @@ var prima_endaufgabe_grether_benedikt;
 (function (prima_endaufgabe_grether_benedikt) {
     var ƒ = FudgeCore;
     class Floor extends ƒ.Node {
-        constructor() {
+        constructor(_distance, _translateY, _item) {
             super("Floor");
             let nodeSprite = new prima_endaufgabe_grether_benedikt.NodeSprite("FloorSprite", Floor.sprites[0]);
             nodeSprite.activate(false);
@@ -15,6 +15,16 @@ var prima_endaufgabe_grether_benedikt;
             cmpMesh.pivot = Floor.pivot;
             this.addComponent(cmpMesh);
             this.show();
+            this.cmpTransform.local.scaleX(0.5);
+            this.cmpTransform.local.scaleY(0.5);
+            this.cmpTransform.local.translateX(_distance);
+            if (_translateY) {
+                this.cmpTransform.local.translateY(_translateY);
+            }
+            if (_item) {
+                let item = new prima_endaufgabe_grether_benedikt.Items(_item);
+                this.appendChild(item);
+            }
         }
         static generateSprites(_txtImage) {
             Floor.sprites = [];
@@ -42,7 +52,6 @@ var prima_endaufgabe_grether_benedikt;
         }
     }
     Floor.mesh = new ƒ.MeshSprite();
-    // private static material: ƒ.Material = new ƒ.Material("Floor", ƒ.ShaderUniColor, new ƒ.CoatColored(ƒ.Color.CSS("red", 1)));
     Floor.pivot = ƒ.Matrix4x4.TRANSLATION(ƒ.Vector3.Y(1.8));
     prima_endaufgabe_grether_benedikt.Floor = Floor;
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));

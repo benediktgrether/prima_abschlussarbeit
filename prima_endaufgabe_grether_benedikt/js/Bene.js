@@ -33,6 +33,7 @@ var prima_endaufgabe_grether_benedikt;
                 let nodeSprite = new prima_endaufgabe_grether_benedikt.NodeSprite(sprite.name, sprite);
                 nodeSprite.activate(false);
                 nodeSprite.addEventListener("showNext", (_event) => { _event.currentTarget.showFrameNext(); }, true);
+                this.creatHitbox();
                 this.appendChild(nodeSprite);
             }
             this.show(ACTION.IDLE);
@@ -72,6 +73,15 @@ var prima_endaufgabe_grether_benedikt;
                     break;
             }
             this.show(_action);
+        }
+        creatHitbox() {
+            let hitbox = new prima_endaufgabe_grether_benedikt.Hitbox("PlayerHitbox");
+            hitbox.cmpTransform.local.translateY(0.8);
+            hitbox.cmpTransform.local.scaleX(0.4);
+            hitbox.cmpTransform.local.scaleY(0.8);
+            this.hitbox = hitbox;
+            console.log("test");
+            return hitbox;
         }
         checkCollision(_checkCollision) {
             for (let floor of _checkCollision.getChildren()) {

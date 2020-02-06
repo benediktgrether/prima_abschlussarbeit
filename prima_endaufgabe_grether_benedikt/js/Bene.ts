@@ -16,6 +16,7 @@ namespace prima_endaufgabe_grether_benedikt {
     private static speedMax: ƒ.Vector2 = new ƒ.Vector2(1.5, 5); // units per second
     private static gravity: ƒ.Vector2 = ƒ.Vector2.Y(-3);
     public speed: ƒ.Vector3 = ƒ.Vector3.ZERO();
+    hitbox: Hitbox;
 
     constructor(_name: string = "Bene") {
       super(_name);
@@ -30,10 +31,9 @@ namespace prima_endaufgabe_grether_benedikt {
           (_event: Event) => { (<NodeSprite>_event.currentTarget).showFrameNext(); },
           true
         );
-
+        this.creatHitbox();
         this.appendChild(nodeSprite);
       }
-
       this.show(ACTION.IDLE);
       ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, this.update);
     }
@@ -75,6 +75,17 @@ namespace prima_endaufgabe_grether_benedikt {
           break;
       }
       this.show(_action);
+    }
+
+    public creatHitbox(): Hitbox {
+
+      let hitbox: Hitbox = new Hitbox("PlayerHitbox");
+      hitbox.cmpTransform.local.translateY(0.8);
+      hitbox.cmpTransform.local.scaleX(0.4);
+      hitbox.cmpTransform.local.scaleY(0.8);
+      this.hitbox = hitbox;
+      console.log("test");
+      return hitbox;
     }
 
     private update = (_event: ƒ.Eventƒ): void => {

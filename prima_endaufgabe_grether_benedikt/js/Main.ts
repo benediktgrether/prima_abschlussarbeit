@@ -1,4 +1,5 @@
 /// <reference path="./SpriteGenerator.ts"/>
+
 namespace prima_endaufgabe_grether_benedikt {
   export import ƒ = FudgeCore;
   
@@ -12,17 +13,29 @@ namespace prima_endaufgabe_grether_benedikt {
   export let game: ƒ.Node;
   export let level: ƒ.Node;
   export let platform: ƒ.Node;
+  export let items: ƒ.Node;
   let bene: Bene;
+
+
+  // async function loadFilesWithResponse(): Promise<void> {
+  // let response: Response = await fetch("./data/data.json");
+  // let offer: string = await response.text();
+  // let data: any = JSON.parse(offer);
+  // console.log(data);
+  // }
+
 
 
   function initGame(): void {
     let canvas: HTMLCanvasElement = document.querySelector("canvas");
-    let crc2: CanvasRenderingContext2D = canvas.getContext("2d");
+    // loadFilesWithResponse();
+    // let crc2: CanvasRenderingContext2D = canvas.getContext("2d");
     let img: HTMLImageElement = document.querySelector("img");
     let txtbene: ƒ.TextureImage = new ƒ.TextureImage();
     txtbene.image = img;
     Bene.generateSprites(txtbene);
     Floor.generateSprites(txtbene);
+    Items.generateSprites(txtbene);
 
     ƒ.RenderManager.initialize(true, false);
     game = new ƒ.Node("Game");
@@ -31,8 +44,9 @@ namespace prima_endaufgabe_grether_benedikt {
     game.cmpTransform.local.translateY(-1.17);
 
     bene = new Bene("Bene");
-    level = Level.createLevel();
-    platform = Level.createPlatform();
+    level = new Level();
+    platform = new Platform();
+    // items = Level.createItem();
     
     game.appendChild(bene);
     game.appendChild(level);
@@ -60,8 +74,8 @@ namespace prima_endaufgabe_grether_benedikt {
       // cmpCamera.pivot.lookAt(bene.cmpTransform.local.translation);
       cmpCamera.pivot.translation = new ƒ.Vector3(bene.cmpTransform.local.translation.x, cmpCamera.pivot.translation.y, cmpCamera.pivot.translation.z);
 
-      crc2.strokeRect(-1, -1, canvas.width / 2, canvas.height + 2);
-      crc2.strokeRect(-1, canvas.height / 2, canvas.width + 2, canvas.height);
+      // crc2.strokeRect(-1, -1, canvas.width / 2, canvas.height + 2);
+      // crc2.strokeRect(-1, canvas.height / 2, canvas.width + 2, canvas.height);
     }
   }
 

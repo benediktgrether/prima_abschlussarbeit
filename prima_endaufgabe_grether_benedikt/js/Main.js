@@ -7,21 +7,30 @@ var prima_endaufgabe_grether_benedikt;
     window.addEventListener("load", initGame);
     let keysPressed = {};
     let bene;
+    // async function loadFilesWithResponse(): Promise<void> {
+    // let response: Response = await fetch("./data/data.json");
+    // let offer: string = await response.text();
+    // let data: any = JSON.parse(offer);
+    // console.log(data);
+    // }
     function initGame() {
         let canvas = document.querySelector("canvas");
-        let crc2 = canvas.getContext("2d");
+        // loadFilesWithResponse();
+        // let crc2: CanvasRenderingContext2D = canvas.getContext("2d");
         let img = document.querySelector("img");
         let txtbene = new prima_endaufgabe_grether_benedikt.ƒ.TextureImage();
         txtbene.image = img;
         prima_endaufgabe_grether_benedikt.Bene.generateSprites(txtbene);
         prima_endaufgabe_grether_benedikt.Floor.generateSprites(txtbene);
+        prima_endaufgabe_grether_benedikt.Items.generateSprites(txtbene);
         prima_endaufgabe_grether_benedikt.ƒ.RenderManager.initialize(true, false);
         prima_endaufgabe_grether_benedikt.game = new prima_endaufgabe_grether_benedikt.ƒ.Node("Game");
         prima_endaufgabe_grether_benedikt.game.addComponent(new prima_endaufgabe_grether_benedikt.ƒ.ComponentTransform());
         prima_endaufgabe_grether_benedikt.game.cmpTransform.local.translateY(-1.17);
         bene = new prima_endaufgabe_grether_benedikt.Bene("Bene");
-        prima_endaufgabe_grether_benedikt.level = prima_endaufgabe_grether_benedikt.Level.createLevel();
-        prima_endaufgabe_grether_benedikt.platform = prima_endaufgabe_grether_benedikt.Level.createPlatform();
+        prima_endaufgabe_grether_benedikt.level = new prima_endaufgabe_grether_benedikt.Level();
+        prima_endaufgabe_grether_benedikt.platform = new prima_endaufgabe_grether_benedikt.Platform();
+        // items = Level.createItem();
         prima_endaufgabe_grether_benedikt.game.appendChild(bene);
         prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.level);
         prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.platform);
@@ -41,8 +50,8 @@ var prima_endaufgabe_grether_benedikt;
             viewport.draw();
             // cmpCamera.pivot.lookAt(bene.cmpTransform.local.translation);
             cmpCamera.pivot.translation = new prima_endaufgabe_grether_benedikt.ƒ.Vector3(bene.cmpTransform.local.translation.x, cmpCamera.pivot.translation.y, cmpCamera.pivot.translation.z);
-            crc2.strokeRect(-1, -1, canvas.width / 2, canvas.height + 2);
-            crc2.strokeRect(-1, canvas.height / 2, canvas.width + 2, canvas.height);
+            // crc2.strokeRect(-1, -1, canvas.width / 2, canvas.height + 2);
+            // crc2.strokeRect(-1, canvas.height / 2, canvas.width + 2, canvas.height);
         }
     }
     function handleKeyboard(_event) {
