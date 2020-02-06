@@ -8,7 +8,7 @@ var prima_endaufgabe_grether_benedikt;
     })(ITEM = prima_endaufgabe_grether_benedikt.ITEM || (prima_endaufgabe_grether_benedikt.ITEM = {}));
     class Items extends ƒ.Node {
         constructor(type) {
-            super(type);
+            super("Item");
             this.type = type;
             this.addComponent(new ƒ.ComponentTransform());
             this.cmpTransform.local.translateY(0.5);
@@ -18,12 +18,21 @@ var prima_endaufgabe_grether_benedikt;
                 this.appendChild(nodeSprite);
             }
             this.show();
+            this.hitbox = this.creatHitbox();
+            this.appendChild(this.hitbox);
         }
         static generateSprites(_txtImage) {
             Items.sprites = [];
             let sprite = new prima_endaufgabe_grether_benedikt.Sprite(ITEM.SWORD);
             sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(170, 126, 8, 18), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.TOPCENTER);
             Items.sprites.push(sprite);
+        }
+        creatHitbox() {
+            let hitbox = new prima_endaufgabe_grether_benedikt.Hitbox("ItemHitbox");
+            hitbox.cmpTransform.local.scaleX(0.2);
+            hitbox.cmpTransform.local.scaleY(0.4);
+            this.hitbox = hitbox;
+            return hitbox;
         }
         show() {
             for (let child of this.getChildren())

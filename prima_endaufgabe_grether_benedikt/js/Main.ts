@@ -13,7 +13,6 @@ namespace prima_endaufgabe_grether_benedikt {
   export let game: ƒ.Node;
   export let level: ƒ.Node;
   export let platform: ƒ.Node;
-  export let items: ƒ.Node;
   let bene: Bene;
 
 
@@ -51,6 +50,9 @@ namespace prima_endaufgabe_grether_benedikt {
     game.appendChild(bene);
     game.appendChild(level);
     game.appendChild(platform);
+    game.appendChild(bene.createHitbox());
+    // level.appendChild(bene.creatHitbox());
+    // level.appendChild(item.creatHitbox());
 
     let cmpCamera: ƒ.ComponentCamera = new ƒ.ComponentCamera();
     cmpCamera.pivot.translateZ(5);

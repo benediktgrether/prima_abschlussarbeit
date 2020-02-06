@@ -9,11 +9,12 @@ namespace prima_endaufgabe_grether_benedikt {
   export class Items extends ƒ.Node {
 
     private static sprites: Sprite[];
+    public hitbox: Hitbox;
     private type: ITEM;
 
 
     public constructor(type: ITEM) {
-      super(type);
+      super("Item");
       this.type = type;
       this.addComponent(new ƒ.ComponentTransform());
       this.cmpTransform.local.translateY(0.5);
@@ -24,6 +25,8 @@ namespace prima_endaufgabe_grether_benedikt {
       }
 
       this.show();
+      this.hitbox = this.creatHitbox();
+      this.appendChild(this.hitbox);
     }
 
     public static generateSprites(_txtImage: ƒ.TextureImage): void {
@@ -33,6 +36,14 @@ namespace prima_endaufgabe_grether_benedikt {
       Items.sprites.push(sprite);
     }
 
+    public creatHitbox(): Hitbox {
+
+      let hitbox: Hitbox = new Hitbox("ItemHitbox");
+      hitbox.cmpTransform.local.scaleX(0.2);
+      hitbox.cmpTransform.local.scaleY(0.4);
+      this.hitbox = hitbox;
+      return hitbox;
+    }
     public show(): void {
       for (let child of this.getChildren())
         child.activate(child.name == this.type);

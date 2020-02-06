@@ -16,7 +16,7 @@ namespace prima_endaufgabe_grether_benedikt {
     private static speedMax: ƒ.Vector2 = new ƒ.Vector2(1.5, 5); // units per second
     private static gravity: ƒ.Vector2 = ƒ.Vector2.Y(-3);
     public speed: ƒ.Vector3 = ƒ.Vector3.ZERO();
-    hitbox: Hitbox;
+    public hitbox: Hitbox;
 
     constructor(_name: string = "Bene") {
       super(_name);
@@ -31,11 +31,15 @@ namespace prima_endaufgabe_grether_benedikt {
           (_event: Event) => { (<NodeSprite>_event.currentTarget).showFrameNext(); },
           true
         );
-        this.creatHitbox();
         this.appendChild(nodeSprite);
       }
       this.show(ACTION.IDLE);
+            
+      // this.hitbox = this.createHitbox();
+      // this.appendChild(this.hitbox);
+
       ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, this.update);
+
     }
 
     public static generateSprites(_txtImage: ƒ.TextureImage): void {
@@ -74,17 +78,17 @@ namespace prima_endaufgabe_grether_benedikt {
           this.speed.y = 2.5;
           break;
       }
+                  
       this.show(_action);
     }
 
-    public creatHitbox(): Hitbox {
+    public createHitbox(): Hitbox {
 
       let hitbox: Hitbox = new Hitbox("PlayerHitbox");
-      hitbox.cmpTransform.local.translateY(0.8);
-      hitbox.cmpTransform.local.scaleX(0.4);
-      hitbox.cmpTransform.local.scaleY(0.8);
+      hitbox.cmpTransform.local.translateY(0.6);
+      hitbox.cmpTransform.local.scaleX(0.2);
+      hitbox.cmpTransform.local.scaleY(0.5);
       this.hitbox = hitbox;
-      console.log("test");
       return hitbox;
     }
 
@@ -95,9 +99,11 @@ namespace prima_endaufgabe_grether_benedikt {
       this.speed.y += Bene.gravity.y * timeFrame;
       let distance: ƒ.Vector3 = ƒ.Vector3.SCALE(this.speed, timeFrame);
       this.cmpTransform.local.translate(distance);
+      this.hitbox.cmpTransform.local.translation = new ƒ.Vector3(this.mtxWorld.translation.x, this.mtxWorld.translation.y + 1.7, 0);
 
       this.checkCollision(level);
       this.checkCollision(platform);
+      this.hitbox.checkCollision();
     }
 
     private checkCollision(_checkCollision: ƒ.Node): void {

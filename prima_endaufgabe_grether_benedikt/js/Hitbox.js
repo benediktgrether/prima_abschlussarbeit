@@ -13,7 +13,6 @@ var prima_endaufgabe_grether_benedikt;
             this.addComponent(new fudge.ComponentTransform());
             this.addComponent(new fudge.ComponentMaterial(Hitbox.material));
             let cmpMesh = new fudge.ComponentMesh(Hitbox.mesh);
-            //cmpMesh.pivot.translateY(-0.5);
             cmpMesh.pivot = Hitbox.pivot;
             this.addComponent(cmpMesh);
         }
@@ -31,34 +30,38 @@ var prima_endaufgabe_grether_benedikt;
             return rect;
         }
         checkCollision() {
-            for (let floor of prima_endaufgabe_grether_benedikt.level.getChildren()) {
-                if (floor.name == "Hitbox") {
-                    let hit = false;
-                    let rectOfThis = this.getRectWorld();
-                    let rectOfThat = floor.getRectWorld();
-                    let expansionRight = new fudge.Vector2(rectOfThat.size.x);
-                    let expansionDown = new fudge.Vector2(0, rectOfThat.size.y);
-                    let topRight = fudge.Vector2.SUM(rectOfThat.position, expansionRight);
-                    let bottomLeft = fudge.Vector2.SUM(rectOfThat.position, expansionDown);
-                    let bottomRight = fudge.Vector2.SUM(rectOfThat.position, expansionDown, expansionRight);
-                    if (rectOfThis.isInside(rectOfThat.position)) {
-                        hit = true;
+            for (let floor of prima_endaufgabe_grether_benedikt.platform.getChildren()) {
+                for (let child of floor.getChildren()) {
+                    if (child.name == "Item") {
+                        let hitbox;
+                        hitbox = child.hitbox;
+                        let hit = false;
+                        let rectOfThis = this.getRectWorld();
+                        let rectOfThat = hitbox.getRectWorld();
+                        let expansionRight = new fudge.Vector2(rectOfThat.size.x);
+                        let expansionDown = new fudge.Vector2(0, rectOfThat.size.y);
+                        let topRight = fudge.Vector2.SUM(rectOfThat.position, expansionRight);
+                        let bottomLeft = fudge.Vector2.SUM(rectOfThat.position, expansionDown);
+                        let bottomRight = fudge.Vector2.SUM(rectOfThat.position, expansionDown, expansionRight);
+                        if (rectOfThis.isInside(rectOfThat.position)) {
+                            hit = true;
+                        }
+                        else if (rectOfThis.isInside(topRight)) {
+                            hit = true;
+                        }
+                        else if (rectOfThis.isInside(bottomLeft)) {
+                            hit = true;
+                        }
+                        else if (rectOfThis.isInside(bottomRight)) {
+                            hit = true;
+                        }
+                        if (hit) {
+                            fudge.Debug.log("HIT");
+                        }
                     }
-                    else if (rectOfThis.isInside(topRight)) {
-                        hit = true;
+                    else {
+                        continue;
                     }
-                    else if (rectOfThis.isInside(bottomLeft)) {
-                        hit = true;
-                    }
-                    else if (rectOfThis.isInside(bottomRight)) {
-                        hit = true;
-                    }
-                    if (hit) {
-                        fudge.Debug.log("HIT");
-                    }
-                }
-                else {
-                    continue;
                 }
             }
         }

@@ -5,6 +5,7 @@ namespace prima_endaufgabe_grether_benedikt {
     private static mesh: ƒ.MeshSprite = new ƒ.MeshSprite();
     private static readonly pivot: ƒ.Matrix4x4 = ƒ.Matrix4x4.TRANSLATION(ƒ.Vector3.Y(1.8));
     private static sprites: Sprite[];
+    public item: Items;
 
     public constructor(_distance: number, _translateY?: number, _item?: ITEM) {
       super("Floor");
@@ -23,13 +24,14 @@ namespace prima_endaufgabe_grether_benedikt {
       this.cmpTransform.local.scaleX(0.5);
       this.cmpTransform.local.scaleY(0.5);
       this.cmpTransform.local.translateX(_distance);
-      if(_translateY){
+      if (_translateY) {
         this.cmpTransform.local.translateY(_translateY);
       }
 
       if (_item) {
         let item: Items = new Items(_item);
-        this.appendChild(item);
+        this.item = item;
+        this.appendChild(this.item);
       }
     }
 

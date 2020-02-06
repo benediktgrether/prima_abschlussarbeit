@@ -25,18 +25,21 @@ var prima_endaufgabe_grether_benedikt;
                 this.speed.y += Bene.gravity.y * timeFrame;
                 let distance = ƒ.Vector3.SCALE(this.speed, timeFrame);
                 this.cmpTransform.local.translate(distance);
+                this.hitbox.cmpTransform.local.translation = new ƒ.Vector3(this.mtxWorld.translation.x, this.mtxWorld.translation.y + 1.7, 0);
                 this.checkCollision(prima_endaufgabe_grether_benedikt.level);
                 this.checkCollision(prima_endaufgabe_grether_benedikt.platform);
+                this.hitbox.checkCollision();
             };
             this.addComponent(new ƒ.ComponentTransform());
             for (let sprite of Bene.sprites) {
                 let nodeSprite = new prima_endaufgabe_grether_benedikt.NodeSprite(sprite.name, sprite);
                 nodeSprite.activate(false);
                 nodeSprite.addEventListener("showNext", (_event) => { _event.currentTarget.showFrameNext(); }, true);
-                this.creatHitbox();
                 this.appendChild(nodeSprite);
             }
             this.show(ACTION.IDLE);
+            // this.hitbox = this.createHitbox();
+            // this.appendChild(this.hitbox);
             ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, this.update);
         }
         static generateSprites(_txtImage) {
@@ -74,13 +77,12 @@ var prima_endaufgabe_grether_benedikt;
             }
             this.show(_action);
         }
-        creatHitbox() {
+        createHitbox() {
             let hitbox = new prima_endaufgabe_grether_benedikt.Hitbox("PlayerHitbox");
-            hitbox.cmpTransform.local.translateY(0.8);
-            hitbox.cmpTransform.local.scaleX(0.4);
-            hitbox.cmpTransform.local.scaleY(0.8);
+            hitbox.cmpTransform.local.translateY(0.6);
+            hitbox.cmpTransform.local.scaleX(0.2);
+            hitbox.cmpTransform.local.scaleY(0.5);
             this.hitbox = hitbox;
-            console.log("test");
             return hitbox;
         }
         checkCollision(_checkCollision) {

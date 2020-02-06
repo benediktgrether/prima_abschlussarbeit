@@ -23,7 +23,8 @@ var prima_endaufgabe_grether_benedikt;
             }
             if (_item) {
                 let item = new prima_endaufgabe_grether_benedikt.Items(_item);
-                this.appendChild(item);
+                this.item = item;
+                this.appendChild(this.item);
             }
         }
         static generateSprites(_txtImage) {
