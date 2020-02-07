@@ -85,6 +85,7 @@ var prima_endaufgabe_grether_benedikt;
                     // console.log(direction);
                     break;
             }
+            this.show(_action);
         }
         // private enemyMove(): void {
         //   // console.log(bene.mtxWorld.translation.x);
@@ -110,7 +111,7 @@ var prima_endaufgabe_grether_benedikt;
             }
         }
     }
-    Enemy.speedMax = new ƒ.Vector2(1.5, 0);
+    Enemy.speedMax = new ƒ.Vector2(1, 0);
     Enemy.gravity = ƒ.Vector2.Y(-3);
     prima_endaufgabe_grether_benedikt.Enemy = Enemy;
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));

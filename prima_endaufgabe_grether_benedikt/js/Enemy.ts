@@ -13,7 +13,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
   export class Enemy extends ƒ.Node {
     private static sprites: Sprite[];
-    private static speedMax: ƒ.Vector2 = new ƒ.Vector2(1.5, 0);
+    private static speedMax: ƒ.Vector2 = new ƒ.Vector2(1, 0);
     private static gravity: ƒ.Vector2 = ƒ.Vector2.Y(-3);
     public speed: ƒ.Vector3 = ƒ.Vector3.ZERO();
     public hitbox: Hitbox;
@@ -85,6 +85,7 @@ namespace prima_endaufgabe_grether_benedikt {
           // console.log(direction);
           break;
       }
+      this.show(_action);
     }
 
     private update = (_event: ƒ.Eventƒ): void => {
@@ -101,10 +102,10 @@ namespace prima_endaufgabe_grether_benedikt {
       this.hitbox.checkCollision();
 
 
-      if (this.cmpTransform.local.translation.x > bene.cmpTransform.local.translation.x + .1){
+      if (this.cmpTransform.local.translation.x > bene.cmpTransform.local.translation.x + .1) {
         console.log(this.cmpTransform.local.translation.x);
         this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.LEFTZOMBIE);
-      } else if (this.cmpTransform.local.translation.x < bene.cmpTransform.local.translation.x - .1){
+      } else if (this.cmpTransform.local.translation.x < bene.cmpTransform.local.translation.x - .1) {
         this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.RIGHTZOMBIE);
       }
       
