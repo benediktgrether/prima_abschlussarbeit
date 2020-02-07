@@ -18,7 +18,6 @@ namespace prima_endaufgabe_grether_benedikt {
     public speed: ƒ.Vector3 = ƒ.Vector3.ZERO();
     public item: ITEM = ITEM.NONE;
     public hitbox: Hitbox;
-    public isMoving: boolean = false;
 
     constructor(_name: string = "Bene") {
       super(_name);
