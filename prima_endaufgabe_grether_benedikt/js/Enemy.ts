@@ -99,9 +99,13 @@ namespace prima_endaufgabe_grether_benedikt {
 
       this.checkCollision(level);
       this.checkCollision(platform);
+      this.movement();
       this.hitbox.checkCollision();
 
+    
+    }
 
+    private movement(): void{
       if (this.cmpTransform.local.translation.x > bene.cmpTransform.local.translation.x + .1) {
         console.log(this.cmpTransform.local.translation.x);
         this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.LEFTZOMBIE);
@@ -113,18 +117,6 @@ namespace prima_endaufgabe_grether_benedikt {
         this.act(ACTION_ZOMBIE.IDLEZOMBIE);
       }
     }
-
-    // private enemyMove(): void {
-    //   // console.log(bene.mtxWorld.translation.x);
-    //   // let direction: number = (_direction == DIRECTION.RIGHT ? 1 : -1);
-    //   if(this.mtxWorld.translation.x > bene.mtxWorld.translation.x) {
-    //     this.speed.x = -Enemy.speedMax.x;
-    //   } else if (this.mtxWorld.translation.x < bene.mtxWorld.translation.x){
-    //     this.speed.x = Enemy.speedMax.x;
-    //   } else {
-    //     this.speed.x = 0;
-    //   }
-    // }
 
     private checkCollision(_checkCollision: ƒ.Node): void {
       for (let floor of _checkCollision.getChildren()) {

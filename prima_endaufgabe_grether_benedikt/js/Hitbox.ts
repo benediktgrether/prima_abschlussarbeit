@@ -43,26 +43,7 @@ namespace prima_endaufgabe_grether_benedikt {
           if (child.name == "Item") {
             let hitbox: Hitbox;
             hitbox = (<Items>child).hitbox;
-            let hit: boolean = false;
-            let rectOfThis: fudge.Rectangle = (<Hitbox>this).getRectWorld();
-            let rectOfThat: fudge.Rectangle = hitbox.getRectWorld();
-            let expansionRight: fudge.Vector2 = new fudge.Vector2(rectOfThat.size.x);
-            let expansionDown: fudge.Vector2 = new fudge.Vector2(0, rectOfThat.size.y);
-            let topRight: fudge.Vector2 = fudge.Vector2.SUM(rectOfThat.position, expansionRight);
-            let bottomLeft: fudge.Vector2 = fudge.Vector2.SUM(rectOfThat.position, expansionDown);
-            let bottomRight: fudge.Vector2 = fudge.Vector2.SUM(rectOfThat.position, expansionDown, expansionRight);
-
-            if (rectOfThis.isInside(rectOfThat.position)) {
-              hit = true;
-            } else if (rectOfThis.isInside(topRight)) {
-              hit = true;
-            } else if (rectOfThis.isInside(bottomLeft)) {
-              hit = true;
-            } else if (rectOfThis.isInside(bottomRight)) {
-              hit = true;
-            }
-
-            if (hit) {
+            if (this.detectedHit(hitbox)) {
               console.log(bene.item);
               if (child.name == "Item") {
                 child.cmpTransform.local.translateY(5);
@@ -71,13 +52,35 @@ namespace prima_endaufgabe_grether_benedikt {
                   console.log(bene.item);
                 }
               }
-              fudge.Debug.log(child);
             }
+            fudge.Debug.log(child);
           } else {
             continue;
           }
         }
       }
+    }
+
+    private detectedHit(hitbox: Hitbox): boolean {
+      let hit: boolean = false;
+      let rectOfThis: fudge.Rectangle = (<Hitbox>this).getRectWorld();
+      let rectOfThat: fudge.Rectangle = hitbox.getRectWorld();
+      let expansionRight: fudge.Vector2 = new fudge.Vector2(rectOfThat.size.x);
+      let expansionDown: fudge.Vector2 = new fudge.Vector2(0, rectOfThat.size.y);
+      let topRight: fudge.Vector2 = fudge.Vector2.SUM(rectOfThat.position, expansionRight);
+      let bottomLeft: fudge.Vector2 = fudge.Vector2.SUM(rectOfThat.position, expansionDown);
+      let bottomRight: fudge.Vector2 = fudge.Vector2.SUM(rectOfThat.position, expansionDown, expansionRight);
+
+      if (rectOfThis.isInside(rectOfThat.position)) {
+        hit = true;
+      } else if (rectOfThis.isInside(topRight)) {
+        hit = true;
+      } else if (rectOfThis.isInside(bottomLeft)) {
+        hit = true;
+      } else if (rectOfThis.isInside(bottomRight)) {
+        hit = true;
+      }
+      return hit;
     }
   }
 }

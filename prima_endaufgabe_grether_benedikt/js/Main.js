@@ -36,6 +36,7 @@ var prima_endaufgabe_grether_benedikt;
         prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.enemy);
         prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.level);
         prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.platform);
+        // game.appendChild(enemy.createHitbox());
         // bene.appendChild(bene.createHitbox());
         // game.appendChild(bene.createHitbox());
         // level.appendChild(bene.creatHitbox());

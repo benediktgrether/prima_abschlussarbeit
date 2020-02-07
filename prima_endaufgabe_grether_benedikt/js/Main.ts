@@ -54,6 +54,7 @@ namespace prima_endaufgabe_grether_benedikt {
     game.appendChild(enemy);
     game.appendChild(level);
     game.appendChild(platform);
+    // game.appendChild(enemy.createHitbox());
     // bene.appendChild(bene.createHitbox());
     // game.appendChild(bene.createHitbox());
     // level.appendChild(bene.creatHitbox());

@@ -26,17 +26,8 @@ var prima_endaufgabe_grether_benedikt;
                 // this.hitbox.cmpTransform.local.translation = new ƒ.Vector3(this.mtxWorld.translation.x, this.mtxWorld.translation.y + 1.7, 0);
                 this.checkCollision(prima_endaufgabe_grether_benedikt.level);
                 this.checkCollision(prima_endaufgabe_grether_benedikt.platform);
+                this.movement();
                 this.hitbox.checkCollision();
-                if (this.cmpTransform.local.translation.x > prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation.x + .1) {
-                    console.log(this.cmpTransform.local.translation.x);
-                    this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.LEFTZOMBIE);
-                }
-                else if (this.cmpTransform.local.translation.x < prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation.x - .1) {
-                    this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.RIGHTZOMBIE);
-                }
-                else {
-                    this.act(ACTION_ZOMBIE.IDLEZOMBIE);
-                }
             };
             this.addComponent(new ƒ.ComponentTransform());
             for (let sprite of Enemy.sprites) {
@@ -87,17 +78,18 @@ var prima_endaufgabe_grether_benedikt;
             }
             this.show(_action);
         }
-        // private enemyMove(): void {
-        //   // console.log(bene.mtxWorld.translation.x);
-        //   // let direction: number = (_direction == DIRECTION.RIGHT ? 1 : -1);
-        //   if(this.mtxWorld.translation.x > bene.mtxWorld.translation.x) {
-        //     this.speed.x = -Enemy.speedMax.x;
-        //   } else if (this.mtxWorld.translation.x < bene.mtxWorld.translation.x){
-        //     this.speed.x = Enemy.speedMax.x;
-        //   } else {
-        //     this.speed.x = 0;
-        //   }
-        // }
+        movement() {
+            if (this.cmpTransform.local.translation.x > prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation.x + .1) {
+                console.log(this.cmpTransform.local.translation.x);
+                this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.LEFTZOMBIE);
+            }
+            else if (this.cmpTransform.local.translation.x < prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation.x - .1) {
+                this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.RIGHTZOMBIE);
+            }
+            else {
+                this.act(ACTION_ZOMBIE.IDLEZOMBIE);
+            }
+        }
         checkCollision(_checkCollision) {
             for (let floor of _checkCollision.getChildren()) {
                 let rect = floor.getRectWorld();
