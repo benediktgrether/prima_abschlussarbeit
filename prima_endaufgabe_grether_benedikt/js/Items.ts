@@ -33,7 +33,7 @@ namespace prima_endaufgabe_grether_benedikt {
     public static generateSprites(_txtImage: ƒ.TextureImage): void {
       Items.sprites = [];
       let sprite: Sprite = new Sprite (ITEM.SWORD);
-      sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(170, 126, 8, 18), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.TOPCENTER);
+      sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(169, 125, 8, 18), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.TOPCENTER);
       Items.sprites.push(sprite);
     }
 

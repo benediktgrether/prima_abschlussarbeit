@@ -14,7 +14,7 @@ namespace prima_endaufgabe_grether_benedikt {
         super("Hitbox");
       }
       this.addComponent(new fudge.ComponentTransform());
-      this.addComponent(new fudge.ComponentMaterial(Hitbox.material));
+      // this.addComponent(new fudge.ComponentMaterial(Hitbox.material));
       let cmpMesh: fudge.ComponentMesh = new fudge.ComponentMesh(Hitbox.mesh);
       cmpMesh.pivot = Hitbox.pivot;
       this.addComponent(cmpMesh);

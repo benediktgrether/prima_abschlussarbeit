@@ -47,21 +47,19 @@ namespace prima_endaufgabe_grether_benedikt {
 
     bene = new Character("Bene");
     enemy = new Enemy("Zombie", -1 );
-    enemyTest = new Enemy("Zombie" , 1.5);
     level = new Level();
     platform = new Platform();
     // items = Level.createItem();
     
     game.appendChild(bene);
     game.appendChild(enemy);
-    game.appendChild(enemyTest);
+    enemy = new Enemy("Zombie", 1.5 );
+
+    game.appendChild(enemy);
     game.appendChild(level);
     game.appendChild(platform);
-    // game.appendChild(enemy.createHitbox());
-    // bene.appendChild(bene.createHitbox());
-    // game.appendChild(bene.createHitbox());
-    // level.appendChild(bene.creatHitbox());
-    // level.appendChild(item.creatHitbox());
+
+    
 
     let cmpCamera: ƒ.ComponentCamera = new ƒ.ComponentCamera();
     cmpCamera.pivot.translateZ(5);
