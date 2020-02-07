@@ -11,7 +11,7 @@ var prima_endaufgabe_grether_benedikt;
                 super("Hitbox");
             }
             this.addComponent(new fudge.ComponentTransform());
-            // this.addComponent(new fudge.ComponentMaterial(Hitbox.material));
+            this.addComponent(new fudge.ComponentMaterial(Hitbox.material));
             let cmpMesh = new fudge.ComponentMesh(Hitbox.mesh);
             cmpMesh.pivot = Hitbox.pivot;
             this.addComponent(cmpMesh);
@@ -45,10 +45,24 @@ var prima_endaufgabe_grether_benedikt;
                                 }
                             }
                         }
-                        fudge.Debug.log(child);
+                        // fudge.Debug.log(child);
                     }
                     else {
                         continue;
+                    }
+                }
+                // console.log(game.getChildren());
+                for (let enemy of prima_endaufgabe_grether_benedikt.game.getChildren()) {
+                    if (enemy.name == "Zombie") {
+                        let hitbox;
+                        hitbox = enemy.hitbox;
+                        if (this.detectedHit(hitbox)) {
+                            console.log("hit enemy");
+                            prima_endaufgabe_grether_benedikt.game.removeChild(enemy);
+                        }
+                        else {
+                            continue;
+                        }
                     }
                 }
             }
@@ -78,6 +92,7 @@ var prima_endaufgabe_grether_benedikt;
         }
     }
     Hitbox.mesh = new fudge.MeshSprite();
+    Hitbox.material = new fudge.Material("Hitbox", fudge.ShaderUniColor, new fudge.CoatColored(fudge.Color.CSS("black", 0.5)));
     Hitbox.pivot = fudge.Matrix4x4.TRANSLATION(fudge.Vector3.Y(-0.5));
     prima_endaufgabe_grether_benedikt.Hitbox = Hitbox;
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));

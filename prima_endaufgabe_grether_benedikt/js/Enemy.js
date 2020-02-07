@@ -14,7 +14,7 @@ var prima_endaufgabe_grether_benedikt;
     })(DIRECTIONZOMBIE = prima_endaufgabe_grether_benedikt.DIRECTIONZOMBIE || (prima_endaufgabe_grether_benedikt.DIRECTIONZOMBIE = {}));
     class Enemy extends ƒ.Node {
         // All Same with Character
-        constructor(_name = "Zombie") {
+        constructor(_name, _translateX) {
             super(_name);
             this.speed = ƒ.Vector3.ZERO();
             this.update = (_event) => {
@@ -27,7 +27,6 @@ var prima_endaufgabe_grether_benedikt;
                 this.checkCollision(prima_endaufgabe_grether_benedikt.level);
                 this.checkCollision(prima_endaufgabe_grether_benedikt.platform);
                 this.movement();
-                this.hitbox.checkCollision();
             };
             this.addComponent(new ƒ.ComponentTransform());
             for (let sprite of Enemy.sprites) {
@@ -36,7 +35,7 @@ var prima_endaufgabe_grether_benedikt;
                 nodeSprite.addEventListener("showNext", (_event) => { _event.currentTarget.showFrameNext(); }, true);
                 this.appendChild(nodeSprite);
                 // Hilfsverschiebung
-                this.cmpTransform.local.translateX(1);
+                this.cmpTransform.local.translateX(_translateX);
             }
             this.hitbox = this.createHitbox();
             this.appendChild(this.hitbox);
@@ -73,7 +72,6 @@ var prima_endaufgabe_grether_benedikt;
                     let direction = (_direction == DIRECTIONZOMBIE.RIGHTZOMBIE ? 1 : -1);
                     this.speed.x = Enemy.speedMax.x;
                     this.cmpTransform.local.rotation = ƒ.Vector3.Y(90 - 90 * direction);
-                    // console.log(direction);
                     break;
             }
             this.show(_action);

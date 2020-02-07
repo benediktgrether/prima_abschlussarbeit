@@ -15,6 +15,7 @@ namespace prima_endaufgabe_grether_benedikt {
   export let platform: ƒ.Node;
   export let bene: Character;
   export let enemy: Enemy;
+  export let enemyTest: Enemy;
 
 
   // async function loadFilesWithResponse(): Promise<void> {
@@ -45,13 +46,15 @@ namespace prima_endaufgabe_grether_benedikt {
     game.cmpTransform.local.translateY(-1.17);
 
     bene = new Character("Bene");
-    enemy = new Enemy("Zombie");
+    enemy = new Enemy("Zombie", -1 );
+    enemyTest = new Enemy("Zombie" , 1.5);
     level = new Level();
     platform = new Platform();
     // items = Level.createItem();
     
     game.appendChild(bene);
     game.appendChild(enemy);
+    game.appendChild(enemyTest);
     game.appendChild(level);
     game.appendChild(platform);
     // game.appendChild(enemy.createHitbox());

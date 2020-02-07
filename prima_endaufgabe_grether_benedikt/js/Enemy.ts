@@ -20,7 +20,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
     // All Same with Character
 
-    constructor(_name: string = "Zombie") {
+    constructor(_name: string, _translateX: number) {
       super(_name);
       this.addComponent(new ƒ.ComponentTransform());
 
@@ -36,7 +36,7 @@ namespace prima_endaufgabe_grether_benedikt {
         this.appendChild(nodeSprite);
 
         // Hilfsverschiebung
-        this.cmpTransform.local.translateX(1);
+        this.cmpTransform.local.translateX(_translateX);
       }
 
       this.hitbox = this.createHitbox();
@@ -82,7 +82,6 @@ namespace prima_endaufgabe_grether_benedikt {
           let direction: number = (_direction == DIRECTIONZOMBIE.RIGHTZOMBIE ? 1 : -1);
           this.speed.x = Enemy.speedMax.x;
           this.cmpTransform.local.rotation = ƒ.Vector3.Y(90 - 90 * direction);
-          // console.log(direction);
           break;
       }
       this.show(_action);
@@ -100,7 +99,6 @@ namespace prima_endaufgabe_grether_benedikt {
       this.checkCollision(level);
       this.checkCollision(platform);
       this.movement();
-      this.hitbox.checkCollision();
 
     
     }

@@ -7,7 +7,7 @@ namespace prima_endaufgabe_grether_benedikt {
     private static sprites: Sprite[];
     public item: Items;
 
-    public constructor(_distance: number, _translateY?: number, _distancePlatform?: number, _item?: ITEM, _enemy?: Enemy) {
+    public constructor(_distance: number, _translateY?: number, _distancePlatform?: number, _item?: ITEM) {
       super("Floor");
       let nodeSprite: NodeSprite = new NodeSprite("FloorSprite", Floor.sprites[0]);
       nodeSprite.activate(false);
