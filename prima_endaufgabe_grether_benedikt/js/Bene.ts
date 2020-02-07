@@ -46,11 +46,11 @@ namespace prima_endaufgabe_grether_benedikt {
     public static generateSprites(_txtImage: ƒ.TextureImage): void {
       Character.sprites = [];
       let sprite: Sprite = new Sprite(ACTION.WALK + "." + ITEM.NONE);
-      sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(30, 279, 30.8, 51), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
+      sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(24, 8, 24, 43), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
       Character.sprites.push(sprite);
 
       sprite = new Sprite(ACTION.IDLE + "." + ITEM.NONE);
-      sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(1, 279, 30.8, 51), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
+      sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(3, 8, 20, 43), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
       Character.sprites.push(sprite);
 
       sprite = new Sprite(ACTION.IDLE + "." + ITEM.SWORD);

@@ -45,10 +45,10 @@ var prima_endaufgabe_grether_benedikt;
         static generateSprites(_txtImage) {
             Enemy.sprites = [];
             let sprite = new prima_endaufgabe_grether_benedikt.Sprite(ACTION_ZOMBIE.WALKZOMBIE);
-            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(30, 279, 30.8, 51), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
+            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(24, 8, 24, 43), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
             Enemy.sprites.push(sprite);
             sprite = new prima_endaufgabe_grether_benedikt.Sprite(ACTION_ZOMBIE.IDLEZOMBIE);
-            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(1, 279, 30.8, 51), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
+            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(3, 8, 20, 43), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
             Enemy.sprites.push(sprite);
         }
         createHitbox() {
