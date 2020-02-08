@@ -45,10 +45,10 @@ var prima_endaufgabe_grether_benedikt;
         static generateSprites(_txtImage) {
             Enemy.sprites = [];
             let sprite = new prima_endaufgabe_grether_benedikt.Sprite(ACTION_ZOMBIE.WALKZOMBIE);
-            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(24, 8, 24, 43), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
+            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(141, 55, 24, 45), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
             Enemy.sprites.push(sprite);
             sprite = new prima_endaufgabe_grether_benedikt.Sprite(ACTION_ZOMBIE.IDLEZOMBIE);
-            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(3, 8, 20, 43), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
+            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(117, 55, 22, 45), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
             Enemy.sprites.push(sprite);
         }
         createHitbox() {
@@ -101,7 +101,7 @@ var prima_endaufgabe_grether_benedikt;
             }
         }
     }
-    Enemy.speedMax = new ƒ.Vector2(1, 0);
+    Enemy.speedMax = new ƒ.Vector2(0.5, 0);
     Enemy.gravity = ƒ.Vector2.Y(-3);
     prima_endaufgabe_grether_benedikt.Enemy = Enemy;
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));

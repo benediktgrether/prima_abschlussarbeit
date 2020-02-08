@@ -13,7 +13,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
   export class Enemy extends ƒ.Node {
     private static sprites: Sprite[];
-    private static speedMax: ƒ.Vector2 = new ƒ.Vector2(1, 0);
+    private static speedMax: ƒ.Vector2 = new ƒ.Vector2(0.5, 0);
     private static gravity: ƒ.Vector2 = ƒ.Vector2.Y(-3);
     public speed: ƒ.Vector3 = ƒ.Vector3.ZERO();
     public hitbox: Hitbox;
@@ -49,11 +49,11 @@ namespace prima_endaufgabe_grether_benedikt {
     public static generateSprites(_txtImage: ƒ.TextureImage): void {
       Enemy.sprites = [];
       let sprite: Sprite = new Sprite(ACTION_ZOMBIE.WALKZOMBIE);
-      sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(24, 8, 24, 43), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
+      sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(141, 55, 24 , 45 ), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
       Enemy.sprites.push(sprite);
 
       sprite = new Sprite(ACTION_ZOMBIE.IDLEZOMBIE);
-      sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(3, 8, 20, 43), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
+      sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(117, 55, 22, 45), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
       Enemy.sprites.push(sprite);
     }
 
