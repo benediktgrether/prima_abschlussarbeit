@@ -4,17 +4,17 @@ var prima_endaufgabe_grether_benedikt;
 /// <reference path="./SpriteGenerator.ts"/>
 (function (prima_endaufgabe_grether_benedikt) {
     prima_endaufgabe_grether_benedikt.ƒ = FudgeCore;
+    loadFilesWithResponse();
     window.addEventListener("load", initGame);
     let keysPressed = {};
-    // async function loadFilesWithResponse(): Promise<void> {
-    // let response: Response = await fetch("./data/data.json");
-    // let offer: string = await response.text();
-    // let data: any = JSON.parse(offer);
-    // console.log(data);
-    // }
+    async function loadFilesWithResponse() {
+        let response = await fetch("./js/data/data.json");
+        let offer = await response.text();
+        let data = JSON.parse(offer);
+        console.log(data);
+    }
     function initGame() {
         let canvas = document.querySelector("canvas");
-        // loadFilesWithResponse();
         // let crc2: CanvasRenderingContext2D = canvas.getContext("2d");
         let img = document.querySelector("img");
         let txtbene = new prima_endaufgabe_grether_benedikt.ƒ.TextureImage();

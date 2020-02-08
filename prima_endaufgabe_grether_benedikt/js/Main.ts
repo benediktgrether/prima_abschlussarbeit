@@ -2,7 +2,8 @@
 
 namespace prima_endaufgabe_grether_benedikt {
   export import ƒ = FudgeCore;
-  
+  loadFilesWithResponse();
+
   window.addEventListener("load", initGame);
 
   interface KeyPressed {
@@ -18,18 +19,17 @@ namespace prima_endaufgabe_grether_benedikt {
   export let enemyTest: Enemy;
 
 
-  // async function loadFilesWithResponse(): Promise<void> {
-  // let response: Response = await fetch("./data/data.json");
-  // let offer: string = await response.text();
-  // let data: any = JSON.parse(offer);
-  // console.log(data);
-  // }
+  async function loadFilesWithResponse(): Promise<void> {
+  let response: Response = await fetch("./js/data/data.json");
+  let offer: string = await response.text();
+  let data: any = JSON.parse(offer);
+  console.log(data);
+  }
 
 
 
   function initGame(): void {
     let canvas: HTMLCanvasElement = document.querySelector("canvas");
-    // loadFilesWithResponse();
     // let crc2: CanvasRenderingContext2D = canvas.getContext("2d");
     let img: HTMLImageElement = document.querySelector("img");
     let txtbene: ƒ.TextureImage = new ƒ.TextureImage();
