@@ -74,6 +74,7 @@ namespace prima_endaufgabe_grether_benedikt {
                 bene.cmpTransform.local.translation = new ƒ.Vector3(-0.25, 0.25, 0);
               }
               console.log((<Enemy>enemy).direction);
+              console.log(enemy);
               game.removeChild(enemy);
             }
             else {

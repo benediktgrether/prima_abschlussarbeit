@@ -66,6 +66,7 @@ var prima_endaufgabe_grether_benedikt;
                                 prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation = new prima_endaufgabe_grether_benedikt.ƒ.Vector3(-0.25, 0.25, 0);
                             }
                             console.log(enemy.direction);
+                            console.log(enemy);
                             prima_endaufgabe_grether_benedikt.game.removeChild(enemy);
                         }
                         else {
