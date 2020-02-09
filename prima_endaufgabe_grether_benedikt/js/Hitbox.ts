@@ -65,7 +65,15 @@ namespace prima_endaufgabe_grether_benedikt {
             let hitbox: Hitbox;
             hitbox = (<Enemy>enemy).hitbox;
             if (this.detectedHit(hitbox)) {
-              console.log("hit enemy");
+              if ((<Enemy>enemy).direction == 1) {
+                console.log("hit left");
+                bene.cmpTransform.local.translation = new ƒ.Vector3(0.25, 0.25, 0);
+              }
+              else {
+                console.log("hit right");
+                bene.cmpTransform.local.translation = new ƒ.Vector3(-0.25, 0.25, 0);
+              }
+              console.log((<Enemy>enemy).direction);
               game.removeChild(enemy);
             }
             else {

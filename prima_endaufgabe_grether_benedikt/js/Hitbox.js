@@ -57,7 +57,15 @@ var prima_endaufgabe_grether_benedikt;
                         let hitbox;
                         hitbox = enemy.hitbox;
                         if (this.detectedHit(hitbox)) {
-                            console.log("hit enemy");
+                            if (enemy.direction == 1) {
+                                console.log("hit left");
+                                prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation = new prima_endaufgabe_grether_benedikt.ƒ.Vector3(0.25, 0.25, 0);
+                            }
+                            else {
+                                console.log("hit right");
+                                prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation = new prima_endaufgabe_grether_benedikt.ƒ.Vector3(-0.25, 0.25, 0);
+                            }
+                            console.log(enemy.direction);
                             prima_endaufgabe_grether_benedikt.game.removeChild(enemy);
                         }
                         else {

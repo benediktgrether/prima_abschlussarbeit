@@ -69,9 +69,9 @@ var prima_endaufgabe_grether_benedikt;
                     this.speed.x = 0;
                     break;
                 case ACTION_ZOMBIE.WALKZOMBIE:
-                    let direction = (_direction == DIRECTIONZOMBIE.RIGHTZOMBIE ? 1 : -1);
+                    this.direction = (_direction == DIRECTIONZOMBIE.RIGHTZOMBIE ? 1 : -1);
                     this.speed.x = Enemy.speedMax.x;
-                    this.cmpTransform.local.rotation = ƒ.Vector3.Y(90 - 90 * direction);
+                    this.cmpTransform.local.rotation = ƒ.Vector3.Y(90 - 90 * this.direction);
                     break;
             }
             this.show(_action);

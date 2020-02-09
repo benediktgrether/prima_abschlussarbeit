@@ -17,6 +17,7 @@ namespace prima_endaufgabe_grether_benedikt {
     private static gravity: ƒ.Vector2 = ƒ.Vector2.Y(-3);
     public speed: ƒ.Vector3 = ƒ.Vector3.ZERO();
     public hitbox: Hitbox;
+    public direction: number;
 
     // All Same with Character
 
@@ -79,9 +80,9 @@ namespace prima_endaufgabe_grether_benedikt {
           this.speed.x = 0;
           break;
         case ACTION_ZOMBIE.WALKZOMBIE:
-          let direction: number = (_direction == DIRECTIONZOMBIE.RIGHTZOMBIE ? 1 : -1);
+          this.direction = (_direction == DIRECTIONZOMBIE.RIGHTZOMBIE ? 1 : -1);
           this.speed.x = Enemy.speedMax.x;
-          this.cmpTransform.local.rotation = ƒ.Vector3.Y(90 - 90 * direction);
+          this.cmpTransform.local.rotation = ƒ.Vector3.Y(90 - 90 * this.direction);
           break;
       }
       this.show(_action);
