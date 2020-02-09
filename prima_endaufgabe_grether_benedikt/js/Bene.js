@@ -9,6 +9,7 @@ var prima_endaufgabe_grether_benedikt;
         ACTION["IDLE"] = "Idle";
         ACTION["WALK"] = "Walk";
         ACTION["JUMP"] = "Jump";
+        ACTION["SWORD"] = "Sword";
     })(ACTION = prima_endaufgabe_grether_benedikt.ACTION || (prima_endaufgabe_grether_benedikt.ACTION = {}));
     let DIRECTION;
     (function (DIRECTION) {
@@ -56,6 +57,9 @@ var prima_endaufgabe_grether_benedikt;
             Character.sprites.push(sprite);
             sprite = new prima_endaufgabe_grether_benedikt.Sprite(ACTION.WALK + "." + prima_endaufgabe_grether_benedikt.ITEM.SWORD);
             sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(144, 8, 26, 43), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
+            Character.sprites.push(sprite);
+            sprite = new prima_endaufgabe_grether_benedikt.Sprite(ACTION.SWORD + "." + prima_endaufgabe_grether_benedikt.ITEM.SWORD);
+            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(252, 5, 28, 46), 2, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
             Character.sprites.push(sprite);
         }
         createHitbox() {

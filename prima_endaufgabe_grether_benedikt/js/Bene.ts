@@ -5,7 +5,8 @@ namespace prima_endaufgabe_grether_benedikt {
   export enum ACTION {
     IDLE = "Idle",
     WALK = "Walk",
-    JUMP = "Jump"
+    JUMP = "Jump",
+    SWORD = "Sword"
   }
   export enum DIRECTION {
     LEFT, RIGHT
@@ -59,6 +60,10 @@ namespace prima_endaufgabe_grether_benedikt {
       
       sprite = new Sprite(ACTION.WALK + "." + ITEM.SWORD);
       sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(144, 8, 26, 43), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
+      Character.sprites.push(sprite);
+
+      sprite = new Sprite(ACTION.SWORD + "." + ITEM.SWORD);
+      sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(252, 5, 28, 46), 2, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
       Character.sprites.push(sprite);
     }
 

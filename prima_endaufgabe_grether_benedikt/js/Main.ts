@@ -103,6 +103,12 @@ namespace prima_endaufgabe_grether_benedikt {
       bene.act(ACTION.WALK, DIRECTION.RIGHT);
       return;
     }
+    if (keysPressed[ƒ.KEYBOARD_CODE.SPACE]) {
+      if (bene.item == "Sword") {
+        bene.act(ACTION.SWORD);
+      }
+      return;
+    }
 
     bene.act(ACTION.IDLE);
   }
