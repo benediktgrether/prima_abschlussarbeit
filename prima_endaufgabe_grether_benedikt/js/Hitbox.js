@@ -52,33 +52,37 @@ var prima_endaufgabe_grether_benedikt;
                         continue;
                     }
                 }
-                for (let enemy of prima_endaufgabe_grether_benedikt.game.getChildren()) {
-                    if (enemy.name == "Zombie") {
+                for (let child of prima_endaufgabe_grether_benedikt.game.getChildren()) {
+                    if (child.name == "Zombie") {
                         let hitbox;
-                        hitbox = enemy.hitbox;
+                        hitbox = child.hitbox;
                         if (this.detectedHit(hitbox)) {
-                            if (enemy.direction == 1 && prima_endaufgabe_grether_benedikt.fight == false) {
+                            if (child.direction == 1 && prima_endaufgabe_grether_benedikt.fight == false) {
                                 console.log("hit left");
                                 prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(0.05);
                                 prima_endaufgabe_grether_benedikt.bene.updateHealtpoints();
                             }
-                            else if (enemy.direction == -1 && prima_endaufgabe_grether_benedikt.fight == false) {
+                            else if (child.direction == -1 && prima_endaufgabe_grether_benedikt.fight == false) {
                                 console.log("hit right");
                                 prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(-0.05);
                                 prima_endaufgabe_grether_benedikt.bene.updateHealtpoints();
                             }
                             else if (prima_endaufgabe_grether_benedikt.bene.item == "Sword" && prima_endaufgabe_grether_benedikt.fight == true) {
-                                if (enemy.direction == 1 && prima_endaufgabe_grether_benedikt.bene.directionChar === -1) {
-                                    prima_endaufgabe_grether_benedikt.game.removeChild(enemy);
+                                if (child.direction == 1 && prima_endaufgabe_grether_benedikt.bene.directionChar === -1) {
+                                    child.cmpTransform.local.translateX(-0.05);
+                                    prima_endaufgabe_grether_benedikt.enemy.updateHealtpoints(child);
                                 }
-                                else if (enemy.direction == -1 && prima_endaufgabe_grether_benedikt.bene.directionChar === 1) {
-                                    prima_endaufgabe_grether_benedikt.game.removeChild(enemy);
+                                else if (child.direction == -1 && prima_endaufgabe_grether_benedikt.bene.directionChar === 1) {
+                                    child.cmpTransform.local.translateX(0.05);
+                                    prima_endaufgabe_grether_benedikt.enemy.updateHealtpoints(child);
                                 }
-                                else if (enemy.direction == 1 && prima_endaufgabe_grether_benedikt.bene.directionChar === 1) {
+                                else if (child.direction == 1 && prima_endaufgabe_grether_benedikt.bene.directionChar === 1) {
                                     prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(0.05);
+                                    prima_endaufgabe_grether_benedikt.bene.updateHealtpoints();
                                 }
-                                else if (enemy.direction == -1 && prima_endaufgabe_grether_benedikt.bene.directionChar === -1) {
+                                else if (child.direction == -1 && prima_endaufgabe_grether_benedikt.bene.directionChar === -1) {
                                     prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(-0.05);
+                                    prima_endaufgabe_grether_benedikt.bene.updateHealtpoints();
                                 }
                                 else {
                                     continue;

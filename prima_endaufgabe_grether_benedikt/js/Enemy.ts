@@ -11,6 +11,8 @@ namespace prima_endaufgabe_grether_benedikt {
     LEFTZOMBIE, RIGHTZOMBIE
   }
 
+  let counter: number = 15;
+
   export class Enemy extends ƒ.Node {
     private static sprites: Sprite[];
     private static speedMax: ƒ.Vector2 = new ƒ.Vector2(0.5, 0);
@@ -18,6 +20,8 @@ namespace prima_endaufgabe_grether_benedikt {
     public speed: ƒ.Vector3 = ƒ.Vector3.ZERO();
     public hitbox: Hitbox;
     public direction: number;
+    // public healthbar: [] = [];
+    public healthpoints: number = 20;
 
     // All Same with Character
 
@@ -88,6 +92,23 @@ namespace prima_endaufgabe_grether_benedikt {
       this.show(_action);
     }
 
+    public updateHealtpoints(_enemy: any): void {
+      this.healthpoints = this.healthpoints - 1;
+      this.updateHealthbar(_enemy);
+    }
+
+    private updateHealthbar(_enemy: any): void {
+      if (counter == this.healthpoints) {
+        counter -= 5;
+      }
+      if (this.healthpoints === 0) {
+        game.removeChild(_enemy);
+        this.healthpoints = 20;
+        counter = 15;
+        return;
+      }
+    }
+
     private update = (_event: ƒ.Eventƒ): void => {
       this.broadcastEvent(new CustomEvent("showNext"));
 
@@ -95,7 +116,6 @@ namespace prima_endaufgabe_grether_benedikt {
       this.speed.y += Enemy.gravity.y * timeFrame;
       let distance: ƒ.Vector3 = ƒ.Vector3.SCALE(this.speed, timeFrame);
       this.cmpTransform.local.translate(distance);
-      // this.hitbox.cmpTransform.local.translation = new ƒ.Vector3(this.mtxWorld.translation.x, this.mtxWorld.translation.y + 1.7, 0);
 
       this.checkCollision(level);
       this.checkCollision(platform);

@@ -22,7 +22,7 @@ namespace prima_endaufgabe_grether_benedikt {
     public item: ITEM = ITEM.NONE;
     public hitbox: Hitbox;
     public directionChar: number;
-    public healthbar: Healthpoints[] = [];
+    // public healthbar: Healthpoints[] = [];
     public healthpoints: number = 50;
 
 

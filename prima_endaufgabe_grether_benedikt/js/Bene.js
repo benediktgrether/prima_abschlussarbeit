@@ -22,7 +22,7 @@ var prima_endaufgabe_grether_benedikt;
             super(_name);
             this.speed = ƒ.Vector3.ZERO();
             this.item = prima_endaufgabe_grether_benedikt.ITEM.NONE;
-            this.healthbar = [];
+            // public healthbar: Healthpoints[] = [];
             this.healthpoints = 50;
             // let lifeDifference: number = 100 - this.healthpoints;
             // console.log("Test");

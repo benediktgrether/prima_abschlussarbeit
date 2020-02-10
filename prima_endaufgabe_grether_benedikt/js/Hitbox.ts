@@ -61,32 +61,39 @@ namespace prima_endaufgabe_grether_benedikt {
           }
         }
         
-        for (let enemy of game.getChildren()) {
-          if (enemy.name == "Zombie") {
+        for (let child of game.getChildren()) {
+          if (child.name == "Zombie") {
             let hitbox: Hitbox;
-            hitbox = (<Enemy>enemy).hitbox;
+            hitbox = (<Enemy>child).hitbox;
             if (this.detectedHit(hitbox)) {
-              if ((<Enemy>enemy).direction == 1 && fight == false) {
+              if ((<Enemy>child).direction == 1 && fight == false) {
                 console.log("hit left");
                 bene.cmpTransform.local.translateX(0.05);
 
                 bene.updateHealtpoints();
 
-              } else if ((<Enemy>enemy).direction == -1 && fight == false) {
+              } else if ((<Enemy>child).direction == -1 && fight == false) {
                 console.log("hit right");
                 bene.cmpTransform.local.translateX(-0.05);
                 
                 bene.updateHealtpoints();
 
               } else if (bene.item == "Sword" && fight == true) {
-                if ((<Enemy>enemy).direction == 1 && bene.directionChar === -1) {
-                  game.removeChild(enemy);
-                } else if ((<Enemy>enemy).direction == -1 && bene.directionChar === 1) {
-                  game.removeChild(enemy);
-                } else if ((<Enemy>enemy).direction == 1 && bene.directionChar === 1) {
+                if ((<Enemy>child).direction == 1 && bene.directionChar === -1) {
+                  (<Enemy>child).cmpTransform.local.translateX(-0.05);
+                  enemy.updateHealtpoints(<Enemy>child);
+
+                } else if ((<Enemy>child).direction == -1 && bene.directionChar === 1) {
+                  (<Enemy>child).cmpTransform.local.translateX(0.05);
+                  enemy.updateHealtpoints(<Enemy>child);
+
+                } else if ((<Enemy>child).direction == 1 && bene.directionChar === 1) {
                   bene.cmpTransform.local.translateX(0.05);
-                } else if ((<Enemy>enemy).direction == -1 && bene.directionChar === -1) {
+                  bene.updateHealtpoints();
+
+                } else if ((<Enemy>child).direction == -1 && bene.directionChar === -1) {
                   bene.cmpTransform.local.translateX(-0.05);
+                  bene.updateHealtpoints();
                 }
                 else {
                   continue;

@@ -12,18 +12,20 @@ var prima_endaufgabe_grether_benedikt;
         DIRECTIONZOMBIE[DIRECTIONZOMBIE["LEFTZOMBIE"] = 0] = "LEFTZOMBIE";
         DIRECTIONZOMBIE[DIRECTIONZOMBIE["RIGHTZOMBIE"] = 1] = "RIGHTZOMBIE";
     })(DIRECTIONZOMBIE = prima_endaufgabe_grether_benedikt.DIRECTIONZOMBIE || (prima_endaufgabe_grether_benedikt.DIRECTIONZOMBIE = {}));
+    let counter = 15;
     class Enemy extends ƒ.Node {
         // All Same with Character
         constructor(_name, _translateX) {
             super(_name);
             this.speed = ƒ.Vector3.ZERO();
+            // public healthbar: [] = [];
+            this.healthpoints = 20;
             this.update = (_event) => {
                 this.broadcastEvent(new CustomEvent("showNext"));
                 let timeFrame = ƒ.Loop.timeFrameGame / 1000;
                 this.speed.y += Enemy.gravity.y * timeFrame;
                 let distance = ƒ.Vector3.SCALE(this.speed, timeFrame);
                 this.cmpTransform.local.translate(distance);
-                // this.hitbox.cmpTransform.local.translation = new ƒ.Vector3(this.mtxWorld.translation.x, this.mtxWorld.translation.y + 1.7, 0);
                 this.checkCollision(prima_endaufgabe_grether_benedikt.level);
                 this.checkCollision(prima_endaufgabe_grether_benedikt.platform);
                 this.movement();
@@ -75,6 +77,21 @@ var prima_endaufgabe_grether_benedikt;
                     break;
             }
             this.show(_action);
+        }
+        updateHealtpoints(_enemy) {
+            this.healthpoints = this.healthpoints - 1;
+            this.updateHealthbar(_enemy);
+        }
+        updateHealthbar(_enemy) {
+            if (counter == this.healthpoints) {
+                counter -= 5;
+            }
+            if (this.healthpoints === 0) {
+                prima_endaufgabe_grether_benedikt.game.removeChild(_enemy);
+                this.healthpoints = 20;
+                counter = 15;
+                return;
+            }
         }
         movement() {
             if (this.cmpTransform.local.translation.x > prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation.x + .1) {
