@@ -70,6 +70,17 @@ var prima_endaufgabe_grether_benedikt;
             this.hitbox = hitbox;
             return hitbox;
         }
+        createSwordHitbox() {
+            let hitbox = new prima_endaufgabe_grether_benedikt.Hitbox("SwordHitBox");
+            console.log("test");
+            hitbox.cmpTransform.local.translateY(0.6);
+            hitbox.cmpTransform.local.scaleX(0.2);
+            hitbox.cmpTransform.local.scaleY(0.5);
+            this.hitbox = hitbox;
+            this.appendChild(hitbox);
+            console.log(hitbox);
+            return hitbox;
+        }
         show(_action, _item) {
             for (let child of this.getChildren())
                 child.activate(child.name == _action + "." + _item);
@@ -80,9 +91,9 @@ var prima_endaufgabe_grether_benedikt;
                     this.speed.x = 0;
                     break;
                 case ACTION.WALK:
-                    let direction = (_direction == DIRECTION.RIGHT ? 1 : -1);
+                    this.directionChar = (_direction == DIRECTION.RIGHT ? 1 : -1);
                     this.speed.x = Character.speedMax.x;
-                    this.cmpTransform.local.rotation = ƒ.Vector3.Y(90 - 90 * direction);
+                    this.cmpTransform.local.rotation = ƒ.Vector3.Y(90 - 90 * this.directionChar);
                     // console.log(direction);
                     break;
                 case ACTION.JUMP:

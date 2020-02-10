@@ -78,7 +78,6 @@ var prima_endaufgabe_grether_benedikt;
         }
         movement() {
             if (this.cmpTransform.local.translation.x > prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation.x + .1) {
-                console.log(this.cmpTransform.local.translation.x);
                 this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.LEFTZOMBIE);
             }
             else if (this.cmpTransform.local.translation.x < prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation.x - .1) {

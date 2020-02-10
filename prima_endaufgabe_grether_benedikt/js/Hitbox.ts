@@ -3,7 +3,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
   export class Hitbox extends fudge.Node {
     private static mesh: fudge.MeshSprite = new fudge.MeshSprite();
-    // private static material: fudge.Material = new fudge.Material("Hitbox", fudge.ShaderUniColor, new fudge.CoatColored(fudge.Color.CSS("black", 0.5)));
+    private static material: fudge.Material = new fudge.Material("Hitbox", fudge.ShaderUniColor, new fudge.CoatColored(fudge.Color.CSS("black", 0.5)));
     private static readonly pivot: fudge.Matrix4x4 = fudge.Matrix4x4.TRANSLATION(fudge.Vector3.Y(-0.5));
 
     public constructor(_name?: string) {
@@ -14,7 +14,7 @@ namespace prima_endaufgabe_grether_benedikt {
         super("Hitbox");
       }
       this.addComponent(new fudge.ComponentTransform());
-      // this.addComponent(new fudge.ComponentMaterial(Hitbox.material));
+      this.addComponent(new fudge.ComponentMaterial(Hitbox.material));
       let cmpMesh: fudge.ComponentMesh = new fudge.ComponentMesh(Hitbox.mesh);
       cmpMesh.pivot = Hitbox.pivot;
       this.addComponent(cmpMesh);
@@ -50,6 +50,7 @@ namespace prima_endaufgabe_grether_benedikt {
                 child.cmpTransform.local.translateY(5);
                 if (bene.item == ITEM.NONE) {
                   bene.item = (<Items>child).type;
+                  bene.createSwordHitbox();
                   console.log(bene.item);
                 }
               }
@@ -65,20 +66,27 @@ namespace prima_endaufgabe_grether_benedikt {
             let hitbox: Hitbox;
             hitbox = (<Enemy>enemy).hitbox;
             if (this.detectedHit(hitbox)) {
-              if ((<Enemy>enemy).direction == 1) {
+              if ((<Enemy>enemy).direction == 1 && fight == false) {
                 console.log("hit left");
-                bene.cmpTransform.local.translation = new ƒ.Vector3(0.25, 0.25, 0);
+                bene.cmpTransform.local.translateX(0.05);
               }
-              else {
+              else if ((<Enemy>enemy).direction == -1 && fight == false) {
                 console.log("hit right");
-                bene.cmpTransform.local.translation = new ƒ.Vector3(-0.25, 0.25, 0);
+                bene.cmpTransform.local.translateX(-0.05);
+              } else if (bene.item == "Sword" && fight == true) {
+                if ((<Enemy>enemy).direction == 1 && bene.directionChar === -1) {
+                  game.removeChild(enemy);
+                } else if ((<Enemy>enemy).direction == -1 && bene.directionChar === 1) {
+                  game.removeChild(enemy);
+                } else if ((<Enemy>enemy).direction == 1 && bene.directionChar === 1) {
+                  bene.cmpTransform.local.translateX(0.05);
+                } else if ((<Enemy>enemy).direction == -1 && bene.directionChar === -1) {
+                  bene.cmpTransform.local.translateX(-0.05);
+                }
+                else {
+                  continue;
+                }
               }
-              console.log((<Enemy>enemy).direction);
-              console.log(enemy);
-              game.removeChild(enemy);
-            }
-            else {
-              continue;
             }
           }
         }

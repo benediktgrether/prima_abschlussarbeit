@@ -11,7 +11,7 @@ var prima_endaufgabe_grether_benedikt;
                 super("Hitbox");
             }
             this.addComponent(new fudge.ComponentTransform());
-            // this.addComponent(new fudge.ComponentMaterial(Hitbox.material));
+            this.addComponent(new fudge.ComponentMaterial(Hitbox.material));
             let cmpMesh = new fudge.ComponentMesh(Hitbox.mesh);
             cmpMesh.pivot = Hitbox.pivot;
             this.addComponent(cmpMesh);
@@ -41,6 +41,7 @@ var prima_endaufgabe_grether_benedikt;
                                 child.cmpTransform.local.translateY(5);
                                 if (prima_endaufgabe_grether_benedikt.bene.item == prima_endaufgabe_grether_benedikt.ITEM.NONE) {
                                     prima_endaufgabe_grether_benedikt.bene.item = child.type;
+                                    prima_endaufgabe_grether_benedikt.bene.createSwordHitbox();
                                     console.log(prima_endaufgabe_grether_benedikt.bene.item);
                                 }
                             }
@@ -57,20 +58,31 @@ var prima_endaufgabe_grether_benedikt;
                         let hitbox;
                         hitbox = enemy.hitbox;
                         if (this.detectedHit(hitbox)) {
-                            if (enemy.direction == 1) {
+                            if (enemy.direction == 1 && prima_endaufgabe_grether_benedikt.fight == false) {
                                 console.log("hit left");
-                                prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation = new prima_endaufgabe_grether_benedikt.ƒ.Vector3(0.25, 0.25, 0);
+                                prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(0.05);
                             }
-                            else {
+                            else if (enemy.direction == -1 && prima_endaufgabe_grether_benedikt.fight == false) {
                                 console.log("hit right");
-                                prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation = new prima_endaufgabe_grether_benedikt.ƒ.Vector3(-0.25, 0.25, 0);
+                                prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(-0.05);
                             }
-                            console.log(enemy.direction);
-                            console.log(enemy);
-                            prima_endaufgabe_grether_benedikt.game.removeChild(enemy);
-                        }
-                        else {
-                            continue;
+                            else if (prima_endaufgabe_grether_benedikt.bene.item == "Sword" && prima_endaufgabe_grether_benedikt.fight == true) {
+                                if (enemy.direction == 1 && prima_endaufgabe_grether_benedikt.bene.directionChar === -1) {
+                                    prima_endaufgabe_grether_benedikt.game.removeChild(enemy);
+                                }
+                                else if (enemy.direction == -1 && prima_endaufgabe_grether_benedikt.bene.directionChar === 1) {
+                                    prima_endaufgabe_grether_benedikt.game.removeChild(enemy);
+                                }
+                                else if (enemy.direction == 1 && prima_endaufgabe_grether_benedikt.bene.directionChar === 1) {
+                                    prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(0.05);
+                                }
+                                else if (enemy.direction == -1 && prima_endaufgabe_grether_benedikt.bene.directionChar === -1) {
+                                    prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(-0.05);
+                                }
+                                else {
+                                    continue;
+                                }
+                            }
                         }
                     }
                 }
@@ -101,7 +113,7 @@ var prima_endaufgabe_grether_benedikt;
         }
     }
     Hitbox.mesh = new fudge.MeshSprite();
-    // private static material: fudge.Material = new fudge.Material("Hitbox", fudge.ShaderUniColor, new fudge.CoatColored(fudge.Color.CSS("black", 0.5)));
+    Hitbox.material = new fudge.Material("Hitbox", fudge.ShaderUniColor, new fudge.CoatColored(fudge.Color.CSS("black", 0.5)));
     Hitbox.pivot = fudge.Matrix4x4.TRANSLATION(fudge.Vector3.Y(-0.5));
     prima_endaufgabe_grether_benedikt.Hitbox = Hitbox;
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));

@@ -106,7 +106,6 @@ namespace prima_endaufgabe_grether_benedikt {
 
     private movement(): void {
       if (this.cmpTransform.local.translation.x > bene.cmpTransform.local.translation.x + .1) {
-        console.log(this.cmpTransform.local.translation.x);
         this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.LEFTZOMBIE);
       } else if (this.cmpTransform.local.translation.x < bene.cmpTransform.local.translation.x - .1) {
         this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.RIGHTZOMBIE);
