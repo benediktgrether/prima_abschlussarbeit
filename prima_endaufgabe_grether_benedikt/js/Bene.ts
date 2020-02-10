@@ -13,6 +13,7 @@ namespace prima_endaufgabe_grether_benedikt {
   }
 
   let counter: number = 45;
+  let itemCounter: number = 20;
 
   export class Character extends ƒ.Node {
     private static sprites: Sprite[];
@@ -24,7 +25,7 @@ namespace prima_endaufgabe_grether_benedikt {
     public directionChar: number;
     // public healthbar: Healthpoints[] = [];
     public healthpoints: number = 50;
-
+    public itemUsabilityPoints: number = 25;
 
     constructor(_name: string = "Bene") {
       super(_name);
@@ -123,9 +124,24 @@ namespace prima_endaufgabe_grether_benedikt {
       this.show(_action, this.item);
     }
 
+    public itemUsability(): void {
+      this.itemUsabilityPoints = this.itemUsabilityPoints - 1;
+      this.updateItemUsability();
+    }
+
     public updateHealtpoints(): void {
       this.healthpoints = this.healthpoints - 1;
       this.updateHealthbar();
+    }
+
+    private updateItemUsability(): void {
+      console.log(this.itemUsabilityPoints);
+      if (itemCounter == this.itemUsabilityPoints) {
+        itemCounter -= 5;
+      }
+      if ( this.itemUsabilityPoints == 0 ) {
+        this.item = ITEM.NONE;
+      }
     }
 
     private updateHealthbar(): void {
@@ -137,25 +153,11 @@ namespace prima_endaufgabe_grether_benedikt {
         counter -= 5;
         console.log(this.healthpoints);
       }
+
       if (this.healthpoints === 0) {
         game.removeChild(bene);
       }
     }
-    // let lifeDifference: number = 100 - this.healthpoints;
-    // console.log("Test");
-    // console.log(this.healthbar.length);
-    // for (let i: number =  0; i < this.healthbar.length; i++) { 
-    //   console.log("Test");
-    //   console.log(lifeDifference);
-    //   if (i < lifeDifference) {
-    //     this.healthbar[i].act(STATUS.EMPTY);
-
-    //   } else {
-    //     this.healthbar[i].act(STATUS.FULL);
-    //   }
-    // }
-
-    // }
 
     private update = (_event: ƒ.Eventƒ): void => {
       this.broadcastEvent(new CustomEvent("showNext"));
@@ -169,6 +171,7 @@ namespace prima_endaufgabe_grether_benedikt {
       this.checkCollision(level);
       this.checkCollision(platform);
       this.hitbox.checkCollision();
+      // console.log(this.item);
     }
 
     private checkCollision(_checkCollision: ƒ.Node): void {

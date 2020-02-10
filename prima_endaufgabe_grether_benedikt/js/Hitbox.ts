@@ -82,10 +82,12 @@ namespace prima_endaufgabe_grether_benedikt {
                 if ((<Enemy>child).direction == 1 && bene.directionChar === -1) {
                   (<Enemy>child).cmpTransform.local.translateX(-0.05);
                   enemy.updateHealtpoints(<Enemy>child);
+                  bene.itemUsability();
 
                 } else if ((<Enemy>child).direction == -1 && bene.directionChar === 1) {
                   (<Enemy>child).cmpTransform.local.translateX(0.05);
                   enemy.updateHealtpoints(<Enemy>child);
+                  bene.itemUsability();
 
                 } else if ((<Enemy>child).direction == 1 && bene.directionChar === 1) {
                   bene.cmpTransform.local.translateX(0.05);

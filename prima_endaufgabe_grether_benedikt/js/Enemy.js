@@ -93,7 +93,6 @@ var prima_endaufgabe_grether_benedikt;
                 prima_endaufgabe_grether_benedikt.game.removeChild(_enemy);
                 this.healthpoints = 20;
                 counter = 15;
-                return;
             }
         }
         movement() {

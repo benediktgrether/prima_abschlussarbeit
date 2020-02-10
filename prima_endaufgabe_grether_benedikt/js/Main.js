@@ -81,6 +81,7 @@ var prima_endaufgabe_grether_benedikt;
             if (prima_endaufgabe_grether_benedikt.bene.item == "Sword") {
                 prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.SWORD);
                 prima_endaufgabe_grether_benedikt.fight = true;
+                return;
             }
             return;
         }

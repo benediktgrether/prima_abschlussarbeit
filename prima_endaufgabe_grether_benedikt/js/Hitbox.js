@@ -71,10 +71,12 @@ var prima_endaufgabe_grether_benedikt;
                                 if (child.direction == 1 && prima_endaufgabe_grether_benedikt.bene.directionChar === -1) {
                                     child.cmpTransform.local.translateX(-0.05);
                                     prima_endaufgabe_grether_benedikt.enemy.updateHealtpoints(child);
+                                    prima_endaufgabe_grether_benedikt.bene.itemUsability();
                                 }
                                 else if (child.direction == -1 && prima_endaufgabe_grether_benedikt.bene.directionChar === 1) {
                                     child.cmpTransform.local.translateX(0.05);
                                     prima_endaufgabe_grether_benedikt.enemy.updateHealtpoints(child);
+                                    prima_endaufgabe_grether_benedikt.bene.itemUsability();
                                 }
                                 else if (child.direction == 1 && prima_endaufgabe_grether_benedikt.bene.directionChar === 1) {
                                     prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(0.05);

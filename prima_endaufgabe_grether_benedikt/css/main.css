@@ -1,9 +1,24 @@
+.container{
+  position: absolute;
+  width: 800px;
+  top: 20px;
+}
+
+.wrapper-infos{
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 50px;
+  padding-right: 50px;
+
+  /* right: 20px; */
+}
+
+
 .heart-wrapper{
   display: flex;
   flex-direction: row;
-  position: absolute;
-  top: 20px;
-  right: 20px;
 }
 
 .heart {

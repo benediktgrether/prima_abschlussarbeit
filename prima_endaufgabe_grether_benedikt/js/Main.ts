@@ -112,7 +112,7 @@ namespace prima_endaufgabe_grether_benedikt {
       if (bene.item == "Sword") {
         bene.act(ACTION.SWORD);
         fight = true;
-
+        return;
       }
       return;
     }
