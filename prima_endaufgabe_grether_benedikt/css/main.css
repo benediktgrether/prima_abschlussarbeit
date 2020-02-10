@@ -1,0 +1,22 @@
+.heart-wrapper{
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.heart {
+  margin-left: 5px;
+  width: 25px;
+  height: 25px;
+}
+
+.heart-full {
+  fill: red;
+}
+
+.heart-empty {
+  fill: gray;
+  opacity: 0.5;
+}

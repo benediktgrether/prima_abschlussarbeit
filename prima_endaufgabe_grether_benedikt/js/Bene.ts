@@ -12,7 +12,7 @@ namespace prima_endaufgabe_grether_benedikt {
     LEFT, RIGHT
   }
 
-  
+  let counter: number = 45;
 
   export class Character extends ƒ.Node {
     private static sprites: Sprite[];
@@ -22,6 +22,9 @@ namespace prima_endaufgabe_grether_benedikt {
     public item: ITEM = ITEM.NONE;
     public hitbox: Hitbox;
     public directionChar: number;
+    public healthbar: Healthpoints[] = [];
+    public healthpoints: number = 50;
+
 
     constructor(_name: string = "Bene") {
       super(_name);
@@ -41,7 +44,7 @@ namespace prima_endaufgabe_grether_benedikt {
       this.hitbox = this.createHitbox();
       this.appendChild(this.hitbox);
       this.show(ACTION.IDLE, this.item);
-            
+
 
       ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, this.update);
 
@@ -60,7 +63,7 @@ namespace prima_endaufgabe_grether_benedikt {
       sprite = new Sprite(ACTION.IDLE + "." + ITEM.SWORD);
       sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(120, 8, 22, 43), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
       Character.sprites.push(sprite);
-      
+
       sprite = new Sprite(ACTION.WALK + "." + ITEM.SWORD);
       sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(144, 8, 26, 43), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
       Character.sprites.push(sprite);
@@ -111,14 +114,48 @@ namespace prima_endaufgabe_grether_benedikt {
           // console.log(direction);
           break;
         case ACTION.JUMP:
-          if (this.speed.y != 0 || this.cmpTransform.local.translation.y > 0)
-           break;
+          if (this.speed.y != 0 || this.cmpTransform.local.translation.y > 0)
+            break;
           this.speed.y = 2.5;
           break;
       }
-                  
+
       this.show(_action, this.item);
     }
+
+    public updateHealtpoints(): void {
+      this.healthpoints = this.healthpoints - 1;
+      this.updateHealthbar();
+    }
+
+    private updateHealthbar(): void {
+      if (counter == this.healthpoints) {
+        let elementIndex: string = counter.toString();
+        let element: HTMLElement = document.getElementById(elementIndex);
+        element.classList.remove("heart-full");
+        element.classList.add("heart-empty");
+        counter -= 5;
+        console.log(this.healthpoints);
+      }
+      if (this.healthpoints === 0) {
+        game.removeChild(bene);
+      }
+    }
+    // let lifeDifference: number = 100 - this.healthpoints;
+    // console.log("Test");
+    // console.log(this.healthbar.length);
+    // for (let i: number =  0; i < this.healthbar.length; i++) { 
+    //   console.log("Test");
+    //   console.log(lifeDifference);
+    //   if (i < lifeDifference) {
+    //     this.healthbar[i].act(STATUS.EMPTY);
+
+    //   } else {
+    //     this.healthbar[i].act(STATUS.FULL);
+    //   }
+    // }
+
+    // }
 
     private update = (_event: ƒ.Eventƒ): void => {
       this.broadcastEvent(new CustomEvent("showNext"));

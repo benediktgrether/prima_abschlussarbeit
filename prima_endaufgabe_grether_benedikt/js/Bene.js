@@ -16,11 +16,27 @@ var prima_endaufgabe_grether_benedikt;
         DIRECTION[DIRECTION["LEFT"] = 0] = "LEFT";
         DIRECTION[DIRECTION["RIGHT"] = 1] = "RIGHT";
     })(DIRECTION = prima_endaufgabe_grether_benedikt.DIRECTION || (prima_endaufgabe_grether_benedikt.DIRECTION = {}));
+    let counter = 45;
     class Character extends ƒ.Node {
         constructor(_name = "Bene") {
             super(_name);
             this.speed = ƒ.Vector3.ZERO();
             this.item = prima_endaufgabe_grether_benedikt.ITEM.NONE;
+            this.healthbar = [];
+            this.healthpoints = 50;
+            // let lifeDifference: number = 100 - this.healthpoints;
+            // console.log("Test");
+            // console.log(this.healthbar.length);
+            // for (let i: number =  0; i < this.healthbar.length; i++) { 
+            //   console.log("Test");
+            //   console.log(lifeDifference);
+            //   if (i < lifeDifference) {
+            //     this.healthbar[i].act(STATUS.EMPTY);
+            //   } else {
+            //     this.healthbar[i].act(STATUS.FULL);
+            //   }
+            // }
+            // }
             this.update = (_event) => {
                 this.broadcastEvent(new CustomEvent("showNext"));
                 let timeFrame = ƒ.Loop.timeFrameGame / 1000;
@@ -103,6 +119,23 @@ var prima_endaufgabe_grether_benedikt;
                     break;
             }
             this.show(_action, this.item);
+        }
+        updateHealtpoints() {
+            this.healthpoints = this.healthpoints - 1;
+            this.updateHealthbar();
+        }
+        updateHealthbar() {
+            if (counter == this.healthpoints) {
+                let elementIndex = counter.toString();
+                let element = document.getElementById(elementIndex);
+                element.classList.remove("heart-full");
+                element.classList.add("heart-empty");
+                counter -= 5;
+                console.log(this.healthpoints);
+            }
+            if (this.healthpoints === 0) {
+                prima_endaufgabe_grether_benedikt.game.removeChild(prima_endaufgabe_grether_benedikt.bene);
+            }
         }
         checkCollision(_checkCollision) {
             for (let floor of _checkCollision.getChildren()) {

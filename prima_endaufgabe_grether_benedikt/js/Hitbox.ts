@@ -60,7 +60,7 @@ namespace prima_endaufgabe_grether_benedikt {
             continue;
           }
         }
-        // console.log(game.getChildren());
+        
         for (let enemy of game.getChildren()) {
           if (enemy.name == "Zombie") {
             let hitbox: Hitbox;
@@ -69,10 +69,15 @@ namespace prima_endaufgabe_grether_benedikt {
               if ((<Enemy>enemy).direction == 1 && fight == false) {
                 console.log("hit left");
                 bene.cmpTransform.local.translateX(0.05);
-              }
-              else if ((<Enemy>enemy).direction == -1 && fight == false) {
+
+                bene.updateHealtpoints();
+
+              } else if ((<Enemy>enemy).direction == -1 && fight == false) {
                 console.log("hit right");
                 bene.cmpTransform.local.translateX(-0.05);
+                
+                bene.updateHealtpoints();
+
               } else if (bene.item == "Sword" && fight == true) {
                 if ((<Enemy>enemy).direction == 1 && bene.directionChar === -1) {
                   game.removeChild(enemy);

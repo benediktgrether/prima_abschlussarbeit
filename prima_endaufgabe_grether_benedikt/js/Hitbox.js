@@ -52,7 +52,6 @@ var prima_endaufgabe_grether_benedikt;
                         continue;
                     }
                 }
-                // console.log(game.getChildren());
                 for (let enemy of prima_endaufgabe_grether_benedikt.game.getChildren()) {
                     if (enemy.name == "Zombie") {
                         let hitbox;
@@ -61,10 +60,12 @@ var prima_endaufgabe_grether_benedikt;
                             if (enemy.direction == 1 && prima_endaufgabe_grether_benedikt.fight == false) {
                                 console.log("hit left");
                                 prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(0.05);
+                                prima_endaufgabe_grether_benedikt.bene.updateHealtpoints();
                             }
                             else if (enemy.direction == -1 && prima_endaufgabe_grether_benedikt.fight == false) {
                                 console.log("hit right");
                                 prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(-0.05);
+                                prima_endaufgabe_grether_benedikt.bene.updateHealtpoints();
                             }
                             else if (prima_endaufgabe_grether_benedikt.bene.item == "Sword" && prima_endaufgabe_grether_benedikt.fight == true) {
                                 if (enemy.direction == 1 && prima_endaufgabe_grether_benedikt.bene.directionChar === -1) {
