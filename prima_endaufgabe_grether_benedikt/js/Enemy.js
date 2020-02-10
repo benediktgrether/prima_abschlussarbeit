@@ -15,7 +15,7 @@ var prima_endaufgabe_grether_benedikt;
     let counter = 15;
     class Enemy extends ƒ.Node {
         // All Same with Character
-        constructor(_name, _translateX) {
+        constructor(_name, _translateX, _speed) {
             super(_name);
             this.speed = ƒ.Vector3.ZERO();
             // public healthbar: [] = [];
@@ -38,6 +38,9 @@ var prima_endaufgabe_grether_benedikt;
                 this.appendChild(nodeSprite);
                 // Hilfsverschiebung
                 this.cmpTransform.local.translateX(_translateX);
+                this.speedMax = new ƒ.Vector2(_speed, 0);
+                console.log(this.speed.x);
+                console.log(_speed);
             }
             this.hitbox = this.createHitbox();
             this.appendChild(this.hitbox);
@@ -72,7 +75,7 @@ var prima_endaufgabe_grether_benedikt;
                     break;
                 case ACTION_ZOMBIE.WALKZOMBIE:
                     this.direction = (_direction == DIRECTIONZOMBIE.RIGHTZOMBIE ? 1 : -1);
-                    this.speed.x = Enemy.speedMax.x;
+                    this.speed.x = this.speedMax.x;
                     this.cmpTransform.local.rotation = ƒ.Vector3.Y(90 - 90 * this.direction);
                     break;
             }
@@ -117,7 +120,6 @@ var prima_endaufgabe_grether_benedikt;
             }
         }
     }
-    Enemy.speedMax = new ƒ.Vector2(0.5, 0);
     Enemy.gravity = ƒ.Vector2.Y(-3);
     prima_endaufgabe_grether_benedikt.Enemy = Enemy;
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));

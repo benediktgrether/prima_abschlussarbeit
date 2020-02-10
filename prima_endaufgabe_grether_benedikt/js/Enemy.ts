@@ -15,8 +15,8 @@ namespace prima_endaufgabe_grether_benedikt {
 
   export class Enemy extends ƒ.Node {
     private static sprites: Sprite[];
-    private static speedMax: ƒ.Vector2 = new ƒ.Vector2(0.5, 0);
     private static gravity: ƒ.Vector2 = ƒ.Vector2.Y(-3);
+    public speedMax: ƒ.Vector2;
     public speed: ƒ.Vector3 = ƒ.Vector3.ZERO();
     public hitbox: Hitbox;
     public direction: number;
@@ -25,7 +25,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
     // All Same with Character
 
-    constructor(_name: string, _translateX: number) {
+    constructor(_name: string, _translateX: number, _speed: number) {
       super(_name);
       this.addComponent(new ƒ.ComponentTransform());
 
@@ -42,6 +42,9 @@ namespace prima_endaufgabe_grether_benedikt {
 
         // Hilfsverschiebung
         this.cmpTransform.local.translateX(_translateX);
+        this.speedMax = new ƒ.Vector2(_speed, 0);
+        console.log(this.speed.x);
+        console.log(_speed);
       }
 
       this.hitbox = this.createHitbox();
@@ -85,7 +88,7 @@ namespace prima_endaufgabe_grether_benedikt {
           break;
         case ACTION_ZOMBIE.WALKZOMBIE:
           this.direction = (_direction == DIRECTIONZOMBIE.RIGHTZOMBIE ? 1 : -1);
-          this.speed.x = Enemy.speedMax.x;
+          this.speed.x = this.speedMax.x;
           this.cmpTransform.local.rotation = ƒ.Vector3.Y(90 - 90 * this.direction);
           break;
       }
