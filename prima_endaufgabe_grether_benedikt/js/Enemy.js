@@ -96,6 +96,8 @@ var prima_endaufgabe_grether_benedikt;
                 prima_endaufgabe_grether_benedikt.game.removeChild(_enemy);
                 this.healthpoints = 20;
                 counter = 15;
+                let enemy = new Enemy("Zombie", -1, 0.5);
+                prima_endaufgabe_grether_benedikt.game.appendChild(enemy);
             }
         }
         movement() {

@@ -46,6 +46,8 @@ namespace prima_endaufgabe_grether_benedikt {
       this.itemUsabilityPoints = this.itemUsabilityPoints - 1;
       this.updateItemUsability();
     }
+
+    
     static updateItemUsability(): void {
       console.log(this.itemUsabilityPoints);
       if (this.itemCounter == this.itemUsabilityPoints) {

@@ -9,9 +9,6 @@ namespace prima_endaufgabe_grether_benedikt {
 
       let level: Floor;
 
-      // level = new Floor(0);
-      // this.appendChild(level);
-      // console.log(level.name);
       this.createLevel(level);
     }
 
@@ -40,36 +37,3 @@ namespace prima_endaufgabe_grether_benedikt {
   }
 }
 
-
-  //   public static createPlatform(): ƒ.Node {
-  //     let floorDistance: number = -0.5;
-  //     let platform: ƒ.Node = new ƒ.Node("Platform");
-  //     for (let index: number = 0; index < 5; index++) {
-  //     let floor: Floor = new Floor();
-
-  //     floor.cmpTransform.local.scaleY(0.5);
-  //     floor.cmpTransform.local.scaleX(0.5);
-  //     floor.cmpTransform.local.translateY(1);
-  //     floor.cmpTransform.local.translateX(floorDistance);
-  //     floorDistance = floorDistance + 0.25;
-
-  //     platform.appendChild(floor);
-  //     }
-
-  //     return platform;
-  //   }
-
-
-  //   public static createItem(): ƒ.Node {
-  //     let setItems: ƒ.Node = new ƒ.Node("Items");
-  //     let item: Items = new Items();
-
-  //     item.cmpTransform.local.scaleY(0.5);
-  //     item.cmpTransform.local.scaleX(0.5);
-  //     item.cmpTransform.local.translateY(1.25);
-
-  //     setItems.appendChild(item);
-
-  //     return setItems;
-  //   }
-  // }

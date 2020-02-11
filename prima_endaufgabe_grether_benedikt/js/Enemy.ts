@@ -111,6 +111,8 @@ namespace prima_endaufgabe_grether_benedikt {
         game.removeChild(_enemy);
         this.healthpoints = 20;
         counter = 15;
+        let enemy: Enemy = new Enemy("Zombie", -1, 0.5);
+        game.appendChild(enemy);
       }
     }
 
