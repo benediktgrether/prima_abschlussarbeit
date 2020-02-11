@@ -51,6 +51,8 @@ namespace prima_endaufgabe_grether_benedikt {
                 if (bene.item == ITEM.NONE) {
                   bene.item = (<Items>child).type;
                   bene.createSwordHitbox();
+                  let element: HTMLElement = document.getElementById("itemHealthBar");
+                  element.style.width = "100%";
                   console.log(bene.item);
                 }
               }

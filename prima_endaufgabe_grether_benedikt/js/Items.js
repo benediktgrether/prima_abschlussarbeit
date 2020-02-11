@@ -8,6 +8,7 @@ var prima_endaufgabe_grether_benedikt;
         ITEM["SWORD"] = "Sword";
     })(ITEM = prima_endaufgabe_grether_benedikt.ITEM || (prima_endaufgabe_grether_benedikt.ITEM = {}));
     let itemCounter = 20;
+    let healthBar = 100;
     class Items extends ƒ.Node {
         // public itemUsabilityPoints: number;
         constructor(type) {
@@ -38,11 +39,15 @@ var prima_endaufgabe_grether_benedikt;
             console.log(this.itemUsabilityPoints);
             if (itemCounter == this.itemUsabilityPoints) {
                 itemCounter -= 5;
+                healthBar -= 20;
+                let element = document.getElementById("itemHealthBar");
+                element.style.width = healthBar + "%";
             }
             if (this.itemUsabilityPoints == 0) {
                 prima_endaufgabe_grether_benedikt.bene.item = ITEM.NONE;
                 itemCounter = 20;
                 this.itemUsabilityPoints = 25;
+                healthBar = 100;
             }
         }
         creatHitbox() {

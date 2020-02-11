@@ -36,11 +36,13 @@
 
   <canvas style="background-color: aliceblue;"></canvas>
   <img style="display: none;" src="Assets/Sprite/allSprites.png" />
-  
+
   <div class="container">
     <div class="wrapper-infos">
-      <dic class="counter-wrapper">Counter</dic>
-      <div class="heart-wrapper">
+      <div class="counter-wrapper">Counter
+    </div>
+    <div class="char-wrapper">
+      <div class="heart-container">
         <svg class="heart heart-full">
           <use xlink:href="#heart" id="45" /></svg>
         <svg class="heart heart-full">
@@ -62,7 +64,13 @@
         <svg class="heart heart-full">
           <use xlink:href="#heart" id="0" /></svg>
       </div>
+      <div class="item-wrapper">
+        <div class="item-bar">
+          <div class="item-health" id="itemHealthBar"></div>
+        </div>
+      </div>
     </div>
+  </div>
   </div>
 
   <svg style="display:none">

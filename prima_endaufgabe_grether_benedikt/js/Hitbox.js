@@ -42,6 +42,8 @@ var prima_endaufgabe_grether_benedikt;
                                 if (prima_endaufgabe_grether_benedikt.bene.item == prima_endaufgabe_grether_benedikt.ITEM.NONE) {
                                     prima_endaufgabe_grether_benedikt.bene.item = child.type;
                                     prima_endaufgabe_grether_benedikt.bene.createSwordHitbox();
+                                    let element = document.getElementById("itemHealthBar");
+                                    element.style.width = "100%";
                                     console.log(prima_endaufgabe_grether_benedikt.bene.item);
                                 }
                             }

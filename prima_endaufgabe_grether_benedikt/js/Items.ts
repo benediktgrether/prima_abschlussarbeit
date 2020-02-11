@@ -8,6 +8,7 @@ namespace prima_endaufgabe_grether_benedikt {
   }
 
   let itemCounter: number = 20;
+  let healthBar: number = 100;
 
   export class Items extends ƒ.Node {
     static itemUsabilityPoints: number = 25;
@@ -48,11 +49,15 @@ namespace prima_endaufgabe_grether_benedikt {
       console.log(this.itemUsabilityPoints);
       if (itemCounter == this.itemUsabilityPoints) {
         itemCounter -= 5;
+        healthBar -= 20;
+        let element: HTMLElement = document.getElementById("itemHealthBar");
+        element.style.width = healthBar + "%";
       }
       if (this.itemUsabilityPoints == 0) {
         bene.item = ITEM.NONE;
         itemCounter = 20;
         this.itemUsabilityPoints = 25;
+        healthBar = 100;
       }
     }
 
