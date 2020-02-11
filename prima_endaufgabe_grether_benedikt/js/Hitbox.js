@@ -36,15 +36,13 @@ var prima_endaufgabe_grether_benedikt;
                         let hitbox;
                         hitbox = child.hitbox;
                         if (this.detectedHit(hitbox)) {
-                            console.log(prima_endaufgabe_grether_benedikt.bene.item);
                             if (child.name == "Item") {
-                                child.cmpTransform.local.translateY(5);
                                 if (prima_endaufgabe_grether_benedikt.bene.item == prima_endaufgabe_grether_benedikt.ITEM.NONE) {
                                     prima_endaufgabe_grether_benedikt.bene.item = child.type;
                                     prima_endaufgabe_grether_benedikt.bene.createSwordHitbox();
                                     let element = document.getElementById("itemHealthBar");
                                     element.style.width = "100%";
-                                    console.log(prima_endaufgabe_grether_benedikt.bene.item);
+                                    child.cmpTransform.local.translateY(5);
                                 }
                             }
                         }

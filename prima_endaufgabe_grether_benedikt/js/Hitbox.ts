@@ -45,15 +45,13 @@ namespace prima_endaufgabe_grether_benedikt {
             let hitbox: Hitbox;
             hitbox = (<Items>child).hitbox;
             if (this.detectedHit(hitbox)) {
-              console.log(bene.item);
               if (child.name == "Item") {
-                child.cmpTransform.local.translateY(5);
                 if (bene.item == ITEM.NONE) {
                   bene.item = (<Items>child).type;
                   bene.createSwordHitbox();
                   let element: HTMLElement = document.getElementById("itemHealthBar");
                   element.style.width = "100%";
-                  console.log(bene.item);
+                  child.cmpTransform.local.translateY(5);
                 }
               }
             }
