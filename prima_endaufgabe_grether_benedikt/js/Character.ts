@@ -155,6 +155,7 @@ namespace prima_endaufgabe_grether_benedikt {
       }
 
       if (this.healthpoints === 0) {
+        live = false;
         game.removeChild(bene);
       }
     }

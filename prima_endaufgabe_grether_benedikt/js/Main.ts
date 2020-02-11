@@ -17,13 +17,14 @@ namespace prima_endaufgabe_grether_benedikt {
   export let bene: Character;
   export let enemy: Enemy;
   export let fight: boolean = false;
+  export let live: boolean = true;
 
 
   async function loadFilesWithResponse(): Promise<void> {
-  let response: Response = await fetch("./js/data/data.json");
-  let offer: string = await response.text();
-  let data: any = JSON.parse(offer);
-  console.log(data);
+    let response: Response = await fetch("./js/data/data.json");
+    let offer: string = await response.text();
+    let data: any = JSON.parse(offer);
+    console.log(data);
   }
 
 
@@ -47,20 +48,20 @@ namespace prima_endaufgabe_grether_benedikt {
     game.cmpTransform.local.translateY(-1.17);
 
     bene = new Character("Bene");
-    enemy = new Enemy("Zombie", -1, 0.5 );
+    enemy = new Enemy("Zombie", -1, 0.5);
     level = new Level();
     platform = new Platform();
     // items = Level.createItem();
-    
+
     game.appendChild(bene);
     game.appendChild(enemy);
-    enemy = new Enemy("Zombie", 1.5, 0.3 );
+    enemy = new Enemy("Zombie", 1.5, 0.3);
 
     game.appendChild(enemy);
     game.appendChild(level);
     game.appendChild(platform);
 
-    
+
 
     let cmpCamera: ƒ.ComponentCamera = new ƒ.ComponentCamera();
     cmpCamera.pivot.translateZ(5);
@@ -98,49 +99,51 @@ namespace prima_endaufgabe_grether_benedikt {
   }
 
   function processInput(): void {
-    if (keysPressed[ƒ.KEYBOARD_CODE.A]) {
-      bene.act(ACTION.WALK, DIRECTION.LEFT);
-      fight = false;
-      return;
-    }
-    if (keysPressed[ƒ.KEYBOARD_CODE.D]) {
-      bene.act(ACTION.WALK, DIRECTION.RIGHT);
-      fight = false;
-      return;
-    }
-    if (keysPressed[ƒ.KEYBOARD_CODE.E]) {
-      bene.act(ACTION.IDLE);
-      fight = false;
-      bene.item = ITEM.NONE;
-      let element: HTMLElement = document.getElementById("itemHealthBar");
-      element.style.width = "0%";
-      return;
-    }
-    // if (keysPressed[ƒ.KEYBOARD_CODE.W]) {
-    //   bene.act(ACTION.JUMP);
-    //   fight = false;
-    //   // return;
-    // }
-    if (keysPressed[ƒ.KEYBOARD_CODE.SPACE]) {
-      if (bene.item == "Sword") {
-        bene.act(ACTION.SWORD);
-        fight = true;
+    if (live == true) {
+      if (keysPressed[ƒ.KEYBOARD_CODE.A]) {
+        bene.act(ACTION.WALK, DIRECTION.LEFT);
+        fight = false;
         return;
-      } else {
+      }
+      if (keysPressed[ƒ.KEYBOARD_CODE.D]) {
+        bene.act(ACTION.WALK, DIRECTION.RIGHT);
+        fight = false;
+        return;
+      }
+      if (keysPressed[ƒ.KEYBOARD_CODE.E]) {
         bene.act(ACTION.IDLE);
-        bene.updateHealtpoints();
-        if (enemy.direction == 1) {
-          bene.cmpTransform.local.translateX(0.05);
+        fight = false;
+        bene.item = ITEM.NONE;
+        let element: HTMLElement = document.getElementById("itemHealthBar");
+        element.style.width = "0%";
+        return;
+      }
+      // if (keysPressed[ƒ.KEYBOARD_CODE.W]) {
+      //   bene.act(ACTION.JUMP);
+      //   fight = false;
+      //   // return;
+      // }
+      if (keysPressed[ƒ.KEYBOARD_CODE.SPACE]) {
+        if (bene.item == "Sword") {
+          bene.act(ACTION.SWORD);
+          fight = true;
           return;
-        }
-        else {
-          bene.cmpTransform.local.translateX(-0.05);
-          return;
+        } else {
+          bene.act(ACTION.IDLE);
+          bene.updateHealtpoints();
+          if (enemy.direction == 1) {
+            bene.cmpTransform.local.translateX(0.05);
+            return;
+          }
+          else {
+            bene.cmpTransform.local.translateX(-0.05);
+            return;
+          }
         }
       }
+      
+      bene.act(ACTION.IDLE);
       return;
     }
-
-    bene.act(ACTION.IDLE);
   }
 }

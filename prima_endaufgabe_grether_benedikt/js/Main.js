@@ -8,6 +8,7 @@ var prima_endaufgabe_grether_benedikt;
     window.addEventListener("load", initGame);
     let keysPressed = {};
     prima_endaufgabe_grether_benedikt.fight = false;
+    prima_endaufgabe_grether_benedikt.live = true;
     async function loadFilesWithResponse() {
         let response = await fetch("./js/data/data.json");
         let offer = await response.text();
@@ -68,50 +69,52 @@ var prima_endaufgabe_grether_benedikt;
         }
     }
     function processInput() {
-        if (keysPressed[prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.A]) {
-            prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.WALK, prima_endaufgabe_grether_benedikt.DIRECTION.LEFT);
-            prima_endaufgabe_grether_benedikt.fight = false;
-            return;
-        }
-        if (keysPressed[prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.D]) {
-            prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.WALK, prima_endaufgabe_grether_benedikt.DIRECTION.RIGHT);
-            prima_endaufgabe_grether_benedikt.fight = false;
-            return;
-        }
-        if (keysPressed[prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.E]) {
-            prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
-            prima_endaufgabe_grether_benedikt.fight = false;
-            prima_endaufgabe_grether_benedikt.bene.item = prima_endaufgabe_grether_benedikt.ITEM.NONE;
-            let element = document.getElementById("itemHealthBar");
-            element.style.width = "0%";
-            return;
-        }
-        // if (keysPressed[ƒ.KEYBOARD_CODE.W]) {
-        //   bene.act(ACTION.JUMP);
-        //   fight = false;
-        //   // return;
-        // }
-        if (keysPressed[prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.SPACE]) {
-            if (prima_endaufgabe_grether_benedikt.bene.item == "Sword") {
-                prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.SWORD);
-                prima_endaufgabe_grether_benedikt.fight = true;
+        if (prima_endaufgabe_grether_benedikt.live == true) {
+            if (keysPressed[prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.A]) {
+                prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.WALK, prima_endaufgabe_grether_benedikt.DIRECTION.LEFT);
+                prima_endaufgabe_grether_benedikt.fight = false;
                 return;
             }
-            else {
+            if (keysPressed[prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.D]) {
+                prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.WALK, prima_endaufgabe_grether_benedikt.DIRECTION.RIGHT);
+                prima_endaufgabe_grether_benedikt.fight = false;
+                return;
+            }
+            if (keysPressed[prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.E]) {
                 prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
-                prima_endaufgabe_grether_benedikt.bene.updateHealtpoints();
-                if (prima_endaufgabe_grether_benedikt.enemy.direction == 1) {
-                    prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(0.05);
+                prima_endaufgabe_grether_benedikt.fight = false;
+                prima_endaufgabe_grether_benedikt.bene.item = prima_endaufgabe_grether_benedikt.ITEM.NONE;
+                let element = document.getElementById("itemHealthBar");
+                element.style.width = "0%";
+                return;
+            }
+            // if (keysPressed[ƒ.KEYBOARD_CODE.W]) {
+            //   bene.act(ACTION.JUMP);
+            //   fight = false;
+            //   // return;
+            // }
+            if (keysPressed[prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.SPACE]) {
+                if (prima_endaufgabe_grether_benedikt.bene.item == "Sword") {
+                    prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.SWORD);
+                    prima_endaufgabe_grether_benedikt.fight = true;
                     return;
                 }
                 else {
-                    prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(-0.05);
-                    return;
+                    prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
+                    prima_endaufgabe_grether_benedikt.bene.updateHealtpoints();
+                    if (prima_endaufgabe_grether_benedikt.enemy.direction == 1) {
+                        prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(0.05);
+                        return;
+                    }
+                    else {
+                        prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(-0.05);
+                        return;
+                    }
                 }
             }
+            prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
             return;
         }
-        prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
     }
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));
 //# sourceMappingURL=Main.js.map
