@@ -7,8 +7,7 @@ var prima_endaufgabe_grether_benedikt;
         ITEM["NONE"] = "None";
         ITEM["SWORD"] = "Sword";
     })(ITEM = prima_endaufgabe_grether_benedikt.ITEM || (prima_endaufgabe_grether_benedikt.ITEM = {}));
-    let itemCounter = 20;
-    let healthBar = 100;
+    // let itemCounter: number = 20;
     class Items extends ƒ.Node {
         // public itemUsabilityPoints: number;
         constructor(type) {
@@ -37,17 +36,17 @@ var prima_endaufgabe_grether_benedikt;
         }
         static updateItemUsability() {
             console.log(this.itemUsabilityPoints);
-            if (itemCounter == this.itemUsabilityPoints) {
-                itemCounter -= 5;
-                healthBar -= 20;
+            if (this.itemCounter == this.itemUsabilityPoints) {
+                this.itemCounter -= 5;
+                this.healthBar -= 20;
                 let element = document.getElementById("itemHealthBar");
-                element.style.width = healthBar + "%";
+                element.style.width = this.healthBar + "%";
             }
             if (this.itemUsabilityPoints == 0) {
                 prima_endaufgabe_grether_benedikt.bene.item = ITEM.NONE;
-                itemCounter = 20;
+                this.itemCounter = 20;
                 this.itemUsabilityPoints = 25;
-                healthBar = 100;
+                this.healthBar = 100;
             }
         }
         creatHitbox() {
@@ -63,6 +62,8 @@ var prima_endaufgabe_grether_benedikt;
         }
     }
     Items.itemUsabilityPoints = 25;
+    Items.itemCounter = 20;
+    Items.healthBar = 100;
     prima_endaufgabe_grether_benedikt.Items = Items;
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));
 //# sourceMappingURL=Items.js.map

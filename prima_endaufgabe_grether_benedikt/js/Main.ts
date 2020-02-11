@@ -116,6 +116,9 @@ namespace prima_endaufgabe_grether_benedikt {
         bene.act(ACTION.IDLE);
         fight = false;
         bene.item = ITEM.NONE;
+        Items.itemUsabilityPoints = 25;
+        Items.itemCounter = 20;
+        Items.healthBar = 100;
         let element: HTMLElement = document.getElementById("itemHealthBar");
         element.style.width = "0%";
         return;

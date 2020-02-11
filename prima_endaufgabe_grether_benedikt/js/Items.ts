@@ -7,11 +7,12 @@ namespace prima_endaufgabe_grether_benedikt {
     SWORD = "Sword"
   }
 
-  let itemCounter: number = 20;
-  let healthBar: number = 100;
+  // let itemCounter: number = 20;
 
   export class Items extends ƒ.Node {
     static itemUsabilityPoints: number = 25;
+    static itemCounter: number = 20;
+    static healthBar: number = 100;
 
     private static sprites: Sprite[];
     public hitbox: Hitbox;
@@ -47,17 +48,17 @@ namespace prima_endaufgabe_grether_benedikt {
     }
     static updateItemUsability(): void {
       console.log(this.itemUsabilityPoints);
-      if (itemCounter == this.itemUsabilityPoints) {
-        itemCounter -= 5;
-        healthBar -= 20;
+      if (this.itemCounter == this.itemUsabilityPoints) {
+        this.itemCounter -= 5;
+        this.healthBar -= 20;
         let element: HTMLElement = document.getElementById("itemHealthBar");
-        element.style.width = healthBar + "%";
+        element.style.width = this.healthBar + "%";
       }
       if (this.itemUsabilityPoints == 0) {
         bene.item = ITEM.NONE;
-        itemCounter = 20;
+        this.itemCounter = 20;
         this.itemUsabilityPoints = 25;
-        healthBar = 100;
+        this.healthBar = 100;
       }
     }
 
