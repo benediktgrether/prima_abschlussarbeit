@@ -17,17 +17,24 @@ namespace prima_endaufgabe_grether_benedikt {
 
     private createLevel(_level: Floor): ƒ.Node {
       let floorDistance: number = -3.25;
-      
+
       for (let index: number = 0; index < 30; index++) {
         _level = new Floor(floorDistance);
         floorDistance = floorDistance + 0.25;
-       
-        this.appendChild(_level);        
+
+        if (index == 5 || index == 10) {
+          let tree: Tree = new Tree(0);
+          _level.appendChild(tree);
+        }
+
+        this.appendChild(_level);
       }
 
       return level;
     }
   }
+}
+
 
   //   public static createPlatform(): ƒ.Node {
   //     let floorDistance: number = -0.5;
@@ -40,7 +47,7 @@ namespace prima_endaufgabe_grether_benedikt {
   //     floor.cmpTransform.local.translateY(1);
   //     floor.cmpTransform.local.translateX(floorDistance);
   //     floorDistance = floorDistance + 0.25;
-      
+
   //     platform.appendChild(floor);
   //     }
 
@@ -55,10 +62,9 @@ namespace prima_endaufgabe_grether_benedikt {
   //     item.cmpTransform.local.scaleY(0.5);
   //     item.cmpTransform.local.scaleX(0.5);
   //     item.cmpTransform.local.translateY(1.25);
-      
+
   //     setItems.appendChild(item);
 
   //     return setItems;
   //   }
   // }
-}

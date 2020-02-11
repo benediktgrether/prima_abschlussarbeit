@@ -33,13 +33,14 @@ namespace prima_endaufgabe_grether_benedikt {
     let canvas: HTMLCanvasElement = document.querySelector("canvas");
     // let crc2: CanvasRenderingContext2D = canvas.getContext("2d");
     let img: HTMLImageElement = document.querySelector("img");
-    let txtbene: ƒ.TextureImage = new ƒ.TextureImage();
-    txtbene.image = img;
-    Character.generateSprites(txtbene);
-    Enemy.generateSprites(txtbene);
-    Floor.generateSprites(txtbene);
-    Items.generateSprites(txtbene);
-    Gravstone.generateSprites(txtbene);
+    let txtImage: ƒ.TextureImage = new ƒ.TextureImage();
+    txtImage.image = img;
+    Character.generateSprites(txtImage);
+    Enemy.generateSprites(txtImage);
+    Floor.generateSprites(txtImage);
+    Items.generateSprites(txtImage);
+    Gravstone.generateSprites(txtImage);
+    Tree.generateSprites(txtImage);
 
     ƒ.RenderManager.initialize(true, false);
     game = new ƒ.Node("Game");
