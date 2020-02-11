@@ -27,6 +27,7 @@ var prima_endaufgabe_grether_benedikt;
         prima_endaufgabe_grether_benedikt.Items.generateSprites(txtImage);
         prima_endaufgabe_grether_benedikt.Gravstone.generateSprites(txtImage);
         prima_endaufgabe_grether_benedikt.Tree.generateSprites(txtImage);
+        prima_endaufgabe_grether_benedikt.Mountain.generateSprites(txtImage);
         prima_endaufgabe_grether_benedikt.ƒ.RenderManager.initialize(true, false);
         prima_endaufgabe_grether_benedikt.game = new prima_endaufgabe_grether_benedikt.ƒ.Node("Game");
         prima_endaufgabe_grether_benedikt.game.addComponent(new prima_endaufgabe_grether_benedikt.ƒ.ComponentTransform());

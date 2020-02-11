@@ -41,6 +41,7 @@ namespace prima_endaufgabe_grether_benedikt {
     Items.generateSprites(txtImage);
     Gravstone.generateSprites(txtImage);
     Tree.generateSprites(txtImage);
+    Mountain.generateSprites(txtImage);
 
     ƒ.RenderManager.initialize(true, false);
     game = new ƒ.Node("Game");

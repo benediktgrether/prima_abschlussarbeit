@@ -27,6 +27,11 @@ namespace prima_endaufgabe_grether_benedikt {
           _level.appendChild(tree);
         }
 
+        if (index == 1 || index == 16) {
+          let mountain: Mountain = new Mountain(4);
+          _level.appendChild(mountain);
+        }
+
         this.appendChild(_level);
       }
 

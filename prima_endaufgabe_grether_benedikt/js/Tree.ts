@@ -3,7 +3,7 @@ namespace prima_endaufgabe_grether_benedikt {
   import ƒ = FudgeCore;
 
   export enum TREES {
-    TREE = "TREE"
+    TREE = "Tree"
   }
 
   export class Tree extends ƒ.Node {
@@ -11,13 +11,14 @@ namespace prima_endaufgabe_grether_benedikt {
     
 
     constructor(_location: number) {
-      super("Gravestone");
+      super("Tree");
+
       this.addComponent(new ƒ.ComponentTransform());
+
       this.cmpTransform.local.translateX(_location);
       this.cmpTransform.local.translateY(2.5);
       this.cmpTransform.local.translateZ(-0.1);
-      // this.cmpTransform.local.scaleX(3);
-      // this.cmpTransform.local.scaleY(3);
+
       for (let sprite of Tree.sprites) {
         let nodeSprite: NodeSprite = new NodeSprite(sprite.name, sprite);
         nodeSprite.activate(false);

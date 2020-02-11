@@ -20,6 +20,10 @@ var prima_endaufgabe_grether_benedikt;
                     let tree = new prima_endaufgabe_grether_benedikt.Tree(0);
                     _level.appendChild(tree);
                 }
+                if (index == 1 || index == 16) {
+                    let mountain = new prima_endaufgabe_grether_benedikt.Mountain(4);
+                    _level.appendChild(mountain);
+                }
                 this.appendChild(_level);
             }
             return prima_endaufgabe_grether_benedikt.level;
