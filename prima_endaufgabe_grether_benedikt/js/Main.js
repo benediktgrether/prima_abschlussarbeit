@@ -77,11 +77,28 @@ var prima_endaufgabe_grether_benedikt;
             prima_endaufgabe_grether_benedikt.fight = false;
             return;
         }
+        // if (keysPressed[ƒ.KEYBOARD_CODE.W]) {
+        //   bene.act(ACTION.JUMP);
+        //   fight = false;
+        //   // return;
+        // }
         if (keysPressed[prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.SPACE]) {
             if (prima_endaufgabe_grether_benedikt.bene.item == "Sword") {
                 prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.SWORD);
                 prima_endaufgabe_grether_benedikt.fight = true;
                 return;
+            }
+            else {
+                prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
+                prima_endaufgabe_grether_benedikt.bene.updateHealtpoints();
+                if (prima_endaufgabe_grether_benedikt.enemy.direction == 1) {
+                    prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(0.05);
+                    return;
+                }
+                else {
+                    prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(-0.05);
+                    return;
+                }
             }
             return;
         }

@@ -157,4 +157,4 @@ var prima_endaufgabe_grether_benedikt;
     Character.gravity = ƒ.Vector2.Y(-3);
     prima_endaufgabe_grether_benedikt.Character = Character;
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));
-//# sourceMappingURL=Bene.js.map
+//# sourceMappingURL=Character.js.map

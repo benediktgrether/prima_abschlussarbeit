@@ -16,7 +16,6 @@ namespace prima_endaufgabe_grether_benedikt {
   export let platform: ƒ.Node;
   export let bene: Character;
   export let enemy: Enemy;
-  export let enemyTest: Enemy;
   export let fight: boolean = false;
 
 
@@ -91,7 +90,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
   function handleKeyboard(_event: KeyboardEvent): void {
     keysPressed[_event.code] = (_event.type == "keydown");
-    if (_event.code == ƒ.KEYBOARD_CODE.W && _event.type == "keydown"){
+    if (_event.code == ƒ.KEYBOARD_CODE.W && _event.type == "keydown") {
       bene.act(ACTION.JUMP);
       fight = false;
     }
@@ -108,11 +107,27 @@ namespace prima_endaufgabe_grether_benedikt {
       fight = false;
       return;
     }
+    // if (keysPressed[ƒ.KEYBOARD_CODE.W]) {
+    //   bene.act(ACTION.JUMP);
+    //   fight = false;
+    //   // return;
+    // }
     if (keysPressed[ƒ.KEYBOARD_CODE.SPACE]) {
       if (bene.item == "Sword") {
         bene.act(ACTION.SWORD);
         fight = true;
         return;
+      } else {
+        bene.act(ACTION.IDLE);
+        bene.updateHealtpoints();
+        if (enemy.direction == 1) {
+          bene.cmpTransform.local.translateX(0.05);
+          return;
+        }
+        else {
+          bene.cmpTransform.local.translateX(-0.05);
+          return;
+        }
       }
       return;
     }
