@@ -44,7 +44,7 @@ var prima_endaufgabe_grether_benedikt;
         prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.level);
         prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.platform);
         prima_endaufgabe_grether_benedikt.Sound.init();
-        prima_endaufgabe_grether_benedikt.Sound.playAtmo(2);
+        prima_endaufgabe_grether_benedikt.Sound.playMusic();
         let cmpCamera = new prima_endaufgabe_grether_benedikt.ƒ.ComponentCamera();
         cmpCamera.pivot.translateZ(5);
         cmpCamera.pivot.lookAt(prima_endaufgabe_grether_benedikt.ƒ.Vector3.ZERO());

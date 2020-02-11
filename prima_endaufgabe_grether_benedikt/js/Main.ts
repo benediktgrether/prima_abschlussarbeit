@@ -64,7 +64,7 @@ namespace prima_endaufgabe_grether_benedikt {
     game.appendChild(platform);
 
     Sound.init();
-    Sound.playAtmo(2);
+    Sound.playMusic();
 
     let cmpCamera: ƒ.ComponentCamera = new ƒ.ComponentCamera();
     cmpCamera.pivot.translateZ(5);
