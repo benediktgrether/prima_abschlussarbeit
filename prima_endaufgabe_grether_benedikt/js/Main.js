@@ -77,6 +77,14 @@ var prima_endaufgabe_grether_benedikt;
             prima_endaufgabe_grether_benedikt.fight = false;
             return;
         }
+        if (keysPressed[prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.E]) {
+            prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
+            prima_endaufgabe_grether_benedikt.fight = false;
+            prima_endaufgabe_grether_benedikt.bene.item = prima_endaufgabe_grether_benedikt.ITEM.NONE;
+            let element = document.getElementById("itemHealthBar");
+            element.style.width = "0%";
+            return;
+        }
         // if (keysPressed[ƒ.KEYBOARD_CODE.W]) {
         //   bene.act(ACTION.JUMP);
         //   fight = false;

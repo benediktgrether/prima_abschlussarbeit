@@ -107,6 +107,14 @@ namespace prima_endaufgabe_grether_benedikt {
       fight = false;
       return;
     }
+    if (keysPressed[ƒ.KEYBOARD_CODE.E]) {
+      bene.act(ACTION.IDLE);
+      fight = false;
+      bene.item = ITEM.NONE;
+      let element: HTMLElement = document.getElementById("itemHealthBar");
+      element.style.width = "0%";
+      return;
+    }
     // if (keysPressed[ƒ.KEYBOARD_CODE.W]) {
     //   bene.act(ACTION.JUMP);
     //   fight = false;
