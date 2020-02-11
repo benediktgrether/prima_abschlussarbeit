@@ -19,13 +19,13 @@ var prima_endaufgabe_grether_benedikt;
     let counter = 45;
     // let itemCounter: number = 20;
     class Character extends ƒ.Node {
-        // public healthbar: Healthpoints[] = [];
-        // public healthpoints: number = 50;
         // public itemUsabilityPoints: number = 25;
         constructor(_name = "Bene") {
             super(_name);
             this.speed = ƒ.Vector3.ZERO();
             this.item = prima_endaufgabe_grether_benedikt.ITEM.NONE;
+            // public healthbar: Healthpoints[] = [];
+            this.healthpoints = 50;
             this.update = (_event) => {
                 this.broadcastEvent(new CustomEvent("showNext"));
                 let timeFrame = ƒ.Loop.timeFrameGame / 1000;

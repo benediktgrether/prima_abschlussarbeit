@@ -24,7 +24,7 @@ namespace prima_endaufgabe_grether_benedikt {
     public hitbox: Hitbox;
     public directionChar: number;
     // public healthbar: Healthpoints[] = [];
-    // public healthpoints: number = 50;
+    public healthpoints: number = 50;
     // public itemUsabilityPoints: number = 25;
 
     constructor(_name: string = "Bene") {
