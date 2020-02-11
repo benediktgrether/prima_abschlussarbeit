@@ -90,6 +90,9 @@ var prima_endaufgabe_grether_benedikt;
                 counter -= 5;
             }
             if (this.healthpoints === 0) {
+                console.log(_enemy.cmpTransform.local.translation.x);
+                let gravestone = new prima_endaufgabe_grether_benedikt.Gravstone(_enemy.cmpTransform.local.translation.x);
+                prima_endaufgabe_grether_benedikt.game.appendChild(gravestone);
                 prima_endaufgabe_grether_benedikt.game.removeChild(_enemy);
                 this.healthpoints = 20;
                 counter = 15;

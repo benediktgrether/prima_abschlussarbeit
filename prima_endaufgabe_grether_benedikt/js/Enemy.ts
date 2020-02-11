@@ -105,6 +105,9 @@ namespace prima_endaufgabe_grether_benedikt {
         counter -= 5;
       }
       if (this.healthpoints === 0) {
+        console.log(_enemy.cmpTransform.local.translation.x);
+        let gravestone: Gravstone = new Gravstone(_enemy.cmpTransform.local.translation.x);
+        game.appendChild(gravestone);
         game.removeChild(_enemy);
         this.healthpoints = 20;
         counter = 15;

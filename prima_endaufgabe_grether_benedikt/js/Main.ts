@@ -38,6 +38,7 @@ namespace prima_endaufgabe_grether_benedikt {
     Enemy.generateSprites(txtbene);
     Floor.generateSprites(txtbene);
     Items.generateSprites(txtbene);
+    Gravstone.generateSprites(txtbene);
 
     ƒ.RenderManager.initialize(true, false);
     game = new ƒ.Node("Game");
