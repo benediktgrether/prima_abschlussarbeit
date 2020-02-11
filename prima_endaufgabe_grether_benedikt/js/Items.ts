@@ -7,11 +7,15 @@ namespace prima_endaufgabe_grether_benedikt {
     SWORD = "Sword"
   }
 
+  let itemCounter: number = 20;
+
   export class Items extends ƒ.Node {
+    static itemUsabilityPoints: number = 25;
 
     private static sprites: Sprite[];
     public hitbox: Hitbox;
     public type: ITEM;
+    // public itemUsabilityPoints: number;
 
 
     constructor(type: ITEM) {
@@ -24,7 +28,6 @@ namespace prima_endaufgabe_grether_benedikt {
         nodeSprite.activate(false);
         this.appendChild(nodeSprite);
       }
-
       this.show();
       this.hitbox = this.creatHitbox();
       this.appendChild(this.hitbox);
@@ -32,10 +35,27 @@ namespace prima_endaufgabe_grether_benedikt {
 
     public static generateSprites(_txtImage: ƒ.TextureImage): void {
       Items.sprites = [];
-      let sprite: Sprite = new Sprite (ITEM.SWORD);
+      let sprite: Sprite = new Sprite(ITEM.SWORD);
       sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(169, 125, 8, 18), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.TOPCENTER);
       Items.sprites.push(sprite);
     }
+
+    public static itemUsability(): void {
+      this.itemUsabilityPoints = this.itemUsabilityPoints - 1;
+      this.updateItemUsability();
+    }
+    static updateItemUsability(): void {
+      console.log(this.itemUsabilityPoints);
+      if (itemCounter == this.itemUsabilityPoints) {
+        itemCounter -= 5;
+      }
+      if (this.itemUsabilityPoints == 0) {
+        bene.item = ITEM.NONE;
+        itemCounter = 20;
+        this.itemUsabilityPoints = 25;
+      }
+    }
+
 
     public creatHitbox(): Hitbox {
 

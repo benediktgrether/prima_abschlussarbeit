@@ -13,7 +13,7 @@ namespace prima_endaufgabe_grether_benedikt {
   }
 
   let counter: number = 45;
-  let itemCounter: number = 20;
+  // let itemCounter: number = 20;
 
   export class Character extends ƒ.Node {
     private static sprites: Sprite[];
@@ -24,8 +24,8 @@ namespace prima_endaufgabe_grether_benedikt {
     public hitbox: Hitbox;
     public directionChar: number;
     // public healthbar: Healthpoints[] = [];
-    public healthpoints: number = 50;
-    public itemUsabilityPoints: number = 25;
+    // public healthpoints: number = 50;
+    // public itemUsabilityPoints: number = 25;
 
     constructor(_name: string = "Bene") {
       super(_name);
@@ -124,25 +124,25 @@ namespace prima_endaufgabe_grether_benedikt {
       this.show(_action, this.item);
     }
 
-    public itemUsability(): void {
-      this.itemUsabilityPoints = this.itemUsabilityPoints - 1;
-      this.updateItemUsability();
-    }
+    // public itemUsability(): void {
+    //   this.itemUsabilityPoints = this.itemUsabilityPoints - 1;
+    //   this.updateItemUsability();
+    // }
 
     public updateHealtpoints(): void {
       this.healthpoints = this.healthpoints - 1;
       this.updateHealthbar();
     }
 
-    private updateItemUsability(): void {
-      console.log(this.itemUsabilityPoints);
-      if (itemCounter == this.itemUsabilityPoints) {
-        itemCounter -= 5;
-      }
-      if ( this.itemUsabilityPoints == 0 ) {
-        this.item = ITEM.NONE;
-      }
-    }
+    // private updateItemUsability(): void {
+    //   console.log(this.itemUsabilityPoints);
+    //   if (itemCounter == this.itemUsabilityPoints) {
+    //     itemCounter -= 5;
+    //   }
+    //   if ( this.itemUsabilityPoints == 0 ) {
+    //     this.item = ITEM.NONE;
+    //   }
+    // }
 
     private updateHealthbar(): void {
       if (counter == this.healthpoints) {

@@ -17,15 +17,15 @@ var prima_endaufgabe_grether_benedikt;
         DIRECTION[DIRECTION["RIGHT"] = 1] = "RIGHT";
     })(DIRECTION = prima_endaufgabe_grether_benedikt.DIRECTION || (prima_endaufgabe_grether_benedikt.DIRECTION = {}));
     let counter = 45;
-    let itemCounter = 20;
+    // let itemCounter: number = 20;
     class Character extends ƒ.Node {
+        // public healthbar: Healthpoints[] = [];
+        // public healthpoints: number = 50;
+        // public itemUsabilityPoints: number = 25;
         constructor(_name = "Bene") {
             super(_name);
             this.speed = ƒ.Vector3.ZERO();
             this.item = prima_endaufgabe_grether_benedikt.ITEM.NONE;
-            // public healthbar: Healthpoints[] = [];
-            this.healthpoints = 50;
-            this.itemUsabilityPoints = 25;
             this.update = (_event) => {
                 this.broadcastEvent(new CustomEvent("showNext"));
                 let timeFrame = ƒ.Loop.timeFrameGame / 1000;
@@ -110,23 +110,23 @@ var prima_endaufgabe_grether_benedikt;
             }
             this.show(_action, this.item);
         }
-        itemUsability() {
-            this.itemUsabilityPoints = this.itemUsabilityPoints - 1;
-            this.updateItemUsability();
-        }
+        // public itemUsability(): void {
+        //   this.itemUsabilityPoints = this.itemUsabilityPoints - 1;
+        //   this.updateItemUsability();
+        // }
         updateHealtpoints() {
             this.healthpoints = this.healthpoints - 1;
             this.updateHealthbar();
         }
-        updateItemUsability() {
-            console.log(this.itemUsabilityPoints);
-            if (itemCounter == this.itemUsabilityPoints) {
-                itemCounter -= 5;
-            }
-            if (this.itemUsabilityPoints == 0) {
-                this.item = prima_endaufgabe_grether_benedikt.ITEM.NONE;
-            }
-        }
+        // private updateItemUsability(): void {
+        //   console.log(this.itemUsabilityPoints);
+        //   if (itemCounter == this.itemUsabilityPoints) {
+        //     itemCounter -= 5;
+        //   }
+        //   if ( this.itemUsabilityPoints == 0 ) {
+        //     this.item = ITEM.NONE;
+        //   }
+        // }
         updateHealthbar() {
             if (counter == this.healthpoints) {
                 let elementIndex = counter.toString();
