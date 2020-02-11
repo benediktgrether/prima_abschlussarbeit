@@ -5,6 +5,7 @@ namespace prima_endaufgabe_grether_benedikt {
   }
   export class Sound {
     private static sounds: Sounds = {};
+    private static counter: number = 1;
 
     public static init(): void {
       let audioElements: NodeListOf<HTMLAudioElement> = document.querySelectorAll("audio");
@@ -18,9 +19,14 @@ namespace prima_endaufgabe_grether_benedikt {
     }
 
     public static playMusic(): void {
-      Sound.sounds["beat2"].loop = true;
-      Sound.sounds["beat2"].play();
-      Sound.sounds["beat2"].volume = 0.2;
+      // Sound.sounds["beat" + this.counter].loop = true;
+      Sound.sounds["beat" + this.counter].play();
+      Sound.sounds["beat" + this.counter].volume = 0.2;
+      console.log(Sound.sounds["beat" + this.counter].ended);
+      if (this.counter == 1) 
+        this.counter = 2;
+      else
+        this.counter = 1;
     }
   }
 }
