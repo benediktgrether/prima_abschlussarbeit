@@ -8,7 +8,7 @@ var prima_endaufgabe_grether_benedikt;
     window.addEventListener("load", initGame);
     let keysPressed = {};
     prima_endaufgabe_grether_benedikt.fight = false;
-    prima_endaufgabe_grether_benedikt.live = true;
+    prima_endaufgabe_grether_benedikt.life = true;
     async function loadFilesWithResponse() {
         let response = await fetch("./js/data/data.json");
         let offer = await response.text();
@@ -69,7 +69,7 @@ var prima_endaufgabe_grether_benedikt;
         }
     }
     function processInput() {
-        if (prima_endaufgabe_grether_benedikt.live == true) {
+        if (prima_endaufgabe_grether_benedikt.life == true) {
             if (keysPressed[prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.A]) {
                 prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.WALK, prima_endaufgabe_grether_benedikt.DIRECTION.LEFT);
                 prima_endaufgabe_grether_benedikt.fight = false;

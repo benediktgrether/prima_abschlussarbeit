@@ -137,7 +137,7 @@ var prima_endaufgabe_grether_benedikt;
                 console.log(this.healthpoints);
             }
             if (this.healthpoints === 0) {
-                prima_endaufgabe_grether_benedikt.live = false;
+                prima_endaufgabe_grether_benedikt.life = false;
                 prima_endaufgabe_grether_benedikt.game.removeChild(prima_endaufgabe_grether_benedikt.bene);
             }
         }

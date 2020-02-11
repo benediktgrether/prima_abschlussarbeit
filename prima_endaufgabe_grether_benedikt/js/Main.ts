@@ -17,7 +17,7 @@ namespace prima_endaufgabe_grether_benedikt {
   export let bene: Character;
   export let enemy: Enemy;
   export let fight: boolean = false;
-  export let live: boolean = true;
+  export let life: boolean = true;
 
 
   async function loadFilesWithResponse(): Promise<void> {
@@ -99,7 +99,7 @@ namespace prima_endaufgabe_grether_benedikt {
   }
 
   function processInput(): void {
-    if (live == true) {
+    if (life == true) {
       if (keysPressed[ƒ.KEYBOARD_CODE.A]) {
         bene.act(ACTION.WALK, DIRECTION.LEFT);
         fight = false;
