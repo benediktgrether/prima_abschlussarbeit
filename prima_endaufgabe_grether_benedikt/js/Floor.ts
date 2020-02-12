@@ -7,7 +7,7 @@ namespace prima_endaufgabe_grether_benedikt {
     private static sprites: Sprite[];
     public item: Items;
 
-    public constructor(_distance: number, _translateY?: number, _distancePlatform?: number, _item?: ITEM) {
+    public constructor(_distance: number, _translateY?: number, _distancePlatform?: number, _item?: boolean) {
       super("Floor");
       let nodeSprite: NodeSprite = new NodeSprite("FloorSprite", Floor.sprites[0]);
       nodeSprite.activate(false);
@@ -32,7 +32,7 @@ namespace prima_endaufgabe_grether_benedikt {
       }
 
       if (_item) {
-        let item: Items = new Items(_item);
+        let item: Items = new Items(ITEM.SWORD);
         this.item = item;
         this.appendChild(this.item);
       }

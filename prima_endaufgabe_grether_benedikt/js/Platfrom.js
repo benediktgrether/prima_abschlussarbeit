@@ -6,8 +6,8 @@ var prima_endaufgabe_grether_benedikt;
         constructor() {
             super("Level");
             let platform;
-            this.generatePlatform(platform);
-            this.generatePlatform(platform, 3);
+            this.generatePlatform(platform, null, true);
+            this.generatePlatform(platform, 3, true);
             // platform = new Floor(0, 1, ITEM.SWORD);
             // this.appendChild(platform);
         }
@@ -15,7 +15,7 @@ var prima_endaufgabe_grether_benedikt;
             let floorDistance = -0.5;
             for (let index = 0; index < 3; index++) {
                 if (index == 1) {
-                    _platform = new prima_endaufgabe_grether_benedikt.Floor(floorDistance, 1, _distance, prima_endaufgabe_grether_benedikt.ITEM.SWORD);
+                    _platform = new prima_endaufgabe_grether_benedikt.Floor(floorDistance, 1, _distance, _item);
                 }
                 else {
                     _platform = new prima_endaufgabe_grether_benedikt.Floor(floorDistance, 1, _distance);
