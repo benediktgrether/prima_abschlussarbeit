@@ -29,7 +29,7 @@ namespace prima_endaufgabe_grether_benedikt {
       if (_translateY) {
         this.cmpTransform.local.translateY(_translateY);
       }
-      if(_distancePlatform) {
+      if (_distancePlatform) {
         this.cmpTransform.local.translateX(_distancePlatform);
       }
 

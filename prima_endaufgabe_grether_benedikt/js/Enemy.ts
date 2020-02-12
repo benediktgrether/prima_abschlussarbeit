@@ -94,12 +94,12 @@ namespace prima_endaufgabe_grether_benedikt {
       this.show(_action);
     }
 
-    public updateHealtpoints(_enemy: any): void {
+    public updateHealtpoints(_enemy: Enemy): void {
       this.healthpoints = this.healthpoints - 1;
       this.updateHealthbar(_enemy);
     }
 
-    private updateHealthbar(_enemy: any): void {
+    private updateHealthbar(_enemy: Enemy): void {
       if (counter == this.healthpoints) {
         counter -= 5;
       }
