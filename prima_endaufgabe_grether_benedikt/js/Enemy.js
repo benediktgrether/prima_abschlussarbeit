@@ -100,11 +100,13 @@ var prima_endaufgabe_grether_benedikt;
             }
         }
         itemDrop(_location) {
-            itemDrop = new prima_endaufgabe_grether_benedikt.Items(prima_endaufgabe_grether_benedikt.ITEM.SWORD, 0.25);
-            itemDrop.cmpTransform.local.translateX(_location + 0.25);
-            itemDrop.cmpTransform.local.scaleX(.5);
-            itemDrop.cmpTransform.local.scaleY(.5);
-            prima_endaufgabe_grether_benedikt.game.appendChild(itemDrop);
+            if (this.getRandomInt(3) == 1) {
+                itemDrop = new prima_endaufgabe_grether_benedikt.Items(prima_endaufgabe_grether_benedikt.ITEM.SWORD, 0.25);
+                itemDrop.cmpTransform.local.translateX(_location + 0.25);
+                itemDrop.cmpTransform.local.scaleX(.5);
+                itemDrop.cmpTransform.local.scaleY(.5);
+                prima_endaufgabe_grether_benedikt.game.appendChild(itemDrop);
+            }
         }
         movement() {
             if (this.cmpTransform.local.translation.x > prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation.x + .1) {
@@ -116,6 +118,9 @@ var prima_endaufgabe_grether_benedikt;
             else {
                 this.act(ACTION_ZOMBIE.IDLEZOMBIE);
             }
+        }
+        getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
         }
         checkCollision(_checkCollision) {
             for (let floor of _checkCollision.getChildren()) {
