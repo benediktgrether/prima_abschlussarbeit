@@ -16,6 +16,12 @@ var prima_endaufgabe_grether_benedikt;
         console.log(data);
     }
     function initGame() {
+        let startGameBtn = document.getElementById("startGame");
+        startGameBtn.addEventListener("click", startGame);
+    }
+    function startGame() {
+        let mainMenu = document.getElementById("mainMenu");
+        mainMenu.style.display = "none";
         let canvas = document.querySelector("canvas");
         // let crc2: CanvasRenderingContext2D = canvas.getContext("2d");
         let img = document.querySelector("img");

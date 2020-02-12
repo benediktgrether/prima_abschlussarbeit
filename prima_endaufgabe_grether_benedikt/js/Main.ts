@@ -27,9 +27,15 @@ namespace prima_endaufgabe_grether_benedikt {
     console.log(data);
   }
 
-
-
   function initGame(): void {
+    let startGameBtn: HTMLElement = document.getElementById("startGame");
+    startGameBtn.addEventListener("click", startGame);
+  }
+
+
+  function startGame(): void {
+    let mainMenu: HTMLElement = document.getElementById("mainMenu");
+    mainMenu.style.display = "none";
     let canvas: HTMLCanvasElement = document.querySelector("canvas");
     // let crc2: CanvasRenderingContext2D = canvas.getContext("2d");
     let img: HTMLImageElement = document.querySelector("img");
