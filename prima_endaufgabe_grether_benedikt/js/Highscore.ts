@@ -1,11 +1,13 @@
 namespace prima_endaufgabe_grether_benedikt {
 
-  let counter = 0;
 
   export class Highscore {
+    public static counter: number = 0;
     public static setHighscore(): void {
-      let element = document.getElementById("counter");
-      
+      let element: HTMLElement = document.getElementById("counter");
+      this.counter += 50;
+      element.innerHTML = this.counter.toString();
+
     }
   }
 }

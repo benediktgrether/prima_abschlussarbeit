@@ -6,7 +6,6 @@ namespace prima_endaufgabe_grether_benedikt {
   export class Sound {
     private static sounds: Sounds = {};
     private static counter: number = 1;
-    private static atmoDelay: number = 0;
 
     public static init(): void {
       let audioElements: NodeListOf<HTMLAudioElement> = document.querySelectorAll("audio");

@@ -99,6 +99,7 @@ var prima_endaufgabe_grether_benedikt;
                 let enemy = new Enemy("Zombie", -1, 0.5);
                 prima_endaufgabe_grether_benedikt.game.appendChild(enemy);
                 this.itemDrop(_enemy.cmpTransform.local.translation.x);
+                prima_endaufgabe_grether_benedikt.Highscore.setHighscore();
             }
         }
         itemDrop(_location) {

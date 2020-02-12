@@ -137,22 +137,25 @@ namespace prima_endaufgabe_grether_benedikt {
           bene.act(ACTION.SWORD);
           Sound.play("swordFight");
           fight = true;
+          bene.speed.x = 0;
           return;
         } else {
           bene.act(ACTION.IDLE);
           bene.updateHealtpoints();
-          if (enemy.direction == 1) {
+          if (enemy.direction == 1 && fight == true) {
             bene.cmpTransform.local.translateX(0.05);
+            fight = false;
             return;
           }
-          else {
+          else  if (enemy.direction == -1 && fight == true) {
             bene.cmpTransform.local.translateX(-0.05);
+            fight = false;
             return;
           }
         }
       }
-      
       bene.act(ACTION.IDLE);
+      fight = false;
       return;
     }
   }

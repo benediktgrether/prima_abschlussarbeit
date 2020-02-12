@@ -28,7 +28,6 @@ var prima_endaufgabe_grether_benedikt;
     }
     Sound.sounds = {};
     Sound.counter = 1;
-    Sound.atmoDelay = 0;
     prima_endaufgabe_grether_benedikt.Sound = Sound;
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));
 //# sourceMappingURL=Sound.js.map

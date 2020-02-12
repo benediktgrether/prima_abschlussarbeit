@@ -115,6 +115,7 @@ namespace prima_endaufgabe_grether_benedikt {
         game.appendChild(enemy);
         
         this.itemDrop(_enemy.cmpTransform.local.translation.x);
+        Highscore.setHighscore();
 
       }
     }

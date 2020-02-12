@@ -106,22 +106,26 @@ var prima_endaufgabe_grether_benedikt;
                     prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.SWORD);
                     prima_endaufgabe_grether_benedikt.Sound.play("swordFight");
                     prima_endaufgabe_grether_benedikt.fight = true;
+                    prima_endaufgabe_grether_benedikt.bene.speed.x = 0;
                     return;
                 }
                 else {
                     prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
                     prima_endaufgabe_grether_benedikt.bene.updateHealtpoints();
-                    if (prima_endaufgabe_grether_benedikt.enemy.direction == 1) {
+                    if (prima_endaufgabe_grether_benedikt.enemy.direction == 1 && prima_endaufgabe_grether_benedikt.fight == true) {
                         prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(0.05);
+                        prima_endaufgabe_grether_benedikt.fight = false;
                         return;
                     }
-                    else {
+                    else if (prima_endaufgabe_grether_benedikt.enemy.direction == -1 && prima_endaufgabe_grether_benedikt.fight == true) {
                         prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(-0.05);
+                        prima_endaufgabe_grether_benedikt.fight = false;
                         return;
                     }
                 }
             }
             prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
+            prima_endaufgabe_grether_benedikt.fight = false;
             return;
         }
     }
