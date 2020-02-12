@@ -4,7 +4,7 @@ var prima_endaufgabe_grether_benedikt;
     var ƒ = FudgeCore;
     class Platform extends ƒ.Node {
         constructor() {
-            super("Level");
+            super("Platform");
             let platform;
             this.generatePlatform(platform, null, true);
             this.generatePlatform(platform, 3, true);

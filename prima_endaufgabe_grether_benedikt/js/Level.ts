@@ -31,7 +31,6 @@ namespace prima_endaufgabe_grether_benedikt {
 
         this.appendChild(_level);
       }
-
       return level;
     }
   }

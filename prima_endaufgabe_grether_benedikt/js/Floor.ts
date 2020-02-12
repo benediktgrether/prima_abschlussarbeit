@@ -9,8 +9,10 @@ namespace prima_endaufgabe_grether_benedikt {
 
     public constructor(_distance: number, _translateY?: number, _distancePlatform?: number, _item?: boolean) {
       super("Floor");
+
       let nodeSprite: NodeSprite = new NodeSprite("FloorSprite", Floor.sprites[0]);
       nodeSprite.activate(false);
+      
       this.appendChild(nodeSprite);
 
       this.addComponent(new ƒ.ComponentTransform());

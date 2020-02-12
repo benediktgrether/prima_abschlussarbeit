@@ -58,12 +58,10 @@ var prima_endaufgabe_grether_benedikt;
                         hitbox = child.hitbox;
                         if (this.detectedHit(hitbox)) {
                             if (child.direction == 1 && prima_endaufgabe_grether_benedikt.fight == false) {
-                                console.log("hit left");
                                 prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(0.05);
                                 prima_endaufgabe_grether_benedikt.bene.updateHealtpoints();
                             }
                             else if (child.direction == -1 && prima_endaufgabe_grether_benedikt.fight == false) {
-                                console.log("hit right");
                                 prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(-0.05);
                                 prima_endaufgabe_grether_benedikt.bene.updateHealtpoints();
                             }

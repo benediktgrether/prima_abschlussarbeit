@@ -26,17 +26,20 @@ namespace prima_endaufgabe_grether_benedikt {
       this.addComponent(new ƒ.ComponentTransform());
       this.cmpTransform.local.translateY(0.5);
 
-      if (_location)
+      if (_location){
+        console.log(this.cmpTransform.local.translation.x);
         this.cmpTransform.local.translateX(_location);
+        console.log(_location);
+      }
       
       for (let sprite of Items.sprites) {
         let nodeSprite: NodeSprite = new NodeSprite(sprite.name, sprite);
         nodeSprite.activate(false);
         this.appendChild(nodeSprite);
       }
+      this.show();
       this.hitbox = this.creatHitbox();
       this.appendChild(this.hitbox);
-      this.show();
     }
 
     public static generateSprites(_txtImage: ƒ.TextureImage): void {
@@ -53,7 +56,6 @@ namespace prima_endaufgabe_grether_benedikt {
 
     
     static updateItemUsability(): void {
-      console.log(this.itemUsabilityPoints);
       if (this.itemCounter == this.itemUsabilityPoints) {
         this.itemCounter -= 5;
         this.healthBar -= 20;

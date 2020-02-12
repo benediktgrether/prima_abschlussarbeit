@@ -36,7 +36,7 @@ var prima_endaufgabe_grether_benedikt;
                 this.checkCollision(prima_endaufgabe_grether_benedikt.level);
                 this.checkCollision(prima_endaufgabe_grether_benedikt.platform);
                 this.hitbox.checkCollision();
-                // console.log(this.item);
+                // (this.item);
             };
             this.addComponent(new ƒ.ComponentTransform());
             for (let sprite of Character.sprites) {
@@ -78,13 +78,11 @@ var prima_endaufgabe_grether_benedikt;
         }
         createSwordHitbox() {
             let hitbox = new prima_endaufgabe_grether_benedikt.Hitbox("SwordHitBox");
-            console.log("test");
             hitbox.cmpTransform.local.translateY(0.6);
             hitbox.cmpTransform.local.scaleX(0.2);
             hitbox.cmpTransform.local.scaleY(0.5);
             this.hitbox = hitbox;
             this.appendChild(hitbox);
-            console.log(hitbox);
             return hitbox;
         }
         show(_action, _item) {
@@ -100,7 +98,7 @@ var prima_endaufgabe_grether_benedikt;
                     this.directionChar = (_direction == DIRECTION.RIGHT ? 1 : -1);
                     this.speed.x = Character.speedMax.x;
                     this.cmpTransform.local.rotation = ƒ.Vector3.Y(90 - 90 * this.directionChar);
-                    // console.log(direction);
+                    // (direction);
                     break;
                 case ACTION.JUMP:
                     if (this.speed.y != 0 || this.cmpTransform.local.translation.y > 0)
@@ -119,7 +117,7 @@ var prima_endaufgabe_grether_benedikt;
             this.updateHealthbar();
         }
         // private updateItemUsability(): void {
-        //   console.log(this.itemUsabilityPoints);
+        //   (this.itemUsabilityPoints);
         //   if (itemCounter == this.itemUsabilityPoints) {
         //     itemCounter -= 5;
         //   }
@@ -134,7 +132,6 @@ var prima_endaufgabe_grether_benedikt;
                 element.classList.remove("heart-full");
                 element.classList.add("heart-empty");
                 counter -= 5;
-                console.log(this.healthpoints);
             }
             if (this.healthpoints === 0) {
                 prima_endaufgabe_grether_benedikt.life = false;

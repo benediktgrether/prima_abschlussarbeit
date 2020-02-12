@@ -2,10 +2,12 @@ namespace prima_endaufgabe_grether_benedikt {
 
   import ƒ = FudgeCore;
 
+
   export class Platform extends ƒ.Node {
 
+
     constructor() {
-      super("Level");
+      super("Platform");
 
       let platform: Floor;
 
@@ -28,7 +30,6 @@ namespace prima_endaufgabe_grether_benedikt {
 
         this.appendChild(_platform);
       }
-
       return level;
     }
   }

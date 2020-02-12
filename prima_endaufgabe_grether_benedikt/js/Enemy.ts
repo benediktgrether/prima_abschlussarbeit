@@ -44,8 +44,6 @@ namespace prima_endaufgabe_grether_benedikt {
         // Hilfsverschiebung
         this.cmpTransform.local.translateX(_translateX);
         this.speedMax = new ƒ.Vector2(_speed, 0);
-        console.log(this.speed.x);
-        console.log(_speed);
       }
 
       this.hitbox = this.createHitbox();
@@ -106,7 +104,6 @@ namespace prima_endaufgabe_grether_benedikt {
         counter -= 5;
       }
       if (this.healthpoints === 0) {
-        console.log(_enemy.cmpTransform.local.translation.x);
         let gravestone: Gravstone = new Gravstone(_enemy.cmpTransform.local.translation.x);
         game.appendChild(gravestone);
         game.removeChild(_enemy);
@@ -115,13 +112,17 @@ namespace prima_endaufgabe_grether_benedikt {
         let enemy: Enemy = new Enemy("Zombie", -1, 0.5);
         game.appendChild(enemy);
         this.itemDrop(_enemy.cmpTransform.local.translation.x);
+        // Floor.itemDrop(_enemy.cmpTransform.local.translation.x);
 
       }
     }
 
     private itemDrop(_location: number): void{
       itemDrop = new Items(ITEM.SWORD, _location);
-      level.appendChild(itemDrop);
+      for (let floor of platform.getChildren()) {
+      
+        floor.appendChild(itemDrop);
+      }
     }
 
     private update = (_event: ƒ.Eventƒ): void => {

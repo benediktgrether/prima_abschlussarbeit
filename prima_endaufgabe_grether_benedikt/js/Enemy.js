@@ -40,8 +40,6 @@ var prima_endaufgabe_grether_benedikt;
                 // Hilfsverschiebung
                 this.cmpTransform.local.translateX(_translateX);
                 this.speedMax = new ƒ.Vector2(_speed, 0);
-                console.log(this.speed.x);
-                console.log(_speed);
             }
             this.hitbox = this.createHitbox();
             this.appendChild(this.hitbox);
@@ -91,7 +89,6 @@ var prima_endaufgabe_grether_benedikt;
                 counter -= 5;
             }
             if (this.healthpoints === 0) {
-                console.log(_enemy.cmpTransform.local.translation.x);
                 let gravestone = new prima_endaufgabe_grether_benedikt.Gravstone(_enemy.cmpTransform.local.translation.x);
                 prima_endaufgabe_grether_benedikt.game.appendChild(gravestone);
                 prima_endaufgabe_grether_benedikt.game.removeChild(_enemy);
@@ -100,11 +97,14 @@ var prima_endaufgabe_grether_benedikt;
                 let enemy = new Enemy("Zombie", -1, 0.5);
                 prima_endaufgabe_grether_benedikt.game.appendChild(enemy);
                 this.itemDrop(_enemy.cmpTransform.local.translation.x);
+                // Floor.itemDrop(_enemy.cmpTransform.local.translation.x);
             }
         }
         itemDrop(_location) {
             itemDrop = new prima_endaufgabe_grether_benedikt.Items(prima_endaufgabe_grether_benedikt.ITEM.SWORD, _location);
-            prima_endaufgabe_grether_benedikt.level.appendChild(itemDrop);
+            for (let floor of prima_endaufgabe_grether_benedikt.platform.getChildren()) {
+                floor.appendChild(itemDrop);
+            }
         }
         movement() {
             if (this.cmpTransform.local.translation.x > prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation.x + .1) {

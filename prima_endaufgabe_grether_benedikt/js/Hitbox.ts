@@ -67,13 +67,11 @@ namespace prima_endaufgabe_grether_benedikt {
             hitbox = (<Enemy>child).hitbox;
             if (this.detectedHit(hitbox)) {
               if ((<Enemy>child).direction == 1 && fight == false) {
-                console.log("hit left");
                 bene.cmpTransform.local.translateX(0.05);
 
                 bene.updateHealtpoints();
 
               } else if ((<Enemy>child).direction == -1 && fight == false) {
-                console.log("hit right");
                 bene.cmpTransform.local.translateX(-0.05);
                 
                 bene.updateHealtpoints();
