@@ -111,18 +111,18 @@ namespace prima_endaufgabe_grether_benedikt {
         counter = 15;
         let enemy: Enemy = new Enemy("Zombie", -1, 0.5);
         game.appendChild(enemy);
+        
         this.itemDrop(_enemy.cmpTransform.local.translation.x);
-        // Floor.itemDrop(_enemy.cmpTransform.local.translation.x);
 
       }
     }
 
-    private itemDrop(_location: number): void{
-      itemDrop = new Items(ITEM.SWORD, _location);
-      for (let floor of platform.getChildren()) {
-      
-        floor.appendChild(itemDrop);
-      }
+    private itemDrop(_location: number): void {
+      itemDrop = new Items(ITEM.SWORD, 0.25);
+      itemDrop.cmpTransform.local.translateX(_location + 0.25);
+      itemDrop.cmpTransform.local.scaleX(.5);
+      itemDrop.cmpTransform.local.scaleY(.5);
+      game.appendChild(itemDrop);
     }
 
     private update = (_event: ƒ.Eventƒ): void => {

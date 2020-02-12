@@ -11,7 +11,7 @@ var prima_endaufgabe_grether_benedikt;
                 super("Hitbox");
             }
             this.addComponent(new fudge.ComponentTransform());
-            this.addComponent(new fudge.ComponentMaterial(Hitbox.material));
+            // this.addComponent(new fudge.ComponentMaterial(Hitbox.material));
             let cmpMesh = new fudge.ComponentMesh(Hitbox.mesh);
             cmpMesh.pivot = Hitbox.pivot;
             this.addComponent(cmpMesh);
@@ -92,6 +92,23 @@ var prima_endaufgabe_grether_benedikt;
                     }
                 }
             }
+            for (let child of prima_endaufgabe_grether_benedikt.game.getChildren()) {
+                if (child.name == "Item") {
+                    let hitbox;
+                    hitbox = child.hitbox;
+                    if (this.detectedHit(hitbox)) {
+                        if (child.name == "Item") {
+                            if (prima_endaufgabe_grether_benedikt.bene.item == prima_endaufgabe_grether_benedikt.ITEM.NONE) {
+                                prima_endaufgabe_grether_benedikt.bene.item = child.type;
+                                prima_endaufgabe_grether_benedikt.bene.createSwordHitbox();
+                                let element = document.getElementById("itemHealthBar");
+                                element.style.width = "100%";
+                                child.cmpTransform.local.translateY(5);
+                            }
+                        }
+                    }
+                }
+            }
         }
         detectedHit(hitbox) {
             let hit = false;
@@ -118,7 +135,7 @@ var prima_endaufgabe_grether_benedikt;
         }
     }
     Hitbox.mesh = new fudge.MeshSprite();
-    Hitbox.material = new fudge.Material("Hitbox", fudge.ShaderUniColor, new fudge.CoatColored(fudge.Color.CSS("black", 0.5)));
+    // private static material: fudge.Material = new fudge.Material("Hitbox", fudge.ShaderUniColor, new fudge.CoatColored(fudge.Color.CSS("black", 0.5)));
     Hitbox.pivot = fudge.Matrix4x4.TRANSLATION(fudge.Vector3.Y(-0.5));
     prima_endaufgabe_grether_benedikt.Hitbox = Hitbox;
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));

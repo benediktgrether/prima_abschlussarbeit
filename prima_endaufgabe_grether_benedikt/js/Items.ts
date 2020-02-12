@@ -20,17 +20,17 @@ namespace prima_endaufgabe_grether_benedikt {
     // public itemUsabilityPoints: number;
 
 
-    constructor(type: ITEM, _location?: number) {
+    constructor(type: ITEM, _locationY?: number) {
       super("Item");
       this.type = type;
       this.addComponent(new ƒ.ComponentTransform());
-      this.cmpTransform.local.translateY(0.5);
+      this.cmpTransform.local.translateY(_locationY);
 
-      if (_location){
-        console.log(this.cmpTransform.local.translation.x);
-        this.cmpTransform.local.translateX(_location);
-        console.log(_location);
-      }
+      // if (_location){
+      //   console.log(this.cmpTransform.local.translation.x);
+      //   this.cmpTransform.local.translateX(_location);
+      //   console.log(_location);
+      // }
       
       for (let sprite of Items.sprites) {
         let nodeSprite: NodeSprite = new NodeSprite(sprite.name, sprite);

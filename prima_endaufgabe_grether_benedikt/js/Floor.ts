@@ -34,7 +34,7 @@ namespace prima_endaufgabe_grether_benedikt {
       }
 
       if (_item) {
-        let item: Items = new Items(ITEM.SWORD);
+        let item: Items = new Items(ITEM.SWORD, 0.5);
         this.item = item;
         this.appendChild(this.item);
       }

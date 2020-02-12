@@ -10,16 +10,16 @@ var prima_endaufgabe_grether_benedikt;
     // let itemCounter: number = 20;
     class Items extends ƒ.Node {
         // public itemUsabilityPoints: number;
-        constructor(type, _location) {
+        constructor(type, _locationY) {
             super("Item");
             this.type = type;
             this.addComponent(new ƒ.ComponentTransform());
-            this.cmpTransform.local.translateY(0.5);
-            if (_location) {
-                console.log(this.cmpTransform.local.translation.x);
-                this.cmpTransform.local.translateX(_location);
-                console.log(_location);
-            }
+            this.cmpTransform.local.translateY(_locationY);
+            // if (_location){
+            //   console.log(this.cmpTransform.local.translation.x);
+            //   this.cmpTransform.local.translateX(_location);
+            //   console.log(_location);
+            // }
             for (let sprite of Items.sprites) {
                 let nodeSprite = new prima_endaufgabe_grether_benedikt.NodeSprite(sprite.name, sprite);
                 nodeSprite.activate(false);
