@@ -121,11 +121,12 @@ namespace prima_endaufgabe_grether_benedikt {
 
     private itemDrop(_location: number): void {
       if (this.getRandomInt(3) == 1) {
-      itemDrop = new Items(ITEM.SWORD, 0.25);
-      itemDrop.cmpTransform.local.translateX(_location + 0.25);
-      itemDrop.cmpTransform.local.scaleX(.5);
-      itemDrop.cmpTransform.local.scaleY(.5);
-      game.appendChild(itemDrop);
+        Sound.play("itemDropZombie");
+        itemDrop = new Items(ITEM.SWORD, 0.25);
+        itemDrop.cmpTransform.local.translateX(_location + 0.25);
+        itemDrop.cmpTransform.local.scaleX(.5);
+        itemDrop.cmpTransform.local.scaleY(.5);
+        game.appendChild(itemDrop);
       }
     }
 
