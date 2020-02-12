@@ -6,6 +6,7 @@ namespace prima_endaufgabe_grether_benedikt {
   export class Sound {
     private static sounds: Sounds = {};
     private static counter: number = 1;
+    private static atmoDelay: number = 0;
 
     public static init(): void {
       let audioElements: NodeListOf<HTMLAudioElement> = document.querySelectorAll("audio");
@@ -27,6 +28,11 @@ namespace prima_endaufgabe_grether_benedikt {
         this.counter = 2;
       else
         this.counter = 1;
+    }
+
+    public static playItemDropZombie(_id: string): void {
+      Sound.play(_id);
+      window.setTimeout(Sound.playItemDropZombie, 1000);
     }
   }
 }
