@@ -15,6 +15,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
     public static play(_id: string): void {
       Sound.sounds[_id].play();
+      Sound.sounds[_id].volume = 0.2;
     }
 
     public static playMusic(): void {

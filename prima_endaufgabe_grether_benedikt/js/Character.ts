@@ -110,12 +110,14 @@ namespace prima_endaufgabe_grether_benedikt {
           this.directionChar = (_direction == DIRECTION.RIGHT ? 1 : -1);
           this.speed.x = Character.speedMax.x;
           this.cmpTransform.local.rotation = ƒ.Vector3.Y(90 - 90 * this.directionChar);
+          Sound.play("walkPlayer");
           // (direction);
           break;
         case ACTION.JUMP:
           if (this.speed.y != 0 || this.cmpTransform.local.translation.y > 0)
             break;
           this.speed.y = 2.5;
+          Sound.play("jump");
           break;
       }
 

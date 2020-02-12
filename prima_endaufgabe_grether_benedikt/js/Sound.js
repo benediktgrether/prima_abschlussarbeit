@@ -9,6 +9,7 @@ var prima_endaufgabe_grether_benedikt;
         }
         static play(_id) {
             Sound.sounds[_id].play();
+            Sound.sounds[_id].volume = 0.2;
         }
         static playMusic() {
             // Sound.sounds["beat" + this.counter].loop = true;

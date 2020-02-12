@@ -124,6 +124,7 @@ namespace prima_endaufgabe_grether_benedikt {
         Items.healthBar = 100;
         let element: HTMLElement = document.getElementById("itemHealthBar");
         element.style.width = "0%";
+        Sound.play("itemDrop");
         return;
       }
       // if (keysPressed[ƒ.KEYBOARD_CODE.W]) {
@@ -134,6 +135,7 @@ namespace prima_endaufgabe_grether_benedikt {
       if (keysPressed[ƒ.KEYBOARD_CODE.SPACE]) {
         if (bene.item == "Sword") {
           bene.act(ACTION.SWORD);
+          Sound.play("swordFight");
           fight = true;
           return;
         } else {

@@ -89,6 +89,7 @@ namespace prima_endaufgabe_grether_benedikt {
           this.direction = (_direction == DIRECTIONZOMBIE.RIGHTZOMBIE ? 1 : -1);
           this.speed.x = this.speedMax.x;
           this.cmpTransform.local.rotation = ƒ.Vector3.Y(90 - 90 * this.direction);
+          // Sound.play("walkZombie");
           break;
       }
       this.show(_action);
@@ -107,6 +108,7 @@ namespace prima_endaufgabe_grether_benedikt {
         let gravestone: Gravstone = new Gravstone(_enemy.cmpTransform.local.translation.x);
         game.appendChild(gravestone);
         game.removeChild(_enemy);
+        Sound.play("zombieDeath");
         this.healthpoints = 20;
         counter = 15;
         let enemy: Enemy = new Enemy("Zombie", -1, 0.5);

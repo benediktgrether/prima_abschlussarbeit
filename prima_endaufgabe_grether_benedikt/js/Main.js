@@ -93,6 +93,7 @@ var prima_endaufgabe_grether_benedikt;
                 prima_endaufgabe_grether_benedikt.Items.healthBar = 100;
                 let element = document.getElementById("itemHealthBar");
                 element.style.width = "0%";
+                prima_endaufgabe_grether_benedikt.Sound.play("itemDrop");
                 return;
             }
             // if (keysPressed[ƒ.KEYBOARD_CODE.W]) {
@@ -103,6 +104,7 @@ var prima_endaufgabe_grether_benedikt;
             if (keysPressed[prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.SPACE]) {
                 if (prima_endaufgabe_grether_benedikt.bene.item == "Sword") {
                     prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.SWORD);
+                    prima_endaufgabe_grether_benedikt.Sound.play("swordFight");
                     prima_endaufgabe_grether_benedikt.fight = true;
                     return;
                 }

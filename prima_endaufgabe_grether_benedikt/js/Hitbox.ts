@@ -68,12 +68,12 @@ namespace prima_endaufgabe_grether_benedikt {
             if (this.detectedHit(hitbox)) {
               if ((<Enemy>child).direction == 1 && fight == false) {
                 bene.cmpTransform.local.translateX(0.05);
-
+                Sound.play("playerHit");
                 bene.updateHealtpoints();
 
               } else if ((<Enemy>child).direction == -1 && fight == false) {
                 bene.cmpTransform.local.translateX(-0.05);
-
+                Sound.play("playerHit");
                 bene.updateHealtpoints();
 
               } else if (bene.item == "Sword" && fight == true) {
@@ -81,17 +81,21 @@ namespace prima_endaufgabe_grether_benedikt {
                   (<Enemy>child).cmpTransform.local.translateX(-0.05);
                   enemy.updateHealtpoints(<Enemy>child);
                   Items.itemUsability();
+                  Sound.play("enemyHit");
 
                 } else if ((<Enemy>child).direction == -1 && bene.directionChar === 1) {
                   (<Enemy>child).cmpTransform.local.translateX(0.05);
                   enemy.updateHealtpoints(<Enemy>child);
                   Items.itemUsability();
+                  Sound.play("enemyHit");
 
                 } else if ((<Enemy>child).direction == 1 && bene.directionChar === 1) {
+                  Sound.play("playerHit");
                   bene.cmpTransform.local.translateX(0.05);
                   bene.updateHealtpoints();
 
                 } else if ((<Enemy>child).direction == -1 && bene.directionChar === -1) {
+                  Sound.play("playerHit");
                   bene.cmpTransform.local.translateX(-0.05);
                   bene.updateHealtpoints();
                 }

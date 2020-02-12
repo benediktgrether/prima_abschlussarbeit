@@ -76,6 +76,7 @@ var prima_endaufgabe_grether_benedikt;
                     this.direction = (_direction == DIRECTIONZOMBIE.RIGHTZOMBIE ? 1 : -1);
                     this.speed.x = this.speedMax.x;
                     this.cmpTransform.local.rotation = ƒ.Vector3.Y(90 - 90 * this.direction);
+                    // Sound.play("walkZombie");
                     break;
             }
             this.show(_action);
@@ -92,6 +93,7 @@ var prima_endaufgabe_grether_benedikt;
                 let gravestone = new prima_endaufgabe_grether_benedikt.Gravstone(_enemy.cmpTransform.local.translation.x);
                 prima_endaufgabe_grether_benedikt.game.appendChild(gravestone);
                 prima_endaufgabe_grether_benedikt.game.removeChild(_enemy);
+                prima_endaufgabe_grether_benedikt.Sound.play("zombieDeath");
                 this.healthpoints = 20;
                 counter = 15;
                 let enemy = new Enemy("Zombie", -1, 0.5);

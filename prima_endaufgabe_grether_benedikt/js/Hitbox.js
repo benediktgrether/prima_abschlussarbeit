@@ -59,10 +59,12 @@ var prima_endaufgabe_grether_benedikt;
                         if (this.detectedHit(hitbox)) {
                             if (child.direction == 1 && prima_endaufgabe_grether_benedikt.fight == false) {
                                 prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(0.05);
+                                prima_endaufgabe_grether_benedikt.Sound.play("playerHit");
                                 prima_endaufgabe_grether_benedikt.bene.updateHealtpoints();
                             }
                             else if (child.direction == -1 && prima_endaufgabe_grether_benedikt.fight == false) {
                                 prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(-0.05);
+                                prima_endaufgabe_grether_benedikt.Sound.play("playerHit");
                                 prima_endaufgabe_grether_benedikt.bene.updateHealtpoints();
                             }
                             else if (prima_endaufgabe_grether_benedikt.bene.item == "Sword" && prima_endaufgabe_grether_benedikt.fight == true) {
@@ -70,17 +72,21 @@ var prima_endaufgabe_grether_benedikt;
                                     child.cmpTransform.local.translateX(-0.05);
                                     prima_endaufgabe_grether_benedikt.enemy.updateHealtpoints(child);
                                     prima_endaufgabe_grether_benedikt.Items.itemUsability();
+                                    prima_endaufgabe_grether_benedikt.Sound.play("enemyHit");
                                 }
                                 else if (child.direction == -1 && prima_endaufgabe_grether_benedikt.bene.directionChar === 1) {
                                     child.cmpTransform.local.translateX(0.05);
                                     prima_endaufgabe_grether_benedikt.enemy.updateHealtpoints(child);
                                     prima_endaufgabe_grether_benedikt.Items.itemUsability();
+                                    prima_endaufgabe_grether_benedikt.Sound.play("enemyHit");
                                 }
                                 else if (child.direction == 1 && prima_endaufgabe_grether_benedikt.bene.directionChar === 1) {
+                                    prima_endaufgabe_grether_benedikt.Sound.play("playerHit");
                                     prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(0.05);
                                     prima_endaufgabe_grether_benedikt.bene.updateHealtpoints();
                                 }
                                 else if (child.direction == -1 && prima_endaufgabe_grether_benedikt.bene.directionChar === -1) {
+                                    prima_endaufgabe_grether_benedikt.Sound.play("playerHit");
                                     prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(-0.05);
                                     prima_endaufgabe_grether_benedikt.bene.updateHealtpoints();
                                 }
