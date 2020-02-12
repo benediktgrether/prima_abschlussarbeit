@@ -7,6 +7,8 @@ namespace prima_endaufgabe_grether_benedikt {
       let element: HTMLElement = document.getElementById("counter");
       this.counter += 50;
       element.innerHTML = this.counter.toString();
+      let counterShow: HTMLElement = document.getElementById("counter-show");
+      counterShow.innerHTML = this.counter.toString();
 
     }
   }

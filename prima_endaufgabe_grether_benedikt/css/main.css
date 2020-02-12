@@ -29,6 +29,10 @@ canvas{
   align-items: center;
 }
 
+.counter-show{
+  display: none;
+}
+
 .btn{
   border: white solid 5px;
   padding: 8px 10px;

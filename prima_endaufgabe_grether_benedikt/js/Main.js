@@ -63,6 +63,8 @@ var prima_endaufgabe_grether_benedikt;
         prima_endaufgabe_grether_benedikt.ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, update);
         prima_endaufgabe_grether_benedikt.ƒ.Loop.start(prima_endaufgabe_grether_benedikt.ƒ.LOOP_MODE.TIME_GAME, 10);
         function update(_event) {
+            if (prima_endaufgabe_grether_benedikt.life == false)
+                end();
             processInput();
             viewport.draw();
             // cmpCamera.pivot.lookAt(bene.cmpTransform.local.translation);
@@ -134,6 +136,12 @@ var prima_endaufgabe_grether_benedikt;
             prima_endaufgabe_grether_benedikt.fight = false;
             return;
         }
+    }
+    function end() {
+        let mainMenu = document.getElementById("mainMenu");
+        mainMenu.style.display = "flex";
+        let counterShow = document.getElementById("counter-show");
+        counterShow.style.display = "block";
     }
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));
 //# sourceMappingURL=Main.js.map

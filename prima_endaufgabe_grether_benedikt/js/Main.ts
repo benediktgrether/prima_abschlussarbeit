@@ -90,6 +90,9 @@ namespace prima_endaufgabe_grether_benedikt {
     ƒ.Loop.start(ƒ.LOOP_MODE.TIME_GAME, 10);
 
     function update(_event: ƒ.Eventƒ): void {
+      
+      if (life == false)
+        end();
       processInput();
 
       viewport.draw();
@@ -164,5 +167,11 @@ namespace prima_endaufgabe_grether_benedikt {
       fight = false;
       return;
     }
+  }
+  function end(): void {
+    let mainMenu: HTMLElement = document.getElementById("mainMenu");
+    mainMenu.style.display = "flex";
+    let counterShow: HTMLElement = document.getElementById("counter-show");
+    counterShow.style.display = "block";
   }
 }
