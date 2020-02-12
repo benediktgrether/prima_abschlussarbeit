@@ -63,6 +63,8 @@ namespace prima_endaufgabe_grether_benedikt {
     game.appendChild(level);
     game.appendChild(platform);
 
+    console.log(game);
+
     Sound.init();
     Sound.playMusic();
 

@@ -12,6 +12,7 @@ namespace prima_endaufgabe_grether_benedikt {
   }
 
   let counter: number = 15;
+  let itemDrop: Items;
 
   export class Enemy extends ƒ.Node {
     private static sprites: Sprite[];
@@ -57,7 +58,7 @@ namespace prima_endaufgabe_grether_benedikt {
     public static generateSprites(_txtImage: ƒ.TextureImage): void {
       Enemy.sprites = [];
       let sprite: Sprite = new Sprite(ACTION_ZOMBIE.WALKZOMBIE);
-      sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(141, 55, 24 , 45 ), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
+      sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(141, 55, 24, 45), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
       Enemy.sprites.push(sprite);
 
       sprite = new Sprite(ACTION_ZOMBIE.IDLEZOMBIE);
@@ -113,7 +114,14 @@ namespace prima_endaufgabe_grether_benedikt {
         counter = 15;
         let enemy: Enemy = new Enemy("Zombie", -1, 0.5);
         game.appendChild(enemy);
+        this.itemDrop(_enemy.cmpTransform.local.translation.x);
+
       }
+    }
+
+    private itemDrop(_location: number): void{
+      itemDrop = new Items(ITEM.SWORD, _location);
+      level.appendChild(itemDrop);
     }
 
     private update = (_event: ƒ.Eventƒ): void => {
@@ -128,7 +136,7 @@ namespace prima_endaufgabe_grether_benedikt {
       this.checkCollision(platform);
       this.movement();
 
-    
+
     }
 
     private movement(): void {
@@ -137,7 +145,7 @@ namespace prima_endaufgabe_grether_benedikt {
       } else if (this.cmpTransform.local.translation.x < bene.cmpTransform.local.translation.x - .1) {
         this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.RIGHTZOMBIE);
       }
-      
+
       else {
         this.act(ACTION_ZOMBIE.IDLEZOMBIE);
       }
@@ -145,13 +153,15 @@ namespace prima_endaufgabe_grether_benedikt {
 
     private checkCollision(_checkCollision: ƒ.Node): void {
       for (let floor of _checkCollision.getChildren()) {
-        let rect: ƒ.Rectangle = (<Floor>floor).getRectWorld();
-        let hit: boolean = rect.isInside(this.cmpTransform.local.translation.toVector2());
-        if (hit) {
-          let translation: ƒ.Vector3 = this.cmpTransform.local.translation;
-          translation.y = rect.y;
-          this.cmpTransform.local.translation = translation;
-          this.speed.y = 0;
+        if (floor.name == "Floor") {
+          let rect: ƒ.Rectangle = (<Floor>floor).getRectWorld();
+          let hit: boolean = rect.isInside(this.cmpTransform.local.translation.toVector2());
+          if (hit) {
+            let translation: ƒ.Vector3 = this.cmpTransform.local.translation;
+            translation.y = rect.y;
+            this.cmpTransform.local.translation = translation;
+            this.speed.y = 0;
+          }
         }
       }
     }

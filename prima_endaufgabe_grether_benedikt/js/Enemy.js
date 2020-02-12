@@ -13,6 +13,7 @@ var prima_endaufgabe_grether_benedikt;
         DIRECTIONZOMBIE[DIRECTIONZOMBIE["RIGHTZOMBIE"] = 1] = "RIGHTZOMBIE";
     })(DIRECTIONZOMBIE = prima_endaufgabe_grether_benedikt.DIRECTIONZOMBIE || (prima_endaufgabe_grether_benedikt.DIRECTIONZOMBIE = {}));
     let counter = 15;
+    let itemDrop;
     class Enemy extends ƒ.Node {
         // All Same with Character
         constructor(_name, _translateX, _speed) {
@@ -98,7 +99,12 @@ var prima_endaufgabe_grether_benedikt;
                 counter = 15;
                 let enemy = new Enemy("Zombie", -1, 0.5);
                 prima_endaufgabe_grether_benedikt.game.appendChild(enemy);
+                this.itemDrop(_enemy.cmpTransform.local.translation.x);
             }
+        }
+        itemDrop(_location) {
+            itemDrop = new prima_endaufgabe_grether_benedikt.Items(prima_endaufgabe_grether_benedikt.ITEM.SWORD, _location);
+            prima_endaufgabe_grether_benedikt.level.appendChild(itemDrop);
         }
         movement() {
             if (this.cmpTransform.local.translation.x > prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation.x + .1) {
@@ -113,13 +119,15 @@ var prima_endaufgabe_grether_benedikt;
         }
         checkCollision(_checkCollision) {
             for (let floor of _checkCollision.getChildren()) {
-                let rect = floor.getRectWorld();
-                let hit = rect.isInside(this.cmpTransform.local.translation.toVector2());
-                if (hit) {
-                    let translation = this.cmpTransform.local.translation;
-                    translation.y = rect.y;
-                    this.cmpTransform.local.translation = translation;
-                    this.speed.y = 0;
+                if (floor.name == "Floor") {
+                    let rect = floor.getRectWorld();
+                    let hit = rect.isInside(this.cmpTransform.local.translation.toVector2());
+                    if (hit) {
+                        let translation = this.cmpTransform.local.translation;
+                        translation.y = rect.y;
+                        this.cmpTransform.local.translation = translation;
+                        this.speed.y = 0;
+                    }
                 }
             }
         }

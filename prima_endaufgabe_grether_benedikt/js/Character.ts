@@ -177,13 +177,15 @@ namespace prima_endaufgabe_grether_benedikt {
 
     private checkCollision(_checkCollision: ƒ.Node): void {
       for (let floor of _checkCollision.getChildren()) {
-        let rect: ƒ.Rectangle = (<Floor>floor).getRectWorld();
-        let hit: boolean = rect.isInside(this.cmpTransform.local.translation.toVector2());
-        if (hit) {
-          let translation: ƒ.Vector3 = this.cmpTransform.local.translation;
-          translation.y = rect.y;
-          this.cmpTransform.local.translation = translation;
-          this.speed.y = 0;
+        if (floor.name == "Floor") {
+          let rect: ƒ.Rectangle = (<Floor>floor).getRectWorld();
+          let hit: boolean = rect.isInside(this.cmpTransform.local.translation.toVector2());
+          if (hit) {
+            let translation: ƒ.Vector3 = this.cmpTransform.local.translation;
+            translation.y = rect.y;
+            this.cmpTransform.local.translation = translation;
+            this.speed.y = 0;
+          }
         }
       }
     }

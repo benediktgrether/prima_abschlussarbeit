@@ -10,19 +10,21 @@ var prima_endaufgabe_grether_benedikt;
     // let itemCounter: number = 20;
     class Items extends ƒ.Node {
         // public itemUsabilityPoints: number;
-        constructor(type) {
+        constructor(type, _location) {
             super("Item");
             this.type = type;
             this.addComponent(new ƒ.ComponentTransform());
             this.cmpTransform.local.translateY(0.5);
+            if (_location)
+                this.cmpTransform.local.translateX(_location);
             for (let sprite of Items.sprites) {
                 let nodeSprite = new prima_endaufgabe_grether_benedikt.NodeSprite(sprite.name, sprite);
                 nodeSprite.activate(false);
                 this.appendChild(nodeSprite);
             }
-            this.show();
             this.hitbox = this.creatHitbox();
             this.appendChild(this.hitbox);
+            this.show();
         }
         static generateSprites(_txtImage) {
             Items.sprites = [];

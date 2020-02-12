@@ -85,7 +85,7 @@ var prima_endaufgabe_grether_benedikt;
             this.addComponent(this.cmpMesh);
             this.addComponent(this.cmpMaterial);
             this.showFrame(this.frameCurrent);
-            ƒ.Debug.info("NodeSprite constructor", this);
+            // ƒ.Debug.info("NodeSprite constructor", this);
         }
         showFrame(_index) {
             let spriteFrame = this.sprite.frames[_index];

@@ -143,13 +143,15 @@ var prima_endaufgabe_grether_benedikt;
         }
         checkCollision(_checkCollision) {
             for (let floor of _checkCollision.getChildren()) {
-                let rect = floor.getRectWorld();
-                let hit = rect.isInside(this.cmpTransform.local.translation.toVector2());
-                if (hit) {
-                    let translation = this.cmpTransform.local.translation;
-                    translation.y = rect.y;
-                    this.cmpTransform.local.translation = translation;
-                    this.speed.y = 0;
+                if (floor.name == "Floor") {
+                    let rect = floor.getRectWorld();
+                    let hit = rect.isInside(this.cmpTransform.local.translation.toVector2());
+                    if (hit) {
+                        let translation = this.cmpTransform.local.translation;
+                        translation.y = rect.y;
+                        this.cmpTransform.local.translation = translation;
+                        this.speed.y = 0;
+                    }
                 }
             }
         }

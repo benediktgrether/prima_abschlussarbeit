@@ -112,7 +112,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
       this.showFrame(this.frameCurrent);
 
-      ƒ.Debug.info("NodeSprite constructor", this);
+      // ƒ.Debug.info("NodeSprite constructor", this);
     }
 
     public showFrame(_index: number): void {
