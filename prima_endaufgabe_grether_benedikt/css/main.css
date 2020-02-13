@@ -33,15 +33,35 @@ canvas{
   display: none;
 }
 
-.btn{
+.btn-wrapper{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.btn, .btn-input{
   border: white solid 5px;
   padding: 8px 10px;
   background-color: black;
   color: white;
-  cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 
+.btn-input{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.btn-space{
+  width: 50px;
+}
+
+.btn{
+  cursor: pointer;
+}
 
 .btn:hover{
   background-color: white;

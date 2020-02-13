@@ -19,6 +19,7 @@ namespace prima_endaufgabe_grether_benedikt {
   export let fight: boolean = false;
   export let life: boolean = true;
 
+  export let soundVolume: boolean = false;
 
   async function loadFilesWithResponse(): Promise<void> {
     let response: Response = await fetch("./js/data/data.json");
@@ -29,6 +30,8 @@ namespace prima_endaufgabe_grether_benedikt {
 
   function initGame(): void {
     let startGameBtn: HTMLElement = document.getElementById("startGame");
+    let mute: HTMLElement = document.getElementById("mute")
+    mute.addEventListener("click", Sound.mute);
     startGameBtn.addEventListener("click", startGame);
   }
 

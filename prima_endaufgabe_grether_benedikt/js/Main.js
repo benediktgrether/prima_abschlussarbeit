@@ -9,6 +9,7 @@ var prima_endaufgabe_grether_benedikt;
     let keysPressed = {};
     prima_endaufgabe_grether_benedikt.fight = false;
     prima_endaufgabe_grether_benedikt.life = true;
+    prima_endaufgabe_grether_benedikt.soundVolume = false;
     async function loadFilesWithResponse() {
         let response = await fetch("./js/data/data.json");
         let offer = await response.text();
@@ -17,6 +18,8 @@ var prima_endaufgabe_grether_benedikt;
     }
     function initGame() {
         let startGameBtn = document.getElementById("startGame");
+        let mute = document.getElementById("mute");
+        mute.addEventListener("click", prima_endaufgabe_grether_benedikt.Sound.mute);
         startGameBtn.addEventListener("click", startGame);
     }
     function startGame() {

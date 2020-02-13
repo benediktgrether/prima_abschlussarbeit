@@ -2,29 +2,34 @@
 var prima_endaufgabe_grether_benedikt;
 (function (prima_endaufgabe_grether_benedikt) {
     class Sound {
+        // private static soundVolume: number = 0;
         static init() {
             let audioElements = document.querySelectorAll("audio");
             for (let element of audioElements)
                 Sound.sounds[element.id] = element;
         }
         static play(_id) {
-            Sound.sounds[_id].play();
-            Sound.sounds[_id].volume = 0.2;
+            if (prima_endaufgabe_grether_benedikt.soundVolume == false) {
+                Sound.sounds[_id].volume = 0.2;
+                Sound.sounds[_id].play();
+            }
+            else {
+                Sound.sounds[_id].volume = 0.0;
+                Sound.sounds[_id].play();
+            }
         }
         static playMusic() {
-            // Sound.sounds["beat" + this.counter].loop = true;
-            Sound.sounds["beat" + this.counter].loop = true;
-            Sound.sounds["beat" + this.counter].play();
-            Sound.sounds["beat" + this.counter].volume = 0.2;
-            console.log(Sound.sounds["beat" + this.counter].ended);
-            if (this.counter == 1)
-                this.counter = 2;
-            else
-                this.counter = 1;
+            if (prima_endaufgabe_grether_benedikt.soundVolume == false) {
+                Sound.sounds["beat" + this.counter].loop = true;
+                Sound.sounds["beat" + this.counter].play();
+            }
         }
         static playItemDropZombie(_id) {
             Sound.play(_id);
             window.setTimeout(Sound.playItemDropZombie, 1000);
+        }
+        static mute() {
+            prima_endaufgabe_grether_benedikt.soundVolume = true;
         }
     }
     Sound.sounds = {};
