@@ -9,7 +9,7 @@ var prima_endaufgabe_grether_benedikt;
             this.fetchData(_data, level);
         }
         createLevel(_level, _levelDistance) {
-            let floorDistance = -50;
+            let floorDistance = -3.25;
             for (let index = 0; index < _levelDistance; index++) {
                 _level = new prima_endaufgabe_grether_benedikt.Floor(floorDistance);
                 floorDistance = floorDistance + 0.25;

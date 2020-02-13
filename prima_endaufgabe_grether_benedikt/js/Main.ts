@@ -76,7 +76,7 @@ namespace prima_endaufgabe_grether_benedikt {
     game.cmpTransform.local.translateY(-1.17);
 
     bene = new Character("Bene");
-    enemy = new Enemy("Zombie", -1, 0.5);
+    enemy = new Enemy("Zombie", -3, 0.5);
     level = new Level(data);
     platform = new Platform(data);
     game.appendChild(platform);
@@ -84,10 +84,10 @@ namespace prima_endaufgabe_grether_benedikt {
 
 
     game.appendChild(bene);
-    // game.appendChild(enemy);
-    enemy = new Enemy("Zombie", 1.5, 0.3);
+    game.appendChild(enemy);
+    enemy = new Enemy("Zombie", 3, 0.3);
 
-    // game.appendChild(enemy);
+    game.appendChild(enemy);
     game.appendChild(level);
 
 

@@ -37,10 +37,10 @@ var prima_endaufgabe_grether_benedikt;
                 nodeSprite.activate(false);
                 nodeSprite.addEventListener("showNext", (_event) => { _event.currentTarget.showFrameNext(); }, true);
                 this.appendChild(nodeSprite);
-                // Hilfsverschiebung
-                this.cmpTransform.local.translateX(_translateX);
-                this.speedMax = new ƒ.Vector2(_speed, 0);
             }
+            // Hilfsverschiebung
+            this.cmpTransform.local.translateX(_translateX);
+            this.speedMax = new ƒ.Vector2(_speed, 0);
             this.hitbox = this.createHitbox();
             this.appendChild(this.hitbox);
             this.show(ACTION_ZOMBIE.IDLEZOMBIE);
@@ -96,11 +96,31 @@ var prima_endaufgabe_grether_benedikt;
                 prima_endaufgabe_grether_benedikt.Sound.play("zombieDeath");
                 this.healthpoints = 20;
                 counter = 15;
-                let enemy = new Enemy("Zombie", -1, 0.5);
-                prima_endaufgabe_grether_benedikt.game.appendChild(enemy);
+                this.spawnNewEnemy();
                 this.itemDrop(_enemy.cmpTransform.local.translation.x);
                 prima_endaufgabe_grether_benedikt.Highscore.setHighscore();
             }
+        }
+        spawnNewEnemy() {
+            let enemy;
+            let positonHero = prima_endaufgabe_grether_benedikt.bene.mtxWorld.translation.x;
+            if (this.getRandomInt(2) == 0) {
+                if ((positonHero + 3.5) < 20) {
+                    enemy = new Enemy("Zombie", (positonHero + 3), 0.5);
+                }
+                else {
+                    enemy = new Enemy("Zombie", (positonHero - 3), 0.5);
+                }
+            }
+            else {
+                if ((positonHero - 3.5) > -2) {
+                    enemy = new Enemy("Zombie", (positonHero - 3), 0.5);
+                }
+                else {
+                    enemy = new Enemy("Zombie", (positonHero + 3), 0.5);
+                }
+            }
+            prima_endaufgabe_grether_benedikt.game.appendChild(enemy);
         }
         itemDrop(_location) {
             if (this.getRandomInt(3) == 1) {

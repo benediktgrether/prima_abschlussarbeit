@@ -40,11 +40,11 @@ namespace prima_endaufgabe_grether_benedikt {
           true
         );
         this.appendChild(nodeSprite);
-
-        // Hilfsverschiebung
-        this.cmpTransform.local.translateX(_translateX);
-        this.speedMax = new ƒ.Vector2(_speed, 0);
       }
+
+      // Hilfsverschiebung
+      this.cmpTransform.local.translateX(_translateX);
+      this.speedMax = new ƒ.Vector2(_speed, 0);
 
       this.hitbox = this.createHitbox();
       this.appendChild(this.hitbox);
@@ -111,13 +111,32 @@ namespace prima_endaufgabe_grether_benedikt {
         Sound.play("zombieDeath");
         this.healthpoints = 20;
         counter = 15;
-        let enemy: Enemy = new Enemy("Zombie", -1, 0.5);
-        game.appendChild(enemy);
-        
+
+        this.spawnNewEnemy();
         this.itemDrop(_enemy.cmpTransform.local.translation.x);
         Highscore.setHighscore();
 
       }
+    }
+
+    private spawnNewEnemy(): void {
+      let enemy: Enemy;
+      let positonHero: number = bene.mtxWorld.translation.x;
+      if (this.getRandomInt(2) == 0) {
+        if ((positonHero + 3.5) < 20) {
+          enemy = new Enemy("Zombie", (positonHero + 3), 0.5);
+        } else {
+          enemy = new Enemy("Zombie", (positonHero - 3), 0.5);
+        }
+      } else {
+        if ((positonHero - 3.5) > - 2) {
+          enemy = new Enemy("Zombie", (positonHero - 3), 0.5);
+        } else {
+          enemy = new Enemy("Zombie", (positonHero + 3), 0.5);
+
+        }
+      }
+      game.appendChild(enemy);
     }
 
     private itemDrop(_location: number): void {
@@ -158,7 +177,7 @@ namespace prima_endaufgabe_grether_benedikt {
       }
     }
 
-    private getRandomInt( max: number): number {
+    private getRandomInt(max: number): number {
       return Math.floor(Math.random() * Math.floor(max));
     }
 
