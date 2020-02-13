@@ -25,6 +25,7 @@ namespace prima_endaufgabe_grether_benedikt {
         this.appendChild(nodeSprite);
       }
       this.show();
+      ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, this.update);
     }
     public static generateSprites(_txtImage: ƒ.TextureImage): void {
       Tree.sprites = [];
@@ -35,6 +36,10 @@ namespace prima_endaufgabe_grether_benedikt {
     public show(): void {
       for (let child of this.getChildren())
         child.activate(child.name == TREES.TREE);
+    }
+
+    private update = (_event: ƒ.Eventƒ): void => {
+      this.cmpTransform.local.translation = new ƒ.Vector3(bene.cmpTransform.local.translation.x, 2.5 , -0.1);
     }
   }
 }

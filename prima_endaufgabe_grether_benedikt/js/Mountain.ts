@@ -8,7 +8,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
   export class Mountain extends ƒ.Node {
     private static sprites: Sprite[];
-    
+
 
     constructor(_location: number) {
       super("Mountain");
@@ -25,6 +25,7 @@ namespace prima_endaufgabe_grether_benedikt {
         this.appendChild(nodeSprite);
       }
       this.show();
+      ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, this.update);
     }
     public static generateSprites(_txtImage: ƒ.TextureImage): void {
       Mountain.sprites = [];
@@ -36,5 +37,19 @@ namespace prima_endaufgabe_grether_benedikt {
       for (let child of this.getChildren())
         child.activate(child.name == MOUNTAINS.MOUNTAIN);
     }
+
+    private update = (_event: ƒ.Eventƒ): void => {
+      this.cmpTransform.local.translation = new ƒ.Vector3(bene.cmpTransform.local.translation.x, 3.5 , -0.2);
+    }
+
   }
 }
+//     if (index == 5 || index == 10) {
+//   let tree: Tree = new Tree(0);
+//   _level.appendChild(tree);
+// }
+
+// if (index == 1 || index == 16) {
+//   let mountain: Mountain = new Mountain(4);
+//   _level.appendChild(mountain);
+// }

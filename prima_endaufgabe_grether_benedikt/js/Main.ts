@@ -39,7 +39,6 @@ namespace prima_endaufgabe_grether_benedikt {
     let response: Response = await fetch("./js/data/data.json");
     let offer: string = await response.text();
     data = JSON.parse(offer);
-    // generateLevel(data);
   }
 
   function initGame(): void {
@@ -81,6 +80,7 @@ namespace prima_endaufgabe_grether_benedikt {
     platform = new Platform(data);
     game.appendChild(platform);
 
+    
 
 
     game.appendChild(bene);

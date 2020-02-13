@@ -16,7 +16,6 @@ var prima_endaufgabe_grether_benedikt;
         let response = await fetch("./js/data/data.json");
         let offer = await response.text();
         data = JSON.parse(offer);
-        // generateLevel(data);
     }
     function initGame() {
         let startGameBtn = document.getElementById("startGame");

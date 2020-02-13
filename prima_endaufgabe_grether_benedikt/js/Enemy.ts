@@ -123,13 +123,13 @@ namespace prima_endaufgabe_grether_benedikt {
       let enemy: Enemy;
       let positonHero: number = bene.mtxWorld.translation.x;
       if (this.getRandomInt(2) == 0) {
-        if ((positonHero + 3.5) < 20) {
+        if ((positonHero + 3.5) < 12.5) {
           enemy = new Enemy("Zombie", (positonHero + 3), 0.5);
         } else {
           enemy = new Enemy("Zombie", (positonHero - 3), 0.5);
         }
       } else {
-        if ((positonHero - 3.5) > - 2) {
+        if ((positonHero - 3.5) > - 12.5) {
           enemy = new Enemy("Zombie", (positonHero - 3), 0.5);
         } else {
           enemy = new Enemy("Zombie", (positonHero + 3), 0.5);
