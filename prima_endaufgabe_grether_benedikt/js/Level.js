@@ -7,7 +7,6 @@ var prima_endaufgabe_grether_benedikt;
             super("Level");
             let level;
             this.fetchData(_data, level);
-            // this.createLevel(level);
         }
         createLevel(_level, _levelDistance) {
             let floorDistance = -3.25;
@@ -22,6 +21,7 @@ var prima_endaufgabe_grether_benedikt;
                     let mountain = new prima_endaufgabe_grether_benedikt.Mountain(4);
                     _level.appendChild(mountain);
                 }
+                console.log(_level.cmpTransform.local.translation);
                 this.appendChild(_level);
             }
             return prima_endaufgabe_grether_benedikt.level;

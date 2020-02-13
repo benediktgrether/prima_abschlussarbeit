@@ -84,10 +84,10 @@ namespace prima_endaufgabe_grether_benedikt {
 
 
     game.appendChild(bene);
-    game.appendChild(enemy);
+    // game.appendChild(enemy);
     enemy = new Enemy("Zombie", 1.5, 0.3);
 
-    game.appendChild(enemy);
+    // game.appendChild(enemy);
     game.appendChild(level);
 
 

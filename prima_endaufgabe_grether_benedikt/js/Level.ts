@@ -17,8 +17,6 @@ namespace prima_endaufgabe_grether_benedikt {
 
       let level: Floor;
       this.fetchData(_data, level);
-
-      // this.createLevel(level);
     }
 
     private createLevel(_level: Floor, _levelDistance: number): ƒ.Node {
@@ -28,7 +26,7 @@ namespace prima_endaufgabe_grether_benedikt {
         _level = new Floor(floorDistance);
         floorDistance = floorDistance + 0.25;
 
-        if (index == 5 || index == 10) {
+        if (index == 5 || index == 10) {
           let tree: Tree = new Tree(0);
           _level.appendChild(tree);
         }
@@ -37,6 +35,7 @@ namespace prima_endaufgabe_grether_benedikt {
           let mountain: Mountain = new Mountain(4);
           _level.appendChild(mountain);
         }
+        console.log(_level.cmpTransform.local.translation);
 
         this.appendChild(_level);
       }
