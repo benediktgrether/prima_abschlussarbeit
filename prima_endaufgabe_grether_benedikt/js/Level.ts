@@ -35,7 +35,6 @@ namespace prima_endaufgabe_grether_benedikt {
           let mountain: Mountain = new Mountain(4);
           _level.appendChild(mountain);
         }
-        console.log(_level.cmpTransform.local.translation);
 
         this.appendChild(_level);
       }

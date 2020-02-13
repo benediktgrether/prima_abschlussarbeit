@@ -21,7 +21,6 @@ var prima_endaufgabe_grether_benedikt;
                     let mountain = new prima_endaufgabe_grether_benedikt.Mountain(4);
                     _level.appendChild(mountain);
                 }
-                console.log(_level.cmpTransform.local.translation);
                 this.appendChild(_level);
             }
             return prima_endaufgabe_grether_benedikt.level;
