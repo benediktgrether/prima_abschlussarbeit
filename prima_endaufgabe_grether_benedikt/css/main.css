@@ -107,6 +107,11 @@ canvas{
   height: 25px;
 }
 
+/* .heart-wrapper{
+  width: 25px;
+  height: 25px;
+} */
+
 .heart-full {
   fill: red;
 }
