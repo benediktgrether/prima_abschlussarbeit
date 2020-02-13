@@ -2,15 +2,15 @@
   {
     "platform": [
       {
-        "distance": 0,
+        "distance": -40,
         "item": true
       },
       {
-        "distance": 3,
+        "distance": -30,
         "item": true
       },
       {
-        "distance": 6,
+        "distance": -35,
         "item": false
       }
     ],
