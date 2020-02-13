@@ -1,7 +1,18 @@
-{
-  "File": "Test2",
-  "Extension": ".json",
-  "Encoding": "UTF-8",
-  "Special": "äöüß\n\r",
-  "EndOfFile": true
-}
+[
+  {
+    "platform": [
+      {
+        "distance": 0,
+        "item": true
+      },
+      {
+        "distance": 3,
+        "item": true
+      },
+      {
+        "distance": 6,
+        "item": false
+      }
+    ]
+  }
+]

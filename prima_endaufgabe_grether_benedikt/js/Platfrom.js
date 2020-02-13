@@ -3,13 +3,10 @@ var prima_endaufgabe_grether_benedikt;
 (function (prima_endaufgabe_grether_benedikt) {
     var ƒ = FudgeCore;
     class Platform extends ƒ.Node {
-        constructor() {
+        constructor(_data) {
             super("Platform");
             let platform;
-            this.generatePlatform(platform, null, true);
-            this.generatePlatform(platform, 3, true);
-            // platform = new Floor(0, 1, ITEM.SWORD);
-            // this.appendChild(platform);
+            this.fetchData(_data, platform);
         }
         generatePlatform(_platform, _distance, _item) {
             let floorDistance = -0.5;
@@ -24,6 +21,11 @@ var prima_endaufgabe_grether_benedikt;
                 this.appendChild(_platform);
             }
             return prima_endaufgabe_grether_benedikt.level;
+        }
+        fetchData(_data, platform) {
+            for (let i = 0; i < _data[0].platform.length; i++) {
+                this.generatePlatform(platform, _data[0].platform[i].distance, _data[0].platform[i].item);
+            }
         }
     }
     prima_endaufgabe_grether_benedikt.Platform = Platform;

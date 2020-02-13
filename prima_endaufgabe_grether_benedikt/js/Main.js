@@ -9,12 +9,16 @@ var prima_endaufgabe_grether_benedikt;
     let keysPressed = {};
     prima_endaufgabe_grether_benedikt.fight = false;
     prima_endaufgabe_grether_benedikt.life = true;
+    let data;
+    let i = 0;
     prima_endaufgabe_grether_benedikt.soundVolume = false;
     async function loadFilesWithResponse() {
         let response = await fetch("./js/data/data.json");
         let offer = await response.text();
-        let data = JSON.parse(offer);
-        console.log(data);
+        data = JSON.parse(offer);
+        // generateLevel(data);
+    }
+    function generateLevel(data) {
     }
     function initGame() {
         let startGameBtn = document.getElementById("startGame");
@@ -45,14 +49,13 @@ var prima_endaufgabe_grether_benedikt;
         prima_endaufgabe_grether_benedikt.bene = new prima_endaufgabe_grether_benedikt.Character("Bene");
         prima_endaufgabe_grether_benedikt.enemy = new prima_endaufgabe_grether_benedikt.Enemy("Zombie", -1, 0.5);
         prima_endaufgabe_grether_benedikt.level = new prima_endaufgabe_grether_benedikt.Level();
-        prima_endaufgabe_grether_benedikt.platform = new prima_endaufgabe_grether_benedikt.Platform();
-        // items = Level.createItem();
+        prima_endaufgabe_grether_benedikt.platform = new prima_endaufgabe_grether_benedikt.Platform(data);
+        prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.platform);
         prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.bene);
         prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.enemy);
         prima_endaufgabe_grether_benedikt.enemy = new prima_endaufgabe_grether_benedikt.Enemy("Zombie", 1.5, 0.3);
         prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.enemy);
         prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.level);
-        prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.platform);
         prima_endaufgabe_grether_benedikt.Sound.init();
         prima_endaufgabe_grether_benedikt.Sound.playMusic();
         let cmpCamera = new prima_endaufgabe_grether_benedikt.ƒ.ComponentCamera();

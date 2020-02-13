@@ -6,6 +6,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
   window.addEventListener("load", initGame);
 
+
   interface KeyPressed {
     [code: string]: boolean;
   }
@@ -18,14 +19,21 @@ namespace prima_endaufgabe_grether_benedikt {
   export let enemy: Enemy;
   export let fight: boolean = false;
   export let life: boolean = true;
+  let data: Object[];
+  let i = 0;
 
   export let soundVolume: boolean = false;
+
 
   async function loadFilesWithResponse(): Promise<void> {
     let response: Response = await fetch("./js/data/data.json");
     let offer: string = await response.text();
-    let data: any = JSON.parse(offer);
-    console.log(data);
+    data = JSON.parse(offer);
+    // generateLevel(data);
+  }
+
+  function generateLevel(data: Object[]): void {
+    
   }
 
   function initGame(): void {
@@ -64,8 +72,10 @@ namespace prima_endaufgabe_grether_benedikt {
     bene = new Character("Bene");
     enemy = new Enemy("Zombie", -1, 0.5);
     level = new Level();
-    platform = new Platform();
-    // items = Level.createItem();
+    platform = new Platform(data);
+    game.appendChild(platform);
+
+
 
     game.appendChild(bene);
     game.appendChild(enemy);
@@ -73,7 +83,6 @@ namespace prima_endaufgabe_grether_benedikt {
 
     game.appendChild(enemy);
     game.appendChild(level);
-    game.appendChild(platform);
 
 
 

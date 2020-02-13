@@ -2,19 +2,24 @@ namespace prima_endaufgabe_grether_benedikt {
 
   import ƒ = FudgeCore;
 
+  interface Object {
+    // platform: any;
+    platform: Object[];
+    distance: number;
+    item: boolean;
+  }
+
 
   export class Platform extends ƒ.Node {
 
 
-    constructor() {
+    constructor(_data: Object[]) {
       super("Platform");
 
       let platform: Floor;
 
-      this.generatePlatform(platform, null, true);
-      this.generatePlatform(platform, 3, true);
-      // platform = new Floor(0, 1, ITEM.SWORD);
-      // this.appendChild(platform);
+      this.fetchData(_data, platform)
+
     }
 
     private generatePlatform(_platform: Floor, _distance?: number, _item?: boolean): ƒ.Node {
@@ -31,6 +36,12 @@ namespace prima_endaufgabe_grether_benedikt {
         this.appendChild(_platform);
       }
       return level;
+    }
+
+    private fetchData(_data: Object[], platform: Floor): void {
+      for (let i: number = 0; i < _data[0].platform.length; i++) {
+        this.generatePlatform(platform, _data[0].platform[i].distance, _data[0].platform[i].item);
+      }
     }
   }
 }
