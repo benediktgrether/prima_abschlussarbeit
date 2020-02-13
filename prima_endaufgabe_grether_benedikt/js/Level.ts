@@ -20,7 +20,7 @@ namespace prima_endaufgabe_grether_benedikt {
     }
 
     private createLevel(_level: Floor, _levelDistance: number): ƒ.Node {
-      let floorDistance: number = -3.25;
+      let floorDistance: number = -100;
 
       for (let index: number = 0; index < _levelDistance; index++) {
         _level = new Floor(floorDistance);
