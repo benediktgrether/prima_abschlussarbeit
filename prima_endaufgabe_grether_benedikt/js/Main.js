@@ -28,7 +28,6 @@ var prima_endaufgabe_grether_benedikt;
         let startGameBtn = document.getElementById("btn-play");
         startGameBtn.style.display = "none";
         let canvas = document.querySelector("canvas");
-        // let crc2: CanvasRenderingContext2D = canvas.getContext("2d");
         let img = document.querySelector("img");
         let txtImage = new prima_endaufgabe_grether_benedikt.ƒ.TextureImage();
         txtImage.image = img;
@@ -72,10 +71,7 @@ var prima_endaufgabe_grether_benedikt;
                 end();
             processInput();
             viewport.draw();
-            // cmpCamera.pivot.lookAt(bene.cmpTransform.local.translation);
             cmpCamera.pivot.translation = new prima_endaufgabe_grether_benedikt.ƒ.Vector3(prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation.x, cmpCamera.pivot.translation.y, cmpCamera.pivot.translation.z);
-            // crc2.strokeRect(-1, -1, canvas.width / 2, canvas.height + 2);
-            // crc2.strokeRect(-1, canvas.height / 2, canvas.width + 2, canvas.height);
         }
     }
     function handleKeyboard(_event) {

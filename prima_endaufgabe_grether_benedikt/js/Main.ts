@@ -39,10 +39,11 @@ namespace prima_endaufgabe_grether_benedikt {
   function startGame(): void {
     let mainMenu: HTMLElement = document.getElementById("mainMenu");
     mainMenu.style.display = "none";
+
     let startGameBtn: HTMLElement = document.getElementById("btn-play");
     startGameBtn.style.display = "none";
+
     let canvas: HTMLCanvasElement = document.querySelector("canvas");
-    // let crc2: CanvasRenderingContext2D = canvas.getContext("2d");
     let img: HTMLImageElement = document.querySelector("img");
     let txtImage: ƒ.TextureImage = new ƒ.TextureImage();
     txtImage.image = img;
@@ -101,11 +102,7 @@ namespace prima_endaufgabe_grether_benedikt {
       processInput();
 
       viewport.draw();
-      // cmpCamera.pivot.lookAt(bene.cmpTransform.local.translation);
       cmpCamera.pivot.translation = new ƒ.Vector3(bene.cmpTransform.local.translation.x, cmpCamera.pivot.translation.y, cmpCamera.pivot.translation.z);
-
-      // crc2.strokeRect(-1, -1, canvas.width / 2, canvas.height + 2);
-      // crc2.strokeRect(-1, canvas.height / 2, canvas.width + 2, canvas.height);
     }
   }
 
