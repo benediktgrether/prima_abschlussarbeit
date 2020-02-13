@@ -12,6 +12,69 @@
       {
         "distance": -35,
         "item": false
+      },
+      {
+        "distance": -35,
+        "item": true
+      },
+      {
+        "distance": -20,
+        "item": true
+      },
+      {
+        "distance": -5,
+        "item": false
+      },
+      {
+        "distance": 5,
+        "item": true
+      },
+      {
+        "distance": 20,
+        "item": true
+      },
+      {
+        "distance": 25,
+        "item": false
+      },
+      {
+        "distance": 35,
+        "item": true
+      },
+      {
+        "distance": 50,
+        "item": true
+      },
+      {
+        "distance": 60,
+        "item": false
+      },{
+        "distance": 65,
+        "item": false
+      },
+      {
+        "distance": 75,
+        "item": true
+      },
+      {
+        "distance": 90,
+        "item": false
+      },
+      {
+        "distance": 105,
+        "item": true
+      },
+      {
+        "distance": 120,
+        "item": false
+      },
+      {
+        "distance": 125,
+        "item": false
+      },
+      {
+        "distance": 130,
+        "item": true
       }
     ],
     "level": [
