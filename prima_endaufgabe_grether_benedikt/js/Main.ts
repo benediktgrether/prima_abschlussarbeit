@@ -7,6 +7,16 @@ namespace prima_endaufgabe_grether_benedikt {
   window.addEventListener("load", initGame);
 
 
+  interface Object {
+    // platform: any;
+    platform: Object[];
+    distance: number;
+    item: boolean;
+    level: Object[];
+    distanceLevel: number;
+  }
+
+
   interface KeyPressed {
     [code: string]: boolean;
   }
@@ -30,10 +40,6 @@ namespace prima_endaufgabe_grether_benedikt {
     let offer: string = await response.text();
     data = JSON.parse(offer);
     // generateLevel(data);
-  }
-
-  function generateLevel(data: Object[]): void {
-    
   }
 
   function initGame(): void {
@@ -71,7 +77,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
     bene = new Character("Bene");
     enemy = new Enemy("Zombie", -1, 0.5);
-    level = new Level();
+    level = new Level(data);
     platform = new Platform(data);
     game.appendChild(platform);
 

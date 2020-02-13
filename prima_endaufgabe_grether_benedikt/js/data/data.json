@@ -13,6 +13,11 @@
         "distance": 6,
         "item": false
       }
+    ],
+    "level": [
+      {
+        "distanceLevel": 50
+      }
     ]
   }
 ]

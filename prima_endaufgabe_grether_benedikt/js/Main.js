@@ -18,8 +18,6 @@ var prima_endaufgabe_grether_benedikt;
         data = JSON.parse(offer);
         // generateLevel(data);
     }
-    function generateLevel(data) {
-    }
     function initGame() {
         let startGameBtn = document.getElementById("startGame");
         let mute = document.getElementById("mute");
@@ -48,7 +46,7 @@ var prima_endaufgabe_grether_benedikt;
         prima_endaufgabe_grether_benedikt.game.cmpTransform.local.translateY(-1.17);
         prima_endaufgabe_grether_benedikt.bene = new prima_endaufgabe_grether_benedikt.Character("Bene");
         prima_endaufgabe_grether_benedikt.enemy = new prima_endaufgabe_grether_benedikt.Enemy("Zombie", -1, 0.5);
-        prima_endaufgabe_grether_benedikt.level = new prima_endaufgabe_grether_benedikt.Level();
+        prima_endaufgabe_grether_benedikt.level = new prima_endaufgabe_grether_benedikt.Level(data);
         prima_endaufgabe_grether_benedikt.platform = new prima_endaufgabe_grether_benedikt.Platform(data);
         prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.platform);
         prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.bene);
