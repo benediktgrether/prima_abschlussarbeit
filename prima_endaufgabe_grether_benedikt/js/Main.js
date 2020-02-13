@@ -22,6 +22,8 @@ var prima_endaufgabe_grether_benedikt;
     function startGame() {
         let mainMenu = document.getElementById("mainMenu");
         mainMenu.style.display = "none";
+        let startGameBtn = document.getElementById("btn-play");
+        startGameBtn.style.display = "none";
         let canvas = document.querySelector("canvas");
         // let crc2: CanvasRenderingContext2D = canvas.getContext("2d");
         let img = document.querySelector("img");
@@ -138,10 +140,16 @@ var prima_endaufgabe_grether_benedikt;
         }
     }
     function end() {
+        let startRestartBtn = document.getElementById("btn-restart");
+        startRestartBtn.style.display = "block";
         let mainMenu = document.getElementById("mainMenu");
         mainMenu.style.display = "flex";
         let counterShow = document.getElementById("counter-show");
         counterShow.style.display = "block";
+        startRestartBtn.addEventListener("click", restartGame);
+    }
+    function restartGame() {
+        location.reload();
     }
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));
 //# sourceMappingURL=Main.js.map

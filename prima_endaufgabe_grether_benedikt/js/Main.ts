@@ -36,6 +36,8 @@ namespace prima_endaufgabe_grether_benedikt {
   function startGame(): void {
     let mainMenu: HTMLElement = document.getElementById("mainMenu");
     mainMenu.style.display = "none";
+    let startGameBtn: HTMLElement = document.getElementById("btn-play");
+    startGameBtn.style.display = "none";
     let canvas: HTMLCanvasElement = document.querySelector("canvas");
     // let crc2: CanvasRenderingContext2D = canvas.getContext("2d");
     let img: HTMLImageElement = document.querySelector("img");
@@ -169,9 +171,18 @@ namespace prima_endaufgabe_grether_benedikt {
     }
   }
   function end(): void {
+    let startRestartBtn: HTMLElement = document.getElementById("btn-restart");
+    startRestartBtn.style.display = "block";
+
     let mainMenu: HTMLElement = document.getElementById("mainMenu");
     mainMenu.style.display = "flex";
     let counterShow: HTMLElement = document.getElementById("counter-show");
     counterShow.style.display = "block";
+    startRestartBtn.addEventListener("click", restartGame);
+
+  }
+
+  function restartGame(): void {
+    location.reload();
   }
 }

@@ -13,6 +13,7 @@ var prima_endaufgabe_grether_benedikt;
         }
         static playMusic() {
             // Sound.sounds["beat" + this.counter].loop = true;
+            Sound.sounds["beat" + this.counter].loop = true;
             Sound.sounds["beat" + this.counter].play();
             Sound.sounds["beat" + this.counter].volume = 0.2;
             console.log(Sound.sounds["beat" + this.counter].ended);

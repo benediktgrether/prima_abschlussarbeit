@@ -48,6 +48,10 @@ canvas{
   color: black;
 }
 
+.btn-restart{
+  display: none;
+}
+
 .container{
   position: absolute;
   width: 100vw;
