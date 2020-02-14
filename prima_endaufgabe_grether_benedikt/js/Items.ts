@@ -10,13 +10,14 @@ namespace prima_endaufgabe_grether_benedikt {
   // let itemCounter: number = 20;
 
   export class Items extends ƒ.Node {
-    static itemCounter: number = 20;
+    // static itemCounter: number = 20;
     static healthBar: number = 100;
-    
+
     private static sprites: Sprite[];
     public itemUsabilityPoints: number;
     public hitbox: Hitbox;
     public type: ITEM;
+    private itemCounter: number;
     // public itemUsabilityPoints: number;
 
 
@@ -26,13 +27,8 @@ namespace prima_endaufgabe_grether_benedikt {
       this.addComponent(new ƒ.ComponentTransform());
       this.cmpTransform.local.translateY(_locationY);
       this.itemUsabilityPoints = _itemUsabilityPoints;
+      this.itemCounter = _itemUsabilityPoints - 5;
 
-      // if (_location){
-      //   console.log(this.cmpTransform.local.translation.x);
-      //   this.cmpTransform.local.translateX(_location);
-      //   console.log(_location);
-      // }
-      
       for (let sprite of Items.sprites) {
         let nodeSprite: NodeSprite = new NodeSprite(sprite.name, sprite);
         nodeSprite.activate(false);
@@ -51,29 +47,10 @@ namespace prima_endaufgabe_grether_benedikt {
     }
 
     public itemUsability(): void {
-      // console.log();
+      console.log(this.itemUsabilityPoints);
       this.itemUsabilityPoints = this.itemUsabilityPoints - 1;
-      // this.updateItemUsability();
+      this.updateItemUsability();
     }
-
-    
-    // private updateItemUsability(): void {
-    //   if (this.itemCounter == this.itemUsabilityPoints) {
-    //     this.itemCounter -= 5;
-    //     this.healthBar -= 20;
-    //     let element: HTMLElement = document.getElementById("itemHealthBar");
-    //     element.style.width = this.healthBar + "%";
-    //   }
-    //   if (this.itemUsabilityPoints == 0) {
-    //     bene.item = ITEM.NONE;
-    //     this.itemCounter = 20;
-    //     // this.itemUsabilityPoints = 25;
-    //     this.healthBar = 100;
-    //     Sound.play("itemDegredation");
-    //   }
-    // }
-
-
     public creatHitbox(): Hitbox {
 
       let hitbox: Hitbox = new Hitbox("ItemHitbox");
@@ -86,5 +63,20 @@ namespace prima_endaufgabe_grether_benedikt {
       for (let child of this.getChildren())
         child.activate(child.name == this.type);
     }
+
+    private updateItemUsability(): void {
+      if (this.itemCounter == this.itemUsabilityPoints) {
+        this.itemCounter -= 5;
+        Items.healthBar -= 20;
+        let element: HTMLElement = document.getElementById("itemHealthBar");
+        element.style.width = Items.healthBar + "%";
+      }
+      if (this.itemUsabilityPoints == 0) {
+        bene.item.type = ITEM.NONE;
+        Items.healthBar = 100;
+        Sound.play("itemDegredation");
+      }
+    }
   }
+  
 }

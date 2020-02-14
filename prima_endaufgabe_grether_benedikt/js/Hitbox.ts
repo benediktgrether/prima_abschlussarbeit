@@ -46,7 +46,7 @@ namespace prima_endaufgabe_grether_benedikt {
             hitbox = (<Items>child).hitbox;
             if (this.detectedHit(hitbox)) {
               if (child.name == "Item") {
-                if (bene.item == null) {
+                if (bene.item == null || bene.item.type == ITEM.NONE) {
                   bene.item = (<Items>child);
                   bene.createSwordHitbox();
                   let element: HTMLElement = document.getElementById("itemHealthBar");
@@ -55,7 +55,6 @@ namespace prima_endaufgabe_grether_benedikt {
                 }
               }
             }
-            // fudge.Debug.log(child);
           } else {
             continue;
           }
@@ -80,13 +79,14 @@ namespace prima_endaufgabe_grether_benedikt {
                 if ((<Enemy>child).direction == 1 && bene.directionChar === -1) {
                   (<Enemy>child).cmpTransform.local.translateX(-0.05);
                   enemy.updateHealtpoints(<Enemy>child);
-                  
+                  bene.item.itemUsability();
                   Sound.play("enemyHit");
 
                 } else if ((<Enemy>child).direction == -1 && bene.directionChar === 1) {
                   (<Enemy>child).cmpTransform.local.translateX(0.05);
                   enemy.updateHealtpoints(<Enemy>child);
-                  // .itemUsability(Items.itemUsabilityPoints);
+                  // .itemUsability(Items.itemUsabilityPoints)
+                  bene.item.itemUsability();
                   Sound.play("enemyHit");
 
                 } else if ((<Enemy>child).direction == 1 && bene.directionChar === 1) {

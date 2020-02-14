@@ -37,7 +37,7 @@ var prima_endaufgabe_grether_benedikt;
                         hitbox = child.hitbox;
                         if (this.detectedHit(hitbox)) {
                             if (child.name == "Item") {
-                                if (prima_endaufgabe_grether_benedikt.bene.item == null) {
+                                if (prima_endaufgabe_grether_benedikt.bene.item == null || prima_endaufgabe_grether_benedikt.bene.item.type == prima_endaufgabe_grether_benedikt.ITEM.NONE) {
                                     prima_endaufgabe_grether_benedikt.bene.item = child;
                                     prima_endaufgabe_grether_benedikt.bene.createSwordHitbox();
                                     let element = document.getElementById("itemHealthBar");
@@ -46,7 +46,6 @@ var prima_endaufgabe_grether_benedikt;
                                 }
                             }
                         }
-                        // fudge.Debug.log(child);
                     }
                     else {
                         continue;
@@ -71,12 +70,14 @@ var prima_endaufgabe_grether_benedikt;
                                 if (child.direction == 1 && prima_endaufgabe_grether_benedikt.bene.directionChar === -1) {
                                     child.cmpTransform.local.translateX(-0.05);
                                     prima_endaufgabe_grether_benedikt.enemy.updateHealtpoints(child);
+                                    prima_endaufgabe_grether_benedikt.bene.item.itemUsability();
                                     prima_endaufgabe_grether_benedikt.Sound.play("enemyHit");
                                 }
                                 else if (child.direction == -1 && prima_endaufgabe_grether_benedikt.bene.directionChar === 1) {
                                     child.cmpTransform.local.translateX(0.05);
                                     prima_endaufgabe_grether_benedikt.enemy.updateHealtpoints(child);
-                                    // .itemUsability(Items.itemUsabilityPoints);
+                                    // .itemUsability(Items.itemUsabilityPoints)
+                                    prima_endaufgabe_grether_benedikt.bene.item.itemUsability();
                                     prima_endaufgabe_grether_benedikt.Sound.play("enemyHit");
                                 }
                                 else if (child.direction == 1 && prima_endaufgabe_grether_benedikt.bene.directionChar === 1) {
