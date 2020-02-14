@@ -77,13 +77,13 @@ namespace prima_endaufgabe_grether_benedikt {
 
               } else if (bene.item.type == "Sword" && fight == true) {
                 if ((<Enemy>child).direction == 1 && bene.directionChar === -1) {
-                  (<Enemy>child).cmpTransform.local.translateX(-0.05);
+                  (<Enemy>child).cmpTransform.local.translateX(-0.15);
                   (<Enemy>child).updateHealtpoints(<Enemy>child);
                   bene.item.itemUsability();
                   Sound.play("enemyHit");
 
                 } else if ((<Enemy>child).direction == -1 && bene.directionChar === 1) {
-                  (<Enemy>child).cmpTransform.local.translateX(0.05);
+                  (<Enemy>child).cmpTransform.local.translateX(0.15);
                   (<Enemy>child).updateHealtpoints(<Enemy>child);
                   bene.item.itemUsability();
                   Sound.play("enemyHit");

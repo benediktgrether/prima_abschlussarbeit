@@ -142,7 +142,7 @@ namespace prima_endaufgabe_grether_benedikt {
     }
 
     private itemDrop(_location: number): void {
-      if (this.getRandomInt(3) == 1) {
+      if (this.getRandomInt(5) == 1) {
         Sound.play("itemDropZombie");
         itemDrop = new Items(ITEM.SWORD, 105, 0.25);
         itemDrop.cmpTransform.local.translateX(_location + 0.25);
@@ -191,7 +191,6 @@ namespace prima_endaufgabe_grether_benedikt {
       } else {
         return this.getRandomSpeed();
       }
-      // return math;
     }
 
     private checkCollision(_checkCollision: ƒ.Node): void {

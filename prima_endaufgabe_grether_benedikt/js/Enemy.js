@@ -122,7 +122,7 @@ var prima_endaufgabe_grether_benedikt;
             prima_endaufgabe_grether_benedikt.game.appendChild(enemy);
         }
         itemDrop(_location) {
-            if (this.getRandomInt(3) == 1) {
+            if (this.getRandomInt(5) == 1) {
                 prima_endaufgabe_grether_benedikt.Sound.play("itemDropZombie");
                 itemDrop = new prima_endaufgabe_grether_benedikt.Items(prima_endaufgabe_grether_benedikt.ITEM.SWORD, 105, 0.25);
                 itemDrop.cmpTransform.local.translateX(_location + 0.25);
@@ -154,7 +154,6 @@ var prima_endaufgabe_grether_benedikt;
             else {
                 return this.getRandomSpeed();
             }
-            // return math;
         }
         checkCollision(_checkCollision) {
             for (let floor of _checkCollision.getChildren()) {

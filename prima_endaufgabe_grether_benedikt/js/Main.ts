@@ -92,7 +92,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
 
     Sound.init();
-    // Sound.playMusic();
+    Sound.playMusic();
 
     let cmpCamera: ƒ.ComponentCamera = new ƒ.ComponentCamera();
     cmpCamera.pivot.translateZ(5);

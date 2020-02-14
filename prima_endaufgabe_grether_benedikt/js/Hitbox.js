@@ -68,13 +68,13 @@ var prima_endaufgabe_grether_benedikt;
                             }
                             else if (prima_endaufgabe_grether_benedikt.bene.item.type == "Sword" && prima_endaufgabe_grether_benedikt.fight == true) {
                                 if (child.direction == 1 && prima_endaufgabe_grether_benedikt.bene.directionChar === -1) {
-                                    child.cmpTransform.local.translateX(-0.05);
+                                    child.cmpTransform.local.translateX(-0.15);
                                     child.updateHealtpoints(child);
                                     prima_endaufgabe_grether_benedikt.bene.item.itemUsability();
                                     prima_endaufgabe_grether_benedikt.Sound.play("enemyHit");
                                 }
                                 else if (child.direction == -1 && prima_endaufgabe_grether_benedikt.bene.directionChar === 1) {
-                                    child.cmpTransform.local.translateX(0.05);
+                                    child.cmpTransform.local.translateX(0.15);
                                     child.updateHealtpoints(child);
                                     prima_endaufgabe_grether_benedikt.bene.item.itemUsability();
                                     prima_endaufgabe_grether_benedikt.Sound.play("enemyHit");
