@@ -124,15 +124,15 @@ namespace prima_endaufgabe_grether_benedikt {
       let positonHero: number = bene.mtxWorld.translation.x;
       if (this.getRandomInt(2) == 0) {
         if ((positonHero + 3.5) < 12.5) {
-          enemy = new Enemy("Zombie", (positonHero + 3), 0.5);
+          enemy = new Enemy("Zombie", (positonHero + 3), this.getRandomSpeed());
         } else {
-          enemy = new Enemy("Zombie", (positonHero - 3), 0.5);
+          enemy = new Enemy("Zombie", (positonHero - 3), this.getRandomSpeed());
         }
       } else {
         if ((positonHero - 3.5) > - 12.5) {
-          enemy = new Enemy("Zombie", (positonHero - 3), 0.5);
+          enemy = new Enemy("Zombie", (positonHero - 3), this.getRandomSpeed());
         } else {
-          enemy = new Enemy("Zombie", (positonHero + 3), 0.5);
+          enemy = new Enemy("Zombie", (positonHero + 3), this.getRandomSpeed());
 
         }
       }
@@ -179,6 +179,16 @@ namespace prima_endaufgabe_grether_benedikt {
 
     private getRandomInt(max: number): number {
       return Math.floor(Math.random() * Math.floor(max));
+    }
+
+    private getRandomSpeed(): number {
+      let math: number = Math.random();
+      if (math >= 0.3 || math <= 0.5) {
+        return math;
+      } else {
+        this.getRandomSpeed();
+      }
+      return math;
     }
 
     private checkCollision(_checkCollision: ƒ.Node): void {

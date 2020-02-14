@@ -20,7 +20,7 @@ namespace prima_endaufgabe_grether_benedikt {
     private static speedMax: ƒ.Vector2 = new ƒ.Vector2(1.5, 5); // units per second
     private static gravity: ƒ.Vector2 = ƒ.Vector2.Y(-3);
     public speed: ƒ.Vector3 = ƒ.Vector3.ZERO();
-    public item: ITEM = ITEM.NONE;
+    public item: Items = null;
     public hitbox: Hitbox;
     public directionChar: number;
     // public healthbar: Healthpoints[] = [];
@@ -44,7 +44,11 @@ namespace prima_endaufgabe_grether_benedikt {
       }
       this.hitbox = this.createHitbox();
       this.appendChild(this.hitbox);
-      this.show(ACTION.IDLE, this.item);
+
+      if (this.item == null) {
+        // this.item.type = ITEM.NONE;
+        this.show(ACTION.IDLE, ITEM.NONE);
+      }
 
 
       ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, this.update);
@@ -97,8 +101,9 @@ namespace prima_endaufgabe_grether_benedikt {
     }
 
     public show(_action: ACTION, _item: ITEM): void {
-      for (let child of this.getChildren())
+      for (let child of this.getChildren()) {
         child.activate(child.name == _action + "." + _item);
+      }
     }
 
     public act(_action: ACTION, _direction?: DIRECTION): void {
@@ -121,7 +126,11 @@ namespace prima_endaufgabe_grether_benedikt {
           break;
       }
 
-      this.show(_action, this.item);
+      if (this.item == null) {
+        this.show(_action, ITEM.NONE);
+      } else {
+        this.show(_action, this.item.type);
+      }
     }
 
     // public itemUsability(): void {

@@ -10,21 +10,22 @@ namespace prima_endaufgabe_grether_benedikt {
   // let itemCounter: number = 20;
 
   export class Items extends ƒ.Node {
-    static itemUsabilityPoints: number = 25;
     static itemCounter: number = 20;
     static healthBar: number = 100;
-
+    
     private static sprites: Sprite[];
+    public itemUsabilityPoints: number;
     public hitbox: Hitbox;
     public type: ITEM;
     // public itemUsabilityPoints: number;
 
 
-    constructor(type: ITEM, _locationY?: number) {
+    constructor(type: ITEM, _itemUsabilityPoints: number, _locationY?: number) {
       super("Item");
       this.type = type;
       this.addComponent(new ƒ.ComponentTransform());
       this.cmpTransform.local.translateY(_locationY);
+      this.itemUsabilityPoints = _itemUsabilityPoints;
 
       // if (_location){
       //   console.log(this.cmpTransform.local.translation.x);
@@ -49,27 +50,28 @@ namespace prima_endaufgabe_grether_benedikt {
       Items.sprites.push(sprite);
     }
 
-    public static itemUsability(): void {
+    public itemUsability(): void {
+      // console.log();
       this.itemUsabilityPoints = this.itemUsabilityPoints - 1;
-      this.updateItemUsability();
+      // this.updateItemUsability();
     }
 
     
-    static updateItemUsability(): void {
-      if (this.itemCounter == this.itemUsabilityPoints) {
-        this.itemCounter -= 5;
-        this.healthBar -= 20;
-        let element: HTMLElement = document.getElementById("itemHealthBar");
-        element.style.width = this.healthBar + "%";
-      }
-      if (this.itemUsabilityPoints == 0) {
-        bene.item = ITEM.NONE;
-        this.itemCounter = 20;
-        this.itemUsabilityPoints = 25;
-        this.healthBar = 100;
-        Sound.play("itemDegredation");
-      }
-    }
+    // private updateItemUsability(): void {
+    //   if (this.itemCounter == this.itemUsabilityPoints) {
+    //     this.itemCounter -= 5;
+    //     this.healthBar -= 20;
+    //     let element: HTMLElement = document.getElementById("itemHealthBar");
+    //     element.style.width = this.healthBar + "%";
+    //   }
+    //   if (this.itemUsabilityPoints == 0) {
+    //     bene.item = ITEM.NONE;
+    //     this.itemCounter = 20;
+    //     // this.itemUsabilityPoints = 25;
+    //     this.healthBar = 100;
+    //     Sound.play("itemDegredation");
+    //   }
+    // }
 
 
     public creatHitbox(): Hitbox {

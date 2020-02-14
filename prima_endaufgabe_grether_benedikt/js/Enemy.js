@@ -106,18 +106,18 @@ var prima_endaufgabe_grether_benedikt;
             let positonHero = prima_endaufgabe_grether_benedikt.bene.mtxWorld.translation.x;
             if (this.getRandomInt(2) == 0) {
                 if ((positonHero + 3.5) < 12.5) {
-                    enemy = new Enemy("Zombie", (positonHero + 3), 0.5);
+                    enemy = new Enemy("Zombie", (positonHero + 3), this.getRandomSpeed());
                 }
                 else {
-                    enemy = new Enemy("Zombie", (positonHero - 3), 0.5);
+                    enemy = new Enemy("Zombie", (positonHero - 3), this.getRandomSpeed());
                 }
             }
             else {
                 if ((positonHero - 3.5) > -12.5) {
-                    enemy = new Enemy("Zombie", (positonHero - 3), 0.5);
+                    enemy = new Enemy("Zombie", (positonHero - 3), this.getRandomSpeed());
                 }
                 else {
-                    enemy = new Enemy("Zombie", (positonHero + 3), 0.5);
+                    enemy = new Enemy("Zombie", (positonHero + 3), this.getRandomSpeed());
                 }
             }
             prima_endaufgabe_grether_benedikt.game.appendChild(enemy);
@@ -145,6 +145,16 @@ var prima_endaufgabe_grether_benedikt;
         }
         getRandomInt(max) {
             return Math.floor(Math.random() * Math.floor(max));
+        }
+        getRandomSpeed() {
+            let math = Math.random();
+            if (math >= 0.3 || math <= 0.5) {
+                return math;
+            }
+            else {
+                this.getRandomSpeed();
+            }
+            return math;
         }
         checkCollision(_checkCollision) {
             for (let floor of _checkCollision.getChildren()) {

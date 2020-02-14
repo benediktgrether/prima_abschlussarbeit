@@ -46,8 +46,8 @@ namespace prima_endaufgabe_grether_benedikt {
             hitbox = (<Items>child).hitbox;
             if (this.detectedHit(hitbox)) {
               if (child.name == "Item") {
-                if (bene.item == ITEM.NONE) {
-                  bene.item = (<Items>child).type;
+                if (bene.item == null) {
+                  bene.item = (<Items>child);
                   bene.createSwordHitbox();
                   let element: HTMLElement = document.getElementById("itemHealthBar");
                   element.style.width = "100%";
@@ -76,17 +76,17 @@ namespace prima_endaufgabe_grether_benedikt {
                 Sound.play("playerHit");
                 bene.updateHealtpoints();
 
-              } else if (bene.item == "Sword" && fight == true) {
+              } else if (bene.item.type == "Sword" && fight == true) {
                 if ((<Enemy>child).direction == 1 && bene.directionChar === -1) {
                   (<Enemy>child).cmpTransform.local.translateX(-0.05);
                   enemy.updateHealtpoints(<Enemy>child);
-                  Items.itemUsability();
+                  
                   Sound.play("enemyHit");
 
                 } else if ((<Enemy>child).direction == -1 && bene.directionChar === 1) {
                   (<Enemy>child).cmpTransform.local.translateX(0.05);
                   enemy.updateHealtpoints(<Enemy>child);
-                  Items.itemUsability();
+                  // .itemUsability(Items.itemUsabilityPoints);
                   Sound.play("enemyHit");
 
                 } else if ((<Enemy>child).direction == 1 && bene.directionChar === 1) {
@@ -113,8 +113,8 @@ namespace prima_endaufgabe_grether_benedikt {
           hitbox = (<Items>child).hitbox;
           if (this.detectedHit(hitbox)) {
             if (child.name == "Item") {
-              if (bene.item == ITEM.NONE) {
-                bene.item = (<Items>child).type;
+              if (bene.item.type == ITEM.NONE) {
+                bene.item = (<Items>child);
                 bene.createSwordHitbox();
                 let element: HTMLElement = document.getElementById("itemHealthBar");
                 element.style.width = "100%";

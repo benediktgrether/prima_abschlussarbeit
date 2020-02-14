@@ -10,7 +10,6 @@ var prima_endaufgabe_grether_benedikt;
     prima_endaufgabe_grether_benedikt.fight = false;
     prima_endaufgabe_grether_benedikt.life = true;
     let data;
-    let i = 0;
     prima_endaufgabe_grether_benedikt.soundVolume = false;
     async function loadFilesWithResponse() {
         let response = await fetch("./js/data/data.json");
@@ -96,8 +95,8 @@ var prima_endaufgabe_grether_benedikt;
             if (keysPressed[prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.E]) {
                 prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
                 prima_endaufgabe_grether_benedikt.fight = false;
-                prima_endaufgabe_grether_benedikt.bene.item = prima_endaufgabe_grether_benedikt.ITEM.NONE;
-                prima_endaufgabe_grether_benedikt.Items.itemUsabilityPoints = 25;
+                prima_endaufgabe_grether_benedikt.bene.item.type = prima_endaufgabe_grether_benedikt.ITEM.NONE;
+                // Items.itemUsabilityPoints = 25;
                 prima_endaufgabe_grether_benedikt.Items.itemCounter = 20;
                 prima_endaufgabe_grether_benedikt.Items.healthBar = 100;
                 let element = document.getElementById("itemHealthBar");
@@ -111,7 +110,7 @@ var prima_endaufgabe_grether_benedikt;
             //   // return;
             // }
             if (keysPressed[prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.SPACE]) {
-                if (prima_endaufgabe_grether_benedikt.bene.item == "Sword") {
+                if (prima_endaufgabe_grether_benedikt.bene.item.type == "Sword") {
                     prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.SWORD);
                     prima_endaufgabe_grether_benedikt.Sound.play("swordFight");
                     prima_endaufgabe_grether_benedikt.fight = true;

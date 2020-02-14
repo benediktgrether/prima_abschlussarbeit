@@ -25,7 +25,8 @@ var prima_endaufgabe_grether_benedikt;
                 this.cmpTransform.local.translateX(_distancePlatform);
             }
             if (_item) {
-                let item = new prima_endaufgabe_grether_benedikt.Items(prima_endaufgabe_grether_benedikt.ITEM.SWORD, 0.5);
+                let item = new prima_endaufgabe_grether_benedikt.Items(prima_endaufgabe_grether_benedikt.ITEM.SWORD, 25, 0.5);
+                item.itemUsability();
                 this.item = item;
                 this.appendChild(this.item);
             }

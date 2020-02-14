@@ -23,7 +23,7 @@ var prima_endaufgabe_grether_benedikt;
         constructor(_name = "Bene") {
             super(_name);
             this.speed = ƒ.Vector3.ZERO();
-            this.item = prima_endaufgabe_grether_benedikt.ITEM.NONE;
+            this.item = null;
             // public healthbar: Healthpoints[] = [];
             this.healthpoints = 50;
             this.update = (_event) => {
@@ -47,7 +47,10 @@ var prima_endaufgabe_grether_benedikt;
             }
             this.hitbox = this.createHitbox();
             this.appendChild(this.hitbox);
-            this.show(ACTION.IDLE, this.item);
+            if (this.item == null) {
+                // this.item.type = ITEM.NONE;
+                this.show(ACTION.IDLE, prima_endaufgabe_grether_benedikt.ITEM.NONE);
+            }
             ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, this.update);
         }
         static generateSprites(_txtImage) {
@@ -86,8 +89,9 @@ var prima_endaufgabe_grether_benedikt;
             return hitbox;
         }
         show(_action, _item) {
-            for (let child of this.getChildren())
+            for (let child of this.getChildren()) {
                 child.activate(child.name == _action + "." + _item);
+            }
         }
         act(_action, _direction) {
             switch (_action) {
@@ -108,7 +112,12 @@ var prima_endaufgabe_grether_benedikt;
                     prima_endaufgabe_grether_benedikt.Sound.play("jump");
                     break;
             }
-            this.show(_action, this.item);
+            if (this.item == null) {
+                this.show(_action, prima_endaufgabe_grether_benedikt.ITEM.NONE);
+            }
+            else {
+                this.show(_action, this.item.type);
+            }
         }
         // public itemUsability(): void {
         //   this.itemUsabilityPoints = this.itemUsabilityPoints - 1;

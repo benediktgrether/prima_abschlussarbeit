@@ -30,7 +30,6 @@ namespace prima_endaufgabe_grether_benedikt {
   export let fight: boolean = false;
   export let life: boolean = true;
   let data: Object[];
-  let i = 0;
 
   export let soundVolume: boolean = false;
 
@@ -144,8 +143,8 @@ namespace prima_endaufgabe_grether_benedikt {
       if (keysPressed[ƒ.KEYBOARD_CODE.E]) {
         bene.act(ACTION.IDLE);
         fight = false;
-        bene.item = ITEM.NONE;
-        Items.itemUsabilityPoints = 25;
+        bene.item.type = ITEM.NONE;
+        // Items.itemUsabilityPoints = 25;
         Items.itemCounter = 20;
         Items.healthBar = 100;
         let element: HTMLElement = document.getElementById("itemHealthBar");
@@ -159,7 +158,7 @@ namespace prima_endaufgabe_grether_benedikt {
       //   // return;
       // }
       if (keysPressed[ƒ.KEYBOARD_CODE.SPACE]) {
-        if (bene.item == "Sword") {
+        if (bene.item.type == "Sword") {
           bene.act(ACTION.SWORD);
           Sound.play("swordFight");
           fight = true;

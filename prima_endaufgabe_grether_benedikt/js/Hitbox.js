@@ -37,8 +37,8 @@ var prima_endaufgabe_grether_benedikt;
                         hitbox = child.hitbox;
                         if (this.detectedHit(hitbox)) {
                             if (child.name == "Item") {
-                                if (prima_endaufgabe_grether_benedikt.bene.item == prima_endaufgabe_grether_benedikt.ITEM.NONE) {
-                                    prima_endaufgabe_grether_benedikt.bene.item = child.type;
+                                if (prima_endaufgabe_grether_benedikt.bene.item == null) {
+                                    prima_endaufgabe_grether_benedikt.bene.item = child;
                                     prima_endaufgabe_grether_benedikt.bene.createSwordHitbox();
                                     let element = document.getElementById("itemHealthBar");
                                     element.style.width = "100%";
@@ -67,17 +67,16 @@ var prima_endaufgabe_grether_benedikt;
                                 prima_endaufgabe_grether_benedikt.Sound.play("playerHit");
                                 prima_endaufgabe_grether_benedikt.bene.updateHealtpoints();
                             }
-                            else if (prima_endaufgabe_grether_benedikt.bene.item == "Sword" && prima_endaufgabe_grether_benedikt.fight == true) {
+                            else if (prima_endaufgabe_grether_benedikt.bene.item.type == "Sword" && prima_endaufgabe_grether_benedikt.fight == true) {
                                 if (child.direction == 1 && prima_endaufgabe_grether_benedikt.bene.directionChar === -1) {
                                     child.cmpTransform.local.translateX(-0.05);
                                     prima_endaufgabe_grether_benedikt.enemy.updateHealtpoints(child);
-                                    prima_endaufgabe_grether_benedikt.Items.itemUsability();
                                     prima_endaufgabe_grether_benedikt.Sound.play("enemyHit");
                                 }
                                 else if (child.direction == -1 && prima_endaufgabe_grether_benedikt.bene.directionChar === 1) {
                                     child.cmpTransform.local.translateX(0.05);
                                     prima_endaufgabe_grether_benedikt.enemy.updateHealtpoints(child);
-                                    prima_endaufgabe_grether_benedikt.Items.itemUsability();
+                                    // .itemUsability(Items.itemUsabilityPoints);
                                     prima_endaufgabe_grether_benedikt.Sound.play("enemyHit");
                                 }
                                 else if (child.direction == 1 && prima_endaufgabe_grether_benedikt.bene.directionChar === 1) {
@@ -104,8 +103,8 @@ var prima_endaufgabe_grether_benedikt;
                     hitbox = child.hitbox;
                     if (this.detectedHit(hitbox)) {
                         if (child.name == "Item") {
-                            if (prima_endaufgabe_grether_benedikt.bene.item == prima_endaufgabe_grether_benedikt.ITEM.NONE) {
-                                prima_endaufgabe_grether_benedikt.bene.item = child.type;
+                            if (prima_endaufgabe_grether_benedikt.bene.item.type == prima_endaufgabe_grether_benedikt.ITEM.NONE) {
+                                prima_endaufgabe_grether_benedikt.bene.item = child;
                                 prima_endaufgabe_grether_benedikt.bene.createSwordHitbox();
                                 let element = document.getElementById("itemHealthBar");
                                 element.style.width = "100%";

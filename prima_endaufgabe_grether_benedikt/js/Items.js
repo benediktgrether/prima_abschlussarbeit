@@ -10,11 +10,12 @@ var prima_endaufgabe_grether_benedikt;
     // let itemCounter: number = 20;
     class Items extends ƒ.Node {
         // public itemUsabilityPoints: number;
-        constructor(type, _locationY) {
+        constructor(type, _itemUsabilityPoints, _locationY) {
             super("Item");
             this.type = type;
             this.addComponent(new ƒ.ComponentTransform());
             this.cmpTransform.local.translateY(_locationY);
+            this.itemUsabilityPoints = _itemUsabilityPoints;
             // if (_location){
             //   console.log(this.cmpTransform.local.translation.x);
             //   this.cmpTransform.local.translateX(_location);
@@ -35,25 +36,26 @@ var prima_endaufgabe_grether_benedikt;
             sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(169, 125, 8, 18), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.TOPCENTER);
             Items.sprites.push(sprite);
         }
-        static itemUsability() {
+        itemUsability() {
+            // console.log();
             this.itemUsabilityPoints = this.itemUsabilityPoints - 1;
-            this.updateItemUsability();
+            // this.updateItemUsability();
         }
-        static updateItemUsability() {
-            if (this.itemCounter == this.itemUsabilityPoints) {
-                this.itemCounter -= 5;
-                this.healthBar -= 20;
-                let element = document.getElementById("itemHealthBar");
-                element.style.width = this.healthBar + "%";
-            }
-            if (this.itemUsabilityPoints == 0) {
-                prima_endaufgabe_grether_benedikt.bene.item = ITEM.NONE;
-                this.itemCounter = 20;
-                this.itemUsabilityPoints = 25;
-                this.healthBar = 100;
-                prima_endaufgabe_grether_benedikt.Sound.play("itemDegredation");
-            }
-        }
+        // private updateItemUsability(): void {
+        //   if (this.itemCounter == this.itemUsabilityPoints) {
+        //     this.itemCounter -= 5;
+        //     this.healthBar -= 20;
+        //     let element: HTMLElement = document.getElementById("itemHealthBar");
+        //     element.style.width = this.healthBar + "%";
+        //   }
+        //   if (this.itemUsabilityPoints == 0) {
+        //     bene.item = ITEM.NONE;
+        //     this.itemCounter = 20;
+        //     // this.itemUsabilityPoints = 25;
+        //     this.healthBar = 100;
+        //     Sound.play("itemDegredation");
+        //   }
+        // }
         creatHitbox() {
             let hitbox = new prima_endaufgabe_grether_benedikt.Hitbox("ItemHitbox");
             hitbox.cmpTransform.local.scaleX(0.2);
@@ -66,7 +68,6 @@ var prima_endaufgabe_grether_benedikt;
                 child.activate(child.name == this.type);
         }
     }
-    Items.itemUsabilityPoints = 25;
     Items.itemCounter = 20;
     Items.healthBar = 100;
     prima_endaufgabe_grether_benedikt.Items = Items;
