@@ -144,7 +144,7 @@ namespace prima_endaufgabe_grether_benedikt {
     private itemDrop(_location: number): void {
       if (this.getRandomInt(3) == 1) {
         Sound.play("itemDropZombie");
-        itemDrop = new Items(ITEM.SWORD, 25, 0.25);
+        itemDrop = new Items(ITEM.SWORD, 105, 0.25);
         itemDrop.cmpTransform.local.translateX(_location + 0.25);
         itemDrop.cmpTransform.local.scaleX(.5);
         itemDrop.cmpTransform.local.scaleY(.5);

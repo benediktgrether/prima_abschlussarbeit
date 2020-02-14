@@ -55,7 +55,7 @@ var prima_endaufgabe_grether_benedikt;
         prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.enemy);
         prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.level);
         prima_endaufgabe_grether_benedikt.Sound.init();
-        prima_endaufgabe_grether_benedikt.Sound.playMusic();
+        // Sound.playMusic();
         let cmpCamera = new prima_endaufgabe_grether_benedikt.ƒ.ComponentCamera();
         cmpCamera.pivot.translateZ(5);
         cmpCamera.pivot.lookAt(prima_endaufgabe_grether_benedikt.ƒ.Vector3.ZERO());
@@ -123,12 +123,12 @@ var prima_endaufgabe_grether_benedikt;
                     prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
                     prima_endaufgabe_grether_benedikt.bene.updateHealtpoints();
                     if (prima_endaufgabe_grether_benedikt.enemy.direction == 1 && prima_endaufgabe_grether_benedikt.fight == true) {
-                        prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(0.1);
+                        prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(0.05);
                         prima_endaufgabe_grether_benedikt.fight = false;
                         return;
                     }
                     else if (prima_endaufgabe_grether_benedikt.enemy.direction == -1 && prima_endaufgabe_grether_benedikt.fight == true) {
-                        prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(-0.1);
+                        prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(-0.05);
                         prima_endaufgabe_grether_benedikt.fight = false;
                         return;
                     }

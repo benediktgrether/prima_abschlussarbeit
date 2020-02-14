@@ -8,7 +8,6 @@ namespace prima_endaufgabe_grether_benedikt {
 
 
   interface Object {
-    // platform: any;
     platform: Object[];
     distance: number;
     item: boolean;
@@ -93,7 +92,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
 
     Sound.init();
-    Sound.playMusic();
+    // Sound.playMusic();
 
     let cmpCamera: ƒ.ComponentCamera = new ƒ.ComponentCamera();
     cmpCamera.pivot.translateZ(5);
@@ -169,12 +168,12 @@ namespace prima_endaufgabe_grether_benedikt {
           bene.act(ACTION.IDLE);
           bene.updateHealtpoints();
           if (enemy.direction == 1 && fight == true) {
-            bene.cmpTransform.local.translateX(0.1);
+            bene.cmpTransform.local.translateX(0.05);
             fight = false;
             return;
           }
           else  if (enemy.direction == -1 && fight == true) {
-            bene.cmpTransform.local.translateX(-0.1);
+            bene.cmpTransform.local.translateX(-0.05);
             fight = false;
             return;
           }

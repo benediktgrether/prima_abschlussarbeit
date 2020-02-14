@@ -49,7 +49,7 @@ var prima_endaufgabe_grether_benedikt;
         }
         updateItemUsability() {
             if (this.itemCounter == this.itemUsabilityPoints) {
-                this.itemCounter -= 5;
+                this.itemCounter -= 20;
                 Items.healthBar -= 20;
                 let element = document.getElementById("itemHealthBar");
                 element.style.width = Items.healthBar + "%";
