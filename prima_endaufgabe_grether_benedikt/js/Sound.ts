@@ -15,17 +15,14 @@ namespace prima_endaufgabe_grether_benedikt {
     }
 
     public static play(_id: string): void {
-      if (soundVolume == false) {
+      if (soundMuted == false) {
         Sound.sounds[_id].volume = 0.2;
-        Sound.sounds[_id].play();
-      } else {
-        Sound.sounds[_id].volume = 0.0;
         Sound.sounds[_id].play();
       }
     }
 
     public static playMusic(): void {
-      if (soundVolume == false) {
+      if (soundMuted == false) {
       Sound.sounds["backgroundmusic"].loop = true;
       Sound.sounds["backgroundmusic"].volume = 0.1;
       Sound.sounds["backgroundmusic"].play();
@@ -38,7 +35,9 @@ namespace prima_endaufgabe_grether_benedikt {
     }
 
     public static mute(): void {
-      soundVolume = true;
+      soundMuted = true;
+      let mute: HTMLElement = document.getElementById("mute");
+      mute.classList.add("muted-active");
     }
   }
 }
