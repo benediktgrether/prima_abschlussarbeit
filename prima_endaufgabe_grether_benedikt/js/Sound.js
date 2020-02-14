@@ -20,8 +20,9 @@ var prima_endaufgabe_grether_benedikt;
         }
         static playMusic() {
             if (prima_endaufgabe_grether_benedikt.soundVolume == false) {
-                Sound.sounds["beat" + this.counter].loop = true;
-                Sound.sounds["beat" + this.counter].play();
+                Sound.sounds["backgroundmusic"].loop = true;
+                Sound.sounds["backgroundmusic"].volume = 0.1;
+                Sound.sounds["backgroundmusic"].play();
             }
         }
         static playItemDropZombie(_id) {

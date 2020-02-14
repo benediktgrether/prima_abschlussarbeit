@@ -26,8 +26,9 @@ namespace prima_endaufgabe_grether_benedikt {
 
     public static playMusic(): void {
       if (soundVolume == false) {
-      Sound.sounds["beat" + this.counter].loop = true;
-      Sound.sounds["beat" + this.counter].play();
+      Sound.sounds["backgroundmusic"].loop = true;
+      Sound.sounds["backgroundmusic"].volume = 0.1;
+      Sound.sounds["backgroundmusic"].play();
       }
     }
 
