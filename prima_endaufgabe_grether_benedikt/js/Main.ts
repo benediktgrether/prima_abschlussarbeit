@@ -75,6 +75,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
     bene = new Character("Bene");
     enemy = new Enemy("Zombie", -3, 0.5);
+    enemy.updateHealtpoints(enemy);
     level = new Level(data);
     platform = new Platform(data);
     game.appendChild(platform);
@@ -85,7 +86,7 @@ namespace prima_endaufgabe_grether_benedikt {
     game.appendChild(bene);
     game.appendChild(enemy);
     enemy = new Enemy("Zombie", 3, 0.3);
-
+    enemy.updateHealtpoints(enemy);
     game.appendChild(enemy);
     game.appendChild(level);
 
@@ -145,7 +146,7 @@ namespace prima_endaufgabe_grether_benedikt {
         fight = false;
         bene.item.type = ITEM.NONE;
         // Items.itemUsabilityPoints = 25;
-        Items.itemCounter = 20;
+        // Items.itemCounter = 20;
         Items.healthBar = 100;
         let element: HTMLElement = document.getElementById("itemHealthBar");
         element.style.width = "0%";
@@ -168,12 +169,12 @@ namespace prima_endaufgabe_grether_benedikt {
           bene.act(ACTION.IDLE);
           bene.updateHealtpoints();
           if (enemy.direction == 1 && fight == true) {
-            bene.cmpTransform.local.translateX(0.05);
+            bene.cmpTransform.local.translateX(0.1);
             fight = false;
             return;
           }
           else  if (enemy.direction == -1 && fight == true) {
-            bene.cmpTransform.local.translateX(-0.05);
+            bene.cmpTransform.local.translateX(-0.1);
             fight = false;
             return;
           }

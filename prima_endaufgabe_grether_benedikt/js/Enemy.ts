@@ -10,8 +10,6 @@ namespace prima_endaufgabe_grether_benedikt {
   export enum DIRECTIONZOMBIE {
     LEFTZOMBIE, RIGHTZOMBIE
   }
-
-  let counter: number = 15;
   let itemDrop: Items;
 
   export class Enemy extends ƒ.Node {
@@ -21,8 +19,8 @@ namespace prima_endaufgabe_grether_benedikt {
     public speed: ƒ.Vector3 = ƒ.Vector3.ZERO();
     public hitbox: Hitbox;
     public direction: number;
-    // public healthbar: [] = [];
-    public healthpoints: number = 20;
+    public healthpoints: number;
+    private counter: number;
 
     // All Same with Character
 
@@ -45,6 +43,10 @@ namespace prima_endaufgabe_grether_benedikt {
       // Hilfsverschiebung
       this.cmpTransform.local.translateX(_translateX);
       this.speedMax = new ƒ.Vector2(_speed, 0);
+
+      this.healthpoints = 20;
+      this.counter = this.healthpoints - 5;
+      console.log(this.healthpoints);
 
       this.hitbox = this.createHitbox();
       this.appendChild(this.hitbox);
@@ -101,19 +103,19 @@ namespace prima_endaufgabe_grether_benedikt {
     }
 
     private updateHealthbar(_enemy: Enemy): void {
-      if (counter == this.healthpoints) {
-        counter -= 5;
+      if (this.counter == this.healthpoints) {
+        this.counter -= 5;
       }
       if (this.healthpoints === 0) {
-        let gravestone: Gravstone = new Gravstone(_enemy.cmpTransform.local.translation.x);
+        let gravestone: Gravstone = new Gravstone(_enemy.mtxWorld.translation.x);
         game.appendChild(gravestone);
         game.removeChild(_enemy);
         Sound.play("zombieDeath");
-        this.healthpoints = 20;
-        counter = 15;
+      
+        // this.counter = 15;
 
         this.spawnNewEnemy();
-        this.itemDrop(_enemy.cmpTransform.local.translation.x);
+        this.itemDrop(_enemy.mtxWorld.translation.x);
         Highscore.setHighscore();
 
       }
@@ -142,7 +144,7 @@ namespace prima_endaufgabe_grether_benedikt {
     private itemDrop(_location: number): void {
       if (this.getRandomInt(3) == 1) {
         Sound.play("itemDropZombie");
-        itemDrop = new Items(ITEM.SWORD, 0.25);
+        itemDrop = new Items(ITEM.SWORD, 25, 0.25);
         itemDrop.cmpTransform.local.translateX(_location + 0.25);
         itemDrop.cmpTransform.local.scaleX(.5);
         itemDrop.cmpTransform.local.scaleY(.5);
@@ -183,12 +185,13 @@ namespace prima_endaufgabe_grether_benedikt {
 
     private getRandomSpeed(): number {
       let math: number = Math.random();
-      if (math >= 0.3 || math <= 0.5) {
+      if (math >= 0.3 && math <= 0.5) {
+        console.log(math);
         return math;
       } else {
-        this.getRandomSpeed();
+        return this.getRandomSpeed();
       }
-      return math;
+      // return math;
     }
 
     private checkCollision(_checkCollision: ƒ.Node): void {

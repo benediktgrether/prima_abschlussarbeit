@@ -12,15 +12,12 @@ var prima_endaufgabe_grether_benedikt;
         DIRECTIONZOMBIE[DIRECTIONZOMBIE["LEFTZOMBIE"] = 0] = "LEFTZOMBIE";
         DIRECTIONZOMBIE[DIRECTIONZOMBIE["RIGHTZOMBIE"] = 1] = "RIGHTZOMBIE";
     })(DIRECTIONZOMBIE = prima_endaufgabe_grether_benedikt.DIRECTIONZOMBIE || (prima_endaufgabe_grether_benedikt.DIRECTIONZOMBIE = {}));
-    let counter = 15;
     let itemDrop;
     class Enemy extends ƒ.Node {
         // All Same with Character
         constructor(_name, _translateX, _speed) {
             super(_name);
             this.speed = ƒ.Vector3.ZERO();
-            // public healthbar: [] = [];
-            this.healthpoints = 20;
             this.update = (_event) => {
                 this.broadcastEvent(new CustomEvent("showNext"));
                 let timeFrame = ƒ.Loop.timeFrameGame / 1000;
@@ -41,6 +38,9 @@ var prima_endaufgabe_grether_benedikt;
             // Hilfsverschiebung
             this.cmpTransform.local.translateX(_translateX);
             this.speedMax = new ƒ.Vector2(_speed, 0);
+            this.healthpoints = 20;
+            this.counter = this.healthpoints - 5;
+            console.log(this.healthpoints);
             this.hitbox = this.createHitbox();
             this.appendChild(this.hitbox);
             this.show(ACTION_ZOMBIE.IDLEZOMBIE);
@@ -86,18 +86,17 @@ var prima_endaufgabe_grether_benedikt;
             this.updateHealthbar(_enemy);
         }
         updateHealthbar(_enemy) {
-            if (counter == this.healthpoints) {
-                counter -= 5;
+            if (this.counter == this.healthpoints) {
+                this.counter -= 5;
             }
             if (this.healthpoints === 0) {
-                let gravestone = new prima_endaufgabe_grether_benedikt.Gravstone(_enemy.cmpTransform.local.translation.x);
+                let gravestone = new prima_endaufgabe_grether_benedikt.Gravstone(_enemy.mtxWorld.translation.x);
                 prima_endaufgabe_grether_benedikt.game.appendChild(gravestone);
                 prima_endaufgabe_grether_benedikt.game.removeChild(_enemy);
                 prima_endaufgabe_grether_benedikt.Sound.play("zombieDeath");
-                this.healthpoints = 20;
-                counter = 15;
+                // this.counter = 15;
                 this.spawnNewEnemy();
-                this.itemDrop(_enemy.cmpTransform.local.translation.x);
+                this.itemDrop(_enemy.mtxWorld.translation.x);
                 prima_endaufgabe_grether_benedikt.Highscore.setHighscore();
             }
         }
@@ -125,7 +124,7 @@ var prima_endaufgabe_grether_benedikt;
         itemDrop(_location) {
             if (this.getRandomInt(3) == 1) {
                 prima_endaufgabe_grether_benedikt.Sound.play("itemDropZombie");
-                itemDrop = new prima_endaufgabe_grether_benedikt.Items(prima_endaufgabe_grether_benedikt.ITEM.SWORD, 0.25);
+                itemDrop = new prima_endaufgabe_grether_benedikt.Items(prima_endaufgabe_grether_benedikt.ITEM.SWORD, 25, 0.25);
                 itemDrop.cmpTransform.local.translateX(_location + 0.25);
                 itemDrop.cmpTransform.local.scaleX(.5);
                 itemDrop.cmpTransform.local.scaleY(.5);
@@ -148,13 +147,14 @@ var prima_endaufgabe_grether_benedikt;
         }
         getRandomSpeed() {
             let math = Math.random();
-            if (math >= 0.3 || math <= 0.5) {
+            if (math >= 0.3 && math <= 0.5) {
+                console.log(math);
                 return math;
             }
             else {
-                this.getRandomSpeed();
+                return this.getRandomSpeed();
             }
-            return math;
+            // return math;
         }
         checkCollision(_checkCollision) {
             for (let floor of _checkCollision.getChildren()) {

@@ -2,6 +2,7 @@
 var prima_endaufgabe_grether_benedikt;
 (function (prima_endaufgabe_grether_benedikt) {
     class Sound {
+        // private static counter: number = 1;
         // private static soundVolume: number = 0;
         static init() {
             let audioElements = document.querySelectorAll("audio");
@@ -34,7 +35,6 @@ var prima_endaufgabe_grether_benedikt;
         }
     }
     Sound.sounds = {};
-    Sound.counter = 1;
     prima_endaufgabe_grether_benedikt.Sound = Sound;
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));
 //# sourceMappingURL=Sound.js.map

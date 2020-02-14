@@ -33,7 +33,6 @@ var prima_endaufgabe_grether_benedikt;
             Items.sprites.push(sprite);
         }
         itemUsability() {
-            console.log(this.itemUsabilityPoints);
             this.itemUsabilityPoints = this.itemUsabilityPoints - 1;
             this.updateItemUsability();
         }

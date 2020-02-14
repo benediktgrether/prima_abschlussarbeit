@@ -5,7 +5,7 @@ namespace prima_endaufgabe_grether_benedikt {
   }
   export class Sound {
     private static sounds: Sounds = {};
-    private static counter: number = 1;
+    // private static counter: number = 1;
     // private static soundVolume: number = 0;
 
     public static init(): void {
