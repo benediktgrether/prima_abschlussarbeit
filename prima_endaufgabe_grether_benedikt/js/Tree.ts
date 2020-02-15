@@ -9,12 +9,10 @@ namespace prima_endaufgabe_grether_benedikt {
   export class Tree extends ƒ.Node {
     public static sprites: Sprite[];
     
-
     constructor(_location: number) {
       super("Tree");
 
       this.addComponent(new ƒ.ComponentTransform());
-
       this.cmpTransform.local.translateX(_location);
       this.cmpTransform.local.translateZ(-0.1);
 
