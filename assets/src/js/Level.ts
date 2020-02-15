@@ -8,7 +8,7 @@ namespace prima_endaufgabe_grether_benedikt {
   }
 
   let counter: number = 5;
-  let _rotateZ: number = -180
+  let _rotateZ: number = -180;
   export class Level extends ƒ.Node {
 
     constructor(_data: Object[]) {

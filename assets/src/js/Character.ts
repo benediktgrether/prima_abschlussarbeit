@@ -21,7 +21,7 @@ namespace prima_endaufgabe_grether_benedikt {
       public healthpoints: number;
       public counter: number;
 
-      public constructor(_name: string){
+      public constructor(_name: string) {
         super(_name);
         this.addComponent(new ƒ.ComponentTransform());
       }
@@ -51,6 +51,4 @@ namespace prima_endaufgabe_grether_benedikt {
         }
       }
   }
-
-
 }
