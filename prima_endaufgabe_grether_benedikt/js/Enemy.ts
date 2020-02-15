@@ -80,7 +80,6 @@ namespace prima_endaufgabe_grether_benedikt {
           this.direction = (_direction == DIRECTIONZOMBIE.RIGHTZOMBIE ? 1 : -1);
           this.speed.x = this.speedMax.x;
           this.cmpTransform.local.rotation = ƒ.Vector3.Y(90 - 90 * this.direction);
-          // Sound.play("walkZombie");
           break;
       }
       this.show(_action);

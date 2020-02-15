@@ -16,7 +16,6 @@ namespace prima_endaufgabe_grether_benedikt {
       this.addComponent(new ƒ.ComponentTransform());
 
       this.cmpTransform.local.translateX(_location);
-      this.cmpTransform.local.translateY(3.5);
       this.cmpTransform.local.translateZ(-0.2);
 
       for (let sprite of Mountain.sprites) {
@@ -39,7 +38,7 @@ namespace prima_endaufgabe_grether_benedikt {
     }
 
     private update = (_event: ƒ.Eventƒ): void => {
-      this.cmpTransform.local.translation = new ƒ.Vector3(hero.cmpTransform.local.translation.x, 3.5 , -0.2);
+      this.cmpTransform.local.translation = new ƒ.Vector3(hero.cmpTransform.local.translation.x, 3.7 , -0.2);
     }
 
   }
