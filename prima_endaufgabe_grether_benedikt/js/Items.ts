@@ -7,10 +7,8 @@ namespace prima_endaufgabe_grether_benedikt {
     SWORD = "Sword"
   }
 
-  // let itemCounter: number = 20;
 
   export class Items extends ƒ.Node {
-    // static itemCounter: number = 20;
     static healthBar: number = 100;
 
     public static sprites: Sprite[];
@@ -18,8 +16,6 @@ namespace prima_endaufgabe_grether_benedikt {
     public hitbox: Hitbox;
     public type: ITEM;
     private itemCounter: number;
-    // public itemUsabilityPoints: number;
-
 
     constructor(type: ITEM, _itemUsabilityPoints: number, _locationY?: number) {
       super("Item");

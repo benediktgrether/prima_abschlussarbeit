@@ -7,9 +7,7 @@ var prima_endaufgabe_grether_benedikt;
         ITEM["NONE"] = "None";
         ITEM["SWORD"] = "Sword";
     })(ITEM = prima_endaufgabe_grether_benedikt.ITEM || (prima_endaufgabe_grether_benedikt.ITEM = {}));
-    // let itemCounter: number = 20;
     class Items extends ƒ.Node {
-        // public itemUsabilityPoints: number;
         constructor(type, _itemUsabilityPoints, _locationY) {
             super("Item");
             this.type = type;
@@ -60,7 +58,6 @@ var prima_endaufgabe_grether_benedikt;
             }
         }
     }
-    // static itemCounter: number = 20;
     Items.healthBar = 100;
     prima_endaufgabe_grether_benedikt.Items = Items;
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));
