@@ -19,12 +19,6 @@ var prima_endaufgabe_grether_benedikt;
             }
             this.show();
         }
-        static generateSprites(_txtImage) {
-            Gravstone.sprites = [];
-            let sprite = new prima_endaufgabe_grether_benedikt.Sprite(GRAVSTONE.WOOD);
-            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(186, 123, 13, 20), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.TOPCENTER);
-            Gravstone.sprites.push(sprite);
-        }
         show() {
             for (let child of this.getChildren())
                 child.activate(child.name == GRAVSTONE.WOOD);

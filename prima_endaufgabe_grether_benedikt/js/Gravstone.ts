@@ -7,10 +7,8 @@ namespace prima_endaufgabe_grether_benedikt {
   }
 
   export class Gravstone extends ƒ.Node {
-
     public static sprites: Sprite[];
-    
-
+  
     constructor(_location: number) {
       super("Gravestone");
       this.addComponent(new ƒ.ComponentTransform());
@@ -22,12 +20,6 @@ namespace prima_endaufgabe_grether_benedikt {
         this.appendChild(nodeSprite);
       }
       this.show();
-    }
-    public static generateSprites(_txtImage: ƒ.TextureImage): void {
-      Gravstone.sprites = [];
-      let sprite: Sprite = new Sprite(GRAVSTONE.WOOD);
-      sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(186, 123, 13, 20), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.TOPCENTER);
-      Gravstone.sprites.push(sprite);
     }
     public show(): void {
       for (let child of this.getChildren())
