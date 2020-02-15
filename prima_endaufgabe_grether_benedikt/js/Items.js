@@ -16,7 +16,7 @@ var prima_endaufgabe_grether_benedikt;
             this.addComponent(new ƒ.ComponentTransform());
             this.cmpTransform.local.translateY(_locationY);
             this.itemUsabilityPoints = _itemUsabilityPoints;
-            this.itemCounter = _itemUsabilityPoints - 5;
+            this.itemCounter = _itemUsabilityPoints;
             for (let sprite of Items.sprites) {
                 let nodeSprite = new prima_endaufgabe_grether_benedikt.NodeSprite(sprite.name, sprite);
                 nodeSprite.activate(false);
@@ -50,12 +50,9 @@ var prima_endaufgabe_grether_benedikt;
                 child.activate(child.name == this.type);
         }
         updateItemUsability() {
-            if (this.itemCounter == this.itemUsabilityPoints) {
-                this.itemCounter -= 5;
-                Items.healthBar -= 25;
-                let element = document.getElementById("itemHealthBar");
-                element.style.width = Items.healthBar + "%";
-            }
+            Items.healthBar = 100 * (this.itemUsabilityPoints - 1) / this.itemCounter;
+            let element = document.getElementById("itemHealthBar");
+            element.style.width = Items.healthBar + "%";
             if (this.itemUsabilityPoints == 0) {
                 prima_endaufgabe_grether_benedikt.hero.item.type = ITEM.NONE;
                 Items.healthBar = 100;
