@@ -121,7 +121,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
     private spawnNewEnemy(): void {
       let enemy: Enemy;
-      let positonHero: number = bene.mtxWorld.translation.x;
+      let positonHero: number = hero.mtxWorld.translation.x;
       if (this.getRandomInt(2) == 0) {
         if ((positonHero + 3.5) < 12.5) {
           enemy = new Enemy("Zombie", (positonHero + 3), this.getRandomSpeed());
@@ -166,9 +166,9 @@ namespace prima_endaufgabe_grether_benedikt {
     }
 
     private movement(): void {
-      if (this.cmpTransform.local.translation.x > bene.cmpTransform.local.translation.x + .1) {
+      if (this.cmpTransform.local.translation.x > hero.cmpTransform.local.translation.x + .1) {
         this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.LEFTZOMBIE);
-      } else if (this.cmpTransform.local.translation.x < bene.cmpTransform.local.translation.x - .1) {
+      } else if (this.cmpTransform.local.translation.x < hero.cmpTransform.local.translation.x - .1) {
         this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.RIGHTZOMBIE);
       }
 

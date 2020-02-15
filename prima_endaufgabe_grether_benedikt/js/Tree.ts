@@ -39,7 +39,7 @@ namespace prima_endaufgabe_grether_benedikt {
     }
 
     private update = (_event: ƒ.Eventƒ): void => {
-      this.cmpTransform.local.translation = new ƒ.Vector3(bene.cmpTransform.local.translation.x, 2.5 , -0.1);
+      this.cmpTransform.local.translation = new ƒ.Vector3(hero.cmpTransform.local.translation.x, 2.5 , -0.1);
     }
   }
 }

@@ -71,7 +71,7 @@ namespace prima_endaufgabe_grether_benedikt {
         element.style.width = Items.healthBar + "%";
       }
       if (this.itemUsabilityPoints == 0) {
-        bene.item.type = ITEM.NONE;
+        hero.item.type = ITEM.NONE;
         Items.healthBar = 100;
         Sound.play("itemDegredation");
       }

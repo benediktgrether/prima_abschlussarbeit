@@ -46,9 +46,9 @@ namespace prima_endaufgabe_grether_benedikt {
             hitbox = (<Items>child).hitbox;
             if (this.detectedHit(hitbox)) {
               if (child.name == "Item") {
-                if (bene.item == null || bene.item.type == ITEM.NONE) {
-                  bene.item = (<Items>child);
-                  bene.createSwordHitbox();
+                if (hero.item == null || hero.item.type == ITEM.NONE) {
+                  hero.item = (<Items>child);
+                  hero.createSwordHitbox();
                   let element: HTMLElement = document.getElementById("itemHealthBar");
                   element.style.width = "100%";
                   console.log(child.getParent());
@@ -68,37 +68,37 @@ namespace prima_endaufgabe_grether_benedikt {
             hitbox = (<Enemy>child).hitbox;
             if (this.detectedHit(hitbox)) {
               if ((<Enemy>child).direction == 1 && fight == false) {
-                bene.cmpTransform.local.translateX(0.05);
+                hero.cmpTransform.local.translateX(0.05);
                 Sound.play("playerHit");
-                bene.updateHealtpoints();
+                hero.updateHealtpoints();
 
               } else if ((<Enemy>child).direction == -1 && fight == false) {
-                bene.cmpTransform.local.translateX(-0.05);
+                hero.cmpTransform.local.translateX(-0.05);
                 Sound.play("playerHit");
-                bene.updateHealtpoints();
+                hero.updateHealtpoints();
 
-              } else if (bene.item.type == "Sword" && fight == true) {
-                if ((<Enemy>child).direction == 1 && bene.directionChar === -1) {
+              } else if (hero.item.type == "Sword" && fight == true) {
+                if ((<Enemy>child).direction == 1 && hero.directionChar === -1) {
                   (<Enemy>child).cmpTransform.local.translateX(-0.15);
                   (<Enemy>child).updateHealtpoints(<Enemy>child);
-                  bene.item.itemUsability();
+                  hero.item.itemUsability();
                   Sound.play("enemyHit");
 
-                } else if ((<Enemy>child).direction == -1 && bene.directionChar === 1) {
+                } else if ((<Enemy>child).direction == -1 && hero.directionChar === 1) {
                   (<Enemy>child).cmpTransform.local.translateX(0.15);
                   (<Enemy>child).updateHealtpoints(<Enemy>child);
-                  bene.item.itemUsability();
+                  hero.item.itemUsability();
                   Sound.play("enemyHit");
 
-                } else if ((<Enemy>child).direction == 1 && bene.directionChar === 1) {
+                } else if ((<Enemy>child).direction == 1 && hero.directionChar === 1) {
                   Sound.play("playerHit");
-                  bene.cmpTransform.local.translateX(0.05);
-                  bene.updateHealtpoints();
+                  hero.cmpTransform.local.translateX(0.05);
+                  hero.updateHealtpoints();
 
-                } else if ((<Enemy>child).direction == -1 && bene.directionChar === -1) {
+                } else if ((<Enemy>child).direction == -1 && hero.directionChar === -1) {
                   Sound.play("playerHit");
-                  bene.cmpTransform.local.translateX(-0.05);
-                  bene.updateHealtpoints();
+                  hero.cmpTransform.local.translateX(-0.05);
+                  hero.updateHealtpoints();
                 }
                 else {
                   continue;
@@ -114,9 +114,9 @@ namespace prima_endaufgabe_grether_benedikt {
           hitbox = (<Items>child).hitbox;
           if (this.detectedHit(hitbox)) {
             if (child.name == "Item") {
-              if (bene.item.type == ITEM.NONE) {
-                bene.item = (<Items>child);
-                bene.createSwordHitbox();
+              if (hero.item.type == ITEM.NONE) {
+                hero.item = (<Items>child);
+                hero.createSwordHitbox();
                 let element: HTMLElement = document.getElementById("itemHealthBar");
                 element.style.width = "100%";
                 child.cmpTransform.local.translateY(5);

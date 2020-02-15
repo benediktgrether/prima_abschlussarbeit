@@ -24,7 +24,7 @@ namespace prima_endaufgabe_grether_benedikt {
   export let game: ƒ.Node;
   export let level: ƒ.Node;
   export let platform: ƒ.Node;
-  export let bene: Character;
+  export let hero: Hero;
   export let enemy: Enemy;
   export let fight: boolean = false;
   export let life: boolean = true;
@@ -58,7 +58,7 @@ namespace prima_endaufgabe_grether_benedikt {
     let img: HTMLImageElement = document.querySelector("img");
     let txtImage: ƒ.TextureImage = new ƒ.TextureImage();
     txtImage.image = img;
-    Character.generateSprites(txtImage);
+    Hero.generateSprites(txtImage);
     Enemy.generateSprites(txtImage);
     Floor.generateSprites(txtImage);
     Items.generateSprites(txtImage);
@@ -72,7 +72,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
     game.cmpTransform.local.translateY(-1.17);
 
-    bene = new Character("Bene");
+    hero = new Hero("hero");
     enemy = new Enemy("Zombie", -3, 0.5);
     enemy.updateHealtpoints(enemy);
     level = new Level(data);
@@ -82,7 +82,7 @@ namespace prima_endaufgabe_grether_benedikt {
     
 
 
-    game.appendChild(bene);
+    game.appendChild(hero);
     game.appendChild(enemy);
     enemy = new Enemy("Zombie", 3, 0.3);
     enemy.updateHealtpoints(enemy);
@@ -116,14 +116,14 @@ namespace prima_endaufgabe_grether_benedikt {
       processInput();
 
       viewport.draw();
-      cmpCamera.pivot.translation = new ƒ.Vector3(bene.cmpTransform.local.translation.x, cmpCamera.pivot.translation.y, cmpCamera.pivot.translation.z);
+      cmpCamera.pivot.translation = new ƒ.Vector3(hero.cmpTransform.local.translation.x, cmpCamera.pivot.translation.y, cmpCamera.pivot.translation.z);
     }
   }
 
   function handleKeyboard(_event: KeyboardEvent): void {
     keysPressed[_event.code] = (_event.type == "keydown");
     if (_event.code == ƒ.KEYBOARD_CODE.W && _event.type == "keydown") {
-      bene.act(ACTION.JUMP);
+      hero.act(ACTION.JUMP);
       fight = false;
     }
   }
@@ -131,19 +131,19 @@ namespace prima_endaufgabe_grether_benedikt {
   function processInput(): void {
     if (life == true) {
       if (keysPressed[ƒ.KEYBOARD_CODE.A]) {
-        bene.act(ACTION.WALK, DIRECTION.LEFT);
+        hero.act(ACTION.WALK, DIRECTION.LEFT);
         fight = false;
         return;
       }
       if (keysPressed[ƒ.KEYBOARD_CODE.D]) {
-        bene.act(ACTION.WALK, DIRECTION.RIGHT);
+        hero.act(ACTION.WALK, DIRECTION.RIGHT);
         fight = false;
         return;
       }
       if (keysPressed[ƒ.KEYBOARD_CODE.E]) {
-        bene.act(ACTION.IDLE);
+        hero.act(ACTION.IDLE);
         fight = false;
-        bene.item.type = ITEM.NONE;
+        hero.item.type = ITEM.NONE;
         // Items.itemUsabilityPoints = 25;
         // Items.itemCounter = 20;
         Items.healthBar = 100;
@@ -153,33 +153,33 @@ namespace prima_endaufgabe_grether_benedikt {
         return;
       }
       // if (keysPressed[ƒ.KEYBOARD_CODE.W]) {
-      //   bene.act(ACTION.JUMP);
+      //   hero.act(ACTION.JUMP);
       //   fight = false;
       //   // return;
       // }
       if (keysPressed[ƒ.KEYBOARD_CODE.SPACE]) {
-        if (bene.item.type == "Sword") {
-          bene.act(ACTION.SWORD);
+        if (hero.item.type == "Sword") {
+          hero.act(ACTION.SWORD);
           Sound.play("swordFight");
           fight = true;
-          bene.speed.x = 0;
+          hero.speed.x = 0;
           return;
         } else {
-          bene.act(ACTION.IDLE);
-          bene.updateHealtpoints();
+          hero.act(ACTION.IDLE);
+          hero.updateHealtpoints();
           if (enemy.direction == 1 && fight == true) {
-            bene.cmpTransform.local.translateX(0.05);
+            hero.cmpTransform.local.translateX(0.05);
             fight = false;
             return;
           }
           else  if (enemy.direction == -1 && fight == true) {
-            bene.cmpTransform.local.translateX(-0.05);
+            hero.cmpTransform.local.translateX(-0.05);
             fight = false;
             return;
           }
         }
       }
-      bene.act(ACTION.IDLE);
+      hero.act(ACTION.IDLE);
       fight = false;
       return;
     }

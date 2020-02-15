@@ -55,7 +55,7 @@ var prima_endaufgabe_grether_benedikt;
                 element.style.width = Items.healthBar + "%";
             }
             if (this.itemUsabilityPoints == 0) {
-                prima_endaufgabe_grether_benedikt.bene.item.type = ITEM.NONE;
+                prima_endaufgabe_grether_benedikt.hero.item.type = ITEM.NONE;
                 Items.healthBar = 100;
                 prima_endaufgabe_grether_benedikt.Sound.play("itemDegredation");
             }

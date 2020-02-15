@@ -31,7 +31,7 @@ var prima_endaufgabe_grether_benedikt;
         let img = document.querySelector("img");
         let txtImage = new prima_endaufgabe_grether_benedikt.ƒ.TextureImage();
         txtImage.image = img;
-        prima_endaufgabe_grether_benedikt.Character.generateSprites(txtImage);
+        prima_endaufgabe_grether_benedikt.Hero.generateSprites(txtImage);
         prima_endaufgabe_grether_benedikt.Enemy.generateSprites(txtImage);
         prima_endaufgabe_grether_benedikt.Floor.generateSprites(txtImage);
         prima_endaufgabe_grether_benedikt.Items.generateSprites(txtImage);
@@ -42,13 +42,13 @@ var prima_endaufgabe_grether_benedikt;
         prima_endaufgabe_grether_benedikt.game = new prima_endaufgabe_grether_benedikt.ƒ.Node("Game");
         prima_endaufgabe_grether_benedikt.game.addComponent(new prima_endaufgabe_grether_benedikt.ƒ.ComponentTransform());
         prima_endaufgabe_grether_benedikt.game.cmpTransform.local.translateY(-1.17);
-        prima_endaufgabe_grether_benedikt.bene = new prima_endaufgabe_grether_benedikt.Character("Bene");
+        prima_endaufgabe_grether_benedikt.hero = new prima_endaufgabe_grether_benedikt.Hero("hero");
         prima_endaufgabe_grether_benedikt.enemy = new prima_endaufgabe_grether_benedikt.Enemy("Zombie", -3, 0.5);
         prima_endaufgabe_grether_benedikt.enemy.updateHealtpoints(prima_endaufgabe_grether_benedikt.enemy);
         prima_endaufgabe_grether_benedikt.level = new prima_endaufgabe_grether_benedikt.Level(data);
         prima_endaufgabe_grether_benedikt.platform = new prima_endaufgabe_grether_benedikt.Platform(data);
         prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.platform);
-        prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.bene);
+        prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.hero);
         prima_endaufgabe_grether_benedikt.game.appendChild(prima_endaufgabe_grether_benedikt.enemy);
         prima_endaufgabe_grether_benedikt.enemy = new prima_endaufgabe_grether_benedikt.Enemy("Zombie", 3, 0.3);
         prima_endaufgabe_grether_benedikt.enemy.updateHealtpoints(prima_endaufgabe_grether_benedikt.enemy);
@@ -72,32 +72,32 @@ var prima_endaufgabe_grether_benedikt;
                 end();
             processInput();
             viewport.draw();
-            cmpCamera.pivot.translation = new prima_endaufgabe_grether_benedikt.ƒ.Vector3(prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation.x, cmpCamera.pivot.translation.y, cmpCamera.pivot.translation.z);
+            cmpCamera.pivot.translation = new prima_endaufgabe_grether_benedikt.ƒ.Vector3(prima_endaufgabe_grether_benedikt.hero.cmpTransform.local.translation.x, cmpCamera.pivot.translation.y, cmpCamera.pivot.translation.z);
         }
     }
     function handleKeyboard(_event) {
         keysPressed[_event.code] = (_event.type == "keydown");
         if (_event.code == prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.W && _event.type == "keydown") {
-            prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.JUMP);
+            prima_endaufgabe_grether_benedikt.hero.act(prima_endaufgabe_grether_benedikt.ACTION.JUMP);
             prima_endaufgabe_grether_benedikt.fight = false;
         }
     }
     function processInput() {
         if (prima_endaufgabe_grether_benedikt.life == true) {
             if (keysPressed[prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.A]) {
-                prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.WALK, prima_endaufgabe_grether_benedikt.DIRECTION.LEFT);
+                prima_endaufgabe_grether_benedikt.hero.act(prima_endaufgabe_grether_benedikt.ACTION.WALK, prima_endaufgabe_grether_benedikt.DIRECTION.LEFT);
                 prima_endaufgabe_grether_benedikt.fight = false;
                 return;
             }
             if (keysPressed[prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.D]) {
-                prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.WALK, prima_endaufgabe_grether_benedikt.DIRECTION.RIGHT);
+                prima_endaufgabe_grether_benedikt.hero.act(prima_endaufgabe_grether_benedikt.ACTION.WALK, prima_endaufgabe_grether_benedikt.DIRECTION.RIGHT);
                 prima_endaufgabe_grether_benedikt.fight = false;
                 return;
             }
             if (keysPressed[prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.E]) {
-                prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
+                prima_endaufgabe_grether_benedikt.hero.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
                 prima_endaufgabe_grether_benedikt.fight = false;
-                prima_endaufgabe_grether_benedikt.bene.item.type = prima_endaufgabe_grether_benedikt.ITEM.NONE;
+                prima_endaufgabe_grether_benedikt.hero.item.type = prima_endaufgabe_grether_benedikt.ITEM.NONE;
                 // Items.itemUsabilityPoints = 25;
                 // Items.itemCounter = 20;
                 prima_endaufgabe_grether_benedikt.Items.healthBar = 100;
@@ -107,34 +107,34 @@ var prima_endaufgabe_grether_benedikt;
                 return;
             }
             // if (keysPressed[ƒ.KEYBOARD_CODE.W]) {
-            //   bene.act(ACTION.JUMP);
+            //   hero.act(ACTION.JUMP);
             //   fight = false;
             //   // return;
             // }
             if (keysPressed[prima_endaufgabe_grether_benedikt.ƒ.KEYBOARD_CODE.SPACE]) {
-                if (prima_endaufgabe_grether_benedikt.bene.item.type == "Sword") {
-                    prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.SWORD);
+                if (prima_endaufgabe_grether_benedikt.hero.item.type == "Sword") {
+                    prima_endaufgabe_grether_benedikt.hero.act(prima_endaufgabe_grether_benedikt.ACTION.SWORD);
                     prima_endaufgabe_grether_benedikt.Sound.play("swordFight");
                     prima_endaufgabe_grether_benedikt.fight = true;
-                    prima_endaufgabe_grether_benedikt.bene.speed.x = 0;
+                    prima_endaufgabe_grether_benedikt.hero.speed.x = 0;
                     return;
                 }
                 else {
-                    prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
-                    prima_endaufgabe_grether_benedikt.bene.updateHealtpoints();
+                    prima_endaufgabe_grether_benedikt.hero.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
+                    prima_endaufgabe_grether_benedikt.hero.updateHealtpoints();
                     if (prima_endaufgabe_grether_benedikt.enemy.direction == 1 && prima_endaufgabe_grether_benedikt.fight == true) {
-                        prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(0.05);
+                        prima_endaufgabe_grether_benedikt.hero.cmpTransform.local.translateX(0.05);
                         prima_endaufgabe_grether_benedikt.fight = false;
                         return;
                     }
                     else if (prima_endaufgabe_grether_benedikt.enemy.direction == -1 && prima_endaufgabe_grether_benedikt.fight == true) {
-                        prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translateX(-0.05);
+                        prima_endaufgabe_grether_benedikt.hero.cmpTransform.local.translateX(-0.05);
                         prima_endaufgabe_grether_benedikt.fight = false;
                         return;
                     }
                 }
             }
-            prima_endaufgabe_grether_benedikt.bene.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
+            prima_endaufgabe_grether_benedikt.hero.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
             prima_endaufgabe_grether_benedikt.fight = false;
             return;
         }

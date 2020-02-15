@@ -102,7 +102,7 @@ var prima_endaufgabe_grether_benedikt;
         }
         spawnNewEnemy() {
             let enemy;
-            let positonHero = prima_endaufgabe_grether_benedikt.bene.mtxWorld.translation.x;
+            let positonHero = prima_endaufgabe_grether_benedikt.hero.mtxWorld.translation.x;
             if (this.getRandomInt(2) == 0) {
                 if ((positonHero + 3.5) < 12.5) {
                     enemy = new Enemy("Zombie", (positonHero + 3), this.getRandomSpeed());
@@ -132,10 +132,10 @@ var prima_endaufgabe_grether_benedikt;
             }
         }
         movement() {
-            if (this.cmpTransform.local.translation.x > prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation.x + .1) {
+            if (this.cmpTransform.local.translation.x > prima_endaufgabe_grether_benedikt.hero.cmpTransform.local.translation.x + .1) {
                 this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.LEFTZOMBIE);
             }
-            else if (this.cmpTransform.local.translation.x < prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation.x - .1) {
+            else if (this.cmpTransform.local.translation.x < prima_endaufgabe_grether_benedikt.hero.cmpTransform.local.translation.x - .1) {
                 this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.RIGHTZOMBIE);
             }
             else {

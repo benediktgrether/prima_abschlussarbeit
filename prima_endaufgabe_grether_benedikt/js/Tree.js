@@ -10,7 +10,7 @@ var prima_endaufgabe_grether_benedikt;
         constructor(_location) {
             super("Tree");
             this.update = (_event) => {
-                this.cmpTransform.local.translation = new ƒ.Vector3(prima_endaufgabe_grether_benedikt.bene.cmpTransform.local.translation.x, 2.5, -0.1);
+                this.cmpTransform.local.translation = new ƒ.Vector3(prima_endaufgabe_grether_benedikt.hero.cmpTransform.local.translation.x, 2.5, -0.1);
             };
             this.addComponent(new ƒ.ComponentTransform());
             this.cmpTransform.local.translateX(_location);
