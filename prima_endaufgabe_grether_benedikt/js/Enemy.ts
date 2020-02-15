@@ -111,9 +111,7 @@ namespace prima_endaufgabe_grether_benedikt {
         game.appendChild(gravestone);
         game.removeChild(_enemy);
         Sound.play("zombieDeath");
-      
-        // this.counter = 15;
-
+        ƒ.Loop.removeEventListener(ƒ.EVENT.LOOP_FRAME, _enemy.update);
         this.spawnNewEnemy();
         this.itemDrop(_enemy.mtxWorld.translation.x);
         Highscore.setHighscore();

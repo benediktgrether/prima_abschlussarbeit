@@ -94,7 +94,7 @@ var prima_endaufgabe_grether_benedikt;
                 prima_endaufgabe_grether_benedikt.game.appendChild(gravestone);
                 prima_endaufgabe_grether_benedikt.game.removeChild(_enemy);
                 prima_endaufgabe_grether_benedikt.Sound.play("zombieDeath");
-                // this.counter = 15;
+                ƒ.Loop.removeEventListener("loopFrame" /* LOOP_FRAME */, _enemy.update);
                 this.spawnNewEnemy();
                 this.itemDrop(_enemy.mtxWorld.translation.x);
                 prima_endaufgabe_grether_benedikt.Highscore.setHighscore();

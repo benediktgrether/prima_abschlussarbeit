@@ -42,7 +42,9 @@ var prima_endaufgabe_grether_benedikt;
                                     prima_endaufgabe_grether_benedikt.bene.createSwordHitbox();
                                     let element = document.getElementById("itemHealthBar");
                                     element.style.width = "100%";
-                                    child.cmpTransform.local.translateY(5);
+                                    console.log(child.getParent());
+                                    floor.removeChild(child);
+                                    child.cmpTransform.local.translateY(2);
                                 }
                             }
                         }
