@@ -3,25 +3,19 @@ namespace prima_endaufgabe_grether_benedikt {
   import ƒ = FudgeCore;
 
   interface Object {
-    // platform: any;
     platform: Object[];
     distance: number;
     item: boolean;
   }
 
-
   export class Platform extends ƒ.Node {
-
-
     constructor(_data: Object[]) {
       super("Platform");
 
       let platform: Floor;
-
       this.fetchData(_data, platform)
-
     }
-
+    
     private generatePlatform(_platform: Floor, _distance?: number, _item?: boolean): ƒ.Node {
       let floorDistance: number = -0.5;
 
