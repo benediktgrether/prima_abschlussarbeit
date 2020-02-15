@@ -2,9 +2,9 @@ namespace prima_endaufgabe_grether_benedikt {
   import ƒ = FudgeCore;
 
   export class Floor extends ƒ.Node {
-    private static mesh: ƒ.MeshSprite = new ƒ.MeshSprite();
-    private static readonly pivot: ƒ.Matrix4x4 = ƒ.Matrix4x4.TRANSLATION(ƒ.Vector3.Y(1.8));
     private static sprites: Sprite[];
+    private static mesh: ƒ.MeshSprite = new ƒ.MeshSprite();
+    private static readonly pivot: ƒ.Matrix4x4 = ƒ.Matrix4x4.TRANSLATION(ƒ.Vector3.Y(1.4));
     public item: Items;
 
     public constructor(_distance: number, _translateY?: number, _distancePlatform?: number, _item?: boolean) {
@@ -25,6 +25,7 @@ namespace prima_endaufgabe_grether_benedikt {
       
       this.cmpTransform.local.scaleX(0.5);
       this.cmpTransform.local.scaleY(0.5);
+      // this.cmpTransform.local.translateX(-0.5);
       this.cmpTransform.local.translateX(_distance);
       if (_translateY) {
         this.cmpTransform.local.translateY(_translateY);
@@ -34,7 +35,7 @@ namespace prima_endaufgabe_grether_benedikt {
       }
 
       if (_item) {
-        let item: Items = new Items(ITEM.SWORD, 105, 0.5);
+        let item: Items = new Items(ITEM.SWORD, 105, 1.5);
         item.itemUsability();
         this.item = item;
         this.appendChild(this.item);
@@ -45,7 +46,7 @@ namespace prima_endaufgabe_grether_benedikt {
       Floor.sprites = [];
       let sprite: Sprite = new Sprite("FloorSprite");
       // sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(1, 20, 20, 150), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.BOTTOMCENTER);
-      sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(6, 131, 19, 19), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.TOPCENTER);
+      sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(6, 131, 19, 19), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.BOTTOMCENTER);
       Floor.sprites.push(sprite);
     }
 

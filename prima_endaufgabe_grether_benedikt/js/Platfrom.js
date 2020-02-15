@@ -13,9 +13,11 @@ var prima_endaufgabe_grether_benedikt;
             for (let index = 0; index < 3; index++) {
                 if (index == 1) {
                     _platform = new prima_endaufgabe_grether_benedikt.Floor(floorDistance, 1, _distance, _item);
+                    _platform.cmpTransform.local.translateY(-1.5);
                 }
                 else {
                     _platform = new prima_endaufgabe_grether_benedikt.Floor(floorDistance, 1, _distance);
+                    _platform.cmpTransform.local.translateY(-1.5);
                 }
                 floorDistance = floorDistance + 0.25;
                 this.appendChild(_platform);

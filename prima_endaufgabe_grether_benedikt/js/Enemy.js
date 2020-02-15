@@ -37,6 +37,7 @@ var prima_endaufgabe_grether_benedikt;
             }
             // Hilfsverschiebung
             this.cmpTransform.local.translateX(_translateX);
+            this.cmpTransform.local.translateY(-0.5);
             this.speedMax = new ƒ.Vector2(_speed, 0);
             this.healthpoints = 20;
             this.counter = this.healthpoints - 5;
@@ -46,18 +47,8 @@ var prima_endaufgabe_grether_benedikt;
             this.show(ACTION_ZOMBIE.IDLEZOMBIE);
             ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, this.update);
         }
-        static generateSprites(_txtImage) {
-            Enemy.sprites = [];
-            let sprite = new prima_endaufgabe_grether_benedikt.Sprite(ACTION_ZOMBIE.WALKZOMBIE);
-            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(141, 55, 24, 45), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
-            Enemy.sprites.push(sprite);
-            sprite = new prima_endaufgabe_grether_benedikt.Sprite(ACTION_ZOMBIE.IDLEZOMBIE);
-            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(117, 55, 22, 45), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
-            Enemy.sprites.push(sprite);
-        }
         createHitbox() {
             let hitbox = new prima_endaufgabe_grether_benedikt.Hitbox("EnemyHitbox");
-            hitbox.cmpTransform.local.translateY(0.6);
             hitbox.cmpTransform.local.scaleX(0.2);
             hitbox.cmpTransform.local.scaleY(0.5);
             this.hitbox = hitbox;
@@ -124,7 +115,7 @@ var prima_endaufgabe_grether_benedikt;
         itemDrop(_location) {
             if (this.getRandomInt(5) == 1) {
                 prima_endaufgabe_grether_benedikt.Sound.play("itemDropZombie");
-                itemDrop = new prima_endaufgabe_grether_benedikt.Items(prima_endaufgabe_grether_benedikt.ITEM.SWORD, 105, 0.25);
+                itemDrop = new prima_endaufgabe_grether_benedikt.Items(prima_endaufgabe_grether_benedikt.ITEM.SWORD, 105, -0.9);
                 itemDrop.cmpTransform.local.translateX(_location + 0.25);
                 itemDrop.cmpTransform.local.scaleX(.5);
                 itemDrop.cmpTransform.local.scaleY(.5);

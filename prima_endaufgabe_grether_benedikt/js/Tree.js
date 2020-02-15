@@ -24,12 +24,12 @@ var prima_endaufgabe_grether_benedikt;
             this.show();
             ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, this.update);
         }
-        static generateSprites(_txtImage) {
-            Tree.sprites = [];
-            let sprite = new prima_endaufgabe_grether_benedikt.Sprite(TREES.TREE);
-            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(50, 70, 47, 83), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.TOPCENTER);
-            Tree.sprites.push(sprite);
-        }
+        // public static generateSprites(_txtImage: ƒ.TextureImage): void {
+        //   Tree.sprites = [];
+        //   let sprite: Sprite = new Sprite(TREES.TREE);
+        //   sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(50, 70, 47, 83), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.TOPCENTER);
+        //   Tree.sprites.push(sprite);
+        // }
         show() {
             for (let child of this.getChildren())
                 child.activate(child.name == TREES.TREE);

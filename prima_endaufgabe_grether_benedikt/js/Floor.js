@@ -17,6 +17,7 @@ var prima_endaufgabe_grether_benedikt;
             this.show();
             this.cmpTransform.local.scaleX(0.5);
             this.cmpTransform.local.scaleY(0.5);
+            // this.cmpTransform.local.translateX(-0.5);
             this.cmpTransform.local.translateX(_distance);
             if (_translateY) {
                 this.cmpTransform.local.translateY(_translateY);
@@ -25,7 +26,7 @@ var prima_endaufgabe_grether_benedikt;
                 this.cmpTransform.local.translateX(_distancePlatform);
             }
             if (_item) {
-                let item = new prima_endaufgabe_grether_benedikt.Items(prima_endaufgabe_grether_benedikt.ITEM.SWORD, 105, 0.5);
+                let item = new prima_endaufgabe_grether_benedikt.Items(prima_endaufgabe_grether_benedikt.ITEM.SWORD, 105, 1.5);
                 item.itemUsability();
                 this.item = item;
                 this.appendChild(this.item);
@@ -35,7 +36,7 @@ var prima_endaufgabe_grether_benedikt;
             Floor.sprites = [];
             let sprite = new prima_endaufgabe_grether_benedikt.Sprite("FloorSprite");
             // sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(1, 20, 20, 150), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.BOTTOMCENTER);
-            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(6, 131, 19, 19), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.TOPCENTER);
+            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(6, 131, 19, 19), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.BOTTOMCENTER);
             Floor.sprites.push(sprite);
         }
         show() {
@@ -57,7 +58,7 @@ var prima_endaufgabe_grether_benedikt;
         }
     }
     Floor.mesh = new ƒ.MeshSprite();
-    Floor.pivot = ƒ.Matrix4x4.TRANSLATION(ƒ.Vector3.Y(1.8));
+    Floor.pivot = ƒ.Matrix4x4.TRANSLATION(ƒ.Vector3.Y(1.4));
     prima_endaufgabe_grether_benedikt.Floor = Floor;
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));
 //# sourceMappingURL=Floor.js.map

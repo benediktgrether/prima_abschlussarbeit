@@ -34,6 +34,140 @@
       {
         "distanceLevel": 100
       }
+    ],
+    "generateSprite": [
+      {
+        "type": "Hero",
+        "action": "Idle.None",
+        "x": 3,
+        "y":8,
+        "w":20,
+        "h":43,
+        "frame":1,
+        "resolution": 64,
+        "pivot": "ƒ.ORIGIN2D.BOTTOMCENTER"
+      },
+      {
+        "type": "Hero",
+        "action": "Walk.None",
+        "x": 24,
+        "y":8,
+        "w":24,
+        "h":43,
+        "frame":4,
+        "resolution": 64,
+        "pivot": "ƒ.ORIGIN2D.BOTTOMCENTER"
+      },  
+      {
+        "type": "Hero",
+        "action": "Idle.Sword",
+        "x": 120,
+        "y":8,
+        "w":22,
+        "h":43,
+        "frame":1,
+        "resolution": 64,
+        "pivot": "ƒ.ORIGIN2D.BOTTOMCENTER"
+      },
+      {
+        "type": "Hero",
+        "action": "Walk.Sword",
+        "x": 144,
+        "y":8,
+        "w":26,
+        "h":43,
+        "frame":4,
+        "resolution": 64,
+        "pivot": "ƒ.ORIGIN2D.BOTTOMCENTER"
+      },
+      {
+        "type": "Hero",
+        "action": "Sword.Sword",
+        "x": 252,
+        "y":5,
+        "w":28 ,
+        "h":45,
+        "frame":2,
+        "resolution": 64,
+        "pivot": "ƒ.ORIGIN2D.BOTTOMCENTER"
+      },
+      {
+        "type": "Enemy",
+        "action": "Idle",
+        "x": 117,
+        "y":55,
+        "w":22,
+        "h":45,
+        "frame":1,
+        "resolution": 64,
+        "pivot": "ƒ.ORIGIN2D.BOTTOMCENTER"
+      },
+      {
+        "type": "Enemy",
+        "action": "Walk",
+        "x": 141,
+        "y":55,
+        "w":24,
+        "h":45,
+        "frame":4,
+        "resolution": 64,
+        "pivot": "ƒ.ORIGIN2D.BOTTOMCENTER"
+      },
+      {
+        "type": "Floor",
+        "action": "FloorSprite",
+        "x": 6,
+        "y":131,
+        "w":19,
+        "h":19,
+        "frame":1,
+        "resolution": 30,
+        "pivot": "ƒ.ORIGIN2D.BOTTOMCENTER"
+      },
+      {
+        "type": "Sword",
+        "action": "Sword",
+        "x": 169,
+        "y":125,
+        "w":8,
+        "h":18,
+        "frame":1,
+        "resolution": 30,
+        "pivot": "ƒ.ORIGIN2D.BOTTOMCENTER"
+      },
+      {
+        "type": "Gravestone",
+        "action": "Wood",
+        "x": 186,
+        "y":123,
+        "w":13,
+        "h":20,
+        "frame":1,
+        "resolution": 64,
+        "pivot": "ƒ.ORIGIN2D.BOTTOMCENTER"
+      },
+      {
+        "type": "Tree",
+        "action": "Tree",
+        "x": 50,
+        "y":70,
+        "w":47,
+        "h":83,
+        "frame":1,
+        "resolution": 30,
+        "pivot": "ƒ.ORIGIN2D.BOTTOMCENTER"
+      },
+      {
+        "type": "Mountain",
+        "action": "Mountain",
+        "x": 4,
+        "y":156,
+        "w":261,
+        "h":110,
+        "frame":1,
+        "resolution": 30,
+        "pivot": "ƒ.ORIGIN2D.BOTTOMCENTER"
+      }
     ]
   }
 ]

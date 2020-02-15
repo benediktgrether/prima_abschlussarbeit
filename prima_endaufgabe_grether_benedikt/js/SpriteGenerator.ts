@@ -132,4 +132,68 @@ namespace prima_endaufgabe_grether_benedikt {
       this.direction = Math.floor(_direction);
     }
   }
+  interface Object {
+    generateSprite: Object[];
+    type: string;
+    action: string;
+    x: number;
+    y: number;
+    w: number;
+    h: number;
+    frame: number;
+    resolution: number;
+    pivot: ƒ.ORIGIN2D;
+  }
+
+  export class SpriteGenerator {
+
+    public static generateSprites(_txtImage: ƒ.TextureImage, _data: Object[]): void {
+
+      Hero.sprites = [];
+      Enemy.sprites = [];
+      // Floor.sprites = [];
+      Items.sprites = [];
+      Gravstone.sprites = [];
+      Tree.sprites = [];
+      Mountain.sprites = [];
+      let sprite: Sprite;
+
+      let i: number = 0;
+      let data: Object[] = _data[0].generateSprite;
+      while (data[i] != null) {
+        console.log(data[i].type);
+        sprite = new Sprite(data[i].action);
+        sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(data[i].x, data[i].y, data[i].w, data[i].h), data[i].frame, ƒ.Vector2.ZERO(), data[i].resolution, data[i].pivot);
+
+        switch (data[i].type) {
+          case "Hero":
+            Hero.sprites.push(sprite);
+            break;
+          case "Enemy":
+            Enemy.sprites.push(sprite);
+            break;
+          // case "Floor":
+          //   Floor.sprites.push(sprite);
+          //   break;
+          case "Sword":
+            Items.sprites.push(sprite);
+            break;
+          case "Gravestone":
+            Gravstone.sprites.push(sprite);
+          case "Tree":
+            Tree.sprites.push(sprite);
+            break;
+          case "Mountain":
+            Mountain.sprites.push(sprite);
+            break;
+        }
+
+        i++;
+      }
+
+      // sprite = new Sprite(MOUNTAINS.MOUNTAIN);
+      // sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(4, 156, 261, 110), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.TOPCENTER);
+      // Mountain.sprites.push(sprite);
+    }
+  }
 }

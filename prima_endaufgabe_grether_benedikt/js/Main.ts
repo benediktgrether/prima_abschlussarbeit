@@ -13,6 +13,16 @@ namespace prima_endaufgabe_grether_benedikt {
     item: boolean;
     level: Object[];
     distanceLevel: number;
+    generateSprite: Object[];
+    type: string;
+    action: string;
+    x: number;
+    y: number;
+    w: number;
+    h: number;
+    frame: number;
+    resolution: number;
+    pivot: ƒ.ORIGIN2D;
   }
 
 
@@ -58,19 +68,20 @@ namespace prima_endaufgabe_grether_benedikt {
     let img: HTMLImageElement = document.querySelector("img");
     let txtImage: ƒ.TextureImage = new ƒ.TextureImage();
     txtImage.image = img;
-    Hero.generateSprites(txtImage);
-    Enemy.generateSprites(txtImage);
+    // Hero.generateSprites(txtImage);
+    // Enemy.generateSprites(txtImage);
     Floor.generateSprites(txtImage);
-    Items.generateSprites(txtImage);
-    Gravstone.generateSprites(txtImage);
-    Tree.generateSprites(txtImage);
-    Mountain.generateSprites(txtImage);
+    // Items.generateSprites(txtImage);
+    // Gravstone.generateSprites(txtImage);
+    // Tree.generateSprites(txtImage);
+    // Mountain.generateSprites(txtImage);
+    SpriteGenerator.generateSprites(txtImage, data);
 
     ƒ.RenderManager.initialize(true, false);
     game = new ƒ.Node("Game");
     game.addComponent(new ƒ.ComponentTransform());
 
-    game.cmpTransform.local.translateY(-1.17);
+    // game.cmpTransform.local.translateY(-1.17);
 
     hero = new Hero("hero");
     enemy = new Enemy("Zombie", -3, 0.5);
@@ -82,12 +93,12 @@ namespace prima_endaufgabe_grether_benedikt {
     
 
 
+    game.appendChild(level);
     game.appendChild(hero);
     game.appendChild(enemy);
     enemy = new Enemy("Zombie", 3, 0.3);
     enemy.updateHealtpoints(enemy);
     game.appendChild(enemy);
-    game.appendChild(level);
 
 
 

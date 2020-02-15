@@ -28,8 +28,10 @@ namespace prima_endaufgabe_grether_benedikt {
       for (let index: number = 0; index < 3; index++) {
         if (index == 1) {
           _platform = new Floor(floorDistance, 1, _distance, _item);
+          _platform.cmpTransform.local.translateY(-1.5);
         } else {
           _platform = new Floor(floorDistance, 1, _distance);
+          _platform.cmpTransform.local.translateY(-1.5);
         }
         floorDistance = floorDistance + 0.25;
 

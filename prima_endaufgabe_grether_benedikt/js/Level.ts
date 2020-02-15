@@ -25,6 +25,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
       for (let index: number = 0; index < _levelDistance; index++) {
         _level = new Floor(floorDistance);
+        _level.cmpTransform.local.translateY(-1.5);
         floorDistance = floorDistance + 0.25;
 
         if (index == counter) {

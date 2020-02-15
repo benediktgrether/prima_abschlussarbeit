@@ -7,7 +7,7 @@ namespace prima_endaufgabe_grether_benedikt {
   }
 
   export class Tree extends ƒ.Node {
-    private static sprites: Sprite[];
+    public static sprites: Sprite[];
     
 
     constructor(_location: number) {
@@ -27,12 +27,12 @@ namespace prima_endaufgabe_grether_benedikt {
       this.show();
       ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, this.update);
     }
-    public static generateSprites(_txtImage: ƒ.TextureImage): void {
-      Tree.sprites = [];
-      let sprite: Sprite = new Sprite(TREES.TREE);
-      sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(50, 70, 47, 83), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.TOPCENTER);
-      Tree.sprites.push(sprite);
-    }
+    // public static generateSprites(_txtImage: ƒ.TextureImage): void {
+    //   Tree.sprites = [];
+    //   let sprite: Sprite = new Sprite(TREES.TREE);
+    //   sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(50, 70, 47, 83), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.TOPCENTER);
+    //   Tree.sprites.push(sprite);
+    // }
     public show(): void {
       for (let child of this.getChildren())
         child.activate(child.name == TREES.TREE);

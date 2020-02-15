@@ -24,12 +24,12 @@ var prima_endaufgabe_grether_benedikt;
             this.show();
             ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, this.update);
         }
-        static generateSprites(_txtImage) {
-            Mountain.sprites = [];
-            let sprite = new prima_endaufgabe_grether_benedikt.Sprite(MOUNTAINS.MOUNTAIN);
-            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(4, 156, 261, 110), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.TOPCENTER);
-            Mountain.sprites.push(sprite);
-        }
+        // public static generateSprites(_txtImage: ƒ.TextureImage): void {
+        //   Mountain.sprites = [];
+        //   let sprite: Sprite = new Sprite(MOUNTAINS.MOUNTAIN);
+        //   sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(4, 156, 261, 110), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.TOPCENTER);
+        //   Mountain.sprites.push(sprite);
+        // }
         show() {
             for (let child of this.getChildren())
                 child.activate(child.name == MOUNTAINS.MOUNTAIN);
@@ -37,12 +37,4 @@ var prima_endaufgabe_grether_benedikt;
     }
     prima_endaufgabe_grether_benedikt.Mountain = Mountain;
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));
-//     if (index == 5 || index == 10) {
-//   let tree: Tree = new Tree(0);
-//   _level.appendChild(tree);
-// }
-// if (index == 1 || index == 16) {
-//   let mountain: Mountain = new Mountain(4);
-//   _level.appendChild(mountain);
-// }
 //# sourceMappingURL=Mountain.js.map

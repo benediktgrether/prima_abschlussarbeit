@@ -13,6 +13,7 @@ var prima_endaufgabe_grether_benedikt;
             let floorDistance = -12.5;
             for (let index = 0; index < _levelDistance; index++) {
                 _level = new prima_endaufgabe_grether_benedikt.Floor(floorDistance);
+                _level.cmpTransform.local.translateY(-1.5);
                 floorDistance = floorDistance + 0.25;
                 if (index == counter) {
                     let tree = new prima_endaufgabe_grether_benedikt.Tree(0);

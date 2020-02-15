@@ -13,7 +13,7 @@ namespace prima_endaufgabe_grether_benedikt {
   let itemDrop: Items;
 
   export class Enemy extends ƒ.Node {
-    private static sprites: Sprite[];
+    public static sprites: Sprite[];
     private static gravity: ƒ.Vector2 = ƒ.Vector2.Y(-3);
     public speedMax: ƒ.Vector2;
     public speed: ƒ.Vector3 = ƒ.Vector3.ZERO();
@@ -42,6 +42,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
       // Hilfsverschiebung
       this.cmpTransform.local.translateX(_translateX);
+      this.cmpTransform.local.translateY(-0.5);
       this.speedMax = new ƒ.Vector2(_speed, 0);
 
       this.healthpoints = 20;
@@ -55,21 +56,9 @@ namespace prima_endaufgabe_grether_benedikt {
       ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, this.update);
     }
 
-    public static generateSprites(_txtImage: ƒ.TextureImage): void {
-      Enemy.sprites = [];
-      let sprite: Sprite = new Sprite(ACTION_ZOMBIE.WALKZOMBIE);
-      sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(141, 55, 24, 45), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
-      Enemy.sprites.push(sprite);
-
-      sprite = new Sprite(ACTION_ZOMBIE.IDLEZOMBIE);
-      sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(117, 55, 22, 45), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
-      Enemy.sprites.push(sprite);
-    }
-
     public createHitbox(): Hitbox {
 
       let hitbox: Hitbox = new Hitbox("EnemyHitbox");
-      hitbox.cmpTransform.local.translateY(0.6);
       hitbox.cmpTransform.local.scaleX(0.2);
       hitbox.cmpTransform.local.scaleY(0.5);
       this.hitbox = hitbox;
@@ -133,7 +122,6 @@ namespace prima_endaufgabe_grether_benedikt {
           enemy = new Enemy("Zombie", (positonHero - 3), this.getRandomSpeed());
         } else {
           enemy = new Enemy("Zombie", (positonHero + 3), this.getRandomSpeed());
-
         }
       }
       game.appendChild(enemy);
@@ -142,7 +130,7 @@ namespace prima_endaufgabe_grether_benedikt {
     private itemDrop(_location: number): void {
       if (this.getRandomInt(5) == 1) {
         Sound.play("itemDropZombie");
-        itemDrop = new Items(ITEM.SWORD, 105, 0.25);
+        itemDrop = new Items(ITEM.SWORD, 105, - 0.9);
         itemDrop.cmpTransform.local.translateX(_location + 0.25);
         itemDrop.cmpTransform.local.scaleX(.5);
         itemDrop.cmpTransform.local.scaleY(.5);
@@ -161,8 +149,6 @@ namespace prima_endaufgabe_grether_benedikt {
       this.checkCollision(level);
       this.checkCollision(platform);
       this.movement();
-
-
     }
 
     private movement(): void {

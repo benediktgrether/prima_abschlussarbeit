@@ -13,7 +13,7 @@ namespace prima_endaufgabe_grether_benedikt {
     // static itemCounter: number = 20;
     static healthBar: number = 100;
 
-    private static sprites: Sprite[];
+    public static sprites: Sprite[];
     public itemUsabilityPoints: number;
     public hitbox: Hitbox;
     public type: ITEM;

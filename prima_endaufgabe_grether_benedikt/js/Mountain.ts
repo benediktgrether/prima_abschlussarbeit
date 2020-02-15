@@ -7,7 +7,7 @@ namespace prima_endaufgabe_grether_benedikt {
   }
 
   export class Mountain extends ƒ.Node {
-    private static sprites: Sprite[];
+    public static sprites: Sprite[];
 
 
     constructor(_location: number) {
@@ -27,12 +27,12 @@ namespace prima_endaufgabe_grether_benedikt {
       this.show();
       ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, this.update);
     }
-    public static generateSprites(_txtImage: ƒ.TextureImage): void {
-      Mountain.sprites = [];
-      let sprite: Sprite = new Sprite(MOUNTAINS.MOUNTAIN);
-      sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(4, 156, 261, 110), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.TOPCENTER);
-      Mountain.sprites.push(sprite);
-    }
+    // public static generateSprites(_txtImage: ƒ.TextureImage): void {
+    //   Mountain.sprites = [];
+    //   let sprite: Sprite = new Sprite(MOUNTAINS.MOUNTAIN);
+    //   sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(4, 156, 261, 110), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.TOPCENTER);
+    //   Mountain.sprites.push(sprite);
+    // }
     public show(): void {
       for (let child of this.getChildren())
         child.activate(child.name == MOUNTAINS.MOUNTAIN);
@@ -44,12 +44,3 @@ namespace prima_endaufgabe_grether_benedikt {
 
   }
 }
-//     if (index == 5 || index == 10) {
-//   let tree: Tree = new Tree(0);
-//   _level.appendChild(tree);
-// }
-
-// if (index == 1 || index == 16) {
-//   let mountain: Mountain = new Mountain(4);
-//   _level.appendChild(mountain);
-// }

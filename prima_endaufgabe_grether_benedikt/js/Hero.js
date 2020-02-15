@@ -41,6 +41,7 @@ var prima_endaufgabe_grether_benedikt;
                 nodeSprite.addEventListener("showNext", (_event) => { _event.currentTarget.showFrameNext(); }, true);
                 this.appendChild(nodeSprite);
             }
+            this.cmpTransform.local.translateY(-0.5);
             this.hitbox = this.createHitbox();
             this.appendChild(this.hitbox);
             if (this.item == null) {
@@ -49,27 +50,27 @@ var prima_endaufgabe_grether_benedikt;
             }
             ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, this.update);
         }
-        static generateSprites(_txtImage) {
-            Hero.sprites = [];
-            let sprite = new prima_endaufgabe_grether_benedikt.Sprite(ACTION.WALK + "." + prima_endaufgabe_grether_benedikt.ITEM.NONE);
-            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(24, 8, 24, 43), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
-            Hero.sprites.push(sprite);
-            sprite = new prima_endaufgabe_grether_benedikt.Sprite(ACTION.IDLE + "." + prima_endaufgabe_grether_benedikt.ITEM.NONE);
-            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(3, 8, 20, 43), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
-            Hero.sprites.push(sprite);
-            sprite = new prima_endaufgabe_grether_benedikt.Sprite(ACTION.IDLE + "." + prima_endaufgabe_grether_benedikt.ITEM.SWORD);
-            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(120, 8, 22, 43), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
-            Hero.sprites.push(sprite);
-            sprite = new prima_endaufgabe_grether_benedikt.Sprite(ACTION.WALK + "." + prima_endaufgabe_grether_benedikt.ITEM.SWORD);
-            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(144, 8, 26, 43), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
-            Hero.sprites.push(sprite);
-            sprite = new prima_endaufgabe_grether_benedikt.Sprite(ACTION.SWORD + "." + prima_endaufgabe_grether_benedikt.ITEM.SWORD);
-            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(252, 5, 28, 46), 2, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
-            Hero.sprites.push(sprite);
-        }
+        // public static generateSprites(_txtImage: ƒ.TextureImage): void {
+        //   Hero.sprites = [];
+        //   let sprite: Sprite = new Sprite(ACTION.WALK + "." + ITEM.NONE);
+        //   sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(24, 8, 24, 43), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
+        //   Hero.sprites.push(sprite);
+        //   sprite = new Sprite(ACTION.IDLE + "." + ITEM.NONE);
+        //   sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(3, 8, 20, 43), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
+        //   Hero.sprites.push(sprite);
+        //   sprite = new Sprite(ACTION.IDLE + "." + ITEM.SWORD);
+        //   sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(120, 8, 22, 43), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
+        //   Hero.sprites.push(sprite);
+        //   sprite = new Sprite(ACTION.WALK + "." + ITEM.SWORD);
+        //   sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(144, 8, 26, 43), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
+        //   Hero.sprites.push(sprite);
+        //   sprite = new Sprite(ACTION.SWORD + "." + ITEM.SWORD);
+        //   sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(252, 5, 28, 46), 2, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
+        //   Hero.sprites.push(sprite);
+        // }
         createHitbox() {
             let hitbox = new prima_endaufgabe_grether_benedikt.Hitbox("PlayerHitbox");
-            hitbox.cmpTransform.local.translateY(0.6);
+            // hitbox.cmpTransform.local.translateY(0.6);
             hitbox.cmpTransform.local.scaleX(0.2);
             hitbox.cmpTransform.local.scaleY(0.5);
             this.hitbox = hitbox;
@@ -77,8 +78,8 @@ var prima_endaufgabe_grether_benedikt;
         }
         createSwordHitbox() {
             let hitbox = new prima_endaufgabe_grether_benedikt.Hitbox("SwordHitBox");
-            hitbox.cmpTransform.local.translateY(0.6);
-            hitbox.cmpTransform.local.scaleX(0.2);
+            // hitbox.cmpTransform.local.translateY(0.6);
+            hitbox.cmpTransform.local.scaleX(1);
             hitbox.cmpTransform.local.scaleY(0.5);
             this.hitbox = hitbox;
             this.appendChild(hitbox);

@@ -8,14 +8,14 @@ namespace prima_endaufgabe_grether_benedikt {
 
   export class Gravstone extends ƒ.Node {
 
-    private static sprites: Sprite[];
+    public static sprites: Sprite[];
     
 
     constructor(_location: number) {
       super("Gravestone");
       this.addComponent(new ƒ.ComponentTransform());
       this.cmpTransform.local.translateX(_location);
-      this.cmpTransform.local.translateY(0.25);
+      this.cmpTransform.local.translateY(-0.9);
       for (let sprite of Gravstone.sprites) {
         let nodeSprite: NodeSprite = new NodeSprite(sprite.name, sprite);
         nodeSprite.activate(false);
