@@ -89,16 +89,16 @@ var prima_endaufgabe_grether_benedikt;
             }
         }
         checkCollisionFight(_child) {
-            if (_child.direction == 1 && prima_endaufgabe_grether_benedikt.hero.directionChar === -1) {
+            if (_child.direction == 1 && prima_endaufgabe_grether_benedikt.hero.direction === -1) {
                 this.enemyHit(_child, -0.15);
             }
-            else if (_child.direction == -1 && prima_endaufgabe_grether_benedikt.hero.directionChar === 1) {
+            else if (_child.direction == -1 && prima_endaufgabe_grether_benedikt.hero.direction === 1) {
                 this.enemyHit(_child, 0.15);
             }
-            else if (_child.direction == 1 && prima_endaufgabe_grether_benedikt.hero.directionChar === 1) {
+            else if (_child.direction == 1 && prima_endaufgabe_grether_benedikt.hero.direction === 1) {
                 this.playerHit(0.1);
             }
-            else if (_child.direction == -1 && prima_endaufgabe_grether_benedikt.hero.directionChar === -1) {
+            else if (_child.direction == -1 && prima_endaufgabe_grether_benedikt.hero.direction === -1) {
                 this.playerHit(-0.1);
             }
         }

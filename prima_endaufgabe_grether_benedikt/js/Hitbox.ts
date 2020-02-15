@@ -100,15 +100,15 @@ namespace prima_endaufgabe_grether_benedikt {
     }
 
     private checkCollisionFight(_child: Enemy): void {
-      if (_child.direction == 1 && hero.directionChar === -1) {
+      if (_child.direction == 1 && hero.direction === -1) {
         this.enemyHit(_child, -0.15);
 
-      } else if (_child.direction == -1 && hero.directionChar === 1) {
+      } else if (_child.direction == -1 && hero.direction === 1) {
         this.enemyHit(_child, 0.15);
 
-      } else if (_child.direction == 1 && hero.directionChar === 1) {
+      } else if (_child.direction == 1 && hero.direction === 1) {
         this.playerHit(0.1);
-      } else if (_child.direction == -1 && hero.directionChar === -1) {
+      } else if (_child.direction == -1 && hero.direction === -1) {
         this.playerHit(-0.1);
       }
     }

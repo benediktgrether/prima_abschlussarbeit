@@ -2,31 +2,13 @@ namespace prima_endaufgabe_grether_benedikt {
 
   import ƒ = FudgeCore;
 
-  export enum ACTION_ZOMBIE {
-    IDLEZOMBIE = "Idle",
-    WALKZOMBIE = "Walk"
-  }
-
-  export enum DIRECTIONZOMBIE {
-    LEFTZOMBIE, RIGHTZOMBIE
-  }
   let itemDrop: Items;
 
-  export class Enemy extends ƒ.Node {
+  export class Enemy extends Character {
     public static sprites: Sprite[];
-    private static gravity: ƒ.Vector2 = ƒ.Vector2.Y(-3);
-    public speedMax: ƒ.Vector2;
-    public speed: ƒ.Vector3 = ƒ.Vector3.ZERO();
-    public hitbox: Hitbox;
-    public direction: number;
-    public healthpoints: number;
-    private counter: number;
-
-    // All Same with Character
 
     constructor(_name: string, _translateX: number, _speed: number) {
       super(_name);
-      this.addComponent(new ƒ.ComponentTransform());
 
       for (let sprite of Enemy.sprites) {
         let nodeSprite: NodeSprite = new NodeSprite(sprite.name, sprite);
@@ -50,7 +32,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
       this.hitbox = this.createHitbox();
       this.appendChild(this.hitbox);
-      this.show(ACTION_ZOMBIE.IDLEZOMBIE);
+      this.show(ACTION.IDLE);
 
       ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, this.update);
     }
@@ -64,24 +46,34 @@ namespace prima_endaufgabe_grether_benedikt {
       return hitbox;
     }
 
-    public show(_action: ACTION_ZOMBIE): void {
+    public show(_action: ACTION): void {
       for (let child of this.getChildren())
         child.activate(child.name == _action);
     }
 
 
-    public act(_action: ACTION_ZOMBIE, _direction?: DIRECTIONZOMBIE): void {
+    public act(_action: ACTION, _direction?: DIRECTION): void {
       switch (_action) {
-        case ACTION_ZOMBIE.IDLEZOMBIE:
+        case ACTION.IDLE:
           this.speed.x = 0;
           break;
-        case ACTION_ZOMBIE.WALKZOMBIE:
-          this.direction = (_direction == DIRECTIONZOMBIE.RIGHTZOMBIE ? 1 : -1);
+        case ACTION.WALK:
+          this.direction = (_direction == DIRECTION.RIGHT ? 1 : -1);
           this.speed.x = this.speedMax.x;
           this.cmpTransform.local.rotation = ƒ.Vector3.Y(90 - 90 * this.direction);
           break;
       }
       this.show(_action);
+    }
+
+    public movement(): void {
+      if (this.cmpTransform.local.translation.x > hero.cmpTransform.local.translation.x + .1) {
+        this.act(ACTION.WALK, DIRECTION.LEFT);
+      } else if (this.cmpTransform.local.translation.x < hero.cmpTransform.local.translation.x - .1) {
+        this.act(ACTION.WALK, DIRECTION.RIGHT);
+      } else {
+        this.act(ACTION.IDLE);
+      }
     }
 
     public updateHealtpoints(_enemy: Enemy): void {
@@ -144,23 +136,13 @@ namespace prima_endaufgabe_grether_benedikt {
       this.broadcastEvent(new CustomEvent("showNext"));
 
       let timeFrame: number = ƒ.Loop.timeFrameGame / 1000;
-      this.speed.y += Enemy.gravity.y * timeFrame;
+      this.speed.y += this.gravity.y * timeFrame;
       let distance: ƒ.Vector3 = ƒ.Vector3.SCALE(this.speed, timeFrame);
       this.cmpTransform.local.translate(distance);
 
       this.checkCollision(level);
       this.checkCollision(platform);
       this.movement();
-    }
-
-    private movement(): void {
-      if (this.cmpTransform.local.translation.x > hero.cmpTransform.local.translation.x + .1) {
-        this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.LEFTZOMBIE);
-      } else if (this.cmpTransform.local.translation.x < hero.cmpTransform.local.translation.x - .1) {
-        this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.RIGHTZOMBIE);
-      } else {
-        this.act(ACTION_ZOMBIE.IDLEZOMBIE);
-      }
     }
 
     private getRandomInt(max: number): number {
@@ -173,21 +155,6 @@ namespace prima_endaufgabe_grether_benedikt {
         return math;
       } else {
         return this.getRandomSpeed();
-      }
-    }
-
-    private checkCollision(_checkCollision: ƒ.Node): void {
-      for (let floor of _checkCollision.getChildren()) {
-        if (floor.name == "Floor") {
-          let rect: ƒ.Rectangle = (<Floor>floor).getRectWorld();
-          let hit: boolean = rect.isInside(this.cmpTransform.local.translation.toVector2());
-          if (hit) {
-            let translation: ƒ.Vector3 = this.cmpTransform.local.translation;
-            translation.y = rect.y;
-            this.cmpTransform.local.translation = translation;
-            this.speed.y = 0;
-          }
-        }
       }
     }
   }

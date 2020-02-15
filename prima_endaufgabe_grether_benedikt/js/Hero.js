@@ -1,38 +1,21 @@
 "use strict";
-/// <reference path="./SpriteGenerator.ts"/>
 var prima_endaufgabe_grether_benedikt;
-/// <reference path="./SpriteGenerator.ts"/>
 (function (prima_endaufgabe_grether_benedikt) {
     var ƒ = FudgeCore;
-    let ACTION;
-    (function (ACTION) {
-        ACTION["IDLE"] = "Idle";
-        ACTION["WALK"] = "Walk";
-        ACTION["JUMP"] = "Jump";
-        ACTION["SWORD"] = "Sword";
-    })(ACTION = prima_endaufgabe_grether_benedikt.ACTION || (prima_endaufgabe_grether_benedikt.ACTION = {}));
-    let DIRECTION;
-    (function (DIRECTION) {
-        DIRECTION[DIRECTION["LEFT"] = 0] = "LEFT";
-        DIRECTION[DIRECTION["RIGHT"] = 1] = "RIGHT";
-    })(DIRECTION = prima_endaufgabe_grether_benedikt.DIRECTION || (prima_endaufgabe_grether_benedikt.DIRECTION = {}));
-    class Hero extends ƒ.Node {
+    class Hero extends prima_endaufgabe_grether_benedikt.Character {
         constructor(_name) {
             super(_name);
-            this.speed = ƒ.Vector3.ZERO();
             this.item = null;
-            this.healthpoints = 10;
             this.update = (_event) => {
                 this.broadcastEvent(new CustomEvent("showNext"));
                 let timeFrame = ƒ.Loop.timeFrameGame / 1000;
-                this.speed.y += Hero.gravity.y * timeFrame;
+                this.speed.y += this.gravity.y * timeFrame;
                 let distance = ƒ.Vector3.SCALE(this.speed, timeFrame);
                 this.cmpTransform.local.translate(distance);
                 this.checkCollision(prima_endaufgabe_grether_benedikt.level);
                 this.checkCollision(prima_endaufgabe_grether_benedikt.platform);
                 this.hitbox.checkCollision();
             };
-            this.addComponent(new ƒ.ComponentTransform());
             for (let sprite of Hero.sprites) {
                 let nodeSprite = new prima_endaufgabe_grether_benedikt.NodeSprite(sprite.name, sprite);
                 nodeSprite.activate(false);
@@ -40,11 +23,13 @@ var prima_endaufgabe_grether_benedikt;
                 this.appendChild(nodeSprite);
             }
             this.cmpTransform.local.translateY(-0.5);
+            this.speedMax = new ƒ.Vector2(1.5, 5);
             this.hitbox = this.createHitbox();
             this.appendChild(this.hitbox);
+            this.healthpoints = 10;
             this.counter = this.healthpoints - 1;
             if (this.item == null) {
-                this.show(ACTION.IDLE, prima_endaufgabe_grether_benedikt.ITEM.NONE);
+                this.show(prima_endaufgabe_grether_benedikt.ACTION.IDLE, prima_endaufgabe_grether_benedikt.ITEM.NONE);
             }
             ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, this.update);
         }
@@ -71,16 +56,16 @@ var prima_endaufgabe_grether_benedikt;
         }
         act(_action, _direction) {
             switch (_action) {
-                case ACTION.IDLE:
+                case prima_endaufgabe_grether_benedikt.ACTION.IDLE:
                     this.speed.x = 0;
                     break;
-                case ACTION.WALK:
-                    this.directionChar = (_direction == DIRECTION.RIGHT ? 1 : -1);
-                    this.speed.x = Hero.speedMax.x;
-                    this.cmpTransform.local.rotation = ƒ.Vector3.Y(90 - 90 * this.directionChar);
+                case prima_endaufgabe_grether_benedikt.ACTION.WALK:
+                    this.direction = (_direction == prima_endaufgabe_grether_benedikt.DIRECTION.RIGHT ? 1 : -1);
+                    this.speed.x = this.speedMax.x;
+                    this.cmpTransform.local.rotation = ƒ.Vector3.Y(90 - 90 * this.direction);
                     prima_endaufgabe_grether_benedikt.Sound.play("walkPlayer");
                     break;
-                case ACTION.JUMP:
+                case prima_endaufgabe_grether_benedikt.ACTION.JUMP:
                     if (this.speed.y != 0 || this.cmpTransform.local.translation.y > 0)
                         break;
                     this.speed.y = 2.5;
@@ -115,23 +100,7 @@ var prima_endaufgabe_grether_benedikt;
             element.classList.remove("heart-full");
             element.classList.add("heart-empty");
         }
-        checkCollision(_checkCollision) {
-            for (let floor of _checkCollision.getChildren()) {
-                if (floor.name == "Floor") {
-                    let rect = floor.getRectWorld();
-                    let hit = rect.isInside(this.cmpTransform.local.translation.toVector2());
-                    if (hit) {
-                        let translation = this.cmpTransform.local.translation;
-                        translation.y = rect.y;
-                        this.cmpTransform.local.translation = translation;
-                        this.speed.y = 0;
-                    }
-                }
-            }
-        }
     }
-    Hero.speedMax = new ƒ.Vector2(1.5, 5); // units per second
-    Hero.gravity = ƒ.Vector2.Y(-3);
     prima_endaufgabe_grether_benedikt.Hero = Hero;
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));
 //# sourceMappingURL=Hero.js.map

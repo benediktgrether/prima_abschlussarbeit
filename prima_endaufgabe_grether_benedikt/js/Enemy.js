@@ -2,33 +2,20 @@
 var prima_endaufgabe_grether_benedikt;
 (function (prima_endaufgabe_grether_benedikt) {
     var ƒ = FudgeCore;
-    let ACTION_ZOMBIE;
-    (function (ACTION_ZOMBIE) {
-        ACTION_ZOMBIE["IDLEZOMBIE"] = "Idle";
-        ACTION_ZOMBIE["WALKZOMBIE"] = "Walk";
-    })(ACTION_ZOMBIE = prima_endaufgabe_grether_benedikt.ACTION_ZOMBIE || (prima_endaufgabe_grether_benedikt.ACTION_ZOMBIE = {}));
-    let DIRECTIONZOMBIE;
-    (function (DIRECTIONZOMBIE) {
-        DIRECTIONZOMBIE[DIRECTIONZOMBIE["LEFTZOMBIE"] = 0] = "LEFTZOMBIE";
-        DIRECTIONZOMBIE[DIRECTIONZOMBIE["RIGHTZOMBIE"] = 1] = "RIGHTZOMBIE";
-    })(DIRECTIONZOMBIE = prima_endaufgabe_grether_benedikt.DIRECTIONZOMBIE || (prima_endaufgabe_grether_benedikt.DIRECTIONZOMBIE = {}));
     let itemDrop;
-    class Enemy extends ƒ.Node {
-        // All Same with Character
+    class Enemy extends prima_endaufgabe_grether_benedikt.Character {
         constructor(_name, _translateX, _speed) {
             super(_name);
-            this.speed = ƒ.Vector3.ZERO();
             this.update = (_event) => {
                 this.broadcastEvent(new CustomEvent("showNext"));
                 let timeFrame = ƒ.Loop.timeFrameGame / 1000;
-                this.speed.y += Enemy.gravity.y * timeFrame;
+                this.speed.y += this.gravity.y * timeFrame;
                 let distance = ƒ.Vector3.SCALE(this.speed, timeFrame);
                 this.cmpTransform.local.translate(distance);
                 this.checkCollision(prima_endaufgabe_grether_benedikt.level);
                 this.checkCollision(prima_endaufgabe_grether_benedikt.platform);
                 this.movement();
             };
-            this.addComponent(new ƒ.ComponentTransform());
             for (let sprite of Enemy.sprites) {
                 let nodeSprite = new prima_endaufgabe_grether_benedikt.NodeSprite(sprite.name, sprite);
                 nodeSprite.activate(false);
@@ -43,7 +30,7 @@ var prima_endaufgabe_grether_benedikt;
             this.counter = this.healthpoints - 5;
             this.hitbox = this.createHitbox();
             this.appendChild(this.hitbox);
-            this.show(ACTION_ZOMBIE.IDLEZOMBIE);
+            this.show(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
             ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, this.update);
         }
         createHitbox() {
@@ -59,16 +46,27 @@ var prima_endaufgabe_grether_benedikt;
         }
         act(_action, _direction) {
             switch (_action) {
-                case ACTION_ZOMBIE.IDLEZOMBIE:
+                case prima_endaufgabe_grether_benedikt.ACTION.IDLE:
                     this.speed.x = 0;
                     break;
-                case ACTION_ZOMBIE.WALKZOMBIE:
-                    this.direction = (_direction == DIRECTIONZOMBIE.RIGHTZOMBIE ? 1 : -1);
+                case prima_endaufgabe_grether_benedikt.ACTION.WALK:
+                    this.direction = (_direction == prima_endaufgabe_grether_benedikt.DIRECTION.RIGHT ? 1 : -1);
                     this.speed.x = this.speedMax.x;
                     this.cmpTransform.local.rotation = ƒ.Vector3.Y(90 - 90 * this.direction);
                     break;
             }
             this.show(_action);
+        }
+        movement() {
+            if (this.cmpTransform.local.translation.x > prima_endaufgabe_grether_benedikt.hero.cmpTransform.local.translation.x + .1) {
+                this.act(prima_endaufgabe_grether_benedikt.ACTION.WALK, prima_endaufgabe_grether_benedikt.DIRECTION.LEFT);
+            }
+            else if (this.cmpTransform.local.translation.x < prima_endaufgabe_grether_benedikt.hero.cmpTransform.local.translation.x - .1) {
+                this.act(prima_endaufgabe_grether_benedikt.ACTION.WALK, prima_endaufgabe_grether_benedikt.DIRECTION.RIGHT);
+            }
+            else {
+                this.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
+            }
         }
         updateHealtpoints(_enemy) {
             this.healthpoints = this.healthpoints - 1;
@@ -123,17 +121,6 @@ var prima_endaufgabe_grether_benedikt;
                 prima_endaufgabe_grether_benedikt.game.appendChild(itemDrop);
             }
         }
-        movement() {
-            if (this.cmpTransform.local.translation.x > prima_endaufgabe_grether_benedikt.hero.cmpTransform.local.translation.x + .1) {
-                this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.LEFTZOMBIE);
-            }
-            else if (this.cmpTransform.local.translation.x < prima_endaufgabe_grether_benedikt.hero.cmpTransform.local.translation.x - .1) {
-                this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.RIGHTZOMBIE);
-            }
-            else {
-                this.act(ACTION_ZOMBIE.IDLEZOMBIE);
-            }
-        }
         getRandomInt(max) {
             return Math.floor(Math.random() * Math.floor(max));
         }
@@ -146,22 +133,7 @@ var prima_endaufgabe_grether_benedikt;
                 return this.getRandomSpeed();
             }
         }
-        checkCollision(_checkCollision) {
-            for (let floor of _checkCollision.getChildren()) {
-                if (floor.name == "Floor") {
-                    let rect = floor.getRectWorld();
-                    let hit = rect.isInside(this.cmpTransform.local.translation.toVector2());
-                    if (hit) {
-                        let translation = this.cmpTransform.local.translation;
-                        translation.y = rect.y;
-                        this.cmpTransform.local.translation = translation;
-                        this.speed.y = 0;
-                    }
-                }
-            }
-        }
     }
-    Enemy.gravity = ƒ.Vector2.Y(-3);
     prima_endaufgabe_grether_benedikt.Enemy = Enemy;
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));
 //# sourceMappingURL=Enemy.js.map
