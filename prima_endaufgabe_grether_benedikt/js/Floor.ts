@@ -16,16 +16,13 @@ namespace prima_endaufgabe_grether_benedikt {
       this.appendChild(nodeSprite);
 
       this.addComponent(new ƒ.ComponentTransform());
-      // this.addComponent(new ƒ.ComponentMaterial(Floor.material));
       let cmpMesh: ƒ.ComponentMesh = new ƒ.ComponentMesh(Floor.mesh);
-      // cmpMesh.pivot.translateY(-0.5);
       cmpMesh.pivot = Floor.pivot;
       this.addComponent(cmpMesh);
       this.show();
       
       this.cmpTransform.local.scaleX(0.5);
       this.cmpTransform.local.scaleY(0.5);
-      // this.cmpTransform.local.translateX(-0.5);
       this.cmpTransform.local.translateX(_distance);
       if (_translateY) {
         this.cmpTransform.local.translateY(_translateY);
@@ -45,7 +42,6 @@ namespace prima_endaufgabe_grether_benedikt {
     public static generateSprites(_txtImage: ƒ.TextureImage): void {
       Floor.sprites = [];
       let sprite: Sprite = new Sprite("FloorSprite");
-      // sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(1, 20, 20, 150), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.BOTTOMCENTER);
       sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(6, 131, 19, 19), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.BOTTOMCENTER);
       Floor.sprites.push(sprite);
     }
@@ -60,7 +56,6 @@ namespace prima_endaufgabe_grether_benedikt {
       let topleft: ƒ.Vector3 = new ƒ.Vector3(-0.5, 0.5, 0);
       let bottomright: ƒ.Vector3 = new ƒ.Vector3(0.5, -0.5, 0);
       
-      //let pivot: ƒ.Matrix4x4 = this.getComponent(ƒ.ComponentMesh).pivot;
       let mtxResult: ƒ.Matrix4x4 = ƒ.Matrix4x4.MULTIPLICATION(this.mtxWorld, Floor.pivot);
       topleft.transform(mtxResult, true);
       bottomright.transform(mtxResult, true);
