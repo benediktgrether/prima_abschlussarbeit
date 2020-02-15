@@ -12,6 +12,12 @@ var prima_endaufgabe_grether_benedikt;
     }
     prima_endaufgabe_grether_benedikt.handleKeyboard = handleKeyboard;
     function processInput() {
+        if (keysPressed[ƒ.KEYBOARD_CODE.M]) {
+            if (!prima_endaufgabe_grether_benedikt.Sound.soundMuted)
+                prima_endaufgabe_grether_benedikt.Sound.mute();
+            else
+                prima_endaufgabe_grether_benedikt.Sound.continues();
+        }
         if (prima_endaufgabe_grether_benedikt.life == true) {
             if (keysPressed[ƒ.KEYBOARD_CODE.A]) {
                 prima_endaufgabe_grether_benedikt.hero.act(prima_endaufgabe_grether_benedikt.ACTION.WALK, prima_endaufgabe_grether_benedikt.DIRECTION.LEFT);

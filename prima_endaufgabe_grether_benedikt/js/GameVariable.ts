@@ -31,8 +31,6 @@ namespace prima_endaufgabe_grether_benedikt {
   export let life: boolean = true;
   export let data: Object[];
 
-  export let soundMuted: boolean = false;
-
   export async function loadFilesWithResponse(): Promise<void> {
     let response: Response = await fetch("./js/data/data.json");
     let offer: string = await response.text();

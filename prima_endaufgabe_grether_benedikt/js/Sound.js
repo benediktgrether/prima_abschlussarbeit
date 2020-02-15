@@ -8,13 +8,13 @@ var prima_endaufgabe_grether_benedikt;
                 Sound.sounds[element.id] = element;
         }
         static play(_id) {
-            if (prima_endaufgabe_grether_benedikt.soundMuted == false) {
+            if (this.soundMuted == false) {
                 Sound.sounds[_id].volume = 0.2;
                 Sound.sounds[_id].play();
             }
         }
         static playMusic() {
-            if (prima_endaufgabe_grether_benedikt.soundMuted == false) {
+            if (this.soundMuted == false) {
                 Sound.sounds["backgroundmusic"].loop = true;
                 Sound.sounds["backgroundmusic"].volume = 0.1;
                 Sound.sounds["backgroundmusic"].play();
@@ -25,11 +25,17 @@ var prima_endaufgabe_grether_benedikt;
             window.setTimeout(Sound.playItemDropZombie, 1000);
         }
         static mute() {
-            prima_endaufgabe_grether_benedikt.soundMuted = true;
+            this.soundMuted = true;
             let mute = document.getElementById("mute");
             mute.classList.add("muted-active");
+            Sound.sounds["backgroundmusic"].pause();
+        }
+        static continues() {
+            this.soundMuted = false;
+            Sound.sounds["backgroundmusic"].play();
         }
     }
+    Sound.soundMuted = false;
     Sound.sounds = {};
     prima_endaufgabe_grether_benedikt.Sound = Sound;
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));

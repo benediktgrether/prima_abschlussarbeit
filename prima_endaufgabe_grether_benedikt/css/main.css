@@ -18,7 +18,7 @@ canvas{
   top: 0px;
   background-color: black;
   color: white;
-  font-size: 36px;
+  font-size: 24px;
   z-index: 10
 }
 
@@ -96,7 +96,7 @@ canvas{
 
 .counter-wrapper{
   /* font-family: 'Press Start 2P', cursive; */
-  font-size: 26px;
+  font-size: 24px;
 }
 
 

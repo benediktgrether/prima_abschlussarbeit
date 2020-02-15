@@ -4,7 +4,6 @@ var prima_endaufgabe_grether_benedikt;
     var ƒ = FudgeCore;
     prima_endaufgabe_grether_benedikt.fight = false;
     prima_endaufgabe_grether_benedikt.life = true;
-    prima_endaufgabe_grether_benedikt.soundMuted = false;
     async function loadFilesWithResponse() {
         let response = await fetch("./js/data/data.json");
         let offer = await response.text();
