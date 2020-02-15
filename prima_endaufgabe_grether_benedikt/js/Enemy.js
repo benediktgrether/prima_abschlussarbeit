@@ -81,13 +81,16 @@ var prima_endaufgabe_grether_benedikt;
             if (this.healthpoints === 0) {
                 let gravestone = new prima_endaufgabe_grether_benedikt.Gravstone(_enemy.mtxWorld.translation.x);
                 prima_endaufgabe_grether_benedikt.game.appendChild(gravestone);
-                prima_endaufgabe_grether_benedikt.game.removeChild(_enemy);
-                prima_endaufgabe_grether_benedikt.Sound.play("zombieDeath");
-                ƒ.Loop.removeEventListener("loopFrame" /* LOOP_FRAME */, _enemy.update);
-                this.spawnNewEnemy();
-                this.itemDrop(_enemy.mtxWorld.translation.x);
-                prima_endaufgabe_grether_benedikt.Highscore.setHighscore();
+                this.zombieDied(_enemy);
             }
+        }
+        zombieDied(_enemy) {
+            prima_endaufgabe_grether_benedikt.Sound.play("zombieDeath");
+            prima_endaufgabe_grether_benedikt.game.removeChild(_enemy);
+            ƒ.Loop.removeEventListener("loopFrame" /* LOOP_FRAME */, _enemy.update);
+            this.spawnNewEnemy();
+            this.itemDrop(_enemy.mtxWorld.translation.x);
+            prima_endaufgabe_grether_benedikt.Highscore.setHighscore();
         }
         spawnNewEnemy() {
             let enemy;

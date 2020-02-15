@@ -96,14 +96,18 @@ namespace prima_endaufgabe_grether_benedikt {
       if (this.healthpoints === 0) {
         let gravestone: Gravstone = new Gravstone(_enemy.mtxWorld.translation.x);
         game.appendChild(gravestone);
-        game.removeChild(_enemy);
-        Sound.play("zombieDeath");
-        ƒ.Loop.removeEventListener(ƒ.EVENT.LOOP_FRAME, _enemy.update);
-        this.spawnNewEnemy();
-        this.itemDrop(_enemy.mtxWorld.translation.x);
-        Highscore.setHighscore();
+        this.zombieDied(_enemy);
 
       }
+    }
+
+    private zombieDied(_enemy: Enemy): void {
+      Sound.play("zombieDeath");
+      game.removeChild(_enemy);
+      ƒ.Loop.removeEventListener(ƒ.EVENT.LOOP_FRAME, _enemy.update);
+      this.spawnNewEnemy();
+      this.itemDrop(_enemy.mtxWorld.translation.x);
+      Highscore.setHighscore();
     }
 
     private spawnNewEnemy(): void {
@@ -154,9 +158,7 @@ namespace prima_endaufgabe_grether_benedikt {
         this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.LEFTZOMBIE);
       } else if (this.cmpTransform.local.translation.x < hero.cmpTransform.local.translation.x - .1) {
         this.act(ACTION_ZOMBIE.WALKZOMBIE, DIRECTIONZOMBIE.RIGHTZOMBIE);
-      }
-
-      else {
+      } else {
         this.act(ACTION_ZOMBIE.IDLEZOMBIE);
       }
     }
