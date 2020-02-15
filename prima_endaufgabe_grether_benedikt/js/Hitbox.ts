@@ -3,7 +3,6 @@ namespace prima_endaufgabe_grether_benedikt {
 
   export class Hitbox extends fudge.Node {
     private static mesh: fudge.MeshSprite = new fudge.MeshSprite();
-    private static material: fudge.Material = new fudge.Material("Hitbox", fudge.ShaderUniColor, new fudge.CoatColored(fudge.Color.CSS("black", 0.5)));
     private static readonly pivot: fudge.Matrix4x4 = fudge.Matrix4x4.TRANSLATION(fudge.Vector3.Y(-0.5));
 
     public constructor(_name?: string) {
@@ -14,7 +13,6 @@ namespace prima_endaufgabe_grether_benedikt {
         super("Hitbox");
       }
       this.addComponent(new fudge.ComponentTransform());
-      this.addComponent(new fudge.ComponentMaterial(Hitbox.material));
       let cmpMesh: fudge.ComponentMesh = new fudge.ComponentMesh(Hitbox.mesh);
       cmpMesh.pivot = Hitbox.pivot;
       this.addComponent(cmpMesh);
@@ -26,7 +24,6 @@ namespace prima_endaufgabe_grether_benedikt {
       let topleft: fudge.Vector3 = new fudge.Vector3(-0.5, 0.5, 0);
       let bottomright: fudge.Vector3 = new fudge.Vector3(0.5, -0.5, 0);
 
-      //let pivot: fudge.Matrix4x4 = this.getComponent(fudge.ComponentMesh).pivot;
       let mtxResult: fudge.Matrix4x4 = fudge.Matrix4x4.MULTIPLICATION(this.mtxWorld, Hitbox.pivot);
       topleft.transform(mtxResult, true);
       bottomright.transform(mtxResult, true);
@@ -39,92 +36,95 @@ namespace prima_endaufgabe_grether_benedikt {
     }
 
     public checkCollision(): void {
+      this.checkItems();
+      this.checkEnemys();
+      this.checkNewItems();
+    }
+
+    private checkItems(): void {
       for (let floor of platform.getChildren()) {
         for (let child of floor.getChildren()) {
           if (child.name == "Item") {
-            let hitbox: Hitbox;
-            hitbox = (<Items>child).hitbox;
-            if (this.detectedHit(hitbox)) {
-              if (child.name == "Item") {
-                if (hero.item == null || hero.item.type == ITEM.NONE) {
-                  hero.item = (<Items>child);
-                  hero.createSwordHitbox();
-                  let element: HTMLElement = document.getElementById("itemHealthBar");
-                  element.style.width = "100%";
-                  console.log(child.getParent());
-                  floor.removeChild(child);
-                  child.cmpTransform.local.translateY(2);
-                }
-              }
-            }
+            this.checkCollisionItem(child, floor);
           } else {
             continue;
           }
         }
+      }
+    }
 
-        for (let child of game.getChildren()) {
-          if (child.name == "Zombie") {
-            let hitbox: Hitbox;
-            hitbox = (<Enemy>child).hitbox;
-            if (this.detectedHit(hitbox)) {
-              if ((<Enemy>child).direction == 1 && fight == false) {
-                hero.cmpTransform.local.translateX(0.05);
-                Sound.play("playerHit");
-                hero.updateHealtpoints();
+    private checkEnemys(): void {
 
-              } else if ((<Enemy>child).direction == -1 && fight == false) {
-                hero.cmpTransform.local.translateX(-0.05);
-                Sound.play("playerHit");
-                hero.updateHealtpoints();
+      for (let child of game.getChildren()) {
+        if (child.name == "Zombie") {
+          let hitbox: Hitbox;
+          hitbox = (<Enemy>child).hitbox;
+          if (this.detectedHit(hitbox)) {
+            if ((<Enemy>child).direction == 1 && fight == false) {
+              this.playerHit(-0.05);
 
-              } else if (hero.item.type == "Sword" && fight == true) {
-                if ((<Enemy>child).direction == 1 && hero.directionChar === -1) {
-                  (<Enemy>child).cmpTransform.local.translateX(-0.15);
-                  (<Enemy>child).updateHealtpoints(<Enemy>child);
-                  hero.item.itemUsability();
-                  Sound.play("enemyHit");
+            } else if ((<Enemy>child).direction == -1 && fight == false) {
+              this.playerHit(- 0.05);
 
-                } else if ((<Enemy>child).direction == -1 && hero.directionChar === 1) {
-                  (<Enemy>child).cmpTransform.local.translateX(0.15);
-                  (<Enemy>child).updateHealtpoints(<Enemy>child);
-                  hero.item.itemUsability();
-                  Sound.play("enemyHit");
-
-                } else if ((<Enemy>child).direction == 1 && hero.directionChar === 1) {
-                  Sound.play("playerHit");
-                  hero.cmpTransform.local.translateX(0.05);
-                  hero.updateHealtpoints();
-
-                } else if ((<Enemy>child).direction == -1 && hero.directionChar === -1) {
-                  Sound.play("playerHit");
-                  hero.cmpTransform.local.translateX(-0.05);
-                  hero.updateHealtpoints();
-                }
-                else {
-                  continue;
-                }
-              }
+            } else if (hero.item.type == "Sword" && fight == true) {
+              this.checkCollisionFight(<Enemy>child);
+            } else {
+              continue;
             }
           }
         }
       }
+    }
+
+    private checkNewItems(): void {
       for (let child of game.getChildren()) {
         if (child.name == "Item") {
-          let hitbox: Hitbox;
-          hitbox = (<Items>child).hitbox;
-          if (this.detectedHit(hitbox)) {
-            if (child.name == "Item") {
-              if (hero.item.type == ITEM.NONE) {
-                hero.item = (<Items>child);
-                hero.createSwordHitbox();
-                let element: HTMLElement = document.getElementById("itemHealthBar");
-                element.style.width = "100%";
-                child.cmpTransform.local.translateY(5);
-              }
-            }
+          this.checkCollisionItem(child, game);
+        }
+      }
+    }
+
+    private checkCollisionItem(_child: ƒ.Node, _floor: ƒ.Node): void {
+      let hitbox: Hitbox;
+      hitbox = (<Items>_child).hitbox;
+      if (this.detectedHit(hitbox)) {
+        if (_child.name == "Item") {
+          if (hero.item == null || hero.item.type == ITEM.NONE) {
+            hero.item = (<Items>_child);
+            hero.createSwordHitbox();
+            let element: HTMLElement = document.getElementById("itemHealthBar");
+            element.style.width = "100%";
+            _floor.removeChild(_child);
           }
         }
       }
+    }
+
+    private checkCollisionFight(_child: Enemy): void {
+      if (_child.direction == 1 && hero.directionChar === -1) {
+        this.enemyHit(_child, -0.15);
+
+      } else if (_child.direction == -1 && hero.directionChar === 1) {
+        this.enemyHit(_child, 0.15);
+
+      } else if (_child.direction == 1 && hero.directionChar === 1) {
+        this.playerHit(0.05);
+      } else if (_child.direction == -1 && hero.directionChar === -1) {
+        this.playerHit(-0.05);
+      }
+    }
+
+    private enemyHit(_child: Enemy, _translateX: number): void {
+      Sound.play("enemyHit");
+      _child.cmpTransform.local.translateX(_translateX);
+      _child.updateHealtpoints(_child);
+      hero.item.itemUsability();
+    }
+
+    private playerHit(_translateX: number): void {
+      Sound.play("playerHit");
+      hero.cmpTransform.local.translateX(_translateX);
+      hero.updateHealtpoints();
     }
 
     private detectedHit(hitbox: Hitbox): boolean {
