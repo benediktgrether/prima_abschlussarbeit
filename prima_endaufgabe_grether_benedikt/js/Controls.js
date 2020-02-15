@@ -27,8 +27,6 @@ var prima_endaufgabe_grether_benedikt;
                 prima_endaufgabe_grether_benedikt.hero.act(prima_endaufgabe_grether_benedikt.ACTION.IDLE);
                 prima_endaufgabe_grether_benedikt.fight = false;
                 prima_endaufgabe_grether_benedikt.hero.item.type = prima_endaufgabe_grether_benedikt.ITEM.NONE;
-                // Items.itemUsabilityPoints = 25;
-                // Items.itemCounter = 20;
                 prima_endaufgabe_grether_benedikt.Items.healthBar = 100;
                 let element = document.getElementById("itemHealthBar");
                 element.style.width = "0%";
