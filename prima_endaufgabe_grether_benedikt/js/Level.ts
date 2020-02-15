@@ -1,10 +1,8 @@
 namespace prima_endaufgabe_grether_benedikt {
 
   import ƒ = FudgeCore;
-
-
+  
   interface Object {
-    // platform: any;
     level: Object[];
     distanceLevel: number;
   }
