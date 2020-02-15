@@ -45,16 +45,19 @@ var prima_endaufgabe_grether_benedikt;
             }
         }
         checkEnemys() {
+            console.log("test");
             for (let child of prima_endaufgabe_grether_benedikt.game.getChildren()) {
+                console.log(child.name);
                 if (child.name == "Zombie") {
                     let hitbox;
                     hitbox = child.hitbox;
                     if (this.detectedHit(hitbox)) {
+                        console.log("hitbox");
                         if (child.direction == 1 && prima_endaufgabe_grether_benedikt.fight == false) {
-                            this.playerHit(-0.05);
+                            this.playerHit(0.1);
                         }
                         else if (child.direction == -1 && prima_endaufgabe_grether_benedikt.fight == false) {
-                            this.playerHit(-0.05);
+                            this.playerHit(-0.1);
                         }
                         else if (prima_endaufgabe_grether_benedikt.hero.item.type == "Sword" && prima_endaufgabe_grether_benedikt.fight == true) {
                             this.checkCollisionFight(child);
@@ -96,14 +99,15 @@ var prima_endaufgabe_grether_benedikt;
                 this.enemyHit(_child, 0.15);
             }
             else if (_child.direction == 1 && prima_endaufgabe_grether_benedikt.hero.directionChar === 1) {
-                this.playerHit(0.05);
+                this.playerHit(0.1);
             }
             else if (_child.direction == -1 && prima_endaufgabe_grether_benedikt.hero.directionChar === -1) {
-                this.playerHit(-0.05);
+                this.playerHit(-0.1);
             }
         }
         enemyHit(_child, _translateX) {
             prima_endaufgabe_grether_benedikt.Sound.play("enemyHit");
+            console.log("test");
             _child.cmpTransform.local.translateX(_translateX);
             _child.updateHealtpoints(_child);
             prima_endaufgabe_grether_benedikt.hero.item.itemUsability();

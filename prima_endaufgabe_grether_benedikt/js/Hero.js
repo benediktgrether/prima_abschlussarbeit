@@ -71,7 +71,7 @@ var prima_endaufgabe_grether_benedikt;
         createHitbox() {
             let hitbox = new prima_endaufgabe_grether_benedikt.Hitbox("PlayerHitbox");
             // hitbox.cmpTransform.local.translateY(0.6);
-            hitbox.cmpTransform.local.scaleX(0.2);
+            hitbox.cmpTransform.local.scaleX(0.5);
             hitbox.cmpTransform.local.scaleY(0.5);
             this.hitbox = hitbox;
             return hitbox;

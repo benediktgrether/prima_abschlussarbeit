@@ -54,17 +54,19 @@ namespace prima_endaufgabe_grether_benedikt {
     }
 
     private checkEnemys(): void {
-
+      console.log("test");
       for (let child of game.getChildren()) {
+        console.log(child.name);
         if (child.name == "Zombie") {
           let hitbox: Hitbox;
           hitbox = (<Enemy>child).hitbox;
           if (this.detectedHit(hitbox)) {
+            console.log("hitbox");
             if ((<Enemy>child).direction == 1 && fight == false) {
-              this.playerHit(-0.05);
+              this.playerHit(0.1);
 
             } else if ((<Enemy>child).direction == -1 && fight == false) {
-              this.playerHit(- 0.05);
+              this.playerHit(- 0.1);
 
             } else if (hero.item.type == "Sword" && fight == true) {
               this.checkCollisionFight(<Enemy>child);
@@ -108,14 +110,15 @@ namespace prima_endaufgabe_grether_benedikt {
         this.enemyHit(_child, 0.15);
 
       } else if (_child.direction == 1 && hero.directionChar === 1) {
-        this.playerHit(0.05);
+        this.playerHit(0.1);
       } else if (_child.direction == -1 && hero.directionChar === -1) {
-        this.playerHit(-0.05);
+        this.playerHit(-0.1);
       }
     }
 
     private enemyHit(_child: Enemy, _translateX: number): void {
       Sound.play("enemyHit");
+      console.log("test");
       _child.cmpTransform.local.translateX(_translateX);
       _child.updateHealtpoints(_child);
       hero.item.itemUsability();

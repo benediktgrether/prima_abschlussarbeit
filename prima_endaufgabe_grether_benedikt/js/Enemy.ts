@@ -45,7 +45,7 @@ namespace prima_endaufgabe_grether_benedikt {
       this.cmpTransform.local.translateY(-0.5);
       this.speedMax = new ƒ.Vector2(_speed, 0);
 
-      this.healthpoints = 20;
+      this.healthpoints = 5;
       this.counter = this.healthpoints - 5;
       console.log(this.healthpoints);
 
@@ -59,7 +59,7 @@ namespace prima_endaufgabe_grether_benedikt {
     public createHitbox(): Hitbox {
 
       let hitbox: Hitbox = new Hitbox("EnemyHitbox");
-      hitbox.cmpTransform.local.scaleX(0.2);
+      hitbox.cmpTransform.local.scaleX(0.5);
       hitbox.cmpTransform.local.scaleY(0.5);
       this.hitbox = hitbox;
       return hitbox;
