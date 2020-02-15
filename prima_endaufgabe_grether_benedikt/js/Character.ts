@@ -37,6 +37,16 @@ namespace prima_endaufgabe_grether_benedikt {
               this.cmpTransform.local.translation = translation;
               this.speed.y = 0;
             }
+          } else if (floor.name == "Wall") {
+            let rect: ƒ.Rectangle = (<Floor>floor).getRectWorld();
+            let hit: boolean = rect.isInside(this.cmpTransform.local.translation.toVector2());
+            if (hit) {
+              let translation: ƒ.Vector3 = this.cmpTransform.local.translation;
+              translation.x = rect.x;
+              this.cmpTransform.local.translation = translation;
+              this.speed.y = 0;
+              this.speed.x = 0;
+            }
           }
         }
       }

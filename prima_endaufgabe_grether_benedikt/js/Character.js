@@ -33,6 +33,17 @@ var prima_endaufgabe_grether_benedikt;
                         this.speed.y = 0;
                     }
                 }
+                else if (floor.name == "Wall") {
+                    let rect = floor.getRectWorld();
+                    let hit = rect.isInside(this.cmpTransform.local.translation.toVector2());
+                    if (hit) {
+                        let translation = this.cmpTransform.local.translation;
+                        translation.x = rect.x;
+                        this.cmpTransform.local.translation = translation;
+                        this.speed.y = 0;
+                        this.speed.x = 0;
+                    }
+                }
             }
         }
     }

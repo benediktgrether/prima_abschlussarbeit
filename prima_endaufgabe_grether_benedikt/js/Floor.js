@@ -3,8 +3,8 @@ var prima_endaufgabe_grether_benedikt;
 (function (prima_endaufgabe_grether_benedikt) {
     var ƒ = FudgeCore;
     class Floor extends ƒ.Node {
-        constructor(_distance, _translateY, _distancePlatform, _item) {
-            super("Floor");
+        constructor(_name, _distance, _translateY, _distancePlatform, _item) {
+            super(_name);
             let nodeSprite = new prima_endaufgabe_grether_benedikt.NodeSprite("FloorSprite", Floor.sprites[0]);
             nodeSprite.activate(false);
             this.appendChild(nodeSprite);

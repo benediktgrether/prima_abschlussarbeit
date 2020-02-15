@@ -7,8 +7,8 @@ namespace prima_endaufgabe_grether_benedikt {
     private static readonly pivot: ƒ.Matrix4x4 = ƒ.Matrix4x4.TRANSLATION(ƒ.Vector3.Y(1.4));
     public item: Items;
 
-    public constructor(_distance: number, _translateY?: number, _distancePlatform?: number, _item?: boolean) {
-      super("Floor");
+    public constructor(_name: string, _distance: number, _translateY?: number, _distancePlatform?: number, _item?: boolean) {
+      super(_name);
 
       let nodeSprite: NodeSprite = new NodeSprite("FloorSprite", Floor.sprites[0]);
       nodeSprite.activate(false);
