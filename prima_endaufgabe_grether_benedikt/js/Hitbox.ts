@@ -54,14 +54,11 @@ namespace prima_endaufgabe_grether_benedikt {
     }
 
     private checkEnemys(): void {
-      console.log("test");
       for (let child of game.getChildren()) {
-        console.log(child.name);
         if (child.name == "Zombie") {
           let hitbox: Hitbox;
           hitbox = (<Enemy>child).hitbox;
           if (this.detectedHit(hitbox)) {
-            console.log("hitbox");
             if ((<Enemy>child).direction == 1 && fight == false) {
               this.playerHit(0.1);
 

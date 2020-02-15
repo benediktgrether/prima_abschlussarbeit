@@ -45,14 +45,11 @@ var prima_endaufgabe_grether_benedikt;
             }
         }
         checkEnemys() {
-            console.log("test");
             for (let child of prima_endaufgabe_grether_benedikt.game.getChildren()) {
-                console.log(child.name);
                 if (child.name == "Zombie") {
                     let hitbox;
                     hitbox = child.hitbox;
                     if (this.detectedHit(hitbox)) {
-                        console.log("hitbox");
                         if (child.direction == 1 && prima_endaufgabe_grether_benedikt.fight == false) {
                             this.playerHit(0.1);
                         }

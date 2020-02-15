@@ -41,7 +41,6 @@ var prima_endaufgabe_grether_benedikt;
             this.speedMax = new ƒ.Vector2(_speed, 0);
             this.healthpoints = 5;
             this.counter = this.healthpoints - 5;
-            console.log(this.healthpoints);
             this.hitbox = this.createHitbox();
             this.appendChild(this.hitbox);
             this.show(ACTION_ZOMBIE.IDLEZOMBIE);
@@ -114,7 +113,7 @@ var prima_endaufgabe_grether_benedikt;
         itemDrop(_location) {
             if (this.getRandomInt(5) == 1) {
                 prima_endaufgabe_grether_benedikt.Sound.play("itemDropZombie");
-                itemDrop = new prima_endaufgabe_grether_benedikt.Items(prima_endaufgabe_grether_benedikt.ITEM.SWORD, 105, -0.9);
+                itemDrop = new prima_endaufgabe_grether_benedikt.Items(prima_endaufgabe_grether_benedikt.ITEM.SWORD, 20, -0.9);
                 itemDrop.cmpTransform.local.translateX(_location + 0.25);
                 itemDrop.cmpTransform.local.scaleX(.5);
                 itemDrop.cmpTransform.local.scaleY(.5);
@@ -138,7 +137,6 @@ var prima_endaufgabe_grether_benedikt;
         getRandomSpeed() {
             let math = Math.random();
             if (math >= 0.3 && math <= 0.5) {
-                console.log(math);
                 return math;
             }
             else {

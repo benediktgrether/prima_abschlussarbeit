@@ -47,7 +47,9 @@ namespace prima_endaufgabe_grether_benedikt {
     }
 
     public itemUsability(): void {
+      console.log(this.itemUsabilityPoints);
       this.itemUsabilityPoints = this.itemUsabilityPoints - 1;
+      console.log(this.itemUsabilityPoints);
       this.updateItemUsability();
     }
     public creatHitbox(): Hitbox {
@@ -65,8 +67,8 @@ namespace prima_endaufgabe_grether_benedikt {
 
     private updateItemUsability(): void {
       if (this.itemCounter == this.itemUsabilityPoints) {
-        this.itemCounter -= 20;
-        Items.healthBar -= 20;
+        this.itemCounter -= 5;
+        Items.healthBar -= 25;
         let element: HTMLElement = document.getElementById("itemHealthBar");
         element.style.width = Items.healthBar + "%";
       }

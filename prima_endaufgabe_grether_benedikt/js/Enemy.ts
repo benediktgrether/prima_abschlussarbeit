@@ -47,7 +47,6 @@ namespace prima_endaufgabe_grether_benedikt {
 
       this.healthpoints = 5;
       this.counter = this.healthpoints - 5;
-      console.log(this.healthpoints);
 
       this.hitbox = this.createHitbox();
       this.appendChild(this.hitbox);
@@ -129,7 +128,7 @@ namespace prima_endaufgabe_grether_benedikt {
     private itemDrop(_location: number): void {
       if (this.getRandomInt(5) == 1) {
         Sound.play("itemDropZombie");
-        itemDrop = new Items(ITEM.SWORD, 105, - 0.9);
+        itemDrop = new Items(ITEM.SWORD, 20, - 0.9);
         itemDrop.cmpTransform.local.translateX(_location + 0.25);
         itemDrop.cmpTransform.local.scaleX(.5);
         itemDrop.cmpTransform.local.scaleY(.5);
@@ -169,7 +168,6 @@ namespace prima_endaufgabe_grether_benedikt {
     private getRandomSpeed(): number {
       let math: number = Math.random();
       if (math >= 0.3 && math <= 0.5) {
-        console.log(math);
         return math;
       } else {
         return this.getRandomSpeed();
