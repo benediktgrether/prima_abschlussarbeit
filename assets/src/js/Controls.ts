@@ -17,7 +17,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
   export function processInput(): void {
     if (keysPressed[ƒ.KEYBOARD_CODE.M]) {
-      if(!Sound.soundMuted)
+      if(!soundMuted)
         Sound.mute();
       else
         Sound.continues();

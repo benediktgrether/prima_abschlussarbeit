@@ -4,7 +4,6 @@ namespace prima_endaufgabe_grether_benedikt {
     [id: string]: HTMLAudioElement;
   }
   export class Sound {
-    public static soundMuted: boolean = false;
     private static sounds: Sounds = {};
 
     public static init(): void {
@@ -14,14 +13,14 @@ namespace prima_endaufgabe_grether_benedikt {
     }
 
     public static play(_id: string): void {
-      if (this.soundMuted == false) {
+      if (soundMuted == false) {
         Sound.sounds[_id].volume = 0.2;
         Sound.sounds[_id].play();
       }
     }
 
     public static playMusic(): void {
-      if (this.soundMuted == false) {
+      if (soundMuted == false) {
         Sound.sounds["backgroundmusic"].loop = true;
         Sound.sounds["backgroundmusic"].volume = 0.1;
         Sound.sounds["backgroundmusic"].play();
@@ -34,14 +33,14 @@ namespace prima_endaufgabe_grether_benedikt {
     }
 
     public static mute(): void {
-      this.soundMuted = true;
+      soundMuted = true;
       let mute: HTMLElement = document.getElementById("mute");
       mute.classList.add("muted-active");
       Sound.sounds["backgroundmusic"].pause();
     }
 
     public static continues(): void {
-      this.soundMuted = false;
+      soundMuted = false;
       Sound.sounds["backgroundmusic"].play();
     }
   }

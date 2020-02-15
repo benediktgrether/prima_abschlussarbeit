@@ -13,7 +13,7 @@ var prima_endaufgabe_grether_benedikt;
     prima_endaufgabe_grether_benedikt.handleKeyboard = handleKeyboard;
     function processInput() {
         if (keysPressed[ƒ.KEYBOARD_CODE.M]) {
-            if (!prima_endaufgabe_grether_benedikt.Sound.soundMuted)
+            if (!prima_endaufgabe_grether_benedikt.soundMuted)
                 prima_endaufgabe_grether_benedikt.Sound.mute();
             else
                 prima_endaufgabe_grether_benedikt.Sound.continues();

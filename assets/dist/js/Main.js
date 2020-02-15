@@ -5,6 +5,7 @@ var prima_endaufgabe_grether_benedikt;
 (function (prima_endaufgabe_grether_benedikt) {
     prima_endaufgabe_grether_benedikt.ƒ = FudgeCore;
     prima_endaufgabe_grether_benedikt.loadFilesWithResponse();
+    prima_endaufgabe_grether_benedikt.soundMuted = false;
     window.addEventListener("load", initGame);
     function initGame() {
         let startGameBtn = document.getElementById("startGame");

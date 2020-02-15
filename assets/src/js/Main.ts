@@ -3,7 +3,8 @@
 namespace prima_endaufgabe_grether_benedikt {
   export import ƒ = FudgeCore;
   loadFilesWithResponse();
-
+  export let soundMuted: boolean = false;
+  
   window.addEventListener("load", initGame);
 
 
