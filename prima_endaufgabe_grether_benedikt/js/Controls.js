@@ -5,7 +5,7 @@ var prima_endaufgabe_grether_benedikt;
     let keysPressed = {};
     function handleKeyboard(_event) {
         keysPressed[_event.code] = (_event.type == "keydown");
-        if (_event.code == ƒ.KEYBOARD_CODE.W && _event.type == "keydown") {
+        if (_event.code == ƒ.KEYBOARD_CODE.SPACE && _event.type == "keydown") {
             prima_endaufgabe_grether_benedikt.hero.act(prima_endaufgabe_grether_benedikt.ACTION.JUMP);
             prima_endaufgabe_grether_benedikt.fight = false;
         }
@@ -33,7 +33,7 @@ var prima_endaufgabe_grether_benedikt;
                 prima_endaufgabe_grether_benedikt.Sound.play("itemDrop");
                 return;
             }
-            if (keysPressed[ƒ.KEYBOARD_CODE.SPACE]) {
+            if (keysPressed[ƒ.KEYBOARD_CODE.ENTER]) {
                 if (prima_endaufgabe_grether_benedikt.hero.item.type == "Sword") {
                     prima_endaufgabe_grether_benedikt.hero.act(prima_endaufgabe_grether_benedikt.ACTION.SWORD);
                     prima_endaufgabe_grether_benedikt.Sound.play("swordFight");

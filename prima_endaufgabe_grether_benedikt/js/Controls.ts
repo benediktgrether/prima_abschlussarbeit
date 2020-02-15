@@ -9,7 +9,7 @@ namespace prima_endaufgabe_grether_benedikt {
 
   export function handleKeyboard(_event: KeyboardEvent): void {
     keysPressed[_event.code] = (_event.type == "keydown");
-    if (_event.code == ƒ.KEYBOARD_CODE.W && _event.type == "keydown") {
+    if (_event.code == ƒ.KEYBOARD_CODE.SPACE && _event.type == "keydown") {
       hero.act(ACTION.JUMP);
       fight = false;
     }
@@ -37,7 +37,7 @@ namespace prima_endaufgabe_grether_benedikt {
         Sound.play("itemDrop");
         return;
       }
-      if (keysPressed[ƒ.KEYBOARD_CODE.SPACE]) {
+      if (keysPressed[ƒ.KEYBOARD_CODE.ENTER]) {
         if (hero.item.type == "Sword") {
           hero.act(ACTION.SWORD);
           Sound.play("swordFight");
