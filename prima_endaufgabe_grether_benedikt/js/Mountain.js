@@ -23,12 +23,6 @@ var prima_endaufgabe_grether_benedikt;
             this.show();
             ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, this.update);
         }
-        // public static generateSprites(_txtImage: ƒ.TextureImage): void {
-        //   Mountain.sprites = [];
-        //   let sprite: Sprite = new Sprite(MOUNTAINS.MOUNTAIN);
-        //   sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(4, 156, 261, 110), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.TOPCENTER);
-        //   Mountain.sprites.push(sprite);
-        // }
         show() {
             for (let child of this.getChildren())
                 child.activate(child.name == MOUNTAINS.MOUNTAIN);
