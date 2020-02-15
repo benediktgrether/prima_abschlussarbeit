@@ -12,9 +12,6 @@ namespace prima_endaufgabe_grether_benedikt {
     LEFT, RIGHT
   }
 
-  let counter: number = 45;
-  // let itemCounter: number = 20;
-
   export class Hero extends ƒ.Node {
     public static sprites: Sprite[];
     private static speedMax: ƒ.Vector2 = new ƒ.Vector2(1.5, 5); // units per second
@@ -23,9 +20,10 @@ namespace prima_endaufgabe_grether_benedikt {
     public item: Items = null;
     public hitbox: Hitbox;
     public directionChar: number;
-    public healthpoints: number = 50;
+    public healthpoints: number = 10;
+    private counter: number;
 
-    constructor(_name: string = "Bene") {
+    constructor(_name: string) {
       super(_name);
       this.addComponent(new ƒ.ComponentTransform());
 
@@ -43,45 +41,18 @@ namespace prima_endaufgabe_grether_benedikt {
       this.cmpTransform.local.translateY(-0.5);
       this.hitbox = this.createHitbox();
       this.appendChild(this.hitbox);
+      this.counter = this.healthpoints - 1;
 
       if (this.item == null) {
-        // this.item.type = ITEM.NONE;
         this.show(ACTION.IDLE, ITEM.NONE);
       }
-
 
       ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, this.update);
 
     }
-
-    // public static generateSprites(_txtImage: ƒ.TextureImage): void {
-    //   Hero.sprites = [];
-    //   let sprite: Sprite = new Sprite(ACTION.WALK + "." + ITEM.NONE);
-    //   sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(24, 8, 24, 43), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
-    //   Hero.sprites.push(sprite);
-
-    //   sprite = new Sprite(ACTION.IDLE + "." + ITEM.NONE);
-    //   sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(3, 8, 20, 43), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
-    //   Hero.sprites.push(sprite);
-
-    //   sprite = new Sprite(ACTION.IDLE + "." + ITEM.SWORD);
-    //   sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(120, 8, 22, 43), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
-    //   Hero.sprites.push(sprite);
-
-    //   sprite = new Sprite(ACTION.WALK + "." + ITEM.SWORD);
-    //   sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(144, 8, 26, 43), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
-    //   Hero.sprites.push(sprite);
-
-    //   sprite = new Sprite(ACTION.SWORD + "." + ITEM.SWORD);
-    //   sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(252, 5, 28, 46), 2, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
-    //   Hero.sprites.push(sprite);
-    // }
-
-
     public createHitbox(): Hitbox {
 
       let hitbox: Hitbox = new Hitbox("PlayerHitbox");
-      // hitbox.cmpTransform.local.translateY(0.6);
       hitbox.cmpTransform.local.scaleX(0.5);
       hitbox.cmpTransform.local.scaleY(0.5);
       this.hitbox = hitbox;
@@ -131,30 +102,30 @@ namespace prima_endaufgabe_grether_benedikt {
       }
     }
 
-    // public itemUsability(): void {
-    //   this.itemUsabilityPoints = this.itemUsabilityPoints - 1;
-    //   this.updateItemUsability();
-    // }
-
     public updateHealtpoints(): void {
-      this.healthpoints = this.healthpoints - 1;
+      this.healthpoints = this.healthpoints - 0.5;
       this.updateHealthbar();
     }
 
 
     private updateHealthbar(): void {
-      if (counter == this.healthpoints) {
-        let elementIndex: string = counter.toString();
-        let element: HTMLElement = document.getElementById(elementIndex);
-        element.classList.remove("heart-full");
-        element.classList.add("heart-empty");
-        counter -= 5;
+      if (this.counter == this.healthpoints || this.counter == 0) {
+        this.getHTMLElements();
+        this.counter -= 1;
       }
-
-      if (this.healthpoints === 0) {
+      if (this.healthpoints == 0) {
         life = false;
         game.removeChild(hero);
+        ƒ.Loop.removeEventListener(ƒ.EVENT.LOOP_FRAME, this.update);
+        
       }
+    }
+
+    private getHTMLElements(): void {
+      let elementIndex: string = this.healthpoints.toString();
+      let element: HTMLElement = document.getElementById(elementIndex);
+      element.classList.remove("heart-full");
+      element.classList.add("heart-empty");
     }
 
     private update = (_event: ƒ.Eventƒ): void => {

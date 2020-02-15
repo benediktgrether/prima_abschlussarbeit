@@ -16,14 +16,12 @@ var prima_endaufgabe_grether_benedikt;
         DIRECTION[DIRECTION["LEFT"] = 0] = "LEFT";
         DIRECTION[DIRECTION["RIGHT"] = 1] = "RIGHT";
     })(DIRECTION = prima_endaufgabe_grether_benedikt.DIRECTION || (prima_endaufgabe_grether_benedikt.DIRECTION = {}));
-    let counter = 45;
-    // let itemCounter: number = 20;
     class Hero extends ƒ.Node {
-        constructor(_name = "Bene") {
+        constructor(_name) {
             super(_name);
             this.speed = ƒ.Vector3.ZERO();
             this.item = null;
-            this.healthpoints = 50;
+            this.healthpoints = 10;
             this.update = (_event) => {
                 this.broadcastEvent(new CustomEvent("showNext"));
                 let timeFrame = ƒ.Loop.timeFrameGame / 1000;
@@ -44,33 +42,14 @@ var prima_endaufgabe_grether_benedikt;
             this.cmpTransform.local.translateY(-0.5);
             this.hitbox = this.createHitbox();
             this.appendChild(this.hitbox);
+            this.counter = this.healthpoints - 1;
             if (this.item == null) {
-                // this.item.type = ITEM.NONE;
                 this.show(ACTION.IDLE, prima_endaufgabe_grether_benedikt.ITEM.NONE);
             }
             ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, this.update);
         }
-        // public static generateSprites(_txtImage: ƒ.TextureImage): void {
-        //   Hero.sprites = [];
-        //   let sprite: Sprite = new Sprite(ACTION.WALK + "." + ITEM.NONE);
-        //   sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(24, 8, 24, 43), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
-        //   Hero.sprites.push(sprite);
-        //   sprite = new Sprite(ACTION.IDLE + "." + ITEM.NONE);
-        //   sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(3, 8, 20, 43), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
-        //   Hero.sprites.push(sprite);
-        //   sprite = new Sprite(ACTION.IDLE + "." + ITEM.SWORD);
-        //   sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(120, 8, 22, 43), 1, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
-        //   Hero.sprites.push(sprite);
-        //   sprite = new Sprite(ACTION.WALK + "." + ITEM.SWORD);
-        //   sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(144, 8, 26, 43), 4, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
-        //   Hero.sprites.push(sprite);
-        //   sprite = new Sprite(ACTION.SWORD + "." + ITEM.SWORD);
-        //   sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(252, 5, 28, 46), 2, ƒ.Vector2.ZERO(), 64, ƒ.ORIGIN2D.BOTTOMCENTER);
-        //   Hero.sprites.push(sprite);
-        // }
         createHitbox() {
             let hitbox = new prima_endaufgabe_grether_benedikt.Hitbox("PlayerHitbox");
-            // hitbox.cmpTransform.local.translateY(0.6);
             hitbox.cmpTransform.local.scaleX(0.5);
             hitbox.cmpTransform.local.scaleY(0.5);
             this.hitbox = hitbox;
@@ -115,26 +94,26 @@ var prima_endaufgabe_grether_benedikt;
                 this.show(_action, this.item.type);
             }
         }
-        // public itemUsability(): void {
-        //   this.itemUsabilityPoints = this.itemUsabilityPoints - 1;
-        //   this.updateItemUsability();
-        // }
         updateHealtpoints() {
-            this.healthpoints = this.healthpoints - 1;
+            this.healthpoints = this.healthpoints - 0.5;
             this.updateHealthbar();
         }
         updateHealthbar() {
-            if (counter == this.healthpoints) {
-                let elementIndex = counter.toString();
-                let element = document.getElementById(elementIndex);
-                element.classList.remove("heart-full");
-                element.classList.add("heart-empty");
-                counter -= 5;
+            if (this.counter == this.healthpoints || this.counter == 0) {
+                this.getHTMLElements();
+                this.counter -= 1;
             }
-            if (this.healthpoints === 0) {
+            if (this.healthpoints == 0) {
                 prima_endaufgabe_grether_benedikt.life = false;
                 prima_endaufgabe_grether_benedikt.game.removeChild(prima_endaufgabe_grether_benedikt.hero);
+                ƒ.Loop.removeEventListener("loopFrame" /* LOOP_FRAME */, this.update);
             }
+        }
+        getHTMLElements() {
+            let elementIndex = this.healthpoints.toString();
+            let element = document.getElementById(elementIndex);
+            element.classList.remove("heart-full");
+            element.classList.add("heart-empty");
         }
         checkCollision(_checkCollision) {
             for (let floor of _checkCollision.getChildren()) {
