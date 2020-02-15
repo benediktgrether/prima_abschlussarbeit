@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>RunBeneRun</title>
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/dist/css/normalize.css">
+  <link rel="stylesheet" href="/assets/dist/css/main.css">
+  <script src="./Fudge/FudgeCore.js"></script>
+  <script src="/assets/dist/js/SpriteGenerator.js"></script>
+  <script src="/assets/dist/js/Character.js"></script>
+  <script src="/assets/dist/js/Hero.js"></script>
+  <script src="/assets/dist/js/Enemy.js"></script>
+  <script src="/assets/dist/js/Floor.js"></script>
+  <script src="/assets/dist/js/Tree.js"></script>
+  <script src="/assets/dist/js/Mountain.js"></script>
+  <script src="/assets/dist/js/Level.js"></script>
+  <script src="/assets/dist/js/Platfrom.js"></script>
+  <script src="/assets/dist/js/Items.js"></script>
+  <script src="/assets/dist/js/Hitbox.js"></script>
+  <script src="/assets/dist/js/Gravstone.js"></script>
+  <script src="/assets/dist/js/Sound.js"></script>
+  <script src="/assets/dist/js/Highscore.js"></script>
+  <script src="/assets/dist/js/Controls.js"></script>
+  <script src="/assets/dist/js/GameVariable.js"></script>
+  <script src="/assets/dist/js/Main.js"></script>
+</head>
+
+<body>
+
+  <canvas style="background-color: aliceblue;"></canvas>
+  <img style="display: none;" src="/assets/dist/gamedata/sprite/allSprites.png" />
+
+  <div class="main-menu-container" id="mainMenu">
+    <div class="main-menu-wrapper">
+      <div class="game-name">Run Bene Run</div>
+      <div class="counter counter-show" id="counter-show">0</div>
+      <div class="btn" id="btn-play">
+        <div class="play" id="startGame">Play</div>
+      </div>
+      <div class="btn btn-restart" id="btn-restart">
+        <div class="play" id="restartGame">Restart Game</div>
+      </div>
+      <div class="btn btn-mute" id="mute">
+        <div class="mute">Mute</div>
+      </div>
+      <div class="input-wrapper">
+        <div class="input-infos">
+          <div class="btn-wrapper">
+            <div class="btn-input">M</div>
+            <div class="btn-info">Mute/Unmute in Game</div>
+          </div>
+          <div class="btn-wrapper">
+            <div class="btn-input">A</div>
+            <div class="btn-info">Walking Backwards</div>
+          </div>
+          <div class="btn-wrapper">
+            <div class="btn-input">D</div>
+            <div class="btn-info">Walking Forwards</div>
+          </div>
+          <div class="btn-wrapper">
+            <div class="btn-input">E</div>
+            <div class="btn-info">Item Drop</div>
+          </div>
+          <div class="btn-wrapper">
+            <div class="btn-input">Enter</div>
+            <div class="btn-info">Fight</div>
+          </div>
+        </div>
+        <div class="btn-wrapper">
+          <div class="btn-input btn-space"></div>
+          <div class="btn-info">Space to Jump</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="wrapper-infos">
+      <div class="counter-wrapper" id="counter">0
+      </div>
+      <div class="char-wrapper">
+        <div class="heart-container">
+          <svg class="heart heart-full">
+            <use xlink:href="#heart" id="9" /></svg>
+          <svg class="heart heart-full">
+            <use xlink:href="#heart" id="8" /></svg>
+          <svg class="heart heart-full">
+            <use xlink:href="#heart" id="7" /></svg>
+          <svg class="heart heart-full">
+            <use xlink:href="#heart" id="6" /></svg>
+          <svg class="heart heart-full">
+            <use xlink:href="#heart" id="5" /></svg>
+          <svg class="heart heart-full">
+            <use xlink:href="#heart" id="4" /></svg>
+          <svg class="heart heart-full">
+            <use xlink:href="#heart" id="3" /></svg>
+          <svg class="heart heart-full">
+            <use xlink:href="#heart" id="2" /></svg>
+          <svg class="heart heart-full">
+            <use xlink:href="#heart" id="1" /></svg>
+          <svg class="heart heart-full">
+            <use xlink:href="#heart" id="0" /></svg>
+        </div>
+        <div class="item-wrapper">
+          <div class="item-bar">
+            <div class="item-health" id="itemHealthBar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <audio id="backgroundmusic" src="/assets/dist/gamedata/sounds/ingame_sound/zombie-8bit.mp3" type="audio/mpeg"></audio>
+  <audio id="walkPlayer" src="/assets/dist/gamedata/sounds/ingame_sound/footsteps/sfx_movement_footsteps1b.mp3"
+    type="audio/mpeg"></audio>
+  <audio id="walkZombie" src="/assets/dist/gamedata/sounds/ingame_sound/walkZombie/sfx_movement_footsteps1a.mp3"
+    type="audio/mpeg"></audio>
+  <audio id="jump" src="/assets/dist/gamedata/sounds/ingame_sound/jump/sfx_movement_jump4.mp3" type="audio/mpeg"></audio>
+  <audio id="swordFight" src="/assets/dist/gamedata/sounds/ingame_sound/sword/sfx_wpn_sword1.mp3" type="audio/mpeg"></audio>
+  <audio id="itemDegredation" src="/assets/dist/gamedata/sounds/ingame_sound/itemDegredation/sfx_sounds_interaction10.mp3"
+    type="audio/mpeg"></audio>
+  <audio id="itemDrop" src="/assets/dist/gamedata/sounds/ingame_sound/itemDrop/sfx_sounds_interaction1.mp3"
+    type="audio/mpeg"></audio>
+  <audio id="itemDropZombie" src="/assets/dist/gamedata/sounds/ingame_sound/itemDropZombie/sfx_sound_neutral5.mp3"
+    type="audio/mpeg"></audio>
+  <audio id="enemyHit" src="/assets/dist/gamedata/sounds/ingame_sound/hit/sfx_damage_hit1.mp3" type="audio/mpeg"></audio>
+  <audio id="playerHit" src="/assets/dist/gamedata/sounds/ingame_sound/hit/sfx_damage_hit2.mp3" type="audio/mpeg"></audio>
+
+  <audio id="zombieDeath" src="/assets/dist/gamedata/sounds/ingame_sound/zombie/sfx_deathscream_human2.mp3"
+    type="audio/mpeg"></audio>
+
+
+  <svg style="display:none">
+    <symbol id="heart" width="25.1" height="18.81" viewBox="0 0 25.1 18.81">
+      <title>Pixel_heart_new</title>
+      <path
+        d="M25,9.5v2.09H22.91v2.09H20.82v2.09H18.73v2.09H16.64V20H14.55V22h-4.2V20H8.26V17.86H6.17V15.77H4.08V13.68H2V11.59H-.1V7.41H2V5.32H4.08V3.23h6.27V5.32h4.2V3.23h6.27V5.32h2.09V7.41H25Z"
+        transform="translate(0.1 -3.23)" />
+    </symbol>
+  </svg>
+</body>
+
+</html>
