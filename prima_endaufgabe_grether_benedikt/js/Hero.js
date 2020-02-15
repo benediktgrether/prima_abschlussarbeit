@@ -50,7 +50,7 @@ var prima_endaufgabe_grether_benedikt;
         }
         createHitbox() {
             let hitbox = new prima_endaufgabe_grether_benedikt.Hitbox("PlayerHitbox");
-            hitbox.cmpTransform.local.scaleX(0.5);
+            hitbox.cmpTransform.local.scaleX(0.2);
             hitbox.cmpTransform.local.scaleY(0.5);
             this.hitbox = hitbox;
             return hitbox;
@@ -99,11 +99,11 @@ var prima_endaufgabe_grether_benedikt;
             this.updateHealthbar();
         }
         updateHealthbar() {
-            if (this.counter == this.healthpoints || this.counter == 0) {
+            if (this.counter == this.healthpoints && this.counter >= 0) {
                 this.getHTMLElements();
                 this.counter -= 1;
             }
-            if (this.healthpoints == 0) {
+            if (this.healthpoints == -1) {
                 prima_endaufgabe_grether_benedikt.life = false;
                 prima_endaufgabe_grether_benedikt.game.removeChild(prima_endaufgabe_grether_benedikt.hero);
                 ƒ.Loop.removeEventListener("loopFrame" /* LOOP_FRAME */, this.update);

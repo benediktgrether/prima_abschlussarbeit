@@ -53,7 +53,7 @@ namespace prima_endaufgabe_grether_benedikt {
     public createHitbox(): Hitbox {
 
       let hitbox: Hitbox = new Hitbox("PlayerHitbox");
-      hitbox.cmpTransform.local.scaleX(0.5);
+      hitbox.cmpTransform.local.scaleX(0.2);
       hitbox.cmpTransform.local.scaleY(0.5);
       this.hitbox = hitbox;
       return hitbox;
@@ -109,11 +109,11 @@ namespace prima_endaufgabe_grether_benedikt {
 
 
     private updateHealthbar(): void {
-      if (this.counter == this.healthpoints || this.counter == 0) {
+      if (this.counter == this.healthpoints && this.counter >= 0) {
         this.getHTMLElements();
         this.counter -= 1;
       }
-      if (this.healthpoints == 0) {
+      if (this.healthpoints == -1) {
         life = false;
         game.removeChild(hero);
         ƒ.Loop.removeEventListener(ƒ.EVENT.LOOP_FRAME, this.update);
