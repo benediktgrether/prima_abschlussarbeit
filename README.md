@@ -3,7 +3,7 @@ Repository for the module "Prototyping interactive media-applications and games"
 
 [Pages-Version](https://benediktgrether.github.io/run_bene_run/)
 
-- [Quellcode](https://jirkadelloro.github.io/Prima/L06_PongFinal/Main.html)
+- [Quellcode](https://github.com/benediktgrether/run_bene_run/tree/master/assets/src/js)
 - [Design Dokument](https://jirkadelloro.github.io/Prima/L13_Craftris)
 
 
@@ -12,9 +12,9 @@ Repository for the module "Prototyping interactive media-applications and games"
 
 | Nr | Bezeichnung           | Inhalt                                                                                                                                                                                                                                                                         |
 |---:|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|    | Titel                 |
-|    | Name                  |
-|    | Matrikelnummer        |
+|    | Titel                 | Run Bene Run |
+|    | Name                  | Grether Benedikt |
+|    | Matrikelnummer        | 254061 |
 |  1 | Nutzerinteraktion     | Der Nutzer kann mit der Applikation interagieren. Mit welchen Mitteln und welchen Aktionen werden welche Reaktionen ausgelöst?                                                                                                                                                 |
 |  2 | Objektinteraktion     | Mit Hilfe von Kollisionsprüfung interagieren Objekte miteinander. Wann passiert dabei wie was?                                                                                                                                                                                 |
 |  3 | Objektanzahl variabel | Eine variable Anzahl von Objekten wird zur Laufzeit generiert. Welche sind dies und wann und wie geschieht die Erzeugung?                                                                                                                                                      |
