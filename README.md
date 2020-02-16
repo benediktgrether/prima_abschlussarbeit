@@ -5,6 +5,7 @@ Repository for the module "Prototyping interactive media-applications and games"
 
 - [Quellcode](https://github.com/benediktgrether/run_bene_run/tree/master/assets/src/js)
 - [Design Dokument](https://github.com/benediktgrether/run_bene_run/blob/master/information/benedikt_grether_prima.pdf)
+- [zip](https://github.com/benediktgrether/run_bene_run/blob/master/run-bene-run.zip)
 
 
 ## Checkliste für Leistungsnachweis
@@ -26,14 +27,4 @@ Repository for the module "Prototyping interactive media-applications and games"
 |  9 | Subklassen            | Alle Klassen - außer der Sound und Highscore Klasse - Erben von ƒ.Node. <br> Die Klassen Hero und Enemy, erben von der Klasse Character. Diese beinhaltet alle variablen die beide Klassen brauchen. Zusätzlich bekommen beide Klassen hier auch die Methode checkCollision() vererbt. In den Klassen gibt es weiterhin unterschiedliche Methoden die nicht in der Klasse Character hinterlegt sind.[Siehe Klassendiagramm](https://github.com/benediktgrether/run_bene_run/blob/master/information/extends/extends.svg)|
 | 10 | Maße & Positionen     | Die Welt Ursprungskoordinaten liegen mittig im Viewport. Von dort aus geht die Welt in positive wie negative Richtung. Das Spiel ist nach unten verschoben. <br> Ein Level Element ist 1 Einheit groß. Dadurch wird der Spieler und die Gegner 2 ½  Einheiten groß. Die Items und das Holzkreuz sind auch 1 Einheit groß. Die Bäume sind 5 Einheiten groß und die Berge 6 ½ Einheiten groß. Die Plattform ist 3 Einheiten Lang.                                                                |
 | 11 | Event-System          | Die Events werden durch die Benutzerinteraktion keydown und keyup ausgelöst. Dabei ist es auch möglich für das Springen und gleichzeitige Bewegen, zwei Tasten abfragen. Zusätzlich verwendet das Spiel noch ƒ.EVENT.LOOP_FRAME event um das Spiel zu Starten und durchgehend neu zu berechnen. |
-
-## Abgabeformat
-* Fasse die Konzeption als ein wohlformatiertes Designdokument in PDF zusammen!
-* Platziere einen Link in der Readme-Datei deines PRIMA-Repositories auf Github auf die fertige und in Github-Pages lauffähige Anwendung.
-* Platziere ebenso Links zu den Stellen in deinem Repository, an denen der Quellcode und das Designdokument zu finden sind.
-* Stelle zudem auf diese Art dort auch ein gepacktes Archiv zur Verfügung, welches folgende Daten enthält
-  * Das Designdokument 
-  * Die Projektordner inklusive aller erforderlichen Dateien, also auch Bild- und Audiodaten
-  * Eine kurze Anleitung zur Installation der Anwendung unter Berücksichtigung erforderlicher Dienste (z.B. Heroku, MongoDB etc.) 
-  * Eine kurze Anleitung zur Interaktion mit der Anwendung
 
