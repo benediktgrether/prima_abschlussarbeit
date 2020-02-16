@@ -15,7 +15,7 @@ Repository for the module "Prototyping interactive media-applications and games"
 |    | Titel                 | Run Bene Run |
 |    | Name                  | Grether Benedikt |
 |    | Matrikelnummer        | 254061 |
-|  1 | Nutzerinteraktion     | Der Nutzer kann mit der Applikation interagieren. Mit welchen Mitteln und welchen Aktionen werden welche Reaktionen ausgelöst?                                                                                                                                                 |
+|  1 | Nutzerinteraktion     | Der Nutzer kann mittels A nach links laufen und mit D nach rechts. Mittels Leertaste kann er Springen und mit Festhalten der Entertaste Kämpfen. Zusätzlich kann der Nutzer im Laufenden mit M das Spiel Muten/Unmuten und er kann bei Spielstart über den Knopf Mute das Spiel direkt bei Start muten   |
 |  2 | Objektinteraktion     | Mit Hilfe von Kollisionsprüfung interagieren Objekte miteinander. Wann passiert dabei wie was?                                                                                                                                                                                 |
 |  3 | Objektanzahl variabel | Eine variable Anzahl von Objekten wird zur Laufzeit generiert. Welche sind dies und wann und wie geschieht die Erzeugung?                                                                                                                                                      |
 |  4 | Szenenhierarchie      | Die Szenenhierarchie ist sinnvoll aufgebaut. Wer ist wessen Parent, wie sind Elemente in anderen gruppiert und warum?                                                                                                                                                          |
