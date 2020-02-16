@@ -142,9 +142,6 @@ var prima_endaufgabe_grether_benedikt;
                 }
                 i++;
             }
-            // sprite = new Sprite(MOUNTAINS.MOUNTAIN);
-            // sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(4, 156, 261, 110), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.TOPCENTER);
-            // Mountain.sprites.push(sprite);
         }
     }
     prima_endaufgabe_grether_benedikt.SpriteGenerator = SpriteGenerator;

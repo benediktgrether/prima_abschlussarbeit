@@ -1,8 +1,8 @@
 "use strict";
 var prima_endaufgabe_grether_benedikt;
 (function (prima_endaufgabe_grether_benedikt) {
-    var fudge = FudgeCore;
-    class Hitbox extends fudge.Node {
+    var ƒ = FudgeCore;
+    class Hitbox extends ƒ.Node {
         constructor(_name) {
             if (_name) {
                 super(_name);
@@ -10,19 +10,19 @@ var prima_endaufgabe_grether_benedikt;
             else {
                 super("Hitbox");
             }
-            this.addComponent(new fudge.ComponentTransform());
-            let cmpMesh = new fudge.ComponentMesh(Hitbox.mesh);
+            this.addComponent(new ƒ.ComponentTransform());
+            let cmpMesh = new ƒ.ComponentMesh(Hitbox.mesh);
             cmpMesh.pivot = Hitbox.pivot;
             this.addComponent(cmpMesh);
         }
         getRectWorld() {
-            let rect = fudge.Rectangle.GET(0, 0, 100, 100);
-            let topleft = new fudge.Vector3(-0.5, 0.5, 0);
-            let bottomright = new fudge.Vector3(0.5, -0.5, 0);
-            let mtxResult = fudge.Matrix4x4.MULTIPLICATION(this.mtxWorld, Hitbox.pivot);
+            let rect = ƒ.Rectangle.GET(0, 0, 100, 100);
+            let topleft = new ƒ.Vector3(-0.5, 0.5, 0);
+            let bottomright = new ƒ.Vector3(0.5, -0.5, 0);
+            let mtxResult = ƒ.Matrix4x4.MULTIPLICATION(this.mtxWorld, Hitbox.pivot);
             topleft.transform(mtxResult, true);
             bottomright.transform(mtxResult, true);
-            let size = new fudge.Vector2(bottomright.x - topleft.x, bottomright.y - topleft.y);
+            let size = new ƒ.Vector2(bottomright.x - topleft.x, bottomright.y - topleft.y);
             rect.position = topleft.toVector2();
             rect.size = size;
             return rect;
@@ -117,11 +117,11 @@ var prima_endaufgabe_grether_benedikt;
             let hit = false;
             let rectOfThis = this.getRectWorld();
             let rectOfThat = hitbox.getRectWorld();
-            let expansionRight = new fudge.Vector2(rectOfThat.size.x);
-            let expansionDown = new fudge.Vector2(0, rectOfThat.size.y);
-            let topRight = fudge.Vector2.SUM(rectOfThat.position, expansionRight);
-            let bottomLeft = fudge.Vector2.SUM(rectOfThat.position, expansionDown);
-            let bottomRight = fudge.Vector2.SUM(rectOfThat.position, expansionDown, expansionRight);
+            let expansionRight = new ƒ.Vector2(rectOfThat.size.x);
+            let expansionDown = new ƒ.Vector2(0, rectOfThat.size.y);
+            let topRight = ƒ.Vector2.SUM(rectOfThat.position, expansionRight);
+            let bottomLeft = ƒ.Vector2.SUM(rectOfThat.position, expansionDown);
+            let bottomRight = ƒ.Vector2.SUM(rectOfThat.position, expansionDown, expansionRight);
             if (rectOfThis.isInside(rectOfThat.position)) {
                 hit = true;
             }
@@ -137,8 +137,8 @@ var prima_endaufgabe_grether_benedikt;
             return hit;
         }
     }
-    Hitbox.mesh = new fudge.MeshSprite();
-    Hitbox.pivot = fudge.Matrix4x4.TRANSLATION(fudge.Vector3.Y(-0.5));
+    Hitbox.mesh = new ƒ.MeshSprite();
+    Hitbox.pivot = ƒ.Matrix4x4.TRANSLATION(ƒ.Vector3.Y(-0.5));
     prima_endaufgabe_grether_benedikt.Hitbox = Hitbox;
 })(prima_endaufgabe_grether_benedikt || (prima_endaufgabe_grether_benedikt = {}));
 //# sourceMappingURL=Hitbox.js.map

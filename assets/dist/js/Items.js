@@ -24,12 +24,6 @@ var prima_endaufgabe_grether_benedikt;
             this.hitbox = this.creatHitbox();
             this.appendChild(this.hitbox);
         }
-        static generateSprites(_txtImage) {
-            Items.sprites = [];
-            let sprite = new prima_endaufgabe_grether_benedikt.Sprite(ITEM.SWORD);
-            sprite.generateByGrid(_txtImage, ƒ.Rectangle.GET(169, 125, 8, 18), 1, ƒ.Vector2.ZERO(), 30, ƒ.ORIGIN2D.TOPCENTER);
-            Items.sprites.push(sprite);
-        }
         itemUsability() {
             this.itemUsabilityPoints = this.itemUsabilityPoints - 1;
             this.updateItemUsability();
