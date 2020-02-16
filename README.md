@@ -4,7 +4,7 @@ Repository for the module "Prototyping interactive media-applications and games"
 [Pages-Version](https://benediktgrether.github.io/run_bene_run/)
 
 - [Quellcode](https://github.com/benediktgrether/run_bene_run/tree/master/assets/src/js)
-- [Design Dokument](https://jirkadelloro.github.io/Prima/L13_Craftris)
+- [Design Dokument](https://github.com/benediktgrether/run_bene_run/blob/master/information/benedikt_grether_prima.pdf)
 
 
 ## Checkliste für Leistungsnachweis
