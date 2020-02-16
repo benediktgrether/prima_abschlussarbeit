@@ -1,10 +1,10 @@
 # Prima
 Repository for the module "Prototyping interactive media-applications and games" at Furtwangen University
 
-[Pages-Version](https://jirkadelloro.github.io/Prima/)
+[Pages-Version](https://benediktgrether.github.io/run_bene_run/)
 
-- [PONG](https://jirkadelloro.github.io/Prima/L06_PongFinal/Main.html)
-- [CRAFTRIS](https://jirkadelloro.github.io/Prima/L13_Craftris)
+- [Quellcode](https://github.com/benediktgrether/run_bene_run/tree/master/assets/src/js)
+- [Design Dokument](https://jirkadelloro.github.io/Prima/L13_Craftris)
 
 
 ## Checkliste für Leistungsnachweis
@@ -12,10 +12,10 @@ Repository for the module "Prototyping interactive media-applications and games"
 
 | Nr | Bezeichnung           | Inhalt                                                                                                                                                                                                                                                                         |
 |---:|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|    | Titel                 |
-|    | Name                  |
-|    | Matrikelnummer        |
-|  1 | Nutzerinteraktion     | Der Nutzer kann mit der Applikation interagieren. Mit welchen Mitteln und welchen Aktionen werden welche Reaktionen ausgelöst?                                                                                                                                                 |
+|    | Titel                 | Run Bene Run |
+|    | Name                  | Grether Benedikt |
+|    | Matrikelnummer        | 254061 |
+|  1 | Nutzerinteraktion     | Der Nutzer kann mittels A nach links laufen und mit D nach rechts. Mittels Leertaste kann er Springen und mit Festhalten der Entertaste Kämpfen. Mit der Taste E kann das aktuelle Item gedropped werden. Zusätzlich kann der Nutzer im Laufenden mit M das Spiel Muten/Unmuten und er kann bei Spielstart über den Knopf Mute das Spiel direkt bei Start muten |
 |  2 | Objektinteraktion     | Mit Hilfe von Kollisionsprüfung interagieren Objekte miteinander. Wann passiert dabei wie was?                                                                                                                                                                                 |
 |  3 | Objektanzahl variabel | Eine variable Anzahl von Objekten wird zur Laufzeit generiert. Welche sind dies und wann und wie geschieht die Erzeugung?                                                                                                                                                      |
 |  4 | Szenenhierarchie      | Die Szenenhierarchie ist sinnvoll aufgebaut. Wer ist wessen Parent, wie sind Elemente in anderen gruppiert und warum?                                                                                                                                                          |
@@ -37,19 +37,3 @@ Repository for the module "Prototyping interactive media-applications and games"
   * Eine kurze Anleitung zur Installation der Anwendung unter Berücksichtigung erforderlicher Dienste (z.B. Heroku, MongoDB etc.) 
   * Eine kurze Anleitung zur Interaktion mit der Anwendung
 
-## GameZone
-Wenn Du dein Spiel bei der Dauerausstellung "GameZone" am Tag der Medien sehen möchtest, ergänze folgendes  
-* Einen Ordner mit zwei Screenshots der laufenden Applikation in den Größen 250x100 und 1920x400 pixel sowie ein Textdokument mit den Informationen:
-* Titel
-* Autor
-* Jahr und Semester der Entwicklung (Sose, Wise)
-* Studiensemester
-* Lehrplansemester
-* Studiengang
-* Veranstaltung im Rahmen derer die Entwicklung durchgeführt wurde
-* betreuender Dozent
-* Genre des Spiels
-* ggf. passende Tags/ Schlagwörter zu dem Spiel
-* Untertitel (max 40 Zeichen), der Menschen zum Spielen animiert
-* Kurzbeschreibung (max 250 Zeichen), die kurz erklärt wie zu spielen ist
-* Erklärung, dass die Fakultät Digitale Medien die Anwendung bei Veranstaltungen, insbesondere am Tag der Medien, mit einem expliziten Verweis auf den Autor, vorführen darf.
