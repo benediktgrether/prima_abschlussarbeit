@@ -76,14 +76,14 @@ namespace prima_endaufgabe_grether_benedikt {
     }
 
     private checkNewItems(): void {
-      for (let child of game.getChildren()) {
+      for (let child of level.getChildren()) {
         if (child.name == "Item") {
-          this.checkCollisionItem(child, game);
+          this.checkCollisionItem(child, level);
         }
       }
     }
 
-    private checkCollisionItem(_child: ƒ.Node, _floor: ƒ.Node): void {
+    private checkCollisionItem(_child: ƒ.Node, _getLevelElement: ƒ.Node): void {
       let hitbox: Hitbox;
       hitbox = (<Items>_child).hitbox;
       if (this.detectedHit(hitbox)) {
@@ -93,7 +93,7 @@ namespace prima_endaufgabe_grether_benedikt {
             hero.createSwordHitbox();
             let element: HTMLElement = document.getElementById("itemHealthBar");
             element.style.width = "100%";
-            _floor.removeChild(_child);
+            _getLevelElement.removeChild(_child);
           }
         }
       }

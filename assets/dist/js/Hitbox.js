@@ -67,13 +67,13 @@ var prima_endaufgabe_grether_benedikt;
             }
         }
         checkNewItems() {
-            for (let child of prima_endaufgabe_grether_benedikt.game.getChildren()) {
+            for (let child of prima_endaufgabe_grether_benedikt.level.getChildren()) {
                 if (child.name == "Item") {
-                    this.checkCollisionItem(child, prima_endaufgabe_grether_benedikt.game);
+                    this.checkCollisionItem(child, prima_endaufgabe_grether_benedikt.level);
                 }
             }
         }
-        checkCollisionItem(_child, _floor) {
+        checkCollisionItem(_child, _getLevelElement) {
             let hitbox;
             hitbox = _child.hitbox;
             if (this.detectedHit(hitbox)) {
@@ -83,7 +83,7 @@ var prima_endaufgabe_grether_benedikt;
                         prima_endaufgabe_grether_benedikt.hero.createSwordHitbox();
                         let element = document.getElementById("itemHealthBar");
                         element.style.width = "100%";
-                        _floor.removeChild(_child);
+                        _getLevelElement.removeChild(_child);
                     }
                 }
             }

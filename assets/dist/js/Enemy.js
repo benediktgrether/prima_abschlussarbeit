@@ -118,7 +118,7 @@ var prima_endaufgabe_grether_benedikt;
                 itemDrop.cmpTransform.local.translateX(_location + 0.25);
                 itemDrop.cmpTransform.local.scaleX(.5);
                 itemDrop.cmpTransform.local.scaleY(.5);
-                prima_endaufgabe_grether_benedikt.game.appendChild(itemDrop);
+                prima_endaufgabe_grether_benedikt.level.appendChild(itemDrop);
             }
         }
         getRandomInt(max) {
