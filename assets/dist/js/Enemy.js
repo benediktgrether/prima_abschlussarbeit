@@ -78,7 +78,7 @@ var prima_endaufgabe_grether_benedikt;
             }
             if (this.healthpoints === 0) {
                 let gravestone = new prima_endaufgabe_grether_benedikt.Gravstone(_enemy.mtxWorld.translation.x);
-                prima_endaufgabe_grether_benedikt.game.appendChild(gravestone);
+                prima_endaufgabe_grether_benedikt.level.appendChild(gravestone);
                 this.zombieDied(_enemy);
             }
         }

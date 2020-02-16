@@ -87,7 +87,7 @@ namespace prima_endaufgabe_grether_benedikt {
       }
       if (this.healthpoints === 0) {
         let gravestone: Gravstone = new Gravstone(_enemy.mtxWorld.translation.x);
-        game.appendChild(gravestone);
+        level.appendChild(gravestone);
         this.zombieDied(_enemy);
 
       }
